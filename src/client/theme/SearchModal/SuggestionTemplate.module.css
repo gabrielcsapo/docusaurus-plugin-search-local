@@ -1,0 +1,101 @@
+.suggestion {
+  cursor: pointer;
+  background: var(--search-local-hit-background, #fff);
+  border-radius: 4px;
+  box-shadow: var(--search-local-hit-shadow, 0 1px 3px 0 #d4d9e1);
+  padding: 0 var(--search-local-spacing, 12px);
+  width: 100%;
+
+  align-items: center;
+  color: var(--search-local-hit-color, #444950);
+  display: flex;
+  flex-direction: row;
+  height: var(--search-local-hit-height, 56px);
+}
+
+html[data-theme="dark"] .suggestion {
+  background: var(--search-local-hit-background, var(--ifm-color-emphasis-100));
+  box-shadow: var(--search-local-hit-shadow, none);
+  color: var(--search-local-hit-color, var(--ifm-font-color-base));
+}
+
+.suggestion:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.suggestion.cursor {
+  background-color: var(
+    --search-local-highlight-color,
+    var(--ifm-color-primary)
+  );
+}
+
+.hitTree,
+.hitIcon,
+.hitPath,
+.noResultsIcon,
+.hitFooter a {
+  color: var(--search-local-muted-color, #969faf);
+}
+
+html[data-theme="dark"] .hitTree,
+html[data-theme="dark"] .hitIcon,
+html[data-theme="dark"] .hitPath,
+html[data-theme="dark"] .noResultsIcon {
+  color: var(--search-local-muted-color, var(--ifm-color-secondary-darkest));
+}
+
+.hitTree {
+  display: flex;
+  align-items: center;
+}
+
+.hitTree > svg {
+  height: var(--search-local-hit-height, 56px);
+  opacity: 0.5;
+  stroke-width: var(--search-local-icon-stroke-width, 1.4);
+  width: 24px;
+}
+
+.hitIcon {
+  stroke-width: var(--search-local-icon-stroke-width, 1.4);
+
+  height: 20px;
+  width: 20px;
+}
+
+.hitWrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  justify-content: center;
+  margin: 0 8px;
+  overflow-x: hidden;
+  width: 80%;
+}
+
+.hitWrapper mark {
+  background: none;
+  color: var(--search-local-highlight-color, var(--ifm-color-primary));
+}
+
+.hitTitle {
+  font-size: 0.9em;
+}
+
+.hitPath {
+  font-size: 0.75em;
+}
+
+.hitPath,
+.hitTitle {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.hitAction {
+  height: 20px;
+  width: 20px;
+}
