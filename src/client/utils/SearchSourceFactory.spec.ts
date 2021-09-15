@@ -74,7 +74,10 @@ describe("SearchSourceFactory", () => {
       },
     ],
     [],
-    2
+    2,
+    (results) => {
+      console.log(results);
+    }
   );
   const callback = jest.fn();
 

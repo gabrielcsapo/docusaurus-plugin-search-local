@@ -67,14 +67,7 @@ describe("sortSearchResults", () => {
     ] as InitialSearchResult[];
     sortSearchResults(results);
     expect(results.map((item) => item.document.i)).toEqual([
-      1,
-      2,
-      100,
-      101,
-      3,
-      200,
-      201,
-      202,
+      1, 2, 100, 101, 3, 200, 201, 202,
     ]);
   });
 });

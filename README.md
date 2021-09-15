@@ -22,7 +22,7 @@ An offline/local search plugin for [Docusaurus v2](https://v2.docusaurus.io/), w
 
 ## Live Demo
 
-https://easyops-cn.github.io/docusaurus-search-example/
+[https://gabrielcsapo.github.io/docusaurus-plugin-search-local/](https://gabrielcsapo.github.io/docusaurus-plugin-search-local/)
 
 ## Screen Shots
 
@@ -147,13 +147,13 @@ html[data-theme="dark"] {
 }
 ```
 
-## Trouble Shooting
+## Troubleshooting
 
-When building your docs project, Set the env `DEBUG=search-local:*` to enable [debug](https://github.com/visionmedia/debug) logs.
+When building your docs project, Set the env `DEBUG=docusaurus-plugin-search-local:*` to enable [debug](https://github.com/visionmedia/debug) logs.
 
 ```shell
 # In your docs project:
-DEBUG=search-local:* yarn build
+DEBUG=docusaurus-plugin-search-local:* yarn build
 ```
 
 In case some specific errors occurred:

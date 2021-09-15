@@ -61,7 +61,7 @@ export function smartQueries(
       stopWordPipelines.reduce(
         (term, p) =>
           term.filter((item) =>
-            ((p as unknown) as (str: string) => string | undefined)(item.value)
+            (p as unknown as (str: string) => string | undefined)(item.value)
           ),
         term
       );

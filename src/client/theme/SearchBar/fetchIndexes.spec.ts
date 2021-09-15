@@ -4,10 +4,9 @@ import { fetchIndexes } from "./fetchIndexes";
 jest.mock("lunr");
 jest.mock("../../utils/proxiedGenerated");
 
-const mockLunrIndexLoad = (jest.spyOn(
-  lunr.Index,
-  "load"
-) as any).mockImplementation(() => `loaded-index`);
+const mockLunrIndexLoad = (
+  jest.spyOn(lunr.Index, "load") as any
+).mockImplementation(() => `loaded-index`);
 
 const mockFetch = (global.fetch = jest.fn());
 

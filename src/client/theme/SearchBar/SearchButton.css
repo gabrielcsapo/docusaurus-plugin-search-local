@@ -117,6 +117,7 @@ html[data-theme="dark"] {
 .DocSearch-Button-Keys {
   display: flex;
   min-width: calc(2 * 20px + 2 * 0.4em);
+  margin-right: 6px;
 }
 
 .DocSearch-Button-Key {
