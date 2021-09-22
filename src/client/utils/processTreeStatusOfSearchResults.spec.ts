@@ -66,7 +66,7 @@ describe("processTreeStatusOfSearchResults", () => {
       },
     ] as InitialSearchResult[];
     processTreeStatusOfSearchResults(results);
-    const statuses: [boolean, boolean][] = [
+    const statuses: [boolean | undefined, boolean | undefined][] = [
       [undefined, undefined],
       [undefined, undefined],
       [undefined, undefined],

@@ -1,5 +1,7 @@
 import React, { useMemo } from "react";
 
+import "./SearchButton.css";
+
 function ControlKeyIcon() {
   return (
     <svg width="15" height="15" className="DocSearch-Control-Key-Icon">

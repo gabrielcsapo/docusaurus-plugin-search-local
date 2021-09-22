@@ -66,7 +66,7 @@ module.exports = {
           items: [
             {
               label: "Configuration",
-              to: "/docs",
+              to: "/docs/getting-started",
             },
           ],
         },

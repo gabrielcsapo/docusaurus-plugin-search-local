@@ -1,6 +1,6 @@
-declare var _paq: Array<[string, string, boolean, number]>;
+declare let _paq: Array<[string, string, boolean, number]>;
 
-import React, { useEffect, useMemo, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import { fetchIndexes } from "../SearchBar/fetchIndexes";
@@ -16,8 +16,6 @@ import SuggestionTemplate from "./SuggestionTemplate";
 
 import styles from "./SearchModal.module.css";
 
-const SEARCH_PARAM_HIGHLIGHT = "_highlight";
-
 interface SearchModalProps {
   onClose: () => void;
 }
@@ -30,9 +28,10 @@ export default function SearchModal({
   } = useDocusaurusContext();
   const [searchQuery, setSearchQuery] = useState("");
   const searchModal = useRef(null);
-  const [searchSource, setSearchSource] = useState<
-    (input: string, callback: (results: SearchResult[]) => void) => void
-  >();
+  const [searchSource, setSearchSource] =
+    useState<
+      (input: string, callback: (results: SearchResult[]) => void) => void
+    >();
   const [searchResults, setSearchResults] = useState<SearchResult[]>();
 
   useEffect(() => {

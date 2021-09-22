@@ -1,4 +1,4 @@
-import { SuggestionTemplate } from "./SuggestionTemplate";
+import SuggestionTemplate from "./SuggestionTemplate";
 
 jest.mock("./icons");
 jest.mock("../../utils/proxiedGenerated");
