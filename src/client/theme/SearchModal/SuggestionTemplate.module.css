@@ -27,7 +27,7 @@ html[data-theme="dark"] .suggestion {
   background-color: var(
     --search-local-highlight-color,
     var(--ifm-color-primary)
-  );
+  ) !important;
 }
 
 .cursor > span {

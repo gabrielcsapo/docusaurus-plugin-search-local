@@ -1,3 +1,8 @@
+# 0.1.1
+
+- @gabrielcsapo: cleans up dark mode styling
+- @gabrielcsapo: ensures that hover does not auto select item
+
 # 0.1.0
 
 - @gabrielcsapo: adds keyboard navigation and enables pressing enter to select items in the list.

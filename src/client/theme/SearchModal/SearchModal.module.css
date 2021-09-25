@@ -26,10 +26,9 @@
 .searchInputContainer {
   display: flex;
   margin: 12px;
-
   height: 50px;
   align-items: center;
-  box-shadow: rgb(37, 193, 159) 0px 0px 0px 2px inset;
+  box-shadow: var(--docsearch-searchbox-shadow);
   border-radius: 4px;
   background-color: var(--docsearch-searchbox-focus-background);
 }
@@ -37,7 +36,7 @@
 .searchInputContainer label {
   margin-left: 10px;
   margin-right: 5px;
-  color: rgb(37, 193, 159);
+  color: var(--docsearch-text-color);
   display: flex;
 }
 
@@ -54,7 +53,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-
+  color: var(--docsearch-text-color);
   font-size: 1.2em;
   border: none;
   outline: none;
@@ -69,6 +68,7 @@
   justify-content: space-around;
   align-items: center;
   font-weight: 300;
+  color: #000;
 }
 
 .suggestion {
@@ -78,6 +78,7 @@
 .searchResultsContainer {
   overflow-y: scroll;
   max-height: 400px;
+  color: #000;
 }
 
 .loadingContainer {
