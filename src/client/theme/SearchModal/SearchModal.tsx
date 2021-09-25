@@ -87,7 +87,7 @@ export default function SearchModal({
     }
   }, [upPress]);
   useEffect(() => {
-    if (searchResults?.length && enterPress && cursor) {
+    if (searchResults?.length && enterPress && cursor >= 0) {
       setSelected(searchResults[cursor]);
     }
   }, [cursor, enterPress]);

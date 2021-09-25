@@ -6,6 +6,7 @@ module.exports = {
   tagline: "Making local search easier and looking great!",
   url: "https://gabrielcsapo.github.io",
   baseUrl: "/docusaurus-plugin-search-local/",
+  trailingSlash: true,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",

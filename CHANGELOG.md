@@ -1,3 +1,7 @@
+# 0.1.2
+
+- @gabrielcsapo: ensure that cursor position 0 can have enter action applied to it
+
 # 0.1.1
 
 - @gabrielcsapo: cleans up dark mode styling
