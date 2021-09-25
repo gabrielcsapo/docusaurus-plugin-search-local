@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { useHistory } from "@docusaurus/router";
 
 import { SearchDocument, SearchResult } from "../../../shared/interfaces";
@@ -17,24 +17,39 @@ import {
 import { Mark } from "../../utils/proxiedGenerated";
 
 import styles from "./SuggestionTemplate.module.css";
+import clsx from "clsx";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 
-interface SuggestionTemplateProps
-  extends Omit<SearchResult, "score" | "index"> {
+interface SuggestionTemplateProps {
+  searchResult: SearchResult;
+  isSelected: boolean;
+  isHovered: boolean;
+  setSelected: Dispatch<
+    SetStateAction<SetStateAction<SearchResult | undefined>>
+  >;
+  setHovered: Dispatch<SetStateAction<SearchResult | undefined>>;
   onClick: () => void;
 }
 
 export default function SuggestionTemplate({
-  document,
-  type,
-  page,
-  metadata,
-  tokens,
-  isInterOfTree,
-  isLastOfTree,
+  searchResult,
+  isSelected,
+  isHovered,
+  setSelected,
+  setHovered,
   onClick,
 }: SuggestionTemplateProps): React.ReactElement {
+  const {
+    document,
+    type,
+    page,
+    metadata,
+    tokens,
+    isInterOfTree,
+    isLastOfTree,
+  } = searchResult;
+
   const history = useHistory();
   const isTitle = type === 0;
   const isHeading = type === 1;
@@ -58,8 +73,19 @@ export default function SuggestionTemplate({
     onClick();
   };
 
+  if (isSelected && isHovered) {
+    // reset the selected as we are going to navigate
+    setSelected(undefined);
+    _onClick();
+  }
+
   return (
-    <div className={styles.suggestion} onClick={_onClick}>
+    <div
+      className={clsx(styles.suggestion, isHovered ? styles.cursor : "")}
+      onMouseEnter={() => setHovered(searchResult)}
+      onMouseLeave={() => setHovered(undefined)}
+      onClick={_onClick}
+    >
       {isInterOfTree || isLastOfTree ? (
         <span className={styles.hitTree}>
           {isInterOfTree ? <IconTreeInter /> : <IconTreeLast />}

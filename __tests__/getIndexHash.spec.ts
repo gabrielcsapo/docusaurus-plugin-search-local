@@ -31,9 +31,9 @@ jest.mock(
   }
 );
 
-(fs.readFileSync as jest.MockedFunction<
-  typeof fs.readFileSync
->).mockImplementation((filePath: string) => {
+(
+  fs.readFileSync as jest.MockedFunction<typeof fs.readFileSync>
+).mockImplementation((filePath: string) => {
   if (filePath.endsWith(".md")) {
     return Buffer.from(filePath);
   }

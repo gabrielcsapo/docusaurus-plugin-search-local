@@ -23,11 +23,20 @@ html[data-theme="dark"] .suggestion {
   margin-bottom: 4px;
 }
 
-.suggestion.cursor {
+.cursor {
   background-color: var(
     --search-local-highlight-color,
     var(--ifm-color-primary)
   );
+}
+
+.cursor > span {
+  color: #d4d9e1;
+}
+
+.cursor > .hitWrapper mark {
+  color: #d4d9e1;
+  text-decoration: underline;
 }
 
 .hitTree,

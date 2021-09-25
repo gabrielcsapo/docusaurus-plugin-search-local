@@ -3,13 +3,13 @@ import { parse } from "./parse";
 import { DocInfoWithFilePath } from "../../shared/interfaces";
 
 jest.mock("./parse");
-jest.spyOn(fs, "readFile").mockImplementation((((
+jest.spyOn(fs, "readFile").mockImplementation(((
   filePath,
   options,
   callback
 ) => {
   callback(null, filePath as any);
-}) as unknown) as any);
+}) as unknown as any);
 
 // Use `require` to avoid *import hoisting*.
 // eslint-disable-next-line @typescript-eslint/no-var-requires

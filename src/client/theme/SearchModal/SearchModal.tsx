@@ -1,6 +1,6 @@
 declare let _paq: Array<[string, string, boolean, number]>;
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, RefObject } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import { fetchIndexes } from "../SearchBar/fetchIndexes";
@@ -20,6 +20,37 @@ interface SearchModalProps {
   onClose: () => void;
 }
 
+const useKeyPress = function (
+  targetKey: string,
+  ref: RefObject<HTMLInputElement>
+) {
+  const [keyPressed, setKeyPressed] = useState(false);
+
+  function downHandler({ key }: { key: string }) {
+    if (key === targetKey) {
+      setKeyPressed(true);
+    }
+  }
+
+  const upHandler = ({ key }: { key: string }) => {
+    if (key === targetKey) {
+      setKeyPressed(false);
+    }
+  };
+
+  React.useEffect(() => {
+    ref.current?.addEventListener("keydown", downHandler);
+    ref.current?.addEventListener("keyup", upHandler);
+
+    return () => {
+      ref.current?.removeEventListener("keydown", downHandler);
+      ref.current?.removeEventListener("keyup", upHandler);
+    };
+  });
+
+  return keyPressed;
+};
+
 export default function SearchModal({
   onClose,
 }: SearchModalProps): React.ReactElement {
@@ -28,11 +59,46 @@ export default function SearchModal({
   } = useDocusaurusContext();
   const [searchQuery, setSearchQuery] = useState("");
   const searchModal = useRef(null);
+  const searchInput = useRef(null);
   const [searchSource, setSearchSource] =
     useState<
       (input: string, callback: (results: SearchResult[]) => void) => void
     >();
   const [searchResults, setSearchResults] = useState<SearchResult[]>();
+
+  const [selected, setSelected] =
+    useState<React.SetStateAction<SearchResult | undefined>>(undefined);
+  const downPress = useKeyPress("ArrowDown", searchInput);
+  const upPress = useKeyPress("ArrowUp", searchInput);
+  const enterPress = useKeyPress("Enter", searchInput);
+  const [cursor, setCursor] = useState<number>(0);
+  const [hovered, setHovered] = useState<SearchResult | undefined>(undefined);
+
+  useEffect(() => {
+    if (searchResults?.length && downPress) {
+      setCursor((prevState) =>
+        prevState < searchResults?.length - 1 ? prevState + 1 : prevState
+      );
+    }
+  }, [downPress]);
+  useEffect(() => {
+    if (searchResults?.length && upPress) {
+      setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
+    }
+  }, [upPress]);
+  useEffect(() => {
+    if (
+      (searchResults?.length && enterPress) ||
+      (searchResults?.length && hovered)
+    ) {
+      setSelected(searchResults[cursor]);
+    }
+  }, [cursor, enterPress]);
+  useEffect(() => {
+    if (searchResults?.length && hovered) {
+      setCursor(searchResults.indexOf(hovered));
+    }
+  }, [hovered]);
 
   useEffect(() => {
     if (searchSource) {
@@ -98,6 +164,7 @@ export default function SearchModal({
             onChange={(ev) => {
               setSearchQuery(ev.target.value);
             }}
+            ref={searchInput}
             value={searchQuery}
             autoComplete="off"
             autoFocus
@@ -117,7 +184,7 @@ export default function SearchModal({
           ) : (
             ""
           )}
-          {searchResults && searchResults.length === 0 ? (
+          {searchResults && searchResults?.length === 0 ? (
             process.env.NODE_ENV === "production" ? (
               <div className={styles.messageContainer}>
                 <p>{translations.no_documents_were_found}</p>
@@ -135,22 +202,26 @@ export default function SearchModal({
           )}
 
           <section className={styles.searchResultsContainer}>
-            {searchResults && searchResults.length > 0 ? (
+            {searchResults && searchResults?.length > 0 ? (
               <>
                 <p>
                   {simpleTemplate(
-                    searchResults.length === 1
+                    searchResults?.length === 1
                       ? translations.count_documents_found
                       : translations.count_documents_found_plural,
                     {
-                      count: searchResults.length,
+                      count: searchResults?.length,
                     }
                   )}
                 </p>
-                {searchResults.map((item) => (
+                {searchResults.map((item, i: number) => (
                   <SuggestionTemplate
                     key={item.document.i}
-                    {...item}
+                    searchResult={item}
+                    isSelected={selected === item}
+                    isHovered={cursor === i}
+                    setSelected={setSelected}
+                    setHovered={setHovered}
                     onClick={onClose}
                   />
                 ))}

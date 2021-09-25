@@ -24,12 +24,6 @@ An offline/local search plugin for [Docusaurus v2](https://v2.docusaurus.io/), w
 
 [https://gabrielcsapo.github.io/docusaurus-plugin-search-local/](https://gabrielcsapo.github.io/docusaurus-plugin-search-local/)
 
-## Screen Shots
-
-![Screen Shot EN](screen-shots/screen-shot-en.png)
-
-![Screen Shot ZH](screen-shots/screen-shot-zh.png)
-
 ## Installation
 
 ```shell

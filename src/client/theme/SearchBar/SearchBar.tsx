@@ -7,6 +7,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import { SearchButton } from "./SearchButton";
 import SearchModal from "../SearchModal";
+import ErrorBoundary from "../ErrorBoundary";
 
 import { Mark } from "../../utils/proxiedGenerated";
 
@@ -24,13 +25,22 @@ function isEditingContent(event: KeyboardEvent): boolean {
   );
 }
 
-export default function SearchBar(): ReactElement {
+export default class SearchBarWrapper extends React.Component {
+  render() {
+    return (
+      <ErrorBoundary>
+        <SearchBar />
+      </ErrorBoundary>
+    );
+  }
+}
+
+export function SearchBar(): ReactElement {
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const {
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
-
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (!Mark) {
