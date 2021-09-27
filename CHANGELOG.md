@@ -1,3 +1,7 @@
+# 0.1.3
+
+- @gabrielcsapo: make debug a dependency instead of devDep.
+
 # 0.1.2
 
 - @gabrielcsapo: ensure that cursor position 0 can have enter action applied to it
