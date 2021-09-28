@@ -11,7 +11,7 @@
 .searchModalContainer {
   box-shadow: rgba(255, 255, 255, 0.5) 1px 1px 0px 0px inset,
     rgb(85, 90, 100) 0px 3px 8px 0px;
-  background: #f1f2f5;
+  background: var(--search-local-modal-background);
   position: relative;
 
   flex-direction: column;
@@ -20,7 +20,7 @@
   width: 50%;
   min-width: 400px;
   min-height: 200px;
-  border: 1px solid #dedede;
+  border: 1px solid var(--search-local-container-border);
 }
 
 .searchInputContainer {
@@ -28,15 +28,15 @@
   margin: 12px;
   height: 50px;
   align-items: center;
-  box-shadow: var(--docsearch-searchbox-shadow);
+  box-shadow: var(--search-local-searchbox-shadow);
   border-radius: 4px;
-  background-color: var(--docsearch-searchbox-focus-background);
+  background-color: var(--search-local-searchbox-focus-background);
 }
 
 .searchInputContainer label {
   margin-left: 10px;
   margin-right: 5px;
-  color: var(--docsearch-text-color);
+  color: var(--search-local-text-color);
   display: flex;
 }
 
@@ -53,7 +53,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  color: var(--docsearch-text-color);
+  color: var(--search-local-text-color);
   font-size: 1.2em;
   border: none;
   outline: none;
@@ -68,7 +68,7 @@
   justify-content: space-around;
   align-items: center;
   font-weight: 300;
-  color: #000;
+  color: var(--search-local-text-color);
 }
 
 .suggestion {
@@ -78,7 +78,7 @@
 .searchResultsContainer {
   overflow-y: scroll;
   max-height: 400px;
-  color: #000;
+  color: var(--search-local-text-color);
 }
 
 .loadingContainer {
