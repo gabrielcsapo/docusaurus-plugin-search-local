@@ -1,3 +1,7 @@
+# 0.1.4
+
+- @gabrielcsapo: ensure we are using the css variables to override for customization (fixes dark mode background)
+
 # 0.1.3
 
 - @gabrielcsapo: make debug a dependency instead of devDep.
