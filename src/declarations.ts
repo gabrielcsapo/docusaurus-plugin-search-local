@@ -1,5 +1,3 @@
-// import { TranslationMap } from "./shared/interfaces";
-
 declare module "@docusaurus/router" {
   export const useHistory: () => {
     push: (url: string) => void;

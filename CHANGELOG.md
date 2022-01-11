@@ -1,3 +1,7 @@
+# 0.2.1 (01/11/2022)
+
+- updates types in interfaces to include TranslationMap (@gabrielcsapo)
+
 # 0.2.0 (01/11/2022)
 
 - updates types to be published with package (@gabrielcsapo)
