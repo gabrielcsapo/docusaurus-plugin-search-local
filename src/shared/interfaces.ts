@@ -149,20 +149,6 @@ export interface PluginOptions {
   translations?: TranslationMap;
 
   ignoreFiles?: string | RegExp | (string | RegExp)[];
-
-  // searchInputPlaceholder?: string;
-  // searchNoResults?: string;
-  // searchSeeAllResults?: string;
-  // searchSeeAllResultsPlural?: string;
-
-  // searchPageResultLimits?: number;
-  // searchPageResultContextMaxLength?: number;
-  // searchPageInputPlaceholder?: string;
-  // searchPageNoResults?: string;
-  // searchPageDefaultTitle?: string;
-  // searchPageTitleWithKeyword?: string;
-  // searchPageResultSummary?: string;
-  // searchPageResultSummaryPlural?: string;
 }
 
 export type ProcessedPluginOptions = Required<

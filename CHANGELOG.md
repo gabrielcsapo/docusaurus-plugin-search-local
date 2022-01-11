@@ -1,3 +1,7 @@
+# 0.2.0 (01/11/2022)
+
+- updates types to be published with package (@gabrielcsapo)
+
 # 0.1.4
 
 - @gabrielcsapo: ensure we are using the css variables to override for customization (fixes dark mode background)

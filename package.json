@@ -1,6 +1,6 @@
 {
   "name": "docusaurus-plugin-search-local",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "An offline/local search plugin for Docusaurus v2.",
   "repository": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
   "homepage": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
@@ -17,10 +17,7 @@
     "prepare": "husky install"
   },
   "main": "dist/server/server/index.js",
-  "files": [
-    "/dist",
-    "!/dist/generated.js"
-  ],
+  "types": "src/docusaurus-search-local.d.ts",
   "engines": {
     "node": ">=12"
   },
@@ -32,9 +29,10 @@
     "website"
   ],
   "dependencies": {
-    "@docusaurus/module-type-aliases": "^2.0.0-beta.6",
-    "@docusaurus/utils": "^2.0.0-beta.6",
-    "@docusaurus/utils-validation": "^2.0.0-beta.6",
+    "@docusaurus/module-type-aliases": "^2.0.0-beta.14",
+    "@docusaurus/types": "^2.0.0-beta.14",
+    "@docusaurus/utils": "^2.0.0-beta.14",
+    "@docusaurus/utils-validation": "^2.0.0-beta.14",
     "cheerio": "^1.0.0-rc.3",
     "debug": "^4.2.0",
     "clsx": "^1.1.1",
