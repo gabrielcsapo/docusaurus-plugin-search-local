@@ -13,10 +13,10 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "tsc --project src/client/tsconfig.json",
     "build:server": "tsc --project src/server/tsconfig.json",
-    "postbuild": "copyfiles -u 3 \"src/client/theme/**/*.css\" dist/client/client/theme",
+    "postbuild": "copyfiles -u 3 \"src/client/theme/**/*.css\" dist/client/theme",
     "prepare": "husky install"
   },
-  "main": "dist/server/server/index.js",
+  "main": "dist/server/index.js",
   "types": "src/docusaurus-search-local.d.ts",
   "engines": {
     "node": ">=12"
