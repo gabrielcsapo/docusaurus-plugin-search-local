@@ -13,12 +13,12 @@ interface SerializedIndex {
   };
 }
 
-export async function fetchIndexes(
-  baseUrl: string
-): Promise<{
+export async function fetchIndexes(baseUrl: string): Promise<{
   wrappedIndexes: WrappedIndex[];
   zhDictionary: string[];
 }> {
+  console.log(baseUrl);
+  console.log(indexHash);
   // if (process.env.NODE_ENV === "production") {
   const json = (await (
     await fetch(`${baseUrl}search-index.json?_=${indexHash}`)
