@@ -2,13 +2,15 @@ import fs from "fs";
 import { parse } from "./parse";
 import { DocInfoWithFilePath } from "../../shared/interfaces";
 
+fs.readFile;
+
 jest.mock("./parse");
 jest.spyOn(fs, "readFile").mockImplementation(((
-  filePath,
-  options,
-  callback
+  filePath: string,
+  options: null,
+  callback: (err: NodeJS.ErrnoException | null, data: Buffer | string) => void
 ) => {
-  callback(null, filePath as any);
+  callback(null, filePath);
 }) as unknown as any);
 
 // Use `require` to avoid *import hoisting*.
