@@ -14,5 +14,5 @@
     "types": ["node", "cheerio", "@docusaurus/module-type-aliases", "jest"],
     "outDir": "./dist"
   },
-  "exclude": ["**/*.spec.ts", "src/client", "src/server"]
+  "exclude": ["**/*.test.ts", "src/client", "src/server"]
 }

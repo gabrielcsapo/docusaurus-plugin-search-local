@@ -5,5 +5,5 @@
     "target": "ESNext"
   },
   "include": ["./**/*", "../*.ts"],
-  "exclude": ["**/*.spec.ts"]
+  "exclude": ["**/*.test.ts"]
 }
