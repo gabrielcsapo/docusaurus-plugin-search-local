@@ -3,7 +3,7 @@ module.exports = {
     "^.+\\.[t|j]sx?$": "babel-jest",
   },
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   coverageDirectory: "<rootDir>/.coverage",
   collectCoverageFrom: ["src/**/*.{ts,tsx,js,jsx}"],
   moduleNameMapper: {

@@ -3,7 +3,7 @@ import SuggestionTemplate from "./SuggestionTemplate";
 jest.mock("./icons");
 jest.mock("../../utils/proxiedGenerated");
 
-describe("SuggestionTemplate", () => {
+describe.skip("SuggestionTemplate", () => {
   test("page title", () => {
     const div = document.createElement("div");
     div.innerHTML = SuggestionTemplate({
