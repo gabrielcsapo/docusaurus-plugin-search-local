@@ -133,6 +133,16 @@ describe("generate", () => {
     generate(
       {
         language,
+        indexDocs: false,
+        indexBlog: false,
+        indexPages: false,
+        docsDir: ["hello"],
+        blogDir: ["hello"],
+        ignoreFiles: [],
+        docsRouteBasePath: ["hello"],
+        blogRouteBasePath: ["hello"],
+        hashed: false,
+        highlightSearchTermsOnTargetPage: false,
         removeDefaultStopWordFilter: false,
         searchResultLimits: 8,
         searchResultContextMaxLength: 50,
@@ -156,6 +166,15 @@ describe("generate", () => {
     generate(
       {
         language: ["en"],
+        indexDocs: false,
+        indexBlog: false,
+        indexPages: false,
+        docsDir: ["hello"],
+        blogDir: ["hello"],
+        ignoreFiles: [],
+        docsRouteBasePath: ["hello"],
+        blogRouteBasePath: ["hello"],
+        hashed: false,
         removeDefaultStopWordFilter: false,
         highlightSearchTermsOnTargetPage: true,
         searchResultLimits: 8,
