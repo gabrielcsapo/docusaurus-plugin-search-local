@@ -1,16 +1,16 @@
-# Contributing guide
+# Contributing Guide
 
 ## Development
 
-```shell
-yarn
-yarn start
+```sh
+npm install
+npm start
 ```
 
 ## Testing
 
-```shell
-yarn test
+```sh
+npm test
 ```
 
 ## Publishing
