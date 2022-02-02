@@ -1,9 +1,9 @@
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-  transform: {
-    "^.+\\.[t|j]sx?$": "babel-jest",
-  },
+  preset: "ts-jest",
+  testEnvironment: "node",
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false, // turned off to clean up test output when running locally, use `--coverage true` to get coverage output
   coverageDirectory: "<rootDir>/.coverage",
   collectCoverageFrom: ["src/**/*.{ts,tsx,js,jsx}"],
   moduleNameMapper: {

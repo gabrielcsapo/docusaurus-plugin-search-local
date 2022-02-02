@@ -25,31 +25,40 @@ jest.mock(
     if (root === "/tmp/docs") {
       files = ["/tmp/docs/a.md", "/tmp/docs/b.md", "/tmp/docs/b.png"];
     }
-    return files
-      .map((path) => ({ path } as klawSync.Item))
-      .filter(options.filter);
+
+    const items = files.map((path) => ({ path } as klawSync.Item));
+
+    return options?.filter ? items.filter(options.filter) : items;
   }
 );
 
 (
   fs.readFileSync as jest.MockedFunction<typeof fs.readFileSync>
-).mockImplementation((filePath: string) => {
-  if (filePath.endsWith(".md")) {
+).mockImplementation((filePath: fs.PathOrFileDescriptor) => {
+  if (typeof filePath === "string" && filePath.endsWith(".md")) {
     return Buffer.from(filePath);
   }
   throw new Error(`Unknown file: ${filePath}`);
 });
 
 (fs.existsSync as jest.MockedFunction<typeof fs.existsSync>).mockImplementation(
-  (filePath: string) => {
-    return filePath.startsWith("/tmp/");
+  (filePath: fs.PathOrFileDescriptor) => {
+    if (typeof filePath === "string") {
+      return filePath.startsWith("/tmp/");
+    }
+
+    return false;
   }
 );
 
 (fs.lstatSync as jest.MockedFunction<typeof fs.lstatSync>).mockImplementation(
-  (filePath: string) => {
+  (filePath: fs.PathOrFileDescriptor) => {
     return {
-      isDirectory: () => !filePath.includes("."),
+      isDirectory: () => {
+        if (typeof filePath === "string") {
+          return !filePath.includes(".");
+        }
+      },
     } as fs.Stats;
   }
 );

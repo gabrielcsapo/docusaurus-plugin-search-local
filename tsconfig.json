@@ -14,5 +14,5 @@
     "types": ["node", "cheerio", "@docusaurus/module-type-aliases", "jest"]
   },
   "include": ["src"],
-  "exclude": ["**/*.spec.ts", "src/client", "src/server"]
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "src/client", "src/server"]
 }

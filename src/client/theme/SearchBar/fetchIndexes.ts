@@ -13,9 +13,7 @@ interface SerializedIndex {
   };
 }
 
-export async function fetchIndexes(
-  baseUrl: string
-): Promise<{
+export async function fetchIndexes(baseUrl: string): Promise<{
   wrappedIndexes: WrappedIndex[];
   zhDictionary: string[];
 }> {
