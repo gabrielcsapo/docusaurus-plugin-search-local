@@ -4,5 +4,6 @@
     "module": "ESNext",
     "target": "ESNext"
   },
+  "include": ["./**/*", "../*.ts"],
   "exclude": ["**/*.spec.ts"]
 }
