@@ -1,17 +1,18 @@
 import path from "path";
 import fs from "fs-extra";
 import { normalizeUrl } from "@docusaurus/utils";
-import { DocusaurusContext, PluginOptions } from "../shared/interfaces";
+import { PluginOptions } from "../shared/interfaces";
 import { processPluginOptions } from "./utils/processPluginOptions";
 import { postBuildFactory } from "./utils/postBuildFactory";
 import { generate } from "./utils/generate";
+import { LoadContext, Plugin } from "@docusaurus/types";
 
 const PLUGIN_NAME = "docusaurus-plugin-search-local";
 
 export default function DocusaurusSearchLocalPlugin(
-  context: DocusaurusContext,
+  context: LoadContext,
   options?: PluginOptions
-): any {
+): Plugin {
   const config = processPluginOptions(options, context.siteDir);
 
   const dir = path.join(context.generatedFilesDir, PLUGIN_NAME, "default");
@@ -34,7 +35,7 @@ export default function DocusaurusSearchLocalPlugin(
       return [pagePath];
     },
 
-    async contentLoaded({ actions: { addRoute } }: any) {
+    async contentLoaded({ actions: { addRoute } }) {
       addRoute({
         path: normalizeUrl([context.baseUrl, "search"]),
         component: "@theme/SearchPage",
