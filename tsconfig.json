@@ -11,8 +11,8 @@
     "sourceMap": false,
     "strict": true,
     "typeRoots": ["node_modules/@types"],
-    "types": ["node", "cheerio", "@docusaurus/module-type-aliases", "jest"]
+    "types": ["node", "cheerio", "@docusaurus/module-type-aliases", "jest"],
+    "outDir": "./dist"
   },
-  "include": ["src"],
-  "exclude": ["**/*.spec.ts", "**/*.test.ts", "src/client", "src/server"]
+  "exclude": ["**/*.test.ts", "src/client", "src/server"]
 }

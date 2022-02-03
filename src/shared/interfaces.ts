@@ -187,9 +187,3 @@ export interface PostBuildData {
   baseUrl: string;
   siteConfig: DocusaurusConfig;
 }
-
-export interface DocusaurusContext {
-  baseUrl: string;
-  siteDir: string;
-  generatedFilesDir: string;
-}
