@@ -1,5 +1,6 @@
 import lunr from "lunr";
 import { fetchIndexes } from "./fetchIndexes";
+import { __setHash } from "../../utils/proxiedGenerated";
 
 jest.mock("lunr");
 jest.mock("../../utils/proxiedGenerated");
@@ -18,10 +19,13 @@ describe("fetchIndexes", () => {
   beforeEach(() => {
     jest.resetModules(); // most important - it clears the cache
     process.env = { ...OLD_ENV }; // make a copy
+    mockFetch.mockReset();
   });
 
   afterAll(() => {
     process.env = OLD_ENV; // restore old env
+
+    jest.restoreAllMocks();
   });
 
   test("production with empty index", async () => {
@@ -80,5 +84,24 @@ describe("fetchIndexes", () => {
       wrappedIndexes: [],
       zhDictionary: [],
     });
+  });
+
+  test("it should only add the index to the URL if provided", async () => {
+    mockFetch.mockResolvedValue({
+      json: () => Promise.resolve([]),
+    });
+
+    await fetchIndexes(baseUrl);
+
+    // Standard call with a hash
+    expect(mockFetch).toBeCalledWith("/search-index.json?_=abc");
+
+    // Setting the hash to `null` to reflect current generation path.
+    __setHash(null);
+
+    await fetchIndexes(baseUrl);
+
+    // Should not add query param for hash index if generated hash is `null`.
+    expect(mockFetch).toBeCalledWith("/search-index.json");
   });
 });

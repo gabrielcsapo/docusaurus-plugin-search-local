@@ -18,8 +18,11 @@ export async function fetchIndexes(baseUrl: string): Promise<{
   zhDictionary: string[];
 }> {
   // if (process.env.NODE_ENV === "production") {
+  const indexUrl = `${baseUrl}search-index.json`;
+  const queryString = indexHash ? `?_=${indexHash}` : "";
+
   const json = (await (
-    await fetch(`${baseUrl}search-index.json?_=${indexHash}`)
+    await fetch(`${indexUrl}${queryString}`)
   ).json()) as SerializedIndex[];
 
   const wrappedIndexes: WrappedIndex[] = json.map(
