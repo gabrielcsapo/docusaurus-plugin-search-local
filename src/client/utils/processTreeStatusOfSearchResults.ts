@@ -1,4 +1,4 @@
-import { InitialSearchResult } from "../../shared/types";
+import { InitialSearchResult } from "../../types";
 
 export function processTreeStatusOfSearchResults(
   results: InitialSearchResult[]

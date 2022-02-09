@@ -1,8 +1,4 @@
-import {
-  HighlightChunk,
-  MetadataPosition,
-  ChunkIndexRef,
-} from "../../shared/types";
+import { HighlightChunk, MetadataPosition, ChunkIndexRef } from "../../types";
 import { escapeHtml } from "./escapeHtml";
 import { highlight } from "./highlight";
 import { looseTokenize } from "./looseTokenize";

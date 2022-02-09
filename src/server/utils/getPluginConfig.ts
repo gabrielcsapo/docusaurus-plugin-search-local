@@ -1,6 +1,6 @@
 import path from "path";
 import type { PluginOptions } from "docusaurus-plugin-search-local";
-import { PluginConfig } from "../../shared/types";
+import { PluginConfig } from "../../types";
 
 function getArrayOption<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];

@@ -9,7 +9,7 @@ import Link from "@docusaurus/Link";
 import useSearchQuery from "../hooks/useSearchQuery";
 import { fetchIndexes } from "../SearchBar/fetchIndexes";
 import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchDocument, SearchResult } from "../../../shared/types";
+import { SearchDocument, SearchResult } from "../../../types";
 import { highlight } from "../../utils/highlight";
 import { highlightStemmed } from "../../utils/highlightStemmed";
 import { getStemmedPositions } from "../../utils/getStemmedPositions";

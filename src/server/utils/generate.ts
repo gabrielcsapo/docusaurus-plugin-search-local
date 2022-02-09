@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { PluginConfig } from "../../shared/types";
+import { PluginConfig } from "../../types";
 import { getIndexHash } from "./getIndexHash";
 
 export function generate(config: PluginConfig, dir: string): void {

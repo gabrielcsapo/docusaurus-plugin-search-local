@@ -1,5 +1,5 @@
 import { buildIndex as _buildIndex } from "./buildIndex";
-import { PluginConfig, SearchDocument } from "../../shared/types";
+import { PluginConfig, SearchDocument } from "../../types";
 
 describe("buildIndex", () => {
   const allDocuments: Partial<SearchDocument>[][] = [

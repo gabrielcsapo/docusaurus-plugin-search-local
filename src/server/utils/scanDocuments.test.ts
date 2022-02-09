@@ -1,6 +1,6 @@
 import fs from "fs";
 import { parse } from "./parse";
-import { DocInfoWithFilePath } from "../../shared/types";
+import { DocInfoWithFilePath } from "../../types";
 
 fs.readFile;
 

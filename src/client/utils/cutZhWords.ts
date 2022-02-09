@@ -1,4 +1,4 @@
-import { SmartTerm, WrappedTerm } from "../../shared/types";
+import { SmartTerm, WrappedTerm } from "../../types";
 
 /**
  * Get all possible terms for a string of consecutive Chinese words,

@@ -1,4 +1,4 @@
-import { InitialSearchResult } from "../../shared/types";
+import { InitialSearchResult } from "../../types";
 import { sortSearchResults } from "./sortSearchResults";
 
 describe("sortSearchResults", () => {

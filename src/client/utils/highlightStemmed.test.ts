@@ -1,8 +1,4 @@
-import {
-  MetadataPosition,
-  ChunkIndexRef,
-  HighlightChunk,
-} from "../../shared/types";
+import { MetadataPosition, ChunkIndexRef, HighlightChunk } from "../../types";
 import { highlightStemmed, splitIntoChunks } from "./highlightStemmed";
 
 jest.mock("./proxiedGenerated");

@@ -1,5 +1,5 @@
 import lunr from "lunr";
-import { SearchDocument } from "../../shared/types";
+import { SearchDocument } from "../../types";
 import { SearchSourceFactory } from "./SearchSourceFactory";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

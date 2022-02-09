@@ -1,5 +1,5 @@
 import cheerio from "cheerio";
-import { ParsedDocument } from "../../shared/types";
+import { ParsedDocument } from "../../types";
 import { parsePage } from "./parsePage";
 
 describe("parsePage", () => {

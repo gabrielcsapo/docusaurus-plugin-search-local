@@ -1,9 +1,5 @@
 import { DocusaurusConfig } from "@docusaurus/types";
-import {
-  DocInfoWithFilePath,
-  PostBuildData,
-  PluginConfig,
-} from "../../shared/types";
+import { DocInfoWithFilePath, PostBuildData, PluginConfig } from "../../types";
 import { processDocInfos } from "./processDocInfos";
 
 describe("processDocInfos", () => {

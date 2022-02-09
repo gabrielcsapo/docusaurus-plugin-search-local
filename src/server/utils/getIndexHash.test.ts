@@ -1,6 +1,6 @@
 import fs from "fs";
 import klawSync from "klaw-sync";
-import { PluginConfig } from "../../shared/types";
+import { PluginConfig } from "../../types";
 import { getIndexHash } from "./getIndexHash";
 
 jest.mock("klaw-sync");

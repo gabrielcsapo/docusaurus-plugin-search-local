@@ -4,7 +4,7 @@ import {
   DocInfoWithRoute,
   PluginConfig,
   PostBuildData,
-} from "../../shared/types";
+} from "../../types";
 
 export function processDocInfos(
   { routesPaths, outDir, baseUrl, siteConfig }: PostBuildData,

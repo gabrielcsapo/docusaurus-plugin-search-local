@@ -1,6 +1,6 @@
 import lunr from "lunr";
 import nodejieba from "nodejieba";
-import { MatchMetadata } from "../../shared/types";
+import { MatchMetadata } from "../../types";
 import { cutWordByUnderscore } from "./cutWordByUnderscore";
 
 // https://zhuanlan.zhihu.com/p/33335629

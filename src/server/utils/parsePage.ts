@@ -1,4 +1,4 @@
-import { ParsedDocument } from "../../shared/types";
+import { ParsedDocument } from "../../types";
 import { debugWarn } from "./debug";
 import { getCondensedText } from "./getCondensedText";
 

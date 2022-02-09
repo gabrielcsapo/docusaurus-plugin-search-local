@@ -1,5 +1,5 @@
 import lunr from "lunr";
-import { PluginConfig, SearchDocument, WrappedIndex } from "../../shared/types";
+import { PluginConfig, SearchDocument, WrappedIndex } from "../../types";
 
 export function buildIndex(
   allDocuments: SearchDocument[][],
