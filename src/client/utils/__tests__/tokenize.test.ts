@@ -8,7 +8,7 @@ require("lunr-languages/tinyseg")(lunr);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require(`lunr-languages/lunr.ja`)(lunr);
 
-import { tokenize } from "./tokenize";
+import { tokenize } from "../tokenize";
 
 describe("tokenize", () => {
   test.each<[string, string[]]>([

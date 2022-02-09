@@ -1,4 +1,4 @@
-import { cutZhWords } from "./cutZhWords";
+import { cutZhWords } from "../cutZhWords";
 
 const zhDictionary = ["研究生", "研究", "生命", "科学", "生命科学"];
 

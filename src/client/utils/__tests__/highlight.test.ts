@@ -1,4 +1,4 @@
-import { highlight } from "./highlight";
+import { highlight } from "../highlight";
 
 describe("highlight", () => {
   test.each<[string, string[], boolean, string]>([

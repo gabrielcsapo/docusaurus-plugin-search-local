@@ -1,4 +1,4 @@
-import { simpleTemplate } from "./simpleTemplate";
+import { simpleTemplate } from "../simpleTemplate";
 
 describe("simpleTemplate", () => {
   test.each<[string, Record<string, unknown>, string]>([

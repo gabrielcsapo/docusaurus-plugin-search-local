@@ -1,4 +1,4 @@
-import { looseTokenize } from "./looseTokenize";
+import { looseTokenize } from "../looseTokenize";
 
 describe("looseTokenize", () => {
   test.each<[string, string[]]>([

@@ -1,4 +1,4 @@
-import { smartTerms } from "./smartTerms";
+import { smartTerms } from "../smartTerms";
 
 const zhDictionary = ["研究生", "研究", "生命", "科学", "生命科学"];
 

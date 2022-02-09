@@ -1,21 +1,21 @@
 import lunr from "lunr";
-import { smartQueries } from "./smartQueries";
+import { smartQueries } from "../smartQueries";
 import {
   __setLanguage,
   __setRemoveDefaultStopWordFilter,
-} from "./proxiedGenerated";
-import { SmartQuery } from "../../types";
+} from "../proxiedGenerated";
+import { SmartQuery } from "../../../types";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("lunr-languages/lunr.stemmer.support")(lunr);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require("../../shared/lunrLanguageZh").lunrLanguageZh(lunr);
+require("../../../shared/lunrLanguageZh").lunrLanguageZh(lunr);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("lunr-languages/lunr.multi")(lunr);
 
 (lunr as any).fake = {};
 
-jest.mock("./proxiedGenerated");
+jest.mock("../proxiedGenerated");
 
 const zhDictionary = ["研究生", "研究", "生命", "科学", "生命科学"];
 
