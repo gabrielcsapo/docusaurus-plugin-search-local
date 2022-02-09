@@ -1,6 +1,6 @@
 import fs from "fs";
 import klawSync from "klaw-sync";
-import { ProcessedPluginOptions } from "../../shared/types";
+import { PluginConfig } from "../../shared/types";
 import { getIndexHash } from "./getIndexHash";
 
 jest.mock("klaw-sync");
@@ -64,7 +64,7 @@ jest.mock(
 );
 
 describe("getIndexHash", () => {
-  test.each<[Partial<ProcessedPluginOptions>, string | null, number]>([
+  test.each<[Partial<PluginConfig>, string | null, number]>([
     [{ hashed: false }, null, 0],
     [{ hashed: true, indexDocs: true, docsDir: ["/tmp/docs"] }, "87def35c", 0],
     [{ hashed: true, indexBlog: true, blogDir: ["/tmp/blog"] }, null, 0],
@@ -75,7 +75,7 @@ describe("getIndexHash", () => {
     ],
     [{ hashed: true, indexDocs: true, docsDir: ["/tmp/index.js"] }, null, 1],
   ])("getIndexHash(%j) should return '%s'", (config, hash, warnCount) => {
-    expect(getIndexHash(config as ProcessedPluginOptions)).toBe(hash);
+    expect(getIndexHash(config as PluginConfig)).toBe(hash);
     expect(mockConsoleWarn).toBeCalledTimes(warnCount);
   });
 });

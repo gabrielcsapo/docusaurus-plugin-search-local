@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs-extra";
 import { normalizeUrl } from "@docusaurus/utils";
 import type { PluginOptions } from "docusaurus-plugin-search-local";
-import { normalizePluginOptions } from "./utils/normalizePluginOptions";
+import { getPluginConfig } from "./utils/getPluginConfig";
 import { postBuildFactory } from "./utils/postBuildFactory";
 import { generate } from "./utils/generate";
 import { LoadContext, Plugin } from "@docusaurus/types";
@@ -13,7 +13,7 @@ export default function DocusaurusSearchLocalPlugin(
   context: LoadContext,
   options: PluginOptions
 ): Plugin {
-  const config = normalizePluginOptions(options, context.siteDir);
+  const config = getPluginConfig(options, context.siteDir);
 
   const dir = path.join(context.generatedFilesDir, PLUGIN_NAME, "default");
   fs.ensureDirSync(dir);

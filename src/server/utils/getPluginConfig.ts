@@ -1,15 +1,15 @@
 import path from "path";
 import type { PluginOptions } from "docusaurus-plugin-search-local";
-import { ProcessedPluginOptions } from "../../shared/types";
+import { PluginConfig } from "../../shared/types";
 
 function getArrayOption<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];
 }
 
-export function normalizePluginOptions(
+export function getPluginConfig(
   options: PluginOptions,
   siteDir: string
-): ProcessedPluginOptions {
+): PluginConfig {
   const {
     blogDir,
     blogRouteBasePath,
@@ -28,7 +28,7 @@ export function normalizePluginOptions(
     translations,
   } = options;
 
-  const config: ProcessedPluginOptions = {
+  const config: PluginConfig = {
     indexBlog,
     indexDocs,
     indexPages,

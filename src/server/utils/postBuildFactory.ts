@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import util from "util";
-import { ProcessedPluginOptions, PostBuildData } from "../../shared/types";
+import { PluginConfig, PostBuildData } from "../../shared/types";
 import { buildIndex } from "./buildIndex";
 import { debugInfo } from "./debug";
 import { processDocInfos } from "./processDocInfos";
@@ -9,7 +9,7 @@ import { scanDocuments } from "./scanDocuments";
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-export function postBuildFactory(config: ProcessedPluginOptions) {
+export function postBuildFactory(config: PluginConfig) {
   return async function postBuild(buildData: PostBuildData): Promise<void> {
     debugInfo("gathering documents");
 

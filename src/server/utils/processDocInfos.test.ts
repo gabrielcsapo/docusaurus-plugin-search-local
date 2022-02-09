@@ -2,7 +2,7 @@ import { DocusaurusConfig } from "@docusaurus/types";
 import {
   DocInfoWithFilePath,
   PostBuildData,
-  ProcessedPluginOptions,
+  PluginConfig,
 } from "../../shared/types";
 import { processDocInfos } from "./processDocInfos";
 
@@ -26,7 +26,7 @@ describe("processDocInfos", () => {
       baseUrl: "/base/",
       siteConfig: {} as DocusaurusConfig,
     };
-    test.each<[Partial<ProcessedPluginOptions>, DocInfoWithFilePath[]]>([
+    test.each<[Partial<PluginConfig>, DocInfoWithFilePath[]]>([
       [
         {
           indexDocs: false,
@@ -64,9 +64,9 @@ describe("processDocInfos", () => {
         ],
       ],
     ])("processDocInfos(...) should work", (config, result) => {
-      expect(
-        processDocInfos(buildData, config as ProcessedPluginOptions)
-      ).toEqual(result);
+      expect(processDocInfos(buildData, config as PluginConfig)).toEqual(
+        result
+      );
     });
   });
 
@@ -91,7 +91,7 @@ describe("processDocInfos", () => {
         trailingSlash: false,
       } as DocusaurusConfig,
     };
-    test.each<[Partial<ProcessedPluginOptions>, DocInfoWithFilePath[]]>([
+    test.each<[Partial<PluginConfig>, DocInfoWithFilePath[]]>([
       [
         {
           indexDocs: false,
@@ -129,9 +129,9 @@ describe("processDocInfos", () => {
         ],
       ],
     ])("processDocInfos(...) should work", (config, result) => {
-      expect(
-        processDocInfos(buildData, config as ProcessedPluginOptions)
-      ).toEqual(result);
+      expect(processDocInfos(buildData, config as PluginConfig)).toEqual(
+        result
+      );
     });
   });
 
@@ -156,7 +156,7 @@ describe("processDocInfos", () => {
         trailingSlash: true,
       } as DocusaurusConfig,
     };
-    test.each<[Partial<ProcessedPluginOptions>, DocInfoWithFilePath[]]>([
+    test.each<[Partial<PluginConfig>, DocInfoWithFilePath[]]>([
       [
         {
           indexDocs: false,
@@ -194,9 +194,9 @@ describe("processDocInfos", () => {
         ],
       ],
     ])("processDocInfos(...) should work", (config, result) => {
-      expect(
-        processDocInfos(buildData, config as ProcessedPluginOptions)
-      ).toEqual(result);
+      expect(processDocInfos(buildData, config as PluginConfig)).toEqual(
+        result
+      );
     });
   });
 
@@ -215,7 +215,7 @@ describe("processDocInfos", () => {
       baseUrl: "/base/",
       siteConfig: {} as DocusaurusConfig,
     };
-    test.each<[Partial<ProcessedPluginOptions>, DocInfoWithFilePath[]]>([
+    test.each<[Partial<PluginConfig>, DocInfoWithFilePath[]]>([
       [
         {
           indexDocs: true,
@@ -243,9 +243,9 @@ describe("processDocInfos", () => {
         ],
       ],
     ])("processDocInfos(...) should work", (config, result) => {
-      expect(
-        processDocInfos(buildData, config as ProcessedPluginOptions)
-      ).toEqual(result);
+      expect(processDocInfos(buildData, config as PluginConfig)).toEqual(
+        result
+      );
     });
   });
 
@@ -264,7 +264,7 @@ describe("processDocInfos", () => {
       baseUrl: "/base/",
       siteConfig: {} as DocusaurusConfig,
     };
-    test.each<[Partial<ProcessedPluginOptions>, DocInfoWithFilePath[]]>([
+    test.each<[Partial<PluginConfig>, DocInfoWithFilePath[]]>([
       [
         {
           indexDocs: false,
@@ -292,9 +292,9 @@ describe("processDocInfos", () => {
         ],
       ],
     ])("processDocInfos(...) should work", (config, result) => {
-      expect(
-        processDocInfos(buildData, config as ProcessedPluginOptions)
-      ).toEqual(result);
+      expect(processDocInfos(buildData, config as PluginConfig)).toEqual(
+        result
+      );
     });
   });
 });

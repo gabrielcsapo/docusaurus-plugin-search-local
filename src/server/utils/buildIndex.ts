@@ -1,13 +1,9 @@
 import lunr from "lunr";
-import {
-  ProcessedPluginOptions,
-  SearchDocument,
-  WrappedIndex,
-} from "../../shared/types";
+import { PluginConfig, SearchDocument, WrappedIndex } from "../../shared/types";
 
 export function buildIndex(
   allDocuments: SearchDocument[][],
-  { language, removeDefaultStopWordFilter }: ProcessedPluginOptions
+  { language, removeDefaultStopWordFilter }: PluginConfig
 ): Omit<WrappedIndex, "type">[] {
   if (language.length > 1 || language.some((item) => item !== "en")) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires

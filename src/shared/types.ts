@@ -142,18 +142,14 @@ export interface DocInfoWithFilePath {
 
 export type DocInfoType = "docs" | "blog" | "page";
 
-// TODO: rename this to NormalizedPluginOptions or something that makes sense.
-// TODO: fix this required/omit crap
-export type ProcessedPluginOptions = Required<
-  Omit<
-    PluginOptions,
-    | "language"
-    | "docsRouteBasePath"
-    | "blogRouteBasePath"
-    | "docsDir"
-    | "blogDir"
-    | "ignoreFiles"
-  >
+export type PluginConfig = Omit<
+  PluginOptions,
+  | "language"
+  | "docsRouteBasePath"
+  | "blogRouteBasePath"
+  | "docsDir"
+  | "blogDir"
+  | "ignoreFiles"
 > & {
   docsRouteBasePath: string[];
   blogRouteBasePath: string[];

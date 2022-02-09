@@ -1,5 +1,5 @@
 import { buildIndex as _buildIndex } from "./buildIndex";
-import { ProcessedPluginOptions, SearchDocument } from "../../shared/types";
+import { PluginConfig, SearchDocument } from "../../shared/types";
 
 describe("buildIndex", () => {
   const allDocuments: Partial<SearchDocument>[][] = [
@@ -39,7 +39,7 @@ describe("buildIndex", () => {
       {
         language: ["en"],
         removeDefaultStopWordFilter: false,
-      } as ProcessedPluginOptions
+      } as PluginConfig
     );
 
     expect(wrappedIndexes[0].index.search("世界")).toEqual([]);
@@ -66,7 +66,7 @@ describe("buildIndex", () => {
       {
         language: ["zh"],
         removeDefaultStopWordFilter: false,
-      } as ProcessedPluginOptions
+      } as PluginConfig
     );
 
     expect(wrappedIndexes[0].index.search("hello")).toEqual([]);
@@ -84,7 +84,7 @@ describe("buildIndex", () => {
       {
         language: ["es"],
         removeDefaultStopWordFilter: false,
-      } as ProcessedPluginOptions
+      } as PluginConfig
     );
 
     expect(wrappedIndexes[0].index.search("世界")).toEqual([]);
@@ -101,7 +101,7 @@ describe("buildIndex", () => {
       {
         language: ["ja"],
         removeDefaultStopWordFilter: false,
-      } as ProcessedPluginOptions
+      } as PluginConfig
     );
 
     expect(wrappedIndexes[0].index.search("hello")).toEqual([
@@ -132,7 +132,7 @@ describe("buildIndex", () => {
       {
         language: ["en", "zh"],
         removeDefaultStopWordFilter: true,
-      } as ProcessedPluginOptions
+      } as PluginConfig
     );
 
     expect(wrappedIndexes[0].index.search("hello")).toEqual([
