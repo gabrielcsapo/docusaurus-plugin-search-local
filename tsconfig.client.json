@@ -2,8 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "ESNext",
-    "target": "ESNext",
-    "tsBuildInfoFile": "tsbuildinfo/tsconfig.client.tsbuildinfo"
+    "target": "ESNext"
   },
   "include": ["src/client/", "src/shared/", "src/*.ts"]
 }

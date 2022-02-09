@@ -2,8 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "target": "ES6",
-    "tsBuildInfoFile": "tsbuildinfo/tsconfig.server.tsbuildinfo"
+    "target": "ES6"
   },
   "include": ["src/server/", "src/shared/", "src/*.ts"]
 }
