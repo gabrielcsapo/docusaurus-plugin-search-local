@@ -1,9 +1,5 @@
 import lunr from "lunr";
 import { smartQueries } from "../smartQueries";
-import {
-  __setLanguage,
-  __setRemoveDefaultStopWordFilter,
-} from "../proxiedGenerated";
 import { SmartQuery } from "../../../types";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -15,8 +11,6 @@ require("lunr-languages/lunr.multi")(lunr);
 
 (lunr as any).fake = {};
 
-jest.mock("../proxiedGenerated");
-
 const zhDictionary = ["研究生", "研究", "生命", "科学", "生命科学"];
 
 interface TestQuery {
@@ -25,11 +19,6 @@ interface TestQuery {
 }
 
 describe("smartQueries", () => {
-  beforeEach(() => {
-    __setLanguage(["en", "zh"]);
-    __setRemoveDefaultStopWordFilter(false);
-  });
-
   test.each<[string[], TestQuery[]]>([
     [
       ["hello"],
@@ -226,18 +215,18 @@ describe("smartQueries", () => {
       ],
     ],
   ])("smartQueries(%j, zhDictionary) should work", (tokens, queries) => {
-    expect(smartQueries(tokens, zhDictionary).map(transformQuery)).toEqual(
-      queries
-    );
+    const sQueries = smartQueries({
+      tokens,
+      languages: ["en", "zh"],
+      zhDictionary,
+      removeDefaultStopWordFilter: false,
+    });
+
+    expect(sQueries.map(transformQuery)).toEqual(queries);
   });
 });
 
 describe("smartQueries with no stop words filter", () => {
-  beforeEach(() => {
-    __setLanguage(["en", "fake"]);
-    __setRemoveDefaultStopWordFilter(true);
-  });
-
   test.each<[string[], TestQuery[]]>([
     [
       ["a", "hello"],
@@ -253,9 +242,14 @@ describe("smartQueries with no stop words filter", () => {
       ],
     ],
   ])("smartQueries(%j, zhDictionary) should work", (tokens, queries) => {
-    expect(smartQueries(tokens, zhDictionary).map(transformQuery)).toEqual(
-      queries
-    );
+    const sQueries = smartQueries({
+      tokens,
+      languages: ["en", "fake"],
+      zhDictionary,
+      removeDefaultStopWordFilter: true,
+    });
+
+    expect(sQueries.map(transformQuery)).toEqual(queries);
   });
 });
 

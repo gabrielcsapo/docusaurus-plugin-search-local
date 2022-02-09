@@ -2,7 +2,7 @@
 // import SuggestionTemplate from "./SuggestionTemplate";
 
 jest.mock("./icons");
-jest.mock("../../utils/proxiedGenerated");
+// jest.mock("../../utils/proxiedGenerated");
 
 /**
  * @privateRemarks

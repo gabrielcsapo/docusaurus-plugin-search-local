@@ -1,11 +1,14 @@
-import type { PluginOptions } from "docusaurus-plugin-search-local";
+import type {
+  PluginOptions,
+  TranslationMap,
+} from "docusaurus-plugin-search-local";
 import { Joi } from "@docusaurus/utils-validation";
 import type {
   OptionValidationContext,
   ValidationResult,
 } from "@docusaurus/types";
 
-export const DEFAULT_OPTIONS: PluginOptions = {
+export const DEFAULT_OPTIONS: Omit<PluginOptions, "id"> = {
   indexDocs: true,
   indexBlog: true,
   indexPages: false,

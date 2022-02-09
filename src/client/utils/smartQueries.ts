@@ -1,21 +1,24 @@
 import lunr from "lunr";
 import { SmartQuery, SmartTerm } from "../../types";
 import { smartTerms } from "./smartTerms";
-import { language, removeDefaultStopWordFilter } from "./proxiedGenerated";
+
+export type SmartQueriesProps = {
+  tokens: string[];
+  languages: string[];
+  zhDictionary: string[];
+  removeDefaultStopWordFilter: boolean;
+};
 
 /**
  * Get all possible queries for a list of tokens consists of words mixed English and Chinese,
  * by a Chinese words dictionary.
  *
- * @param tokens - Tokens consists of English words or strings of consecutive Chinese words.
- * @param zhDictionary - A Chinese words dictionary.
- *
  * @returns A smart query list.
  */
-export function smartQueries(
-  tokens: string[],
-  zhDictionary: string[]
-): SmartQuery[] {
+export function smartQueries(props: SmartQueriesProps): SmartQuery[] {
+  const { tokens, languages, zhDictionary, removeDefaultStopWordFilter } =
+    props;
+
   const terms = smartTerms(tokens, zhDictionary);
 
   if (terms.length === 0) {
@@ -41,7 +44,7 @@ export function smartQueries(
   // Try to append terms without stop words,
   // since they are removed in the index.
   const stopWordPipelines: lunr.PipelineFunction[] = [];
-  for (const lang of language) {
+  for (const lang of languages) {
     if (lang === "en") {
       if (!removeDefaultStopWordFilter) {
         stopWordPipelines.unshift(lunr.stopWordFilter);

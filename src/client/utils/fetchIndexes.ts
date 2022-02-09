@@ -1,10 +1,5 @@
 import lunr from "lunr";
-import {
-  SearchDocument,
-  SearchDocumentType,
-  WrappedIndex,
-} from "../../../types";
-import { indexHash } from "../../utils/proxiedGenerated";
+import { SearchDocument, SearchDocumentType, WrappedIndex } from "../../types";
 
 interface SerializedIndex {
   documents: SearchDocument[];
@@ -13,7 +8,10 @@ interface SerializedIndex {
   };
 }
 
-export async function fetchIndexes(baseUrl: string): Promise<{
+export async function fetchIndexes(
+  baseUrl: string,
+  indexHash: string | null = null
+): Promise<{
   wrappedIndexes: WrappedIndex[];
   zhDictionary: string[];
 }> {

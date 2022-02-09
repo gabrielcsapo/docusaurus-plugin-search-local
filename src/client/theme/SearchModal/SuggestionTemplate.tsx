@@ -1,6 +1,10 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { useHistory } from "@docusaurus/router";
+import { usePluginData } from "@docusaurus/useGlobalData";
+import Mark from "mark.js";
+import clsx from "clsx";
 
+import { GlobalPluginData } from "docusaurus-plugin-search-local";
 import { SearchDocument, SearchResult } from "../../../types";
 import { highlight } from "../../utils/highlight";
 import { highlightStemmed } from "../../utils/highlightStemmed";
@@ -14,10 +18,7 @@ import {
   IconTreeLast,
 } from "./icons";
 
-import { Mark } from "../../utils/proxiedGenerated";
-
 import styles from "./SuggestionTemplate.module.css";
-import clsx from "clsx";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 
@@ -50,6 +51,9 @@ export default function SuggestionTemplate({
     isLastOfTree,
   } = searchResult;
 
+  const { searchResultContextMaxLength } = usePluginData<GlobalPluginData>(
+    "docusaurus-plugin-search-local"
+  );
   const history = useHistory();
   const isTitle = type === 0;
   const isHeading = type === 1;
@@ -109,7 +113,8 @@ export default function SuggestionTemplate({
             __html: highlightStemmed(
               document.t,
               getStemmedPositions(metadata, "t"),
-              tokens
+              tokens,
+              searchResultContextMaxLength
             ),
           }}
         />

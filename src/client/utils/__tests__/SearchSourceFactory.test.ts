@@ -9,8 +9,6 @@ require("../../../shared/lunrLanguageZh").lunrLanguageZh(lunr);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("lunr-languages/lunr.multi")(lunr);
 
-jest.mock("../proxiedGenerated");
-
 describe("SearchSourceFactory", () => {
   const documentsOfTitles: SearchDocument[] = [
     {
@@ -55,8 +53,8 @@ describe("SearchSourceFactory", () => {
       });
     });
 
-  const searchSource = SearchSourceFactory(
-    [
+  const searchSource = SearchSourceFactory({
+    wrappedIndexes: [
       {
         documents: documentsOfTitles,
         index: getIndex(documentsOfTitles),
@@ -73,10 +71,12 @@ describe("SearchSourceFactory", () => {
         type: 2,
       },
     ],
-    [],
-    2,
-    jest.fn()
-  );
+    languages: ["en", "zh"],
+    zhDictionary: [],
+    removeDefaultStopWordFilter: false,
+    resultsLimit: 2,
+    onResults: jest.fn(),
+  });
   const callback = jest.fn();
 
   test.each<[string, number[]]>([

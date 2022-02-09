@@ -27,7 +27,7 @@ describe("validateOptions", () => {
     return value;
   }
 
-  test.each<[Partial<PluginOptions>, PluginOptions]>([
+  test.each<[Partial<PluginOptions>, Omit<PluginOptions, "id">]>([
     [
       {},
       {
@@ -196,8 +196,8 @@ describe("validateOptions", () => {
           no_results: "没有找到任何文档。",
           search_results_for: "搜索 “{{ keyword }}”",
           search_the_documentation: "搜索文档",
-          // `*_plural` can be omitted if it is the same as singular.
           count_documents_found: "共找到 {{ count }} 篇文档",
+          count_documents_found_plural: "共找到 {{ count }} 篇文档",
           no_documents_were_found: "没有找到任何文档",
         },
       },

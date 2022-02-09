@@ -5,8 +5,6 @@ import {
 } from "../../../types";
 import { highlightStemmed, splitIntoChunks } from "../highlightStemmed";
 
-jest.mock("../proxiedGenerated");
-
 describe("highlightStemmed", () => {
   test.each<[string, MetadataPosition[], string[], number | undefined, string]>(
     [

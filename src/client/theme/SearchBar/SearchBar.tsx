@@ -9,7 +9,7 @@ import { SearchButton } from "./SearchButton";
 import SearchModal from "../SearchModal";
 import ErrorBoundary from "../ErrorBoundary";
 
-import { Mark } from "../../utils/proxiedGenerated";
+import Mark from "mark.js";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 

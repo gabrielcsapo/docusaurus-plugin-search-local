@@ -56,6 +56,7 @@
     "@types/jest": "^27.2.2",
     "@types/klaw-sync": "^6.0.0",
     "@types/lunr": "^2.3.3",
+    "@types/mark.js": "^8.11.7",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
     "@types/react-helmet": "^6.1.0",

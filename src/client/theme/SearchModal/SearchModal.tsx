@@ -2,19 +2,17 @@ declare let _paq: Array<[string, string, boolean, number]>;
 
 import React, { useEffect, useState, useRef, RefObject } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { usePluginData } from "@docusaurus/useGlobalData";
 
-import { fetchIndexes } from "../SearchBar/fetchIndexes";
+import { fetchIndexes } from "../../utils/fetchIndexes";
 import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
 import { SearchResult } from "../../../types";
 import LoadingRing from "../LoadingRing/LoadingRing";
 import { IconSearch } from "./icons";
 import { simpleTemplate } from "../../utils/simpleTemplate";
-
-import { searchResultLimits, translations } from "../../utils/proxiedGenerated";
-
 import SuggestionTemplate from "./SuggestionTemplate";
-
 import styles from "./SearchModal.module.css";
+import { GlobalPluginData } from "../../../docusaurus-plugin-search-local";
 
 interface SearchModalProps {
   onClose: () => void;
@@ -57,6 +55,13 @@ export default function SearchModal({
   const {
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
+  const {
+    indexHash,
+    language,
+    removeDefaultStopWordFilter,
+    searchResultLimits,
+    translations,
+  } = usePluginData<GlobalPluginData>("docusaurus-plugin-search-local");
   const [searchQuery, setSearchQuery] = useState("");
   const searchModal = useRef(null);
   const searchInput = useRef(null);
@@ -114,13 +119,18 @@ export default function SearchModal({
 
   useEffect(() => {
     async function doFetchIndexes() {
-      const { wrappedIndexes, zhDictionary } = await fetchIndexes(baseUrl);
+      const { wrappedIndexes, zhDictionary } = await fetchIndexes(
+        baseUrl,
+        indexHash
+      );
       setSearchSource(() =>
-        SearchSourceFactory(
+        SearchSourceFactory({
           wrappedIndexes,
+          languages: language,
           zhDictionary,
-          searchResultLimits,
-          (query, results) => {
+          removeDefaultStopWordFilter,
+          resultsLimit: searchResultLimits,
+          onResults: (query, results) => {
             // TODO: needs to be abstracted to be able to handle any site analytics
             if (typeof _paq !== "undefined" && _paq && _paq?.push) {
               _paq.push([
@@ -130,8 +140,8 @@ export default function SearchModal({
                 results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
               ]);
             }
-          }
-        )
+          },
+        })
       );
     }
     doFetchIndexes();

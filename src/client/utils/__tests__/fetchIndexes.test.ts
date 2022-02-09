@@ -1,9 +1,7 @@
 import lunr from "lunr";
-import { fetchIndexes } from "./fetchIndexes";
-import { __setHash } from "../../utils/proxiedGenerated";
+import { fetchIndexes } from "../fetchIndexes";
 
 jest.mock("lunr");
-jest.mock("../../utils/proxiedGenerated");
 
 const mockLunrIndexLoad = (
   jest.spyOn(lunr.Index, "load") as any
@@ -33,7 +31,7 @@ describe("fetchIndexes", () => {
     mockFetch.mockResolvedValueOnce({
       json: () => Promise.resolve([]),
     });
-    const result = await fetchIndexes(baseUrl);
+    const result = await fetchIndexes(baseUrl, "abc");
     expect(mockFetch).toBeCalledWith("/search-index.json?_=abc");
     expect(result).toEqual({
       wrappedIndexes: [],
@@ -62,7 +60,7 @@ describe("fetchIndexes", () => {
           },
         ]),
     });
-    const result = await fetchIndexes(baseUrl);
+    const result = await fetchIndexes(baseUrl, "abc");
     expect(mockFetch).toBeCalledWith("/search-index.json?_=abc");
     expect(result).toEqual({
       wrappedIndexes: [
@@ -91,14 +89,12 @@ describe("fetchIndexes", () => {
       json: () => Promise.resolve([]),
     });
 
-    await fetchIndexes(baseUrl);
+    await fetchIndexes(baseUrl, "abc");
 
     // Standard call with a hash
     expect(mockFetch).toBeCalledWith("/search-index.json?_=abc");
 
-    // Setting the hash to `null` to reflect current generation path.
-    __setHash(null);
-
+    // Not providing a hash index
     await fetchIndexes(baseUrl);
 
     // Should not add query param for hash index if generated hash is `null`.

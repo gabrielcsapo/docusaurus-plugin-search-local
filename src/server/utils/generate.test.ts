@@ -132,6 +132,7 @@ describe("generate", () => {
     generate(
       {
         language,
+        id: "foo",
         indexDocs: false,
         indexBlog: false,
         indexPages: false,
@@ -166,6 +167,7 @@ describe("generate", () => {
     generate(
       {
         language: ["en"],
+        id: "foo",
         indexDocs: false,
         indexBlog: false,
         indexPages: false,

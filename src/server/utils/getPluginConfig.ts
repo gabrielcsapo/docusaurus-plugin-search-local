@@ -17,6 +17,7 @@ export function getPluginConfig(
     docsRouteBasePath,
     hashed,
     highlightSearchTermsOnTargetPage,
+    id,
     ignoreFiles,
     indexBlog,
     indexDocs,
@@ -29,6 +30,7 @@ export function getPluginConfig(
   } = options;
 
   const config: PluginConfig = {
+    id,
     indexBlog,
     indexDocs,
     indexPages,
