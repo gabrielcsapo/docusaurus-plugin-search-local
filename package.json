@@ -6,6 +6,7 @@
   "homepage": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watchAll",
     "start": "concurrently -k -n client,server \"npm run start:client\" \"npm run start:server\"",
     "start:client": "tsc --watch --project src/client/tsconfig.json",
     "start:server": "tsc --watch --project src/server/tsconfig.json",
