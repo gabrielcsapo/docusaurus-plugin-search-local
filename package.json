@@ -84,7 +84,7 @@
     "node": "16.13.2"
   },
   "lint-staged": {
-    "**/*.{ts,js}?(x)": "eslint --cache --fix",
+    "**/*.{ts,js}?(x)": "eslint --fix",
     "**/*.{ts,js,css,html,md,json}?(x)": "prettier --write"
   }
 }
