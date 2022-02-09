@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES6",
+    "tsBuildInfoFile": "tsbuildinfo/tsconfig.server.tsbuildinfo"
+  },
+  "include": ["src/server/", "src/shared/", "src/*.ts"]
+}

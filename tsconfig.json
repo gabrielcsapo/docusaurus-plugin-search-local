@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "declaration": false,
+    "declaration": true,
     "declarationMap": false,
     "esModuleInterop": true,
     "importHelpers": true,
+    "incremental": true,
     "jsx": "preserve",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -14,5 +15,10 @@
     "types": ["node", "cheerio", "@docusaurus/module-type-aliases", "jest"],
     "outDir": "./dist"
   },
-  "exclude": ["**/*.test.ts", "src/client", "src/server"]
+  "exclude": [
+    "**/__fixtures__/**/*",
+    "**/__mocks__/**/*",
+    "**/__tests__/**/*",
+    "**/*.test.ts"
+  ]
 }
