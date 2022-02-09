@@ -4,7 +4,6 @@
     "declarationMap": false,
     "esModuleInterop": true,
     "importHelpers": true,
-    "incremental": true,
     "jsx": "preserve",
     "moduleResolution": "node",
     "resolveJsonModule": true,
