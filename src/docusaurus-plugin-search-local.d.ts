@@ -3,6 +3,7 @@ export type PluginOptions = {
   blogRouteBasePath: string | string[];
   docsDir: string | string[];
   docsRouteBasePath: string | string[];
+  externalSearchSources: string[];
   hashed: boolean;
   highlightSearchTermsOnTargetPage: boolean;
   ignoreFiles: string | RegExp | (string | RegExp)[];
@@ -11,7 +12,6 @@ export type PluginOptions = {
   indexPages: boolean;
   language: string | string[];
   removeDefaultStopWordFilter: boolean;
-  searchEndpoints: string[]; // TODO: rename this to externalSearchSources
   searchResultContextMaxLength: number;
   searchResultLimits: number;
   translations: TranslationMap;

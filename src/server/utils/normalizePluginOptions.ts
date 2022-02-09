@@ -50,7 +50,7 @@ export function normalizePluginOptions(
     language: getArrayOption(language),
 
     ignoreFiles: getArrayOption(ignoreFiles),
-    searchEndpoints: [], // TODO: this is likely going to fail tests.
+    externalSearchSources: [], // TODO: this is likely going to fail tests.
   };
 
   return config;

@@ -30,7 +30,7 @@ export const DEFAULT_OPTIONS: PluginOptions = {
     count_documents_found: "{{ count }} document found",
     no_documents_were_found: "No documents were found",
   },
-  searchEndpoints: [],
+  externalSearchSources: [],
 };
 
 const isStringOrArrayOfStrings = Joi.alternatives().try(
@@ -99,9 +99,9 @@ export const OptionsSchema = Joi.object({
   })
     .default()
     .unknown(false),
-  searchEndpoints: Joi.array()
+  externalSearchSources: Joi.array()
     .items(Joi.string())
-    .default(DEFAULT_OPTIONS.searchEndpoints),
+    .default(DEFAULT_OPTIONS.externalSearchSources),
 });
 
 export function validateOptions({

@@ -44,7 +44,7 @@ describe("normalizePluginOptions", () => {
   test("it should process external search endpoints", () => {
     expect(
       normalizePluginOptions(fillPluginOptions(OptionsSchema, {}), siteDir)
-        .searchEndpoints
+        .externalSearchSources
     ).toStrictEqual([]);
   });
 });

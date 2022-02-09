@@ -27,7 +27,7 @@ describe("validateOptions", () => {
     return value;
   }
 
-  test.each<[Partial<PluginOptions>, Required<PluginOptions>]>([
+  test.each<[Partial<PluginOptions>, PluginOptions]>([
     [
       {},
       {
@@ -46,7 +46,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [],
         translations: defaultTranslations,
-        searchEndpoints: [],
+        externalSearchSources: [],
       },
     ],
     [
@@ -67,7 +67,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: "file1",
         translations: defaultTranslations,
-        searchEndpoints: [],
+        externalSearchSources: [],
       },
     ],
     [
@@ -88,7 +88,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [/__meta__$/, "file1"],
         translations: defaultTranslations,
-        searchEndpoints: [],
+        externalSearchSources: [],
       },
     ],
     [
@@ -109,7 +109,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [],
         translations: defaultTranslations,
-        searchEndpoints: [],
+        externalSearchSources: [],
       },
     ],
     [
@@ -137,7 +137,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 30,
         ignoreFiles: [],
         translations: defaultTranslations,
-        searchEndpoints: [],
+        externalSearchSources: [],
       },
     ],
     [
@@ -161,7 +161,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [],
         translations: defaultTranslations,
-        searchEndpoints: [],
+        externalSearchSources: [],
       },
     ],
     [
@@ -185,7 +185,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [],
         translations: defaultTranslations,
-        searchEndpoints: [],
+        externalSearchSources: [],
       },
     ],
     [
@@ -226,7 +226,7 @@ describe("validateOptions", () => {
           count_documents_found_plural: "共找到 {{ count }} 篇文档",
           no_documents_were_found: "没有找到任何文档",
         },
-        searchEndpoints: [],
+        externalSearchSources: [],
       },
     ],
     [
@@ -268,7 +268,7 @@ describe("validateOptions", () => {
           count_documents_found_plural: "共找到 {{ count }} 篇文档",
           no_documents_were_found: "没有找到任何文档",
         },
-        searchEndpoints: [],
+        externalSearchSources: [],
       },
     ],
   ])("validateOptions(...) should work", (options, config) => {
