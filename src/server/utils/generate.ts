@@ -1,9 +1,9 @@
 import fs from "fs";
 import path from "path";
-import { ProcessedPluginOptions } from "../../shared/interfaces";
+import { PluginConfig } from "../../types";
 import { getIndexHash } from "./getIndexHash";
 
-export function generate(config: ProcessedPluginOptions, dir: string): void {
+export function generate(config: PluginConfig, dir: string): void {
   const {
     language,
     removeDefaultStopWordFilter,

@@ -1,4 +1,4 @@
-import { MatchMetadata, MetadataPosition } from "../../shared/interfaces";
+import { MatchMetadata, MetadataPosition } from "../../types";
 
 export function getStemmedPositions(
   metadata: MatchMetadata,

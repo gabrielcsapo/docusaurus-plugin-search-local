@@ -1,8 +1,8 @@
 import path from "path";
 import fs from "fs-extra";
 import { normalizeUrl } from "@docusaurus/utils";
-import { PluginOptions } from "../shared/interfaces";
-import { processPluginOptions } from "./utils/processPluginOptions";
+import type { PluginOptions } from "docusaurus-plugin-search-local";
+import { getPluginConfig } from "./utils/getPluginConfig";
 import { postBuildFactory } from "./utils/postBuildFactory";
 import { generate } from "./utils/generate";
 import { LoadContext, Plugin } from "@docusaurus/types";
@@ -11,9 +11,9 @@ const PLUGIN_NAME = "docusaurus-plugin-search-local";
 
 export default function DocusaurusSearchLocalPlugin(
   context: LoadContext,
-  options?: PluginOptions
+  options: PluginOptions
 ): Plugin {
-  const config = processPluginOptions(options, context.siteDir);
+  const config = getPluginConfig(options, context.siteDir);
 
   const dir = path.join(context.generatedFilesDir, PLUGIN_NAME, "default");
   fs.ensureDirSync(dir);
@@ -45,4 +45,4 @@ export default function DocusaurusSearchLocalPlugin(
   };
 }
 
-export { validateOptions } from "./utils/validateOptions";
+export { validateOptions } from "./options";

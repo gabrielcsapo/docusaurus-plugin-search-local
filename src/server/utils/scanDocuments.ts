@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import util from "util";
-import { DocInfoWithFilePath, SearchDocument } from "../../shared/interfaces";
+import { DocInfoWithFilePath, SearchDocument } from "../../types";
 import { parse } from "./parse";
 import { debugVerbose } from "./debug";
 

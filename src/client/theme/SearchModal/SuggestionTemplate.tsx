@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { useHistory } from "@docusaurus/router";
 
-import { SearchDocument, SearchResult } from "../../../shared/interfaces";
+import { SearchDocument, SearchResult } from "../../../types";
 import { highlight } from "../../utils/highlight";
 import { highlightStemmed } from "../../utils/highlightStemmed";
 import { getStemmedPositions } from "../../utils/getStemmedPositions";

@@ -1,5 +1,5 @@
 import cheerio from "cheerio";
-import { ParsedDocument } from "../../shared/interfaces";
+import { ParsedDocument } from "../../types";
 import { parseDocument } from "./parseDocument";
 import { parsePage } from "./parsePage";
 

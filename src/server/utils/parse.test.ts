@@ -1,4 +1,4 @@
-import { ParsedDocument } from "../../shared/interfaces";
+import { ParsedDocument } from "../../types";
 import { parse } from "./parse";
 
 type TestCaseData = [string, "docs" | "blog" | "page", ParsedDocument];

@@ -3,7 +3,7 @@ import {
   SearchDocument,
   SearchDocumentType,
   WrappedIndex,
-} from "../../../shared/interfaces";
+} from "../../../types";
 import { indexHash } from "../../utils/proxiedGenerated";
 
 interface SerializedIndex {

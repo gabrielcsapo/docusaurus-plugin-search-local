@@ -1,5 +1,5 @@
 import nodejieba from "nodejieba";
-import { MatchMetadata } from "../../shared/interfaces";
+import { MatchMetadata } from "../../types";
 import { tokenizer } from "./tokenizer";
 
 jest.mock("nodejieba");

@@ -1,4 +1,4 @@
-import { SmartTerm } from "../../shared/interfaces";
+import { SmartTerm } from "../../types";
 import { cutZhWords } from "./cutZhWords";
 
 /**

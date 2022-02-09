@@ -2,9 +2,9 @@ import path from "path";
 import {
   DocInfoWithFilePath,
   DocInfoWithRoute,
-  ProcessedPluginOptions,
+  PluginConfig,
   PostBuildData,
-} from "../../shared/interfaces";
+} from "../../types";
 
 export function processDocInfos(
   { routesPaths, outDir, baseUrl, siteConfig }: PostBuildData,
@@ -15,7 +15,7 @@ export function processDocInfos(
     docsRouteBasePath,
     blogRouteBasePath,
     ignoreFiles,
-  }: ProcessedPluginOptions
+  }: PluginConfig
 ): DocInfoWithFilePath[] {
   return routesPaths
     .map<DocInfoWithRoute | undefined>((url: string) => {

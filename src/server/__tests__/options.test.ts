@@ -1,6 +1,6 @@
-import { Joi } from "@docusaurus/utils-validation";
-import { PluginOptions } from "../../shared/interfaces";
-import { validateOptions } from "./validateOptions";
+import { ValidationResult, ValidationSchema } from "@docusaurus/types";
+import type { PluginOptions } from "docusaurus-plugin-search-local";
+import { validateOptions } from "../options";
 
 describe("validateOptions", () => {
   const defaultTranslations = {
@@ -15,9 +15,9 @@ describe("validateOptions", () => {
   };
 
   function validate(
-    schema: Joi.Schema,
-    options: PluginOptions | undefined
-  ): Required<PluginOptions> {
+    schema: ValidationSchema<PluginOptions>,
+    options: Partial<PluginOptions>
+  ): ValidationResult<PluginOptions> {
     const { error, value } = schema.validate(options, {
       convert: false,
     });
@@ -27,9 +27,9 @@ describe("validateOptions", () => {
     return value;
   }
 
-  test.each<[PluginOptions | undefined, Required<PluginOptions>]>([
+  test.each<[Partial<PluginOptions>, PluginOptions]>([
     [
-      undefined,
+      {},
       {
         blogRouteBasePath: ["blog"],
         blogDir: ["blog"],
@@ -46,6 +46,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [],
         translations: defaultTranslations,
+        externalSearchSources: [],
       },
     ],
     [
@@ -66,6 +67,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: "file1",
         translations: defaultTranslations,
+        externalSearchSources: [],
       },
     ],
     [
@@ -86,6 +88,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [/__meta__$/, "file1"],
         translations: defaultTranslations,
+        externalSearchSources: [],
       },
     ],
     [
@@ -106,6 +109,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [],
         translations: defaultTranslations,
+        externalSearchSources: [],
       },
     ],
     [
@@ -133,6 +137,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 30,
         ignoreFiles: [],
         translations: defaultTranslations,
+        externalSearchSources: [],
       },
     ],
     [
@@ -156,6 +161,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [],
         translations: defaultTranslations,
+        externalSearchSources: [],
       },
     ],
     [
@@ -179,6 +185,7 @@ describe("validateOptions", () => {
         searchResultContextMaxLength: 50,
         ignoreFiles: [],
         translations: defaultTranslations,
+        externalSearchSources: [],
       },
     ],
     [
@@ -219,6 +226,7 @@ describe("validateOptions", () => {
           count_documents_found_plural: "共找到 {{ count }} 篇文档",
           no_documents_were_found: "没有找到任何文档",
         },
+        externalSearchSources: [],
       },
     ],
     [
@@ -260,20 +268,10 @@ describe("validateOptions", () => {
           count_documents_found_plural: "共找到 {{ count }} 篇文档",
           no_documents_were_found: "没有找到任何文档",
         },
+        externalSearchSources: [],
       },
     ],
   ])("validateOptions(...) should work", (options, config) => {
     expect(validateOptions({ options, validate })).toEqual(config);
-  });
-
-  test("should throw error if options are invalid", () => {
-    expect(() => {
-      validateOptions({
-        options: {
-          docsBasePath: "docs",
-        } as PluginOptions,
-        validate,
-      });
-    }).toThrow();
   });
 });

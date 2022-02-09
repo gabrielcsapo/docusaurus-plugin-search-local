@@ -1,4 +1,4 @@
-// import { SearchResult } from "../../../shared/interfaces";
+// import { SearchResult } from "../../../types";
 // import SuggestionTemplate from "./SuggestionTemplate";
 
 jest.mock("./icons");
