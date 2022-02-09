@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import klawSync from "klaw-sync";
-import { ProcessedPluginOptions } from "../../shared/interfaces";
+import { ProcessedPluginOptions } from "../../shared/types";
 import { debugInfo } from "./debug";
 
 export function getIndexHash(config: ProcessedPluginOptions): string | null {

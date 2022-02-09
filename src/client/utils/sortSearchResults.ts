@@ -1,4 +1,4 @@
-import { InitialSearchResult, SearchResult } from "../../shared/interfaces";
+import { InitialSearchResult, SearchResult } from "../../shared/types";
 
 export function sortSearchResults(results: InitialSearchResult[]): void {
   results.forEach((item, index) => {

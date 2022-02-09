@@ -3,7 +3,7 @@ import {
   ProcessedPluginOptions,
   SearchDocument,
   WrappedIndex,
-} from "../../shared/interfaces";
+} from "../../shared/types";
 
 export function buildIndex(
   allDocuments: SearchDocument[][],

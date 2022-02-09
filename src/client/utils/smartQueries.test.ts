@@ -4,7 +4,7 @@ import {
   __setLanguage,
   __setRemoveDefaultStopWordFilter,
 } from "./proxiedGenerated";
-import { SmartQuery } from "../../shared/interfaces";
+import { SmartQuery } from "../../shared/types";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("lunr-languages/lunr.stemmer.support")(lunr);

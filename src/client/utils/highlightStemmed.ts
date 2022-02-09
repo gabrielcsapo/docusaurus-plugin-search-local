@@ -2,7 +2,7 @@ import {
   HighlightChunk,
   MetadataPosition,
   ChunkIndexRef,
-} from "../../shared/interfaces";
+} from "../../shared/types";
 import { escapeHtml } from "./escapeHtml";
 import { highlight } from "./highlight";
 import { looseTokenize } from "./looseTokenize";

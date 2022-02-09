@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import util from "util";
-import { ProcessedPluginOptions, PostBuildData } from "../../shared/interfaces";
+import { ProcessedPluginOptions, PostBuildData } from "../../shared/types";
 import { buildIndex } from "./buildIndex";
 import { debugInfo } from "./debug";
 import { processDocInfos } from "./processDocInfos";

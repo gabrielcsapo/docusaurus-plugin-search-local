@@ -6,7 +6,7 @@ import {
   SearchResult,
   SearchDocument,
   InitialSearchResult,
-} from "../../shared/interfaces";
+} from "../../shared/types";
 import { sortSearchResults } from "./sortSearchResults";
 import { processTreeStatusOfSearchResults } from "./processTreeStatusOfSearchResults";
 import { language } from "./proxiedGenerated";

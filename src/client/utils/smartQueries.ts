@@ -1,5 +1,5 @@
 import lunr from "lunr";
-import { SmartQuery, SmartTerm } from "../../shared/interfaces";
+import { SmartQuery, SmartTerm } from "../../shared/types";
 import { smartTerms } from "./smartTerms";
 import { language, removeDefaultStopWordFilter } from "./proxiedGenerated";
 

@@ -5,7 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import { fetchIndexes } from "../SearchBar/fetchIndexes";
 import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchResult } from "../../../shared/interfaces";
+import { SearchResult } from "../../../shared/types";
 import LoadingRing from "../LoadingRing/LoadingRing";
 import { IconSearch } from "./icons";
 import { simpleTemplate } from "../../utils/simpleTemplate";

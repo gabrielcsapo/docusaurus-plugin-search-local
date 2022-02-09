@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { ProcessedPluginOptions } from "../../shared/interfaces";
+import { ProcessedPluginOptions } from "../../shared/types";
 import { getIndexHash } from "./getIndexHash";
 
 export function generate(config: ProcessedPluginOptions, dir: string): void {

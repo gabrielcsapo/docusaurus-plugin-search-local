@@ -1,8 +1,5 @@
 import { buildIndex as _buildIndex } from "./buildIndex";
-import {
-  ProcessedPluginOptions,
-  SearchDocument,
-} from "../../shared/interfaces";
+import { ProcessedPluginOptions, SearchDocument } from "../../shared/types";
 
 describe("buildIndex", () => {
   const allDocuments: Partial<SearchDocument>[][] = [

@@ -1,3 +1,4 @@
+import type { PluginOptions } from "docusaurus-plugin-search-local";
 import { DocusaurusConfig } from "@docusaurus/types";
 import lunr from "lunr";
 
@@ -140,27 +141,6 @@ export interface DocInfoWithFilePath {
 }
 
 export type DocInfoType = "docs" | "blog" | "page";
-
-export interface PluginOptions {
-  indexDocs?: boolean;
-  indexBlog?: boolean;
-  indexPages?: boolean;
-  docsRouteBasePath?: string | string[];
-  blogRouteBasePath?: string | string[];
-  language?: string | string[];
-  hashed?: boolean;
-  docsDir?: string | string[];
-  blogDir?: string | string[];
-  removeDefaultStopWordFilter?: boolean;
-  highlightSearchTermsOnTargetPage?: boolean;
-
-  searchResultLimits?: number;
-  searchResultContextMaxLength?: number;
-
-  translations?: TranslationMap;
-
-  ignoreFiles?: string | RegExp | (string | RegExp)[];
-}
 
 export type ProcessedPluginOptions = Required<
   Omit<

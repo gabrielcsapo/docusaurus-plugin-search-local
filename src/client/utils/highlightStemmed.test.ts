@@ -2,7 +2,7 @@ import {
   MetadataPosition,
   ChunkIndexRef,
   HighlightChunk,
-} from "../../shared/interfaces";
+} from "../../shared/types";
 import { highlightStemmed, splitIntoChunks } from "./highlightStemmed";
 
 jest.mock("./proxiedGenerated");

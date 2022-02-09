@@ -1,4 +1,4 @@
-import { ParsedDocument, ParsedDocumentSection } from "../../shared/interfaces";
+import { ParsedDocument, ParsedDocumentSection } from "../../shared/types";
 import { getCondensedText } from "./getCondensedText";
 
 const HEADINGS = "h1, h2, h3";

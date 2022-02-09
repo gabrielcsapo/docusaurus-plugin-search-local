@@ -1,4 +1,4 @@
-declare var _paq: Array<[string, string, boolean, number]>;
+declare let _paq: Array<[string, string, boolean, number]>;
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -9,7 +9,7 @@ import Link from "@docusaurus/Link";
 import useSearchQuery from "../hooks/useSearchQuery";
 import { fetchIndexes } from "../SearchBar/fetchIndexes";
 import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchDocument, SearchResult } from "../../../shared/interfaces";
+import { SearchDocument, SearchResult } from "../../../shared/types";
 import { highlight } from "../../utils/highlight";
 import { highlightStemmed } from "../../utils/highlightStemmed";
 import { getStemmedPositions } from "../../utils/getStemmedPositions";
@@ -25,9 +25,10 @@ export default function SearchPage(): React.ReactElement {
   } = useDocusaurusContext();
   const { searchValue, updateSearchPath } = useSearchQuery();
   const [searchQuery, setSearchQuery] = useState(searchValue);
-  const [searchSource, setSearchSource] = useState<
-    (input: string, callback: (results: SearchResult[]) => void) => void
-  >();
+  const [searchSource, setSearchSource] =
+    useState<
+      (input: string, callback: (results: SearchResult[]) => void) => void
+    >();
   const [searchResults, setSearchResults] = useState<SearchResult[]>();
 
   const pageTitle = useMemo(
@@ -161,9 +162,9 @@ function SearchResultItem({
 }): React.ReactElement {
   const isTitle = type === 0;
   const isContent = type === 2;
-  const pathItems = ((isTitle
-    ? document.b
-    : (page as SearchDocument).b) as string[]).slice();
+  const pathItems = (
+    (isTitle ? document.b : (page as SearchDocument).b) as string[]
+  ).slice();
   const articleTitle = (isContent ? document.s : document.t) as string;
   if (!isTitle) {
     pathItems.push((page as SearchDocument).t);

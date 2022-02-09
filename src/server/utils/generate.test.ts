@@ -1,7 +1,7 @@
 import fs from "fs";
 import { getIndexHash } from "./getIndexHash";
 import { generate } from "./generate";
-import { ProcessedPluginOptions } from "../../shared/interfaces";
+import { ProcessedPluginOptions } from "../../shared/types";
 
 jest.mock("./getIndexHash");
 
@@ -149,6 +149,7 @@ describe("generate", () => {
         translations: {
           hello: "hola",
         },
+        searchEndpoints: [],
       } as ProcessedPluginOptions,
       "/tmp"
     );
@@ -182,6 +183,7 @@ describe("generate", () => {
         translations: {
           hello: "hola",
         },
+        searchEndpoints: [],
       } as ProcessedPluginOptions,
       "/tmp"
     );

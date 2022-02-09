@@ -3,7 +3,7 @@ import {
   DocInfoWithFilePath,
   PostBuildData,
   ProcessedPluginOptions,
-} from "../../shared/interfaces";
+} from "../../shared/types";
 import { processDocInfos } from "./processDocInfos";
 
 describe("processDocInfos", () => {

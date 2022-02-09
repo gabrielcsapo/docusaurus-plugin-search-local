@@ -17,7 +17,7 @@
     "prepare": "husky install"
   },
   "main": "dist/server/index.js",
-  "types": "src/docusaurus-search-local.d.ts",
+  "types": "src/docusaurus-plugin-search-local.d.ts",
   "engines": {
     "node": ">=12"
   },

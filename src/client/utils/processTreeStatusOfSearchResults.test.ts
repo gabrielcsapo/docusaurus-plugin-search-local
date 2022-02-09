@@ -1,4 +1,4 @@
-import { InitialSearchResult } from "../../shared/interfaces";
+import { InitialSearchResult } from "../../shared/types";
 import { processTreeStatusOfSearchResults } from "./processTreeStatusOfSearchResults";
 
 describe("processTreeStatusOfSearchResults", () => {
