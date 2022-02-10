@@ -133,7 +133,6 @@ export type DocInfoType = "docs" | "blog" | "page";
 
 export type PluginConfig = Omit<
   PluginOptions,
-  | "language"
   | "docsRouteBasePath"
   | "blogRouteBasePath"
   | "docsDir"
@@ -142,7 +141,6 @@ export type PluginConfig = Omit<
 > & {
   docsRouteBasePath: string[];
   blogRouteBasePath: string[];
-  language: string[];
   docsDir: string[];
   blogDir: string[];
   ignoreFiles: (string | RegExp)[];

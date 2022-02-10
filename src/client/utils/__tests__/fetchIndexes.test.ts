@@ -12,17 +12,12 @@ const mockFetch = (global.fetch = jest.fn());
 describe("fetchIndexes", () => {
   const baseUrl = "/";
 
-  const OLD_ENV = process.env;
-
   beforeEach(() => {
     jest.resetModules(); // most important - it clears the cache
-    process.env = { ...OLD_ENV }; // make a copy
     mockFetch.mockReset();
   });
 
   afterAll(() => {
-    process.env = OLD_ENV; // restore old env
-
     jest.restoreAllMocks();
   });
 
@@ -48,14 +43,7 @@ describe("fetchIndexes", () => {
           {
             documents: [1, 2, 3],
             index: {
-              invertedIndex: [
-                ["hello"],
-                ["alfabetização"],
-                ["世界"],
-                ["和平"],
-                ["世界"],
-                ["hello"],
-              ],
+              invertedIndex: [["hello"], ["hello"]],
             },
           },
         ]),
@@ -70,16 +58,6 @@ describe("fetchIndexes", () => {
           type: 0,
         },
       ],
-      zhDictionary: ["世界", "和平"],
-    });
-  });
-
-  test.skip("development", async () => {
-    process.env.NODE_ENV = "development";
-    const result = await fetchIndexes(baseUrl);
-    expect(mockFetch).not.toBeCalled();
-    expect(result).toEqual({
-      wrappedIndexes: [],
       zhDictionary: [],
     });
   });

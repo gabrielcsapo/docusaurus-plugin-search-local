@@ -8,13 +8,11 @@ describe("getPluginConfig", () => {
   test("it should normalize strings into arrays", () => {
     const userOptions = normalizePluginOptions(OptionsSchema, {
       blogRouteBasePath: "blog",
-      language: "en",
     });
 
     const normalizedOptions = getPluginConfig(userOptions, siteDir);
 
     expect(normalizedOptions.blogRouteBasePath).toEqual(["blog"]);
-    expect(normalizedOptions.language).toEqual(["en"]);
   });
 
   test("it should strip slashes from base paths", () => {

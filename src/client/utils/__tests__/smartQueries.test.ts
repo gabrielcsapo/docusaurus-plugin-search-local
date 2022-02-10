@@ -2,16 +2,7 @@ import lunr from "lunr";
 import { smartQueries } from "../smartQueries";
 import { SmartQuery } from "../../../types";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require("lunr-languages/lunr.stemmer.support")(lunr);
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require("../../../shared/lunrLanguageZh").lunrLanguageZh(lunr);
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require("lunr-languages/lunr.multi")(lunr);
-
 (lunr as any).fake = {};
-
-const zhDictionary = ["研究生", "研究", "生命", "科学", "生命科学"];
 
 interface TestQuery {
   tokens: string[];
@@ -46,101 +37,6 @@ describe("smartQueries", () => {
         },
       ],
     ],
-    [
-      ["研究生命科学"],
-      [
-        {
-          tokens: ["研究", "生命科学"],
-          keyword: "+研究 +生命科学",
-        },
-        {
-          tokens: ["研究", "生命", "科学"],
-          keyword: "+研究 +生命 +科学",
-        },
-        {
-          tokens: ["研究生", "科学"],
-          keyword: "+研究生 +科学",
-        },
-        {
-          tokens: ["研究", "生命科学"],
-          keyword: "+研究 +生命科学*",
-        },
-        {
-          tokens: ["研究", "生命", "科学"],
-          keyword: "+研究 +生命 +科学*",
-        },
-        {
-          tokens: ["研究生", "科学"],
-          keyword: "+研究生 +科学*",
-        },
-        {
-          tokens: ["研究", "生命"],
-          keyword: "+研究 +生命",
-        },
-        {
-          tokens: ["研究", "科学"],
-          keyword: "+研究 +科学",
-        },
-        {
-          tokens: ["生命", "科学"],
-          keyword: "+生命 +科学",
-        },
-        {
-          tokens: ["研究", "科学"],
-          keyword: "+研究 +科学*",
-        },
-        {
-          tokens: ["生命", "科学"],
-          keyword: "+生命 +科学*",
-        },
-      ],
-    ],
-    [
-      ["研究生"],
-      [
-        {
-          tokens: ["研究生"],
-          keyword: "+研究生",
-        },
-        {
-          tokens: ["研究", "生"],
-          keyword: "+研究 +生*",
-        },
-        {
-          tokens: ["研究生"],
-          keyword: "+研究生*",
-        },
-      ],
-    ],
-    /* [
-      ["生命科学", "研究生"],
-      [
-        {
-          tokens: ["生命科学", "研究生"],
-          keyword: "+生命科学 +研究生",
-        },
-        {
-          tokens: ["生命科学", "研究", "生"],
-          keyword: "+生命科学 +研究 +生*",
-        },
-        {
-          tokens: ["生命", "科学", "研究生"],
-          keyword: "+生命 +科学 +研究生",
-        },
-        {
-          tokens: ["生命", "科学", "研究", "生"],
-          keyword: "+生命 +科学 +研究 +生*",
-        },
-        {
-          tokens: ["生命科学", "研究生"],
-          keyword: "+生命科学 +研究生*",
-        },
-        {
-          tokens: ["生命", "科学", "研究生"],
-          keyword: "+生命 +科学 +研究生*",
-        },
-      ],
-    ], */
     [
       ["a", "hello", "world"],
       [
@@ -192,33 +88,8 @@ describe("smartQueries", () => {
         },
       ],
     ],
-    [
-      ["hello", "world", "命"],
-      [
-        {
-          tokens: ["hello", "world", "命"],
-          keyword: "+*hello* +*world* +*命*",
-        },
-      ],
-    ],
-    [
-      ["termos", "alfabetização"],
-      [
-        {
-          tokens: ["termos", "alfabetização"],
-          keyword: "+termos +alfabetização",
-        },
-        {
-          tokens: ["termos", "alfabetização"],
-          keyword: "+termos +alfabetização*",
-        },
-      ],
-    ],
   ])("smartQueries(%j, zhDictionary) should work", (tokens, queries) => {
-    const sQueries = smartQueries({
-      tokens,
-      languages: ["en", "zh"],
-      zhDictionary,
+    const sQueries = smartQueries(tokens, {
       removeDefaultStopWordFilter: false,
     });
 
@@ -242,10 +113,7 @@ describe("smartQueries with no stop words filter", () => {
       ],
     ],
   ])("smartQueries(%j, zhDictionary) should work", (tokens, queries) => {
-    const sQueries = smartQueries({
-      tokens,
-      languages: ["en", "fake"],
-      zhDictionary,
+    const sQueries = smartQueries(tokens, {
       removeDefaultStopWordFilter: true,
     });
 

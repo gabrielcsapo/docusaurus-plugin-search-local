@@ -9,7 +9,6 @@ describe("getGlobalPluginData", () => {
     indexPages: false,
     docsRouteBasePath: ["docs"],
     blogRouteBasePath: ["blog"],
-    language: ["en"],
     hashed: false,
     docsDir: ["docs"],
     blogDir: ["blog"],
@@ -37,7 +36,6 @@ describe("getGlobalPluginData", () => {
     expect(getGlobalPluginData(config)).toEqual({
       externalSearchSources: config.externalSearchSources,
       indexHash: null,
-      language: config.language,
       removeDefaultStopWordFilter: config.removeDefaultStopWordFilter,
       searchResultContextMaxLength: config.searchResultContextMaxLength,
       searchResultLimits: config.searchResultLimits,

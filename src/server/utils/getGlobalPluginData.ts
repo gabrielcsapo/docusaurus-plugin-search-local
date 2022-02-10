@@ -6,19 +6,15 @@ export function getGlobalPluginData(
 ): GlobalPluginData {
   const {
     externalSearchSources,
-    language,
     removeDefaultStopWordFilter,
     searchResultContextMaxLength,
     searchResultLimits,
     translations,
   } = pluginConfig;
 
-  // TODO: generate index hash
-
   return {
     externalSearchSources,
-    indexHash: null,
-    language,
+    indexHash: null, // TODO: generate index hash
     removeDefaultStopWordFilter,
     searchResultContextMaxLength,
     searchResultLimits,

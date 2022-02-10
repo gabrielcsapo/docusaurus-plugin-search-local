@@ -22,7 +22,6 @@ export function getPluginConfig(
     indexBlog,
     indexDocs,
     indexPages,
-    language,
     removeDefaultStopWordFilter,
     searchResultContextMaxLength,
     searchResultLimits,
@@ -48,11 +47,8 @@ export function getPluginConfig(
     docsRouteBasePath: getArrayOption(docsRouteBasePath).map((basePath) =>
       basePath.replace(/^\//, "")
     ),
-
-    language: getArrayOption(language),
-
-    ignoreFiles: getArrayOption(ignoreFiles),
     externalSearchSources: [], // TODO: this is likely going to fail tests.
+    ignoreFiles: getArrayOption(ignoreFiles),
   };
 
   return config;

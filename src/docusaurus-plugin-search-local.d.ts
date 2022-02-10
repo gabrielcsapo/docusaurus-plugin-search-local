@@ -12,7 +12,6 @@ export type TranslationMap = {
 export type GlobalPluginData = {
   externalSearchSources: string[];
   indexHash: string | null;
-  language: string[];
   removeDefaultStopWordFilter: boolean;
   searchResultContextMaxLength: number;
   searchResultLimits: number;
@@ -32,7 +31,6 @@ export type PluginOptions = {
   indexBlog: boolean;
   indexDocs: boolean;
   indexPages: boolean;
-  language: string | string[];
   removeDefaultStopWordFilter: boolean;
   searchResultContextMaxLength: number;
   searchResultLimits: number;

@@ -22,7 +22,7 @@ export function postBuildFactory(config: PluginConfig) {
 
     debugInfo("building index");
 
-    const searchIndex = buildIndex(allDocuments, config);
+    const searchIndex = buildIndex(allDocuments);
 
     debugInfo("writing index to disk");
 

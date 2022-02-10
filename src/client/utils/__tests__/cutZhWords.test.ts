@@ -39,4 +39,12 @@ describe("cutZhWords", () => {
       )
     ).toEqual(terms);
   });
+
+  test.skip("testing english words", () => {
+    let token = "foo";
+
+    expect(cutZhWords(token, [])).toBe(token);
+
+    token = "bar";
+  });
 });

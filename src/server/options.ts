@@ -14,7 +14,6 @@ export const DEFAULT_OPTIONS: Omit<PluginOptions, "id"> = {
   indexPages: false,
   docsRouteBasePath: ["docs"],
   blogRouteBasePath: ["blog"],
-  language: ["en"],
   hashed: false,
   docsDir: ["docs"],
   blogDir: ["blog"],
@@ -47,7 +46,7 @@ const isArrayOfStringsOrRegExpsOrStringOrRegExp = Joi.alternatives().try(
   Joi.object().regex()
 );
 
-export const OptionsSchema = Joi.object({
+export const OptionsSchema = Joi.object<PluginOptions>({
   indexDocs: Joi.boolean().default(DEFAULT_OPTIONS.indexDocs),
   indexBlog: Joi.boolean().default(DEFAULT_OPTIONS.indexBlog),
   indexPages: Joi.boolean().default(DEFAULT_OPTIONS.indexPages),
@@ -57,7 +56,6 @@ export const OptionsSchema = Joi.object({
   blogRouteBasePath: isStringOrArrayOfStrings.default(
     DEFAULT_OPTIONS.blogRouteBasePath
   ),
-  language: isStringOrArrayOfStrings.default(DEFAULT_OPTIONS.language),
   hashed: Joi.boolean().default(DEFAULT_OPTIONS.hashed),
   docsDir: isStringOrArrayOfStrings.default(DEFAULT_OPTIONS.docsDir),
   blogDir: isStringOrArrayOfStrings.default(DEFAULT_OPTIONS.blogDir),

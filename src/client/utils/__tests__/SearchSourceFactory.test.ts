@@ -2,13 +2,6 @@ import lunr from "lunr";
 import { SearchDocument } from "../../../types";
 import { SearchSourceFactory } from "../SearchSourceFactory";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require("lunr-languages/lunr.stemmer.support")(lunr);
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require("../../../shared/lunrLanguageZh").lunrLanguageZh(lunr);
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require("lunr-languages/lunr.multi")(lunr);
-
 describe("SearchSourceFactory", () => {
   const documentsOfTitles: SearchDocument[] = [
     {
@@ -71,8 +64,6 @@ describe("SearchSourceFactory", () => {
         type: 2,
       },
     ],
-    languages: ["en", "zh"],
-    zhDictionary: [],
     removeDefaultStopWordFilter: false,
     resultsLimit: 2,
     onResults: jest.fn(),

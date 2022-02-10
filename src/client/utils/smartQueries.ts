@@ -2,10 +2,7 @@ import lunr from "lunr";
 import { SmartQuery, SmartTerm } from "../../types";
 import { smartTerms } from "./smartTerms";
 
-export type SmartQueriesProps = {
-  tokens: string[];
-  languages: string[];
-  zhDictionary: string[];
+export type SmartQueryOptions = {
   removeDefaultStopWordFilter: boolean;
 };
 
@@ -15,11 +12,13 @@ export type SmartQueriesProps = {
  *
  * @returns A smart query list.
  */
-export function smartQueries(props: SmartQueriesProps): SmartQuery[] {
-  const { tokens, languages, zhDictionary, removeDefaultStopWordFilter } =
-    props;
+export function smartQueries(
+  tokens: string[],
+  queryOptions: SmartQueryOptions = { removeDefaultStopWordFilter: false }
+): SmartQuery[] {
+  const { removeDefaultStopWordFilter } = queryOptions;
 
-  const terms = smartTerms(tokens, zhDictionary);
+  const terms = smartTerms(tokens);
 
   if (terms.length === 0) {
     // There are no matched terms.
@@ -44,17 +43,9 @@ export function smartQueries(props: SmartQueriesProps): SmartQuery[] {
   // Try to append terms without stop words,
   // since they are removed in the index.
   const stopWordPipelines: lunr.PipelineFunction[] = [];
-  for (const lang of languages) {
-    if (lang === "en") {
-      if (!removeDefaultStopWordFilter) {
-        stopWordPipelines.unshift(lunr.stopWordFilter);
-      }
-    } else {
-      const lunrLang = (lunr as any)[lang] as typeof lunr;
-      if (lunrLang.stopWordFilter) {
-        stopWordPipelines.unshift(lunrLang.stopWordFilter);
-      }
-    }
+
+  if (!removeDefaultStopWordFilter) {
+    stopWordPipelines.unshift(lunr.stopWordFilter);
   }
 
   let refinedTerms: SmartTerm[];

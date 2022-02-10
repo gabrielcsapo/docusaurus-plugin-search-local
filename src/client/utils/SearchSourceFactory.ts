@@ -10,10 +10,8 @@ import {
 import { sortSearchResults } from "./sortSearchResults";
 import { processTreeStatusOfSearchResults } from "./processTreeStatusOfSearchResults";
 
-type SearchSourceFactoryProps = {
+export type SearchSourceFactoryProps = {
   wrappedIndexes: WrappedIndex[];
-  languages: string[];
-  zhDictionary: string[];
   removeDefaultStopWordFilter: boolean;
   resultsLimit: number;
   onResults: (query: string, results: SearchResult[]) => void;
@@ -24,8 +22,6 @@ export function SearchSourceFactory(
 ): (input: string, callback: (results: SearchResult[]) => void) => void {
   const {
     wrappedIndexes,
-    languages,
-    zhDictionary,
     removeDefaultStopWordFilter,
     resultsLimit,
     onResults,
@@ -35,18 +31,15 @@ export function SearchSourceFactory(
     input: string,
     callback: (results: SearchResult[]) => void
   ): void {
-    const rawTokens = tokenize(input, languages);
+    const rawTokens = tokenize(input);
     if (rawTokens.length === 0) {
       callback([]);
       onResults(input, []);
       return;
     }
 
-    const queries = smartQueries({
-      languages,
+    const queries = smartQueries(rawTokens, {
       removeDefaultStopWordFilter,
-      zhDictionary,
-      tokens: rawTokens,
     });
 
     const results: InitialSearchResult[] = [];

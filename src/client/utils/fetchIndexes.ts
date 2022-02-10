@@ -15,7 +15,6 @@ export async function fetchIndexes(
   wrappedIndexes: WrappedIndex[];
   zhDictionary: string[];
 }> {
-  // if (process.env.NODE_ENV === "production") {
   const indexUrl = `${baseUrl}search-index.json`;
   const queryString = indexHash ? `?_=${indexHash}` : "";
 
@@ -31,24 +30,8 @@ export async function fetchIndexes(
     })
   );
 
-  const zhDictionary = json.reduce((acc, item) => {
-    for (const tuple of item.index.invertedIndex) {
-      if (/\p{Unified_Ideograph}/u.test(tuple[0][0])) {
-        acc.add(tuple[0]);
-      }
-    }
-    return acc;
-  }, new Set<string>());
-
   return {
     wrappedIndexes,
-    zhDictionary: Array.from(zhDictionary),
+    zhDictionary: [], // TODO: strip this out
   };
-  // }
-
-  // The index does not exist in development, therefore load a dummy index here.
-  // return {
-  //   wrappedIndexes: [],
-  //   zhDictionary: [],
-  // };
 }

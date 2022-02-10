@@ -57,7 +57,6 @@ export default function SearchModal({
   } = useDocusaurusContext();
   const {
     indexHash,
-    language,
     removeDefaultStopWordFilter,
     searchResultLimits,
     translations,
@@ -119,15 +118,10 @@ export default function SearchModal({
 
   useEffect(() => {
     async function doFetchIndexes() {
-      const { wrappedIndexes, zhDictionary } = await fetchIndexes(
-        baseUrl,
-        indexHash
-      );
+      const { wrappedIndexes } = await fetchIndexes(baseUrl, indexHash);
       setSearchSource(() =>
         SearchSourceFactory({
           wrappedIndexes,
-          languages: language,
-          zhDictionary,
           removeDefaultStopWordFilter,
           resultsLimit: searchResultLimits,
           onResults: (query, results) => {

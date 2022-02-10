@@ -24,7 +24,7 @@ export default function SearchPage(): React.ReactElement {
   const {
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
-  const { indexHash, language, removeDefaultStopWordFilter, translations } =
+  const { indexHash, removeDefaultStopWordFilter, translations } =
     usePluginData<GlobalPluginData>("docusaurus-plugin-search-local");
   const { searchValue, updateSearchPath } = useSearchQuery();
   const [searchQuery, setSearchQuery] = useState(searchValue);
@@ -73,15 +73,10 @@ export default function SearchPage(): React.ReactElement {
 
   useEffect(() => {
     async function doFetchIndexes() {
-      const { wrappedIndexes, zhDictionary } = await fetchIndexes(
-        baseUrl,
-        indexHash
-      );
+      const { wrappedIndexes } = await fetchIndexes(baseUrl, indexHash);
       setSearchSource(() =>
         SearchSourceFactory({
           wrappedIndexes,
-          languages: language,
-          zhDictionary,
           removeDefaultStopWordFilter,
           resultsLimit: 100,
           onResults: (query, results) => {
