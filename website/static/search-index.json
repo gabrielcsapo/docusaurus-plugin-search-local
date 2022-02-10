@@ -4,57 +4,50 @@
       {
         "i": 1,
         "t": "First Blog Post",
-        "u": "/docusaurus-plugin-search-local/blog/first-blog-post",
+        "u": "/docusaurus-plugin-search-local/blog/first-blog-post/",
         "b": ["Blog"]
       },
       {
         "i": 3,
-        "t": "MDX Blog Post",
-        "u": "/docusaurus-plugin-search-local/blog/mdx-blog-post",
+        "t": "Welcome",
+        "u": "/docusaurus-plugin-search-local/blog/welcome/",
         "b": ["Blog"]
       },
       {
         "i": 5,
-        "t": "",
-        "u": "/docusaurus-plugin-search-local/docs/tags",
-        "b": []
-      },
-      {
-        "i": 6,
         "t": "Long Blog Post",
-        "u": "/docusaurus-plugin-search-local/blog/long-blog-post",
+        "u": "/docusaurus-plugin-search-local/blog/long-blog-post/",
         "b": ["Blog"]
       },
       {
-        "i": 8,
-        "t": "Getting started",
-        "u": "/docusaurus-plugin-search-local/docs/getting-started",
-        "b": ["Documentation"]
-      },
-      {
-        "i": 16,
-        "t": "Welcome",
-        "u": "/docusaurus-plugin-search-local/blog/welcome",
+        "i": 7,
+        "t": "MDX Blog Post",
+        "u": "/docusaurus-plugin-search-local/blog/mdx-blog-post/",
         "b": ["Blog"]
       },
       {
-        "i": 18,
+        "i": 9,
         "t": "",
-        "u": "/docusaurus-plugin-search-local/blog/archive",
+        "u": "/docusaurus-plugin-search-local/blog/archive/",
         "b": ["Blog"]
+      },
+      {
+        "i": 10,
+        "t": "Getting started",
+        "u": "/docusaurus-plugin-search-local/docs/getting-started/",
+        "b": ["Documentation"]
       }
     ],
     "index": {
       "version": "2.3.9",
       "fields": ["t"],
       "fieldVectors": [
-        ["t/1", [0, 1.281, 1, 0.633, 2, 0.633]],
-        ["t/3", [1, 0.633, 2, 0.633, 3, 1.281]],
-        ["t/5", []],
-        ["t/6", [1, 0.633, 2, 0.633, 4, 1.281]],
-        ["t/8", [5, 1.567, 6, 1.567]],
-        ["t/16", [7, 2.018]],
-        ["t/18", []]
+        ["t/1", [0, 1.279, 1, 0.575, 2, 0.575]],
+        ["t/3", [3, 1.937]],
+        ["t/5", [1, 0.575, 2, 0.575, 4, 1.279]],
+        ["t/7", [1, 0.575, 2, 0.575, 5, 1.279]],
+        ["t/9", []],
+        ["t/10", [6, 1.54, 7, 1.54]]
       ],
       "invertedIndex": [
         [
@@ -63,28 +56,28 @@
             "_index": 1,
             "t": {
               "1": { "position": [[6, 4]] },
-              "3": { "position": [[4, 4]] },
-              "6": { "position": [[5, 4]] }
+              "5": { "position": [[5, 4]] },
+              "7": { "position": [[4, 4]] }
             }
           }
         ],
         ["first", { "_index": 0, "t": { "1": { "position": [[0, 5]] } } }],
-        ["get", { "_index": 5, "t": { "8": { "position": [[0, 7]] } } }],
-        ["long", { "_index": 4, "t": { "6": { "position": [[0, 4]] } } }],
-        ["mdx", { "_index": 3, "t": { "3": { "position": [[0, 3]] } } }],
+        ["get", { "_index": 6, "t": { "10": { "position": [[0, 7]] } } }],
+        ["long", { "_index": 4, "t": { "5": { "position": [[0, 4]] } } }],
+        ["mdx", { "_index": 5, "t": { "7": { "position": [[0, 3]] } } }],
         [
           "post",
           {
             "_index": 2,
             "t": {
               "1": { "position": [[11, 4]] },
-              "3": { "position": [[9, 4]] },
-              "6": { "position": [[10, 4]] }
+              "5": { "position": [[10, 4]] },
+              "7": { "position": [[9, 4]] }
             }
           }
         ],
-        ["start", { "_index": 6, "t": { "8": { "position": [[8, 7]] } } }],
-        ["welcom", { "_index": 7, "t": { "16": { "position": [[0, 7]] } } }]
+        ["start", { "_index": 7, "t": { "10": { "position": [[8, 7]] } } }],
+        ["welcom", { "_index": 3, "t": { "3": { "position": [[0, 7]] } } }]
       ],
       "pipeline": ["stemmer"]
     }
@@ -92,39 +85,39 @@
   {
     "documents": [
       {
-        "i": 10,
-        "t": "Installation",
-        "u": "/docusaurus-plugin-search-local/docs/getting-started",
-        "h": "#installation",
-        "p": 8
-      },
-      {
         "i": 12,
-        "t": "Configuration",
-        "u": "/docusaurus-plugin-search-local/docs/getting-started",
-        "h": "#configuration",
-        "p": 8
+        "t": "Installation",
+        "u": "/docusaurus-plugin-search-local/docs/getting-started/",
+        "h": "#installation",
+        "p": 10
       },
       {
         "i": 14,
+        "t": "Configuration",
+        "u": "/docusaurus-plugin-search-local/docs/getting-started/",
+        "h": "#configuration",
+        "p": 10
+      },
+      {
+        "i": 16,
         "t": "Options",
-        "u": "/docusaurus-plugin-search-local/docs/getting-started",
+        "u": "/docusaurus-plugin-search-local/docs/getting-started/",
         "h": "#options",
-        "p": 8
+        "p": 10
       }
     ],
     "index": {
       "version": "2.3.9",
       "fields": ["t"],
       "fieldVectors": [
-        ["t/10", [0, 0.981]],
-        ["t/12", [1, 0.981]],
-        ["t/14", [2, 0.981]]
+        ["t/12", [0, 0.981]],
+        ["t/14", [1, 0.981]],
+        ["t/16", [2, 0.981]]
       ],
       "invertedIndex": [
-        ["configur", { "_index": 1, "t": { "12": { "position": [[0, 13]] } } }],
-        ["instal", { "_index": 0, "t": { "10": { "position": [[0, 12]] } } }],
-        ["option", { "_index": 2, "t": { "14": { "position": [[0, 7]] } } }]
+        ["configur", { "_index": 1, "t": { "14": { "position": [[0, 13]] } } }],
+        ["instal", { "_index": 0, "t": { "12": { "position": [[0, 12]] } } }],
+        ["option", { "_index": 2, "t": { "16": { "position": [[0, 7]] } } }]
       ],
       "pipeline": ["stemmer"]
     }
@@ -135,65 +128,65 @@
         "i": 2,
         "t": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet",
         "s": "First Blog Post",
-        "u": "/docusaurus-plugin-search-local/blog/first-blog-post",
+        "u": "/docusaurus-plugin-search-local/blog/first-blog-post/",
         "h": "",
         "p": 1
       },
       {
         "i": 4,
-        "t": "Blog posts support Docusaurus Markdown features, such as MDX. tip Use the power of React to create interactive blog posts. <button onClick={() => alert('button clicked!')}>Click me!</button> Copy Click me!",
-        "s": "MDX Blog Post",
-        "u": "/docusaurus-plugin-search-local/blog/mdx-blog-post",
+        "t": "Docusaurus blogging features are powered by the blog plugin. Simply add Markdown files (or folders) to the blog directory. Regular blog authors can be added to authors.yml. The blog post date can be extracted from filenames, such as: 2019-05-30-welcome.md 2019-05-30-welcome/index.md A blog post folder can be convenient to co-locate blog post images: The blog supports tags as well! And if you don't want a blog: just delete this directory, and use blog: false in your Docusaurus config.",
+        "s": "Welcome",
+        "u": "/docusaurus-plugin-search-local/blog/welcome/",
         "h": "",
         "p": 3
       },
       {
-        "i": 7,
+        "i": 6,
         "t": "This is the summary of a very long blog post, Use a <!-- truncate --> comment to limit blog post size in the list view. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet",
         "s": "Long Blog Post",
-        "u": "/docusaurus-plugin-search-local/blog/long-blog-post",
+        "u": "/docusaurus-plugin-search-local/blog/long-blog-post/",
         "h": "",
-        "p": 6
+        "p": 5
       },
       {
-        "i": 9,
-        "t": "On this page",
-        "s": "Getting started",
-        "u": "/docusaurus-plugin-search-local/docs/getting-started",
+        "i": 8,
+        "t": "Blog posts support Docusaurus Markdown features, such as MDX. tip Use the power of React to create interactive blog posts. <button onClick={() => alert('button clicked!')}>Click me!</button> Copy Click me!",
+        "s": "MDX Blog Post",
+        "u": "/docusaurus-plugin-search-local/blog/mdx-blog-post/",
         "h": "",
-        "p": 8
+        "p": 7
       },
       {
         "i": 11,
-        "t": "yarn install docusaurus-plugin-search-local Copy",
-        "s": "Installation",
-        "u": "/docusaurus-plugin-search-local/docs/getting-started",
-        "h": "#installation",
-        "p": 8
+        "t": "On this page",
+        "s": "Getting started",
+        "u": "/docusaurus-plugin-search-local/docs/getting-started/",
+        "h": "",
+        "p": 10
       },
       {
         "i": 13,
-        "t": "docusaurus.config.js { plugins: [ [ require.resolve(\"docusaurus-plugin-search-local\"), { ...options }, ], ],} Copy",
-        "s": "Configuration",
-        "u": "/docusaurus-plugin-search-local/docs/getting-started",
-        "h": "#configuration",
-        "p": 8
+        "t": "yarn install docusaurus-plugin-search-local Copy",
+        "s": "Installation",
+        "u": "/docusaurus-plugin-search-local/docs/getting-started/",
+        "h": "#installation",
+        "p": 10
       },
       {
         "i": 15,
-        "t": "Name Type Default Description indexDocs boolean true Whether to index docs. indexBlog boolean true Whether to index blog. indexPages boolean false Whether to index pages. docsRouteBasePath string | string[] \"/docs\" Base route path(s) of docs. Slash at beginning is not required. blogRouteBasePath string | string[] \"/blog\" Base route path(s) of blog. Slash at beginning is not required. language string | string[] \"en\" All lunr-languages supported languages, + zh 🔥. hashed boolean false Whether to add a hashed query when fetching index (based on the content hash of all indexed *.md in docsDir and blogDir if applicable) docsDir string | string[] \"docs\" The dir(s) of docs to get the content hash, it's relative to the dir of your project. blogDir string | string[] \"blog\" Just like the docsDir but applied to blog. removeDefaultStopWordFilter boolean false Sometimes people (E.g., us) want to keep the English stop words as indexed, since they maybe are relevant in programming docs. highlightSearchTermsOnTargetPage boolean false Highlight search terms on target page. searchResultLimits number 8 Limit the search results. searchResultContextMaxLength number 50 Set the max length of characters of each search result to show. translations TranslationMap - Set translations of this plugin, see docs below. ignoreFiles string | RegExp | (string | RegExp)[] /meta\\$/ Set the match rules to ignore some files.",
-        "s": "Options",
-        "u": "/docusaurus-plugin-search-local/docs/getting-started",
-        "h": "#options",
-        "p": 8
+        "t": "docusaurus.config.js { plugins: [ [ require.resolve(\"docusaurus-plugin-search-local\"), { ...options }, ], ],} Copy",
+        "s": "Configuration",
+        "u": "/docusaurus-plugin-search-local/docs/getting-started/",
+        "h": "#configuration",
+        "p": 10
       },
       {
         "i": 17,
-        "t": "Docusaurus blogging features are powered by the blog plugin. Simply add Markdown files (or folders) to the blog directory. Regular blog authors can be added to authors.yml. The blog post date can be extracted from filenames, such as: 2019-05-30-welcome.md 2019-05-30-welcome/index.md A blog post folder can be convenient to co-locate blog post images: The blog supports tags as well! And if you don't want a blog: just delete this directory, and use blog: false in your Docusaurus config.",
-        "s": "Welcome",
-        "u": "/docusaurus-plugin-search-local/blog/welcome",
-        "h": "",
-        "p": 16
+        "t": "Name Type Default Description indexDocs boolean true Whether to index docs. indexBlog boolean true Whether to index blog. indexPages boolean false Whether to index pages. docsRouteBasePath string | string[] \"/docs\" Base route path(s) of docs. Slash at beginning is not required. blogRouteBasePath string | string[] \"/blog\" Base route path(s) of blog. Slash at beginning is not required. language string | string[] \"en\" All lunr-languages supported languages, + zh 🔥. hashed boolean false Whether to add a hashed query when fetching index (based on the content hash of all indexed *.md in docsDir and blogDir if applicable) docsDir string | string[] \"docs\" The dir(s) of docs to get the content hash, it's relative to the dir of your project. blogDir string | string[] \"blog\" Just like the docsDir but applied to blog. removeDefaultStopWordFilter boolean false Sometimes people (E.g., us) want to keep the English stop words as indexed, since they maybe are relevant in programming docs. highlightSearchTermsOnTargetPage boolean false Highlight search terms on target page. searchResultLimits number 8 Limit the search results. searchResultContextMaxLength number 50 Set the max length of characters of each search result to show. translations TranslationMap - Set translations of this plugin, see docs below. ignoreFiles string | RegExp | (string | RegExp)[] /meta\\$/ Set the match rules to ignore some files.",
+        "s": "Options",
+        "u": "/docusaurus-plugin-search-local/docs/getting-started/",
+        "h": "#options",
+        "p": 10
       }
     ],
     "index": {
@@ -211,68 +204,67 @@
         [
           "t/4",
           [
-            18, 1.195, 19, 1.628, 20, 1.339, 21, 1.339, 22, 1.815, 23, 1.815,
-            24, 1.815, 25, 2.539, 26, 2.539, 27, 1.339, 28, 1.815, 29, 2.539,
-            30, 2.539, 31, 2.539, 32, 2.539, 33, 2.539, 34, 0.982, 35, 2.539,
-            36, 2.539, 37, 2.539, 38, 1.339, 39, 2.539
+            18, 1.444, 19, 1.402, 20, 1.5, 21, 1.5, 22, 0.812, 23, 2.099, 24,
+            1.5, 25, 1.5, 26, 1.5, 27, 2.739, 28, 2.739, 29, 2.099, 30, 2.099,
+            31, 2.099, 32, 2.099, 33, 1.607, 34, 2.099, 35, 2.099, 36, 2.099,
+            37, 1.5, 38, 2.739, 39, 2.739, 40, 2.739, 41, 2.099, 42, 2.099, 43,
+            2.099, 44, 2.099, 45, 2.099, 46, 2.099, 47, 1.106, 48, 2.099, 49,
+            2.099, 50, 2.099, 51, 1.5, 52, 2.099, 53, 1.106, 54, 1.5, 55, 2.099
           ]
         ],
         [
-          "t/7",
+          "t/6",
           [
             0, 2.47, 1, 2.576, 2, 2.47, 3, 2.47, 4, 2.47, 5, 2.199, 6, 2.199, 7,
             2.199, 8, 2.199, 9, 2.199, 10, 2.199, 11, 2.199, 12, 2.199, 13,
-            2.199, 14, 2.199, 15, 2.199, 16, 2.199, 17, 2.199, 18, 0.469, 19,
-            0.639, 27, 0.377, 34, 0.469, 40, 0.716, 41, 0.716, 42, 0.716, 43,
-            0.716, 44, 0.716, 45, 0.512, 46, 0.716, 47, 0.716, 48, 0.716
+            2.199, 14, 2.199, 15, 2.199, 16, 2.199, 17, 2.199, 19, 0.469, 33,
+            0.639, 53, 0.377, 56, 0.716, 57, 0.716, 58, 0.716, 59, 0.469, 60,
+            0.716, 61, 0.716, 62, 0.512, 63, 0.716, 64, 0.716, 65, 0.716
           ]
         ],
-        ["t/9", [49, 2.15]],
         [
-          "t/11",
+          "t/8",
           [
-            21, 1.513, 38, 1.513, 50, 2.87, 51, 2.87, 52, 1.11, 53, 1.513, 54,
-            2.052
+            18, 1.339, 19, 1.195, 20, 1.815, 21, 1.815, 25, 1.815, 33, 1.628,
+            37, 1.815, 47, 1.339, 53, 1.339, 59, 0.982, 66, 2.539, 67, 2.539,
+            68, 2.539, 69, 2.539, 70, 2.539, 71, 2.539, 72, 2.539, 73, 2.539,
+            74, 2.539, 75, 2.539, 76, 1.339, 77, 2.539
           ]
         ],
+        ["t/11", [78, 2.15]],
         [
           "t/13",
           [
-            34, 1.431, 38, 1.425, 52, 1.241, 53, 1.425, 54, 1.933, 55, 2.704,
-            56, 2.704, 57, 2.704
+            18, 1.513, 22, 1.11, 76, 1.513, 79, 2.87, 80, 2.87, 81, 1.513, 82,
+            2.052
           ]
         ],
         [
           "t/15",
           [
-            18, 1.094, 20, 0.699, 34, 1.274, 45, 0.948, 49, 1.419, 52, 0.513,
-            53, 1.254, 58, 1.327, 59, 1.327, 60, 1.327, 61, 1.327, 62, 1.327,
-            63, 2.967, 64, 1.985, 65, 2.641, 66, 2.967, 67, 3.076, 68, 1.327,
-            69, 1.327, 70, 1.888, 71, 1.327, 72, 3.386, 73, 2.379, 74, 1.985,
-            75, 1.985, 76, 1.985, 77, 1.985, 78, 1.985, 79, 1.327, 80, 2.379,
-            81, 1.327, 82, 1.327, 83, 1.327, 84, 2.641, 85, 0.948, 86, 1.327,
-            87, 1.327, 88, 1.985, 89, 1.327, 90, 2.379, 91, 1.985, 92, 1.327,
-            93, 1.327, 94, 1.327, 95, 1.327, 96, 1.327, 97, 1.327, 98, 1.327,
-            99, 1.327, 100, 1.327, 101, 1.327, 102, 1.327, 103, 0.948, 104,
-            1.327, 105, 1.327, 106, 1.327, 107, 1.327, 108, 1.327, 109, 1.327,
-            110, 1.327, 111, 1.327, 112, 1.327, 113, 1.327, 114, 1.327, 115,
-            1.327, 116, 1.985, 117, 1.327, 118, 1.985, 119, 1.327, 120, 1.327,
-            121, 2.379, 122, 1.327, 123, 1.327, 124, 1.327, 125, 1.327, 126,
-            1.327, 127, 1.985, 128, 1.327, 129, 1.327, 130, 1.327, 131, 1.327,
-            132, 1.985, 133, 1.327, 134, 1.327, 135, 1.327, 136, 1.327, 137,
-            0.948
+            22, 1.241, 59, 1.431, 76, 1.425, 81, 1.425, 82, 1.933, 83, 2.704,
+            84, 2.704, 85, 2.704
           ]
         ],
         [
           "t/17",
           [
-            18, 1.402, 19, 1.607, 20, 1.106, 21, 1.444, 22, 1.5, 23, 1.5, 24,
-            1.5, 27, 1.106, 28, 1.5, 52, 0.812, 70, 1.5, 85, 1.5, 103, 1.5, 137,
-            1.5, 138, 2.099, 139, 2.739, 140, 2.739, 141, 2.099, 142, 2.099,
-            143, 2.099, 144, 2.099, 145, 2.099, 146, 2.099, 147, 2.099, 148,
-            2.739, 149, 2.739, 150, 2.739, 151, 2.099, 152, 2.099, 153, 2.099,
-            154, 2.099, 155, 2.099, 156, 2.099, 157, 2.099, 158, 2.099, 159,
-            2.099, 160, 2.099, 161, 2.099
+            19, 1.094, 22, 0.513, 24, 0.948, 26, 0.948, 47, 0.699, 51, 0.948,
+            54, 1.888, 59, 1.274, 62, 0.948, 78, 1.419, 81, 1.254, 86, 1.327,
+            87, 1.327, 88, 1.327, 89, 1.327, 90, 1.327, 91, 2.967, 92, 1.985,
+            93, 2.641, 94, 2.967, 95, 3.076, 96, 1.327, 97, 1.327, 98, 1.327,
+            99, 3.386, 100, 2.379, 101, 1.985, 102, 1.985, 103, 1.985, 104,
+            1.985, 105, 1.985, 106, 1.327, 107, 2.379, 108, 1.327, 109, 1.327,
+            110, 1.327, 111, 2.641, 112, 1.327, 113, 1.327, 114, 1.985, 115,
+            1.327, 116, 2.379, 117, 1.985, 118, 1.327, 119, 1.327, 120, 1.327,
+            121, 1.327, 122, 1.327, 123, 1.327, 124, 1.327, 125, 1.327, 126,
+            1.327, 127, 1.327, 128, 1.327, 129, 1.327, 130, 1.327, 131, 1.327,
+            132, 1.327, 133, 1.327, 134, 1.327, 135, 1.327, 136, 1.327, 137,
+            1.327, 138, 1.327, 139, 1.327, 140, 1.327, 141, 1.985, 142, 1.327,
+            143, 1.985, 144, 1.327, 145, 1.327, 146, 2.379, 147, 1.327, 148,
+            1.327, 149, 1.327, 150, 1.327, 151, 1.327, 152, 1.985, 153, 1.327,
+            154, 1.327, 155, 1.327, 156, 1.327, 157, 1.985, 158, 1.327, 159,
+            1.327, 160, 1.327, 161, 1.327
           ]
         ]
       ],
@@ -280,16 +272,16 @@
         [
           "",
           {
-            "_index": 34,
+            "_index": 59,
             "t": {
-              "4": { "position": [[143, 2]] },
-              "7": {
+              "6": {
                 "position": [
                   [52, 2],
                   [68, 1]
                 ]
               },
-              "13": {
+              "8": { "position": [[143, 2]] },
+              "15": {
                 "position": [
                   [21, 1],
                   [32, 1],
@@ -300,7 +292,7 @@
                   [106, 3]
                 ]
               },
-              "15": {
+              "17": {
                 "position": [
                   [196, 1],
                   [304, 1],
@@ -320,9 +312,9 @@
         [
           "05",
           {
-            "_index": 149,
+            "_index": 39,
             "t": {
-              "17": {
+              "4": {
                 "position": [
                   [239, 2],
                   [261, 2]
@@ -334,9 +326,9 @@
         [
           "2019",
           {
-            "_index": 148,
+            "_index": 38,
             "t": {
-              "17": {
+              "4": {
                 "position": [
                   [234, 4],
                   [256, 4]
@@ -348,9 +340,9 @@
         [
           "30",
           {
-            "_index": 150,
+            "_index": 40,
             "t": {
-              "17": {
+              "4": {
                 "position": [
                   [242, 2],
                   [264, 2]
@@ -359,16 +351,16 @@
             }
           }
         ],
-        ["50", { "_index": 120, "t": { "15": { "position": [[1164, 2]] } } }],
-        ["8", { "_index": 117, "t": { "15": { "position": [[1100, 1]] } } }],
-        ["ad", { "_index": 143, "t": { "17": { "position": [[151, 5]] } } }],
+        ["50", { "_index": 145, "t": { "17": { "position": [[1164, 2]] } } }],
+        ["8", { "_index": 142, "t": { "17": { "position": [[1100, 1]] } } }],
+        ["ad", { "_index": 31, "t": { "4": { "position": [[151, 5]] } } }],
         [
           "add",
           {
-            "_index": 85,
+            "_index": 24,
             "t": {
-              "15": { "position": [[500, 3]] },
-              "17": { "position": [[68, 3]] }
+              "4": { "position": [[68, 3]] },
+              "17": { "position": [[500, 3]] }
             }
           }
         ],
@@ -378,7 +370,7 @@
             "_index": 6,
             "t": {
               "2": { "position": [[40, 10]] },
-              "7": {
+              "6": {
                 "position": [
                   [160, 10],
                   [339, 10],
@@ -403,7 +395,7 @@
         ],
         [
           "alert('button",
-          { "_index": 35, "t": { "4": { "position": [[146, 13]] } } }
+          { "_index": 73, "t": { "8": { "position": [[146, 13]] } } }
         ],
         [
           "aliquam",
@@ -411,7 +403,7 @@
             "_index": 16,
             "t": {
               "2": { "position": [[133, 7]] },
-              "7": {
+              "6": {
                 "position": [
                   [253, 7],
                   [432, 7],
@@ -445,7 +437,7 @@
                   [174, 4]
                 ]
               },
-              "7": {
+              "6": {
                 "position": [
                   [142, 5],
                   [294, 4],
@@ -484,25 +476,22 @@
             }
           }
         ],
-        ["appli", { "_index": 98, "t": { "15": { "position": [[802, 7]] } } }],
+        ["appli", { "_index": 124, "t": { "17": { "position": [[802, 7]] } } }],
         [
           "applic",
-          { "_index": 92, "t": { "15": { "position": [[612, 11]] } } }
+          { "_index": 118, "t": { "17": { "position": [[612, 11]] } } }
         ],
-        [
-          "author",
-          { "_index": 142, "t": { "17": { "position": [[136, 7]] } } }
-        ],
+        ["author", { "_index": 30, "t": { "4": { "position": [[136, 7]] } } }],
         [
           "authors.yml",
-          { "_index": 144, "t": { "17": { "position": [[160, 12]] } } }
+          { "_index": 32, "t": { "4": { "position": [[160, 12]] } } }
         ],
         [
           "base",
           {
-            "_index": 73,
+            "_index": 100,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [215, 4],
                   [323, 4],
@@ -515,9 +504,9 @@
         [
           "begin",
           {
-            "_index": 77,
+            "_index": 104,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [252, 9],
                   [360, 9]
@@ -528,35 +517,14 @@
         ],
         [
           "below",
-          { "_index": 130, "t": { "15": { "position": [[1303, 6]] } } }
+          { "_index": 155, "t": { "17": { "position": [[1303, 6]] } } }
         ],
         [
           "blog",
           {
-            "_index": 18,
+            "_index": 19,
             "t": {
               "4": {
-                "position": [
-                  [0, 4],
-                  [111, 4]
-                ]
-              },
-              "7": {
-                "position": [
-                  [35, 4],
-                  [87, 4]
-                ]
-              },
-              "15": {
-                "position": [
-                  [116, 5],
-                  [315, 7],
-                  [345, 5],
-                  [769, 6],
-                  [813, 5]
-                ]
-              },
-              "17": {
                 "position": [
                   [11, 8],
                   [48, 4],
@@ -569,6 +537,27 @@
                   [408, 5],
                   [450, 5]
                 ]
+              },
+              "6": {
+                "position": [
+                  [35, 4],
+                  [87, 4]
+                ]
+              },
+              "8": {
+                "position": [
+                  [0, 4],
+                  [111, 4]
+                ]
+              },
+              "17": {
+                "position": [
+                  [116, 5],
+                  [315, 7],
+                  [345, 5],
+                  [769, 6],
+                  [813, 5]
+                ]
               }
             }
           }
@@ -576,9 +565,9 @@
         [
           "blogdir",
           {
-            "_index": 91,
+            "_index": 117,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [601, 7],
                   [743, 7]
@@ -589,14 +578,14 @@
         ],
         [
           "blogroutebasepath",
-          { "_index": 79, "t": { "15": { "position": [[279, 17]] } } }
+          { "_index": 106, "t": { "17": { "position": [[279, 17]] } } }
         ],
         [
           "boolean",
           {
-            "_index": 63,
+            "_index": 91,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [40, 7],
                   [86, 7],
@@ -609,29 +598,26 @@
             }
           }
         ],
-        ["button", { "_index": 32, "t": { "4": { "position": [[123, 7]] } } }],
+        ["button", { "_index": 71, "t": { "8": { "position": [[123, 7]] } } }],
         [
           "charact",
-          { "_index": 124, "t": { "15": { "position": [[1189, 10]] } } }
+          { "_index": 149, "t": { "17": { "position": [[1189, 10]] } } }
         ],
-        ["click", { "_index": 39, "t": { "4": { "position": [[196, 5]] } } }],
+        ["click", { "_index": 77, "t": { "8": { "position": [[196, 5]] } } }],
         [
           "clicked!')}>click",
-          { "_index": 36, "t": { "4": { "position": [[160, 17]] } } }
+          { "_index": 74, "t": { "8": { "position": [[160, 17]] } } }
         ],
-        ["co", { "_index": 154, "t": { "17": { "position": [[324, 2]] } } }],
-        ["comment", { "_index": 44, "t": { "7": { "position": [[70, 7]] } } }],
-        [
-          "config",
-          { "_index": 161, "t": { "17": { "position": [[481, 7]] } } }
-        ],
+        ["co", { "_index": 44, "t": { "4": { "position": [[324, 2]] } } }],
+        ["comment", { "_index": 61, "t": { "6": { "position": [[70, 7]] } } }],
+        ["config", { "_index": 55, "t": { "4": { "position": [[481, 7]] } } }],
         [
           "consectetur",
           {
             "_index": 5,
             "t": {
               "2": { "position": [[28, 11]] },
-              "7": {
+              "6": {
                 "position": [
                   [148, 11],
                   [327, 11],
@@ -660,7 +646,7 @@
             "_index": 17,
             "t": {
               "2": { "position": [[141, 10]] },
-              "7": {
+              "6": {
                 "position": [
                   [261, 10],
                   [440, 10],
@@ -686,9 +672,9 @@
         [
           "content",
           {
-            "_index": 88,
+            "_index": 114,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [553, 7],
                   [687, 7]
@@ -699,26 +685,26 @@
         ],
         [
           "conveni",
-          { "_index": 153, "t": { "17": { "position": [[310, 10]] } } }
+          { "_index": 43, "t": { "4": { "position": [[310, 10]] } } }
         ],
         [
           "copi",
           {
-            "_index": 38,
+            "_index": 76,
             "t": {
-              "4": { "position": [[191, 4]] },
-              "11": { "position": [[44, 4]] },
-              "13": { "position": [[110, 4]] }
+              "8": { "position": [[191, 4]] },
+              "13": { "position": [[44, 4]] },
+              "15": { "position": [[110, 4]] }
             }
           }
         ],
-        ["creat", { "_index": 30, "t": { "4": { "position": [[92, 6]] } } }],
-        ["date", { "_index": 145, "t": { "17": { "position": [[187, 4]] } } }],
-        ["default", { "_index": 60, "t": { "15": { "position": [[10, 7]] } } }],
-        ["delet", { "_index": 160, "t": { "17": { "position": [[419, 6]] } } }],
+        ["creat", { "_index": 69, "t": { "8": { "position": [[92, 6]] } } }],
+        ["date", { "_index": 34, "t": { "4": { "position": [[187, 4]] } } }],
+        ["default", { "_index": 88, "t": { "17": { "position": [[10, 7]] } } }],
+        ["delet", { "_index": 52, "t": { "4": { "position": [[419, 6]] } } }],
         [
           "descript",
-          { "_index": 61, "t": { "15": { "position": [[18, 11]] } } }
+          { "_index": 89, "t": { "17": { "position": [[18, 11]] } } }
         ],
         [
           "dignissim",
@@ -726,7 +712,7 @@
             "_index": 10,
             "t": {
               "2": { "position": [[80, 9]] },
-              "7": {
+              "6": {
                 "position": [
                   [200, 9],
                   [379, 9],
@@ -749,14 +735,14 @@
             }
           }
         ],
-        ["dir", { "_index": 96, "t": { "15": { "position": [[722, 3]] } } }],
-        ["dir(", { "_index": 93, "t": { "15": { "position": [[661, 6]] } } }],
+        ["dir", { "_index": 122, "t": { "17": { "position": [[722, 3]] } } }],
+        ["dir(", { "_index": 119, "t": { "17": { "position": [[661, 6]] } } }],
         [
           "directori",
           {
-            "_index": 140,
+            "_index": 28,
             "t": {
-              "17": {
+              "4": {
                 "position": [
                   [112, 10],
                   [431, 10]
@@ -768,9 +754,9 @@
         [
           "doc",
           {
-            "_index": 67,
+            "_index": 95,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [70, 5],
                   [207, 7],
@@ -787,9 +773,9 @@
         [
           "docsdir",
           {
-            "_index": 90,
+            "_index": 116,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [589, 7],
                   [624, 7],
@@ -801,27 +787,27 @@
         ],
         [
           "docsroutebasepath",
-          { "_index": 71, "t": { "15": { "position": [[171, 17]] } } }
+          { "_index": 98, "t": { "17": { "position": [[171, 17]] } } }
         ],
         [
           "docusauru",
           {
-            "_index": 21,
+            "_index": 18,
             "t": {
-              "4": { "position": [[19, 10]] },
-              "11": { "position": [[13, 10]] },
-              "17": {
+              "4": {
                 "position": [
                   [0, 10],
                   [470, 10]
                 ]
-              }
+              },
+              "8": { "position": [[19, 10]] },
+              "13": { "position": [[13, 10]] }
             }
           }
         ],
         [
           "docusaurus.config.j",
-          { "_index": 55, "t": { "13": { "position": [[0, 20]] } } }
+          { "_index": 83, "t": { "15": { "position": [[0, 20]] } } }
         ],
         [
           "dolor",
@@ -834,7 +820,7 @@
                   [164, 5]
                 ]
               },
-              "7": {
+              "6": {
                 "position": [
                   [132, 5],
                   [284, 5],
@@ -873,16 +859,16 @@
             }
           }
         ],
-        ["don't", { "_index": 159, "t": { "17": { "position": [[395, 5]] } } }],
-        ["e.g", { "_index": 102, "t": { "15": { "position": [[878, 6]] } } }],
-        ["each", { "_index": 125, "t": { "15": { "position": [[1203, 4]] } } }],
+        ["don't", { "_index": 50, "t": { "4": { "position": [[395, 5]] } } }],
+        ["e.g", { "_index": 128, "t": { "17": { "position": [[878, 6]] } } }],
+        ["each", { "_index": 150, "t": { "17": { "position": [[1203, 4]] } } }],
         [
           "elementum",
           {
             "_index": 9,
             "t": {
               "2": { "position": [[70, 9]] },
-              "7": {
+              "6": {
                 "position": [
                   [190, 9],
                   [369, 9],
@@ -911,7 +897,7 @@
             "_index": 7,
             "t": {
               "2": { "position": [[51, 5]] },
-              "7": {
+              "6": {
                 "position": [
                   [171, 5],
                   [350, 5],
@@ -934,10 +920,10 @@
             }
           }
         ],
-        ["en", { "_index": 81, "t": { "15": { "position": [[414, 4]] } } }],
+        ["en", { "_index": 108, "t": { "17": { "position": [[414, 4]] } } }],
         [
           "english",
-          { "_index": 105, "t": { "15": { "position": [[906, 7]] } } }
+          { "_index": 130, "t": { "17": { "position": [[906, 7]] } } }
         ],
         [
           "ero",
@@ -945,7 +931,7 @@
             "_index": 15,
             "t": {
               "2": { "position": [[128, 4]] },
-              "7": {
+              "6": {
                 "position": [
                   [248, 4],
                   [427, 4],
@@ -968,58 +954,55 @@
             }
           }
         ],
-        [
-          "extract",
-          { "_index": 146, "t": { "17": { "position": [[199, 9]] } } }
-        ],
+        ["extract", { "_index": 35, "t": { "4": { "position": [[199, 9]] } } }],
         [
           "fals",
           {
-            "_index": 70,
+            "_index": 54,
             "t": {
-              "15": {
+              "4": { "position": [[456, 5]] },
+              "17": {
                 "position": [
                   [141, 5],
                   [483, 5],
                   [855, 5],
                   [1029, 5]
                 ]
-              },
-              "17": { "position": [[456, 5]] }
+              }
             }
           }
         ],
         [
           "featur",
           {
-            "_index": 23,
+            "_index": 20,
             "t": {
-              "4": { "position": [[39, 9]] },
-              "17": { "position": [[20, 8]] }
+              "4": { "position": [[20, 8]] },
+              "8": { "position": [[39, 9]] }
             }
           }
         ],
-        ["fetch", { "_index": 87, "t": { "15": { "position": [[524, 8]] } } }],
+        ["fetch", { "_index": 113, "t": { "17": { "position": [[524, 8]] } } }],
         [
           "file",
           {
-            "_index": 137,
+            "_index": 26,
             "t": {
-              "15": { "position": [[1404, 6]] },
-              "17": { "position": [[81, 5]] }
+              "4": { "position": [[81, 5]] },
+              "17": { "position": [[1404, 6]] }
             }
           }
         ],
         [
           "filenam",
-          { "_index": 147, "t": { "17": { "position": [[214, 10]] } } }
+          { "_index": 36, "t": { "4": { "position": [[214, 10]] } } }
         ],
         [
           "folder",
           {
-            "_index": 139,
+            "_index": 27,
             "t": {
-              "17": {
+              "4": {
                 "position": [
                   [91, 8],
                   [296, 6]
@@ -1034,7 +1017,7 @@
             "_index": 12,
             "t": {
               "2": { "position": [[101, 5]] },
-              "7": {
+              "6": {
                 "position": [
                   [221, 5],
                   [400, 5],
@@ -1060,9 +1043,9 @@
         [
           "hash",
           {
-            "_index": 84,
+            "_index": 111,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [468, 6],
                   [506, 6],
@@ -1075,27 +1058,27 @@
         ],
         [
           "highlight",
-          { "_index": 112, "t": { "15": { "position": [[1035, 9]] } } }
+          { "_index": 137, "t": { "17": { "position": [[1035, 9]] } } }
         ],
         [
           "highlightsearchtermsontargetpag",
-          { "_index": 111, "t": { "15": { "position": [[988, 32]] } } }
+          { "_index": 136, "t": { "17": { "position": [[988, 32]] } } }
         ],
         [
           "ignor",
-          { "_index": 136, "t": { "15": { "position": [[1392, 6]] } } }
+          { "_index": 161, "t": { "17": { "position": [[1392, 6]] } } }
         ],
         [
           "ignorefil",
-          { "_index": 131, "t": { "15": { "position": [[1310, 11]] } } }
+          { "_index": 156, "t": { "17": { "position": [[1310, 11]] } } }
         ],
-        ["imag", { "_index": 156, "t": { "17": { "position": [[344, 7]] } } }],
+        ["imag", { "_index": 46, "t": { "4": { "position": [[344, 7]] } } }],
         [
           "index",
           {
-            "_index": 66,
+            "_index": 94,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [64, 5],
                   [110, 5],
@@ -1110,20 +1093,20 @@
         ],
         [
           "indexblog",
-          { "_index": 68, "t": { "15": { "position": [[76, 9]] } } }
+          { "_index": 96, "t": { "17": { "position": [[76, 9]] } } }
         ],
         [
           "indexdoc",
-          { "_index": 62, "t": { "15": { "position": [[30, 9]] } } }
+          { "_index": 90, "t": { "17": { "position": [[30, 9]] } } }
         ],
         [
           "indexpag",
-          { "_index": 69, "t": { "15": { "position": [[122, 10]] } } }
+          { "_index": 97, "t": { "17": { "position": [[122, 10]] } } }
         ],
-        ["instal", { "_index": 51, "t": { "11": { "position": [[5, 7]] } } }],
+        ["instal", { "_index": 80, "t": { "13": { "position": [[5, 7]] } } }],
         [
           "interact",
-          { "_index": 31, "t": { "4": { "position": [[99, 11]] } } }
+          { "_index": 70, "t": { "8": { "position": [[99, 11]] } } }
         ],
         [
           "ipsum",
@@ -1137,7 +1120,7 @@
                   [158, 5]
                 ]
               },
-              "7": {
+              "6": {
                 "position": [
                   [126, 5],
                   [235, 5],
@@ -1192,14 +1175,14 @@
             }
           }
         ],
-        ["it'", { "_index": 94, "t": { "15": { "position": [[701, 4]] } } }],
-        ["keep", { "_index": 104, "t": { "15": { "position": [[897, 4]] } } }],
+        ["it'", { "_index": 120, "t": { "17": { "position": [[701, 4]] } } }],
+        ["keep", { "_index": 129, "t": { "17": { "position": [[897, 4]] } } }],
         [
           "languag",
           {
-            "_index": 80,
+            "_index": 107,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [387, 8],
                   [428, 9],
@@ -1211,31 +1194,31 @@
         ],
         [
           "length",
-          { "_index": 123, "t": { "15": { "position": [[1179, 6]] } } }
+          { "_index": 148, "t": { "17": { "position": [[1179, 6]] } } }
         ],
         [
           "limit",
           {
-            "_index": 45,
+            "_index": 62,
             "t": {
-              "7": { "position": [[81, 5]] },
-              "15": { "position": [[1102, 5]] }
+              "6": { "position": [[81, 5]] },
+              "17": { "position": [[1102, 5]] }
             }
           }
         ],
-        ["list", { "_index": 47, "t": { "7": { "position": [[109, 4]] } } }],
+        ["list", { "_index": 64, "t": { "6": { "position": [[109, 4]] } } }],
         [
           "local",
           {
-            "_index": 54,
+            "_index": 82,
             "t": {
-              "11": { "position": [[38, 5]] },
-              "13": { "position": [[78, 8]] }
+              "13": { "position": [[38, 5]] },
+              "15": { "position": [[78, 8]] }
             }
           }
         ],
-        ["locat", { "_index": 155, "t": { "17": { "position": [[327, 6]] } } }],
-        ["long", { "_index": 42, "t": { "7": { "position": [[30, 4]] } } }],
+        ["locat", { "_index": 45, "t": { "4": { "position": [[327, 6]] } } }],
+        ["long", { "_index": 58, "t": { "6": { "position": [[30, 4]] } } }],
         [
           "lorem",
           {
@@ -1247,7 +1230,7 @@
                   [152, 5]
                 ]
               },
-              "7": {
+              "6": {
                 "position": [
                   [120, 5],
                   [272, 5],
@@ -1286,37 +1269,37 @@
             }
           }
         ],
-        ["lunr", { "_index": 82, "t": { "15": { "position": [[423, 4]] } } }],
+        ["lunr", { "_index": 109, "t": { "17": { "position": [[423, 4]] } } }],
         [
           "markdown",
           {
-            "_index": 22,
+            "_index": 25,
             "t": {
-              "4": { "position": [[30, 8]] },
-              "17": { "position": [[72, 8]] }
+              "4": { "position": [[72, 8]] },
+              "8": { "position": [[30, 8]] }
             }
           }
         ],
         [
           "match",
-          { "_index": 134, "t": { "15": { "position": [[1377, 5]] } } }
+          { "_index": 159, "t": { "17": { "position": [[1377, 5]] } } }
         ],
-        ["max", { "_index": 122, "t": { "15": { "position": [[1175, 3]] } } }],
-        ["mayb", { "_index": 108, "t": { "15": { "position": [[948, 5]] } } }],
-        ["md", { "_index": 89, "t": { "15": { "position": [[581, 4]] } } }],
-        ["mdx", { "_index": 25, "t": { "4": { "position": [[57, 4]] } } }],
+        ["max", { "_index": 147, "t": { "17": { "position": [[1175, 3]] } } }],
+        ["mayb", { "_index": 133, "t": { "17": { "position": [[948, 5]] } } }],
+        ["md", { "_index": 115, "t": { "17": { "position": [[581, 4]] } } }],
+        ["mdx", { "_index": 66, "t": { "8": { "position": [[57, 4]] } } }],
         [
           "me!</button",
-          { "_index": 37, "t": { "4": { "position": [[178, 12]] } } }
+          { "_index": 75, "t": { "8": { "position": [[178, 12]] } } }
         ],
-        ["meta", { "_index": 133, "t": { "15": { "position": [[1360, 8]] } } }],
-        ["name", { "_index": 58, "t": { "15": { "position": [[0, 4]] } } }],
+        ["meta", { "_index": 158, "t": { "17": { "position": [[1360, 8]] } } }],
+        ["name", { "_index": 86, "t": { "17": { "position": [[0, 4]] } } }],
         [
           "number",
           {
-            "_index": 116,
+            "_index": 141,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [1093, 6],
                   [1157, 6]
@@ -1327,16 +1310,16 @@
         ],
         [
           "onclick",
-          { "_index": 33, "t": { "4": { "position": [[131, 11]] } } }
+          { "_index": 72, "t": { "8": { "position": [[131, 11]] } } }
         ],
-        ["option", { "_index": 57, "t": { "13": { "position": [[89, 10]] } } }],
+        ["option", { "_index": 85, "t": { "15": { "position": [[89, 10]] } } }],
         [
           "page",
           {
-            "_index": 49,
+            "_index": 78,
             "t": {
-              "9": { "position": [[8, 4]] },
-              "15": {
+              "11": { "position": [[8, 4]] },
+              "17": {
                 "position": [
                   [164, 6],
                   [1068, 5]
@@ -1348,9 +1331,9 @@
         [
           "path(",
           {
-            "_index": 75,
+            "_index": 102,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [226, 7],
                   [334, 7]
@@ -1365,7 +1348,7 @@
             "_index": 8,
             "t": {
               "2": { "position": [[57, 12]] },
-              "7": {
+              "6": {
                 "position": [
                   [177, 12],
                   [356, 12],
@@ -1388,46 +1371,46 @@
             }
           }
         ],
-        ["peopl", { "_index": 101, "t": { "15": { "position": [[871, 6]] } } }],
+        ["peopl", { "_index": 127, "t": { "17": { "position": [[871, 6]] } } }],
         [
           "plugin",
           {
-            "_index": 52,
+            "_index": 22,
             "t": {
-              "11": { "position": [[24, 6]] },
-              "13": {
+              "4": { "position": [[53, 7]] },
+              "13": { "position": [[24, 6]] },
+              "15": {
                 "position": [
                   [23, 8],
                   [64, 6]
                 ]
               },
-              "15": { "position": [[1286, 7]] },
-              "17": { "position": [[53, 7]] }
+              "17": { "position": [[1286, 7]] }
             }
           }
         ],
         [
           "post",
           {
-            "_index": 19,
+            "_index": 33,
             "t": {
               "4": {
                 "position": [
-                  [5, 5],
-                  [116, 6]
+                  [182, 4],
+                  [291, 4],
+                  [339, 4]
                 ]
               },
-              "7": {
+              "6": {
                 "position": [
                   [40, 5],
                   [92, 4]
                 ]
               },
-              "17": {
+              "8": {
                 "position": [
-                  [182, 4],
-                  [291, 4],
-                  [339, 4]
+                  [5, 5],
+                  [116, 6]
                 ]
               }
             }
@@ -1436,29 +1419,29 @@
         [
           "power",
           {
-            "_index": 28,
+            "_index": 21,
             "t": {
-              "4": { "position": [[74, 5]] },
-              "17": { "position": [[33, 7]] }
+              "4": { "position": [[33, 7]] },
+              "8": { "position": [[74, 5]] }
             }
           }
         ],
         [
           "program",
-          { "_index": 110, "t": { "15": { "position": [[970, 11]] } } }
+          { "_index": 135, "t": { "17": { "position": [[970, 11]] } } }
         ],
         [
           "project",
-          { "_index": 97, "t": { "15": { "position": [[734, 8]] } } }
+          { "_index": 123, "t": { "17": { "position": [[734, 8]] } } }
         ],
-        ["queri", { "_index": 86, "t": { "15": { "position": [[513, 5]] } } }],
-        ["react", { "_index": 29, "t": { "4": { "position": [[83, 5]] } } }],
+        ["queri", { "_index": 112, "t": { "17": { "position": [[513, 5]] } } }],
+        ["react", { "_index": 68, "t": { "8": { "position": [[83, 5]] } } }],
         [
           "regexp",
           {
-            "_index": 132,
+            "_index": 157,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [1331, 6],
                   [1350, 9]
@@ -1467,22 +1450,19 @@
             }
           }
         ],
-        [
-          "regular",
-          { "_index": 141, "t": { "17": { "position": [[123, 7]] } } }
-        ],
-        ["rel", { "_index": 95, "t": { "15": { "position": [[706, 8]] } } }],
-        ["relev", { "_index": 109, "t": { "15": { "position": [[958, 8]] } } }],
+        ["regular", { "_index": 29, "t": { "4": { "position": [[123, 7]] } } }],
+        ["rel", { "_index": 121, "t": { "17": { "position": [[706, 8]] } } }],
+        ["relev", { "_index": 134, "t": { "17": { "position": [[958, 8]] } } }],
         [
           "removedefaultstopwordfilt",
-          { "_index": 99, "t": { "15": { "position": [[819, 27]] } } }
+          { "_index": 125, "t": { "17": { "position": [[819, 27]] } } }
         ],
         [
           "requir",
           {
-            "_index": 78,
+            "_index": 105,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [269, 9],
                   [377, 9]
@@ -1493,14 +1473,14 @@
         ],
         [
           "require.resolve(\"docusauru",
-          { "_index": 56, "t": { "13": { "position": [[36, 27]] } } }
+          { "_index": 84, "t": { "15": { "position": [[36, 27]] } } }
         ],
         [
           "result",
           {
-            "_index": 118,
+            "_index": 143,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [1119, 8],
                   [1215, 6]
@@ -1515,7 +1495,7 @@
             "_index": 13,
             "t": {
               "2": { "position": [[107, 7]] },
-              "7": {
+              "6": {
                 "position": [
                   [227, 7],
                   [406, 7],
@@ -1541,9 +1521,9 @@
         [
           "rout",
           {
-            "_index": 74,
+            "_index": 101,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [220, 5],
                   [328, 5]
@@ -1552,15 +1532,15 @@
             }
           }
         ],
-        ["rule", { "_index": 135, "t": { "15": { "position": [[1383, 5]] } } }],
+        ["rule", { "_index": 160, "t": { "17": { "position": [[1383, 5]] } } }],
         [
           "search",
           {
-            "_index": 53,
+            "_index": 81,
             "t": {
-              "11": { "position": [[31, 6]] },
-              "13": { "position": [[71, 6]] },
-              "15": {
+              "13": { "position": [[31, 6]] },
+              "15": { "position": [[71, 6]] },
+              "17": {
                 "position": [
                   [1045, 6],
                   [1112, 6],
@@ -1572,19 +1552,19 @@
         ],
         [
           "searchresultcontextmaxlength",
-          { "_index": 119, "t": { "15": { "position": [[1128, 28]] } } }
+          { "_index": 144, "t": { "17": { "position": [[1128, 28]] } } }
         ],
         [
           "searchresultlimit",
-          { "_index": 115, "t": { "15": { "position": [[1074, 18]] } } }
+          { "_index": 140, "t": { "17": { "position": [[1074, 18]] } } }
         ],
-        ["see", { "_index": 129, "t": { "15": { "position": [[1294, 3]] } } }],
+        ["see", { "_index": 154, "t": { "17": { "position": [[1294, 3]] } } }],
         [
           "set",
           {
-            "_index": 121,
+            "_index": 146,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [1167, 3],
                   [1261, 3],
@@ -1594,8 +1574,8 @@
             }
           }
         ],
-        ["show", { "_index": 126, "t": { "15": { "position": [[1225, 5]] } } }],
-        ["simpli", { "_index": 138, "t": { "17": { "position": [[61, 6]] } } }],
+        ["show", { "_index": 151, "t": { "17": { "position": [[1225, 5]] } } }],
+        ["simpli", { "_index": 23, "t": { "4": { "position": [[61, 6]] } } }],
         [
           "sit",
           {
@@ -1607,7 +1587,7 @@
                   [170, 3]
                 ]
               },
-              "7": {
+              "6": {
                 "position": [
                   [138, 3],
                   [290, 3],
@@ -1646,13 +1626,13 @@
             }
           }
         ],
-        ["size", { "_index": 46, "t": { "7": { "position": [[97, 4]] } } }],
+        ["size", { "_index": 63, "t": { "6": { "position": [[97, 4]] } } }],
         [
           "slash",
           {
-            "_index": 76,
+            "_index": 103,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [243, 5],
                   [351, 5]
@@ -1663,15 +1643,15 @@
         ],
         [
           "sometim",
-          { "_index": 100, "t": { "15": { "position": [[861, 9]] } } }
+          { "_index": 126, "t": { "17": { "position": [[861, 9]] } } }
         ],
-        ["stop", { "_index": 106, "t": { "15": { "position": [[914, 4]] } } }],
+        ["stop", { "_index": 131, "t": { "17": { "position": [[914, 4]] } } }],
         [
           "string",
           {
-            "_index": 72,
+            "_index": 99,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [189, 6],
                   [198, 8],
@@ -1693,29 +1673,29 @@
         [
           "such",
           {
-            "_index": 24,
+            "_index": 37,
             "t": {
-              "4": { "position": [[49, 4]] },
-              "17": { "position": [[225, 4]] }
+              "4": { "position": [[225, 4]] },
+              "8": { "position": [[49, 4]] }
             }
           }
         ],
-        ["summari", { "_index": 40, "t": { "7": { "position": [[12, 7]] } } }],
+        ["summari", { "_index": 56, "t": { "6": { "position": [[12, 7]] } } }],
         [
           "support",
           {
-            "_index": 20,
+            "_index": 47,
             "t": {
-              "4": { "position": [[11, 7]] },
-              "15": { "position": [[438, 9]] },
-              "17": { "position": [[361, 8]] }
+              "4": { "position": [[361, 8]] },
+              "8": { "position": [[11, 7]] },
+              "17": { "position": [[438, 9]] }
             }
           }
         ],
-        ["tag", { "_index": 157, "t": { "17": { "position": [[370, 4]] } } }],
+        ["tag", { "_index": 48, "t": { "4": { "position": [[370, 4]] } } }],
         [
           "target",
-          { "_index": 114, "t": { "15": { "position": [[1061, 6]] } } }
+          { "_index": 139, "t": { "17": { "position": [[1061, 6]] } } }
         ],
         [
           "tempor",
@@ -1723,7 +1703,7 @@
             "_index": 14,
             "t": {
               "2": { "position": [[121, 6]] },
-              "7": {
+              "6": {
                 "position": [
                   [241, 6],
                   [420, 6],
@@ -1746,14 +1726,14 @@
             }
           }
         ],
-        ["term", { "_index": 113, "t": { "15": { "position": [[1052, 5]] } } }],
-        ["tip", { "_index": 26, "t": { "4": { "position": [[62, 3]] } } }],
+        ["term", { "_index": 138, "t": { "17": { "position": [[1052, 5]] } } }],
+        ["tip", { "_index": 67, "t": { "8": { "position": [[62, 3]] } } }],
         [
           "translat",
           {
-            "_index": 127,
+            "_index": 152,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [1231, 12],
                   [1265, 12]
@@ -1764,14 +1744,14 @@
         ],
         [
           "translationmap",
-          { "_index": 128, "t": { "15": { "position": [[1244, 14]] } } }
+          { "_index": 153, "t": { "17": { "position": [[1244, 14]] } } }
         ],
         [
           "true",
           {
-            "_index": 64,
+            "_index": 92,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [48, 4],
                   [94, 4]
@@ -1780,15 +1760,15 @@
             }
           }
         ],
-        ["truncat", { "_index": 43, "t": { "7": { "position": [[57, 8]] } } }],
-        ["type", { "_index": 59, "t": { "15": { "position": [[5, 4]] } } }],
+        ["truncat", { "_index": 60, "t": { "6": { "position": [[57, 8]] } } }],
+        ["type", { "_index": 87, "t": { "17": { "position": [[5, 4]] } } }],
         [
           "ultrici",
           {
             "_index": 11,
             "t": {
               "2": { "position": [[90, 10]] },
-              "7": {
+              "6": {
                 "position": [
                   [210, 10],
                   [389, 10],
@@ -1814,41 +1794,41 @@
         [
           "us",
           {
-            "_index": 27,
+            "_index": 53,
             "t": {
-              "4": { "position": [[66, 3]] },
-              "7": { "position": [[46, 3]] },
-              "17": { "position": [[446, 3]] }
+              "4": { "position": [[446, 3]] },
+              "6": { "position": [[46, 3]] },
+              "8": { "position": [[66, 3]] }
             }
           }
         ],
-        ["veri", { "_index": 41, "t": { "7": { "position": [[25, 4]] } } }],
-        ["view", { "_index": 48, "t": { "7": { "position": [[114, 5]] } } }],
+        ["veri", { "_index": 57, "t": { "6": { "position": [[25, 4]] } } }],
+        ["view", { "_index": 65, "t": { "6": { "position": [[114, 5]] } } }],
         [
           "want",
           {
-            "_index": 103,
+            "_index": 51,
             "t": {
-              "15": { "position": [[889, 4]] },
-              "17": { "position": [[401, 4]] }
+              "4": { "position": [[401, 4]] },
+              "17": { "position": [[889, 4]] }
             }
           }
         ],
         [
           "welcome.md",
-          { "_index": 151, "t": { "17": { "position": [[245, 10]] } } }
+          { "_index": 41, "t": { "4": { "position": [[245, 10]] } } }
         ],
         [
           "welcome/index.md",
-          { "_index": 152, "t": { "17": { "position": [[267, 16]] } } }
+          { "_index": 42, "t": { "4": { "position": [[267, 16]] } } }
         ],
-        ["well", { "_index": 158, "t": { "17": { "position": [[378, 5]] } } }],
+        ["well", { "_index": 49, "t": { "4": { "position": [[378, 5]] } } }],
         [
           "whether",
           {
-            "_index": 65,
+            "_index": 93,
             "t": {
-              "15": {
+              "17": {
                 "position": [
                   [53, 7],
                   [99, 7],
@@ -1859,9 +1839,9 @@
             }
           }
         ],
-        ["word", { "_index": 107, "t": { "15": { "position": [[919, 5]] } } }],
-        ["yarn", { "_index": 50, "t": { "11": { "position": [[0, 4]] } } }],
-        ["zh", { "_index": 83, "t": { "15": { "position": [[461, 2]] } } }]
+        ["word", { "_index": 132, "t": { "17": { "position": [[919, 5]] } } }],
+        ["yarn", { "_index": 79, "t": { "13": { "position": [[0, 4]] } } }],
+        ["zh", { "_index": 110, "t": { "17": { "position": [[461, 2]] } } }]
       ],
       "pipeline": ["stemmer"]
     }
