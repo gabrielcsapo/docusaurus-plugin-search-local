@@ -1,13 +1,5 @@
-import nodejieba from "nodejieba";
 import { MatchMetadata } from "../../types";
 import { tokenizer } from "./tokenizer";
-
-jest.mock("nodejieba");
-(nodejieba.cut as jest.MockedFunction<typeof nodejieba.cut>).mockImplementation(
-  (input) => {
-    return [input.substr(0, 2), input.substr(2)];
-  }
-);
 
 describe("tokenizer", () => {
   test.each<[string | string[] | null | undefined, MatchMetadata, any[]]>([
@@ -27,7 +19,7 @@ describe("tokenizer", () => {
       ],
     ],
     [
-      "api_gateway: 很好用。Good.",
+      "api_gateway: Good.",
       {},
       [
         {
@@ -54,30 +46,13 @@ describe("tokenizer", () => {
         {
           metadata: {
             index: 3,
-            position: [13, 2],
-          },
-          str: "很好",
-        },
-        {
-          metadata: {
-            index: 4,
-            position: [15, 1],
-          },
-          str: "用",
-        },
-        {
-          metadata: {
-            index: 5,
-            position: [17, 4],
+            position: [13, 4],
           },
           str: "good",
         },
       ],
     ],
-  ])(
-    "tokenizer('%s', zhDictionary) should return %j",
-    (input, metadata, tokens) => {
-      expect(tokenizer(input, metadata)).toEqual(tokens);
-    }
-  );
+  ])("tokenizer('%s') should return %j", (input, metadata, tokens) => {
+    expect(tokenizer(input, metadata)).toEqual(tokens);
+  });
 });
