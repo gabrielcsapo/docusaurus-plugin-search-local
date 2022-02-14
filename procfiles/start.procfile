@@ -1,0 +1,2 @@
+client: tsc --watch --preserveWatchOutput --project tsconfig.client.json
+server: tsc --watch --preserveWatchOutput --project tsconfig.server.json
