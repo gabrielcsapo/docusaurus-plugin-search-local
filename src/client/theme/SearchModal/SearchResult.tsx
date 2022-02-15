@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import { useHistory } from "@docusaurus/router";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import Mark from "mark.js";
@@ -18,7 +18,7 @@ import {
   IconTreeLast,
 } from "./icons";
 
-import styles from "./SuggestionTemplate.module.css";
+import styles from "./SearchResult.module.css";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 
@@ -26,21 +26,21 @@ interface SuggestionTemplateProps {
   searchResult: SearchResult;
   isSelected: boolean;
   isHovered: boolean;
-  setSelected: Dispatch<
-    SetStateAction<SetStateAction<SearchResult | undefined>>
-  >;
-  setHovered: Dispatch<SetStateAction<SearchResult | undefined>>;
+  setSelected: (searchResult: SearchResult | undefined) => void;
+  setHovered: (searchResult: SearchResult | undefined) => void;
   onClick: () => void;
 }
 
-export default function SuggestionTemplate({
-  searchResult,
-  isSelected,
-  isHovered,
-  setSelected,
-  setHovered,
-  onClick,
-}: SuggestionTemplateProps): React.ReactElement {
+const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
+  const {
+    searchResult,
+    isSelected,
+    isHovered,
+    setSelected,
+    setHovered,
+    onClick,
+  } = props;
+
   const {
     document,
     type,
@@ -143,4 +143,6 @@ export default function SuggestionTemplate({
       </span>
     </div>
   );
-}
+};
+
+export default SearchResult;

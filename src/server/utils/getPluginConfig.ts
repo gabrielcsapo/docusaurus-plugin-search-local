@@ -15,6 +15,7 @@ export function getPluginConfig(
     blogRouteBasePath,
     docsDir,
     docsRouteBasePath,
+    externalSearchSources,
     hashed,
     highlightSearchTermsOnTargetPage,
     id,
@@ -29,12 +30,13 @@ export function getPluginConfig(
   } = options;
 
   const config: PluginConfig = {
+    externalSearchSources,
+    hashed,
+    highlightSearchTermsOnTargetPage,
     id,
     indexBlog,
     indexDocs,
     indexPages,
-    hashed,
-    highlightSearchTermsOnTargetPage,
     removeDefaultStopWordFilter,
     searchResultContextMaxLength,
     searchResultLimits,
@@ -47,7 +49,7 @@ export function getPluginConfig(
     docsRouteBasePath: getArrayOption(docsRouteBasePath).map((basePath) =>
       basePath.replace(/^\//, "")
     ),
-    externalSearchSources: [], // TODO: this is likely going to fail tests.
+
     ignoreFiles: getArrayOption(ignoreFiles),
   };
 

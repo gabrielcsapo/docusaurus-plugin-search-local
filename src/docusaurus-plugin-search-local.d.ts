@@ -1,3 +1,8 @@
+export type ExternalSourceConfig = {
+  heading: string;
+  uri: string;
+};
+
 export type TranslationMap = {
   search_placeholder: string;
   see_all_results: string;
@@ -10,7 +15,7 @@ export type TranslationMap = {
 };
 
 export type GlobalPluginData = {
-  externalSearchSources: string[];
+  externalSearchSources: ExternalSourceConfig[];
   indexHash: string | null;
   removeDefaultStopWordFilter: boolean;
   searchResultContextMaxLength: number;
@@ -23,7 +28,7 @@ export type PluginOptions = {
   blogRouteBasePath: string | string[];
   docsDir: string | string[];
   docsRouteBasePath: string | string[];
-  externalSearchSources: string[];
+  externalSearchSources: ExternalSourceConfig[];
   hashed: boolean;
   highlightSearchTermsOnTargetPage: boolean;
   id: string;

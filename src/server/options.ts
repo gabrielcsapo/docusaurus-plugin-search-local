@@ -101,7 +101,12 @@ export const OptionsSchema = Joi.object<PluginOptions>({
     .default()
     .unknown(false),
   externalSearchSources: Joi.array()
-    .items(Joi.string())
+    .items(
+      Joi.object({
+        heading: Joi.string(),
+        uri: Joi.string(),
+      })
+    )
     .default(DEFAULT_OPTIONS.externalSearchSources),
 });
 

@@ -4,7 +4,7 @@
     "declarationMap": false,
     "esModuleInterop": true,
     "importHelpers": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -15,6 +15,7 @@
     "outDir": "./dist"
   },
   "exclude": [
+    "./dist",
     "**/__fixtures__/**/*",
     "**/__mocks__/**/*",
     "**/__tests__/**/*",

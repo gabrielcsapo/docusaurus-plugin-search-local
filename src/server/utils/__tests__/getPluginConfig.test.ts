@@ -1,4 +1,5 @@
 import { normalizePluginOptions } from "@docusaurus/utils-validation";
+import { ExternalSourceConfig } from "docusaurus-plugin-search-local";
 import { getPluginConfig } from "../getPluginConfig";
 import { OptionsSchema } from "../../options";
 
@@ -44,5 +45,19 @@ describe("getPluginConfig", () => {
       getPluginConfig(normalizePluginOptions(OptionsSchema, {}), siteDir)
         .externalSearchSources
     ).toStrictEqual([]);
+
+    const externalSource: ExternalSourceConfig = {
+      heading: "Example Source",
+      uri: "http://www.example.com",
+    };
+
+    expect(
+      getPluginConfig(
+        normalizePluginOptions(OptionsSchema, {
+          externalSearchSources: [externalSource],
+        }),
+        siteDir
+      ).externalSearchSources
+    ).toStrictEqual([externalSource]);
   });
 });

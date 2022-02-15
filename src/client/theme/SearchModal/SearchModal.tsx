@@ -4,15 +4,33 @@ import React, { useEffect, useState, useRef, RefObject } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from "@docusaurus/useGlobalData";
 
+import {
+  ExternalSourceConfig,
+  GlobalPluginData,
+} from "docusaurus-plugin-search-local";
 import { fetchIndexes } from "../../utils/fetchIndexes";
 import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
 import { SearchResult } from "../../../types";
 import LoadingRing from "../LoadingRing/LoadingRing";
 import { IconSearch } from "./icons";
-import { simpleTemplate } from "../../utils/simpleTemplate";
-import SuggestionTemplate from "./SuggestionTemplate";
+import SearchResultList from "./SearchResultList";
+import SearchResultsSection from "./SearchResultsSection";
+
 import styles from "./SearchModal.module.css";
-import { GlobalPluginData } from "../../../docusaurus-plugin-search-local";
+
+// TODO: this needs to be defined in our types file since it should also be used by our search factory.
+type SearchSourceFn = (
+  input: string,
+  callback: (results: SearchResult[]) => void
+) => void;
+
+type ExternalSearchResults = ExternalSourceConfig & {
+  results: SearchResult[];
+};
+
+type ExternalSearchSource = ExternalSourceConfig & {
+  search: SearchSourceFn;
+};
 
 interface SearchModalProps {
   onClose: () => void;
@@ -49,34 +67,39 @@ const useKeyPress = function (
   return keyPressed;
 };
 
-export default function SearchModal({
+const SearchModal: React.FC<SearchModalProps> = ({
   onClose,
-}: SearchModalProps): React.ReactElement {
+}: SearchModalProps) => {
   const {
-    siteConfig: { baseUrl },
+    siteConfig: { baseUrl, title },
   } = useDocusaurusContext();
   const {
     indexHash,
     removeDefaultStopWordFilter,
     searchResultLimits,
     translations,
+    externalSearchSources: externalSourceConfigs,
   } = usePluginData<GlobalPluginData>("docusaurus-plugin-search-local");
   const [searchQuery, setSearchQuery] = useState("");
   const searchModal = useRef(null);
   const searchInput = useRef(null);
-  const [searchSource, setSearchSource] =
-    useState<
-      (input: string, callback: (results: SearchResult[]) => void) => void
-    >();
-  const [searchResults, setSearchResults] = useState<SearchResult[]>();
-
-  const [selected, setSelected] =
-    useState<React.SetStateAction<SearchResult | undefined>>(undefined);
+  const [searchSource, setSearchSource] = useState<SearchSourceFn>();
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [selected, setSelected] = useState<SearchResult | undefined>(undefined);
   const downPress = useKeyPress("ArrowDown", searchInput);
   const upPress = useKeyPress("ArrowUp", searchInput);
   const enterPress = useKeyPress("Enter", searchInput);
   const [cursor, setCursor] = useState<number>(0);
   const [hovered, setHovered] = useState<SearchResult | undefined>(undefined);
+
+  // External Search Source Data
+  const [externalSearchSources, setExternalSearchSources] = useState<
+    ExternalSearchSource[]
+  >([]);
+
+  const [externalSearchResults, setExternalSearchResults] = useState<
+    ExternalSearchResults[]
+  >([]);
 
   useEffect(() => {
     if (searchResults?.length && downPress) {
@@ -108,7 +131,7 @@ export default function SearchModal({
           setSearchResults(results);
         });
       } else {
-        setSearchResults(undefined);
+        setSearchResults([]);
       }
     }
 
@@ -140,6 +163,72 @@ export default function SearchModal({
     }
     doFetchIndexes();
   }, [baseUrl]);
+
+  useEffect(() => {
+    async function fetchExternalSources() {
+      const _externalSearchSources: ExternalSearchSource[] = [];
+
+      externalSourceConfigs.forEach(async (externalSourceConfig) => {
+        try {
+          const { wrappedIndexes } = await fetchIndexes(
+            externalSourceConfig.uri
+          );
+
+          _externalSearchSources.push({
+            ...externalSourceConfig,
+            search: SearchSourceFactory({
+              wrappedIndexes,
+              removeDefaultStopWordFilter,
+              resultsLimit: searchResultLimits,
+              onResults: (query, results) => {
+                // TODO: needs to be abstracted to be able to handle any site analytics
+                if (typeof _paq !== "undefined" && _paq && _paq?.push) {
+                  _paq.push([
+                    "trackSiteSearch",
+                    query, // Search keyword searched for
+                    false, // Search category selected in your search engine. If you do not need this, set to false
+                    results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
+                  ]);
+                }
+              },
+            }),
+          });
+        } catch {
+          console.warn(
+            `Unable to fetch search index for ${externalSourceConfig.heading} from: ${externalSourceConfig.uri}`
+          );
+        }
+      });
+
+      setExternalSearchSources(_externalSearchSources);
+    }
+
+    fetchExternalSources();
+  }, [externalSourceConfigs, removeDefaultStopWordFilter, searchResultLimits]);
+
+  useEffect(() => {
+    if (searchQuery === "") {
+      setExternalSearchResults([]);
+      return;
+    }
+
+    const _externalSearchResults: ExternalSearchResults[] = [];
+
+    externalSearchSources.forEach((externalSearchSource) => {
+      externalSearchSource.search(searchQuery, (results) => {
+        // Only add external search results if we found a result in its index.
+        if (results.length > 0) {
+          _externalSearchResults.push({
+            results,
+            heading: externalSearchSource.heading,
+            uri: externalSearchSource.uri,
+          });
+        }
+      });
+    });
+
+    setExternalSearchResults(_externalSearchResults);
+  }, [searchQuery, externalSearchSources]);
 
   return (
     <div
@@ -202,37 +291,38 @@ export default function SearchModal({
             ""
           )}
 
-          <section className={styles.searchResultsContainer}>
-            {searchResults && searchResults?.length > 0 ? (
-              <>
-                <p>
-                  {simpleTemplate(
-                    searchResults?.length === 1
-                      ? translations.count_documents_found
-                      : translations.count_documents_found_plural,
-                    {
-                      count: searchResults?.length,
-                    }
-                  )}
-                </p>
-                {searchResults.map((item, i: number) => (
-                  <SuggestionTemplate
-                    key={item.document.i}
-                    searchResult={item}
-                    isSelected={selected === item}
-                    isHovered={cursor === i}
-                    setSelected={setSelected}
-                    setHovered={setHovered}
-                    onClick={onClose}
-                  />
-                ))}
-              </>
-            ) : (
-              ""
-            )}
-          </section>
+          {/* TODO: limit the number of results shown here and add a "see all" button at the bottom of the page. */}
+          <SearchResultsSection heading={title}>
+            {/* TODO: move empty search results message into here. */}
+            <SearchResultList
+              results={searchResults}
+              currentSelection={selected}
+              cursor={cursor}
+              onSearchResultClick={onClose}
+              setHovered={setHovered}
+              setSelected={setSelected}
+            />
+          </SearchResultsSection>
+
+          {externalSearchResults.map((esr, idx) => {
+            return (
+              <SearchResultsSection key={idx} heading={esr.heading}>
+                {/* TODO: move empty search results message into here. */}
+                <SearchResultList
+                  results={searchResults}
+                  currentSelection={selected}
+                  cursor={cursor}
+                  onSearchResultClick={onClose}
+                  setHovered={setHovered}
+                  setSelected={setSelected}
+                />
+              </SearchResultsSection>
+            );
+          })}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default SearchModal;
