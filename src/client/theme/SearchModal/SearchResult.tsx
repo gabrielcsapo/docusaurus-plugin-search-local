@@ -19,6 +19,7 @@ import {
 } from "./icons";
 
 import styles from "./SearchResult.module.css";
+import { getExternalURI } from "../../utils/getExternalURI";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 
@@ -36,14 +37,9 @@ function handleExternalSearchClick(
   doc: SearchDocument,
   externalUriBase: string
 ) {
-  const { u: docRoute } = doc;
+  const externalURI = getExternalURI(doc, externalUriBase);
 
-  // TODO: use the doc's "u" field and the uri provided to combine for external url
-
-  console.debug({
-    docRoute,
-    externalUriBase,
-  });
+  console.debug(externalURI);
 }
 
 const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
