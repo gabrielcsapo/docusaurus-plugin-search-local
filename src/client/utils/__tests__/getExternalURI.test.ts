@@ -14,13 +14,13 @@ describe("getExternalURI", () => {
   };
 
   test("it should build an external URI for basic use case", () => {
-    expect(getExternalURI(DEFAULT_DOC, "")).toBe("/");
+    expect(getExternalURI(DEFAULT_DOC, "/")).toBe("/");
   });
 
   test("it should work with an actual doc URL", () => {
     const doc: SearchDocument = { ...DEFAULT_DOC, u: "/some-rando/location" };
 
-    expect(getExternalURI(doc, "")).toBe(doc.u);
+    expect(getExternalURI(doc, "/")).toBe(doc.u);
   });
 
   test("it should build an external URI when a base URI is provided", () => {
