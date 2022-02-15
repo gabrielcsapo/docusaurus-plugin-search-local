@@ -1,6 +1,6 @@
 import React from "react";
-import Mark from "mark.js";
 import clsx from "clsx";
+import { sanitizeUrl } from "@braintree/sanitize-url";
 import { useHistory } from "@docusaurus/router";
 import { usePluginData } from "@docusaurus/useGlobalData";
 
@@ -33,13 +33,30 @@ interface SuggestionTemplateProps {
   onClick: () => void;
 }
 
+function buildDestinationQueryParams(tokens: string[]): string {
+  if (tokens.length === 0) {
+    return "";
+  }
+
+  const params = new URLSearchParams();
+
+  tokens.forEach((token) => {
+    params.append(SEARCH_PARAM_HIGHLIGHT, token);
+  });
+
+  return params.toString();
+}
+
 function handleExternalSearchClick(
   doc: SearchDocument,
+  tokens: string[],
   externalUriBase: string
 ) {
-  const externalURI = getExternalURI(doc, externalUriBase);
+  const queryParams = buildDestinationQueryParams(tokens);
+  const externalURI = `${getExternalURI(doc, externalUriBase)}?${queryParams}`;
+  const uri = sanitizeUrl(externalURI);
 
-  console.debug(externalURI);
+  console.debug(uri);
 }
 
 const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
@@ -72,19 +89,15 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
 
   const _onClick = () => {
     if (searchSource.length) {
-      handleExternalSearchClick(document, searchSource);
+      handleExternalSearchClick(document, tokens, searchSource);
       return;
     }
 
     const { u, h } = document;
 
-    let url = u;
-    if (Mark && tokens.length > 0) {
-      const params = new URLSearchParams();
-      for (const token of tokens) {
-        params.append(SEARCH_PARAM_HIGHLIGHT, token);
-      }
-      url += `?${params.toString()}`;
+    let url = sanitizeUrl(u);
+    if (tokens.length > 0) {
+      url += `?${buildDestinationQueryParams(tokens)}`;
     }
     if (h) {
       url += h;
