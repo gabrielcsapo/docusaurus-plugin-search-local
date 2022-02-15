@@ -1,5 +1,6 @@
-import { GlobalPluginData } from "docusaurus-plugin-search-local";
-import { PluginConfig } from "../../types";
+import type { GlobalPluginData } from "docusaurus-plugin-search-local";
+import type { PluginConfig } from "../../types";
+import { getIndexHash } from "./getIndexHash";
 
 export function getGlobalPluginData(
   pluginConfig: PluginConfig
@@ -14,10 +15,10 @@ export function getGlobalPluginData(
 
   return {
     externalSearchSources,
-    indexHash: null, // TODO: generate index hash
     removeDefaultStopWordFilter,
     searchResultContextMaxLength,
     searchResultLimits,
     translations,
+    indexHash: getIndexHash(pluginConfig),
   };
 }

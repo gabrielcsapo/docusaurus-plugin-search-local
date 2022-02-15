@@ -1,7 +1,7 @@
 import fs from "fs";
 import klawSync from "klaw-sync";
-import { PluginConfig } from "../../types";
-import { getIndexHash } from "./getIndexHash";
+import { PluginConfig } from "../../../types";
+import { getIndexHash } from "../getIndexHash";
 
 jest.mock("klaw-sync");
 jest.mock("fs");

@@ -1,11 +1,14 @@
-import { PluginConfig } from "../../../types";
+import fixturify from "fixturify";
+import tmp from "tmp";
+
+import type { PluginConfig } from "../../../types";
 import { getGlobalPluginData } from "../getGlobalPluginData";
 
 describe("getGlobalPluginData", () => {
   const baselinePluginConfig: PluginConfig = {
     id: "foo",
-    indexDocs: true,
-    indexBlog: true,
+    indexDocs: false,
+    indexBlog: false,
     indexPages: false,
     docsRouteBasePath: ["docs"],
     blogRouteBasePath: ["blog"],
@@ -30,6 +33,43 @@ describe("getGlobalPluginData", () => {
     externalSearchSources: [],
   };
 
+  let tmpLocation: tmp.DirResult;
+  let projectFixture;
+
+  beforeEach(() => {
+    tmpLocation = tmp.dirSync({ unsafeCleanup: true });
+    projectFixture = {
+      blog: {
+        "hello-blog.md": `
+          ---
+          sidebar_position: 1
+          ---
+          
+          # Hello Blog
+
+          This is a dummy blog post.
+        `,
+      },
+      docs: {
+        "hello-world.md": `
+          ---
+          sidebar_position: 1
+          ---
+          
+          # Hello World
+
+          This is a dummy doc.
+        `,
+      },
+    };
+
+    fixturify.writeSync(tmpLocation.name, projectFixture);
+  });
+
+  afterEach(() => {
+    tmpLocation.removeCallback();
+  });
+
   test("it should generate global plugin data", () => {
     const config: PluginConfig = { ...baselinePluginConfig };
 
@@ -43,5 +83,38 @@ describe("getGlobalPluginData", () => {
     });
   });
 
-  // TODO: write a test where an index hash is actually generated.
+  test("it should generate an index hash when enabled", () => {
+    const config: PluginConfig = {
+      ...baselinePluginConfig,
+      blogDir: [`${tmpLocation.name}/blog`],
+      docsDir: [`${tmpLocation.name}/docs`],
+      hashed: true,
+      indexDocs: true,
+      indexBlog: true,
+    };
+
+    expect(getGlobalPluginData(config)).toMatchSnapshot();
+  });
+
+  test("it should only index blog when enabled", () => {
+    const config: PluginConfig = {
+      ...baselinePluginConfig,
+      blogDir: [`${tmpLocation.name}/blog`],
+      hashed: true,
+      indexBlog: true,
+    };
+
+    expect(getGlobalPluginData(config)).toMatchSnapshot();
+  });
+
+  test("it should only index docs when enabled", () => {
+    const config: PluginConfig = {
+      ...baselinePluginConfig,
+      docsDir: [`${tmpLocation.name}/docs`],
+      hashed: true,
+      indexDocs: true,
+    };
+
+    expect(getGlobalPluginData(config)).toMatchSnapshot();
+  });
 });

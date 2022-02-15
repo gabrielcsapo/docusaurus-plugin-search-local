@@ -1,8 +1,8 @@
 import fs from "fs";
-import path from "path";
 import crypto from "crypto";
 import klawSync from "klaw-sync";
-import { PluginConfig } from "../../types";
+import type { PluginConfig } from "../../types";
+import PluginPackage from "../../../package.json";
 import { debugInfo } from "./debug";
 
 export function getIndexHash(config: PluginConfig): string | null {
@@ -36,12 +36,7 @@ export function getIndexHash(config: PluginConfig): string | null {
 
     // The version of this plugin should be counted in hash,
     // since the index maybe changed between versions.
-
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const pluginVersion = require(path.resolve(
-      __dirname,
-      "../../../../package.json"
-    )).version;
+    const pluginVersion = PluginPackage.version;
     debugInfo("using docusaurus-plugin-search-local v%s", pluginVersion);
     md5sum.update(pluginVersion, "utf8");
 
