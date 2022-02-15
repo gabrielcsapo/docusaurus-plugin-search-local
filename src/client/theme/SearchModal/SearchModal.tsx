@@ -54,7 +54,7 @@ const useKeyPress = function (
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     ref.current?.addEventListener("keydown", downHandler);
     ref.current?.addEventListener("keyup", upHandler);
 
@@ -101,26 +101,34 @@ const SearchModal: React.FC<SearchModalProps> = ({
     ExternalSearchResults[]
   >([]);
 
+  const allSearchResults: SearchResult[] = [
+    ...searchResults,
+    ...externalSearchResults.flatMap(({ results }) => results),
+  ];
+
   useEffect(() => {
-    if (searchResults?.length && downPress) {
+    if (allSearchResults.length && downPress) {
       setCursor((prevState) =>
-        prevState < searchResults?.length - 1 ? prevState + 1 : prevState
+        prevState < allSearchResults.length - 1 ? prevState + 1 : prevState
       );
     }
   }, [downPress]);
+
   useEffect(() => {
-    if (searchResults?.length && upPress) {
+    if (allSearchResults.length && upPress) {
       setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
     }
   }, [upPress]);
+
   useEffect(() => {
-    if (searchResults?.length && enterPress && cursor >= 0) {
-      setSelected(searchResults[cursor]);
+    if (allSearchResults.length && enterPress && cursor >= 0) {
+      setSelected(allSearchResults[cursor]);
     }
   }, [cursor, enterPress]);
+
   useEffect(() => {
-    if (searchResults?.length && hovered) {
-      setCursor(searchResults.indexOf(hovered));
+    if (allSearchResults.length && hovered) {
+      setCursor(allSearchResults.indexOf(hovered));
     }
   }, [hovered]);
 
@@ -230,6 +238,8 @@ const SearchModal: React.FC<SearchModalProps> = ({
     setExternalSearchResults(_externalSearchResults);
   }, [searchQuery, externalSearchSources]);
 
+  let cursorOffset = searchResults.length;
+
   return (
     <div
       className={styles.searchModal}
@@ -274,7 +284,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
           ) : (
             ""
           )}
-          {searchResults && searchResults?.length === 0 ? (
+          {searchResults.length === 0 ? (
             process.env.NODE_ENV === "production" ? (
               <div className={styles.messageContainer}>
                 <p>{translations.no_documents_were_found}</p>
@@ -291,35 +301,45 @@ const SearchModal: React.FC<SearchModalProps> = ({
             ""
           )}
 
-          {/* TODO: limit the number of results shown here and add a "see all" button at the bottom of the page. */}
-          <SearchResultsSection heading={title}>
-            {/* TODO: move empty search results message into here. */}
-            <SearchResultList
-              results={searchResults}
-              currentSelection={selected}
-              cursor={cursor}
-              onSearchResultClick={onClose}
-              setHovered={setHovered}
-              setSelected={setSelected}
-            />
-          </SearchResultsSection>
+          {searchResults.length === 0 ? (
+            ""
+          ) : (
+            <SearchResultsSection heading={title}>
+              {/* TODO: move empty search results message into here. */}
+              <SearchResultList
+                results={searchResults}
+                currentSelection={selected}
+                cursor={cursor}
+                onSearchResultClick={onClose}
+                setHovered={setHovered}
+                setSelected={setSelected}
+              />
+            </SearchResultsSection>
+          )}
 
+          {/* TODO: when rendering external results, we need to: 1. show that they are external somehow 2. Treat them as links and open new tabs */}
           {externalSearchResults.map((esr, idx) => {
-            return (
+            const t = (
               <SearchResultsSection key={idx} heading={esr.heading}>
-                {/* TODO: move empty search results message into here. */}
                 <SearchResultList
-                  results={searchResults}
+                  results={esr.results}
                   currentSelection={selected}
                   cursor={cursor}
+                  cursorOffset={cursorOffset}
+                  searchSource={esr.uri}
                   onSearchResultClick={onClose}
                   setHovered={setHovered}
                   setSelected={setSelected}
                 />
               </SearchResultsSection>
             );
+
+            cursorOffset += esr.results.length;
+
+            return t;
           })}
         </div>
+        {/* TODO: add "see all {number} results" link to search page. */}
       </div>
     </div>
   );

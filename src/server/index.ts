@@ -1,5 +1,4 @@
 import path from "path";
-import fs from "fs-extra";
 import { normalizeUrl } from "@docusaurus/utils";
 import { LoadContext, Plugin } from "@docusaurus/types";
 import type {

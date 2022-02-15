@@ -1,11 +1,11 @@
 import React from "react";
-import { useHistory } from "@docusaurus/router";
-import { usePluginData } from "@docusaurus/useGlobalData";
 import Mark from "mark.js";
 import clsx from "clsx";
+import { useHistory } from "@docusaurus/router";
+import { usePluginData } from "@docusaurus/useGlobalData";
 
 import { GlobalPluginData } from "docusaurus-plugin-search-local";
-import { SearchDocument, SearchResult } from "../../../types";
+import { SearchDocument, SearchResult as ISearchResult } from "../../../types";
 import { highlight } from "../../utils/highlight";
 import { highlightStemmed } from "../../utils/highlightStemmed";
 import { getStemmedPositions } from "../../utils/getStemmedPositions";
@@ -23,19 +23,35 @@ import styles from "./SearchResult.module.css";
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 
 interface SuggestionTemplateProps {
-  searchResult: SearchResult;
   isSelected: boolean;
   isHovered: boolean;
-  setSelected: (searchResult: SearchResult | undefined) => void;
-  setHovered: (searchResult: SearchResult | undefined) => void;
+  searchResult: ISearchResult;
+  searchSource: string;
+  setSelected: (searchResult: ISearchResult | undefined) => void;
+  setHovered: (searchResult: ISearchResult | undefined) => void;
   onClick: () => void;
+}
+
+function handleExternalSearchClick(
+  doc: SearchDocument,
+  externalUriBase: string
+) {
+  const { u: docRoute } = doc;
+
+  // TODO: use the doc's "u" field and the uri provided to combine for external url
+
+  console.debug({
+    docRoute,
+    externalUriBase,
+  });
 }
 
 const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
   const {
-    searchResult,
     isSelected,
     isHovered,
+    searchResult,
+    searchSource,
     setSelected,
     setHovered,
     onClick,
@@ -59,6 +75,11 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
   const isHeading = type === 1;
 
   const _onClick = () => {
+    if (searchSource.length) {
+      handleExternalSearchClick(document, searchSource);
+      return;
+    }
+
     const { u, h } = document;
 
     let url = u;
@@ -77,6 +98,7 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
     onClick();
   };
 
+  // TODO: figure out if this is necessary at all. OnClick happens for on the element and shouldnt ever propogate down here.
   if (isSelected && isHovered) {
     // reset the selected as we are going to navigate
     setSelected(undefined);

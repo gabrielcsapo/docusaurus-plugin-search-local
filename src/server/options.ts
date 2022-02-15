@@ -19,7 +19,7 @@ export const DEFAULT_OPTIONS: Omit<PluginOptions, "id"> = {
   blogDir: ["blog"],
   removeDefaultStopWordFilter: false,
   highlightSearchTermsOnTargetPage: false,
-  searchResultLimits: 8,
+  searchResultLimits: 5,
   searchResultContextMaxLength: 50,
   ignoreFiles: [],
   translations: {

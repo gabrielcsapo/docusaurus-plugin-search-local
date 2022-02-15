@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
 import util from "util";
-import { PluginConfig, PostBuildData } from "../../types";
+import { Props as PostBuildProps } from "@docusaurus/types";
+import { PluginConfig } from "../../types";
 import { buildIndex } from "./buildIndex";
 import { debugInfo } from "./debug";
 import { processDocInfos } from "./processDocInfos";
@@ -10,7 +11,7 @@ import { scanDocuments } from "./scanDocuments";
 const writeFileAsync = util.promisify(fs.writeFile);
 
 export function postBuildFactory(config: PluginConfig) {
-  return async function postBuild(buildData: PostBuildData): Promise<void> {
+  return async function postBuild(buildData: PostBuildProps): Promise<void> {
     debugInfo("gathering documents");
 
     const data = processDocInfos(buildData, config);
