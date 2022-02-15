@@ -56,7 +56,12 @@ function handleExternalSearchClick(
   const externalURI = `${getExternalURI(doc, externalUriBase)}?${queryParams}`;
   const uri = sanitizeUrl(externalURI);
 
-  console.debug(uri);
+  const tab = window.open(uri, "_blank");
+
+  if (tab) {
+    // Set opener window to null to prevent tabnabbing
+    tab.opener = null;
+  }
 }
 
 const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
@@ -88,6 +93,7 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
   const isHeading = type === 1;
 
   const _onClick = () => {
+    // If there is a search source defined, open the link externally.
     if (searchSource.length) {
       handleExternalSearchClick(document, tokens, searchSource);
       return;
