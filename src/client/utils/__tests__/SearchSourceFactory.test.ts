@@ -74,19 +74,16 @@ describe("SearchSourceFactory", () => {
     [",", []],
     ["nothing", []],
     ["peace", [4, 2]],
-  ])(
-    "SearchSourceFactory('%s', zhDictionary) should return %j",
-    (input, results) => {
-      searchSource(input, callback);
-      expect(callback).toBeCalledWith(
-        results.map((i) =>
-          expect.objectContaining({
-            document: expect.objectContaining({
-              i,
-            }),
-          })
-        )
-      );
-    }
-  );
+  ])("SearchSourceFactory('%s') should return %j", (input, results) => {
+    searchSource(input, callback);
+    expect(callback).toBeCalledWith(
+      results.map((i) =>
+        expect.objectContaining({
+          document: expect.objectContaining({
+            i,
+          }),
+        })
+      )
+    );
+  });
 });

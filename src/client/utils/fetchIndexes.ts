@@ -13,7 +13,6 @@ export async function fetchIndexes(
   indexHash: string | null = null
 ): Promise<{
   wrappedIndexes: WrappedIndex[];
-  zhDictionary: string[];
 }> {
   const indexUrl = `${baseUrl}search-index.json`;
   const queryString = indexHash ? `?_=${indexHash}` : "";
@@ -32,6 +31,5 @@ export async function fetchIndexes(
 
   return {
     wrappedIndexes,
-    zhDictionary: [], // TODO: strip this out
   };
 }

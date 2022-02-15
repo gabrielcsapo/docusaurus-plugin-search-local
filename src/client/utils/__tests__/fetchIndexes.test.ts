@@ -30,7 +30,6 @@ describe("fetchIndexes", () => {
     expect(mockFetch).toBeCalledWith("/search-index.json?_=abc");
     expect(result).toEqual({
       wrappedIndexes: [],
-      zhDictionary: [],
     });
   });
 
@@ -58,7 +57,6 @@ describe("fetchIndexes", () => {
           type: 0,
         },
       ],
-      zhDictionary: [],
     });
   });
 

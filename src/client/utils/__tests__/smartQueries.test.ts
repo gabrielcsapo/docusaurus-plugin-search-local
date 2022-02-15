@@ -88,7 +88,7 @@ describe("smartQueries", () => {
         },
       ],
     ],
-  ])("smartQueries(%j, zhDictionary) should work", (tokens, queries) => {
+  ])("smartQueries(%j) should work", (tokens, queries) => {
     const sQueries = smartQueries(tokens, {
       removeDefaultStopWordFilter: false,
     });
@@ -112,7 +112,7 @@ describe("smartQueries with no stop words filter", () => {
         },
       ],
     ],
-  ])("smartQueries(%j, zhDictionary) should work", (tokens, queries) => {
+  ])("smartQueries(%j) should work", (tokens, queries) => {
     const sQueries = smartQueries(tokens, {
       removeDefaultStopWordFilter: true,
     });
