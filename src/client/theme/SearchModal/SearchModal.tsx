@@ -16,7 +16,7 @@ import { IconSearch } from "./icons";
 import SearchResultList from "./SearchResultList";
 import SearchResultsSection from "./SearchResultsSection";
 
-import styles from "./SearchModal.module.css";
+import styles from "./index.module.css";
 
 // TODO: this needs to be defined in our types file since it should also be used by our search factory.
 type SearchSourceFn = (

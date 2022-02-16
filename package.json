@@ -10,6 +10,7 @@
     "start": "nf start --procfile ./procfiles/start.procfile",
     "start:client": "tsc --watch --project tsconfig.client.json",
     "start:server": "tsc --watch --project tsconfig.server.json",
+    "parcel": "nf start --procfile ./procfiles/parcel.procfile",
     "prebuild": "rimraf dist",
     "build": "npm run build:client && npm run build:server",
     "build:client": "tsc --project tsconfig.client.json",
@@ -46,6 +47,8 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
+    "@parcel/css": "^1.3.2",
+    "@parcel/css-cli": "^1.3.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@tsconfig/docusaurus": "^1.0.2",
@@ -76,6 +79,7 @@
     "jest": "^27.2.2",
     "lint-staged": "^12.3.3",
     "msw": "^0.36.8",
+    "parcel": "^2.3.1",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "tmp": "^0.2.1",
@@ -89,5 +93,17 @@
   "lint-staged": {
     "**/*.{ts,js}?(x)": "eslint --fix",
     "**/*.{ts,js,css,html,md,json}?(x)": "prettier --write"
+  },
+  "targets": {
+    "server": {
+      "context": "node",
+      "distDir": "dist/server",
+      "isLibrary": true,
+      "optimize": false,
+      "outputFormat": "commonjs",
+      "engines": {
+        "node": ">=14"
+      }
+    }
   }
 }

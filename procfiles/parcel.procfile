@@ -1,0 +1,1 @@
+server: parcel watch 'src/server/**/!(*.test.ts|!(*.ts))' --target 'server'

@@ -7,3 +7,6 @@ yarn-error.log
 
 # TS Build Info
 /tsbuildinfo
+
+# Parcel
+.parcel-cache

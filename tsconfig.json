@@ -16,6 +16,7 @@
   },
   "exclude": [
     "./dist",
+    "./scripts",
     "**/__fixtures__/**/*",
     "**/__mocks__/**/*",
     "**/__tests__/**/*",

@@ -19,7 +19,7 @@ import {
   IconTreeLast,
 } from "./icons";
 
-import styles from "./SearchResult.module.css";
+import styles from "./index.module.css";
 import { getExternalURI } from "../../utils/getExternalURI";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
@@ -123,7 +123,7 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
 
   return (
     <div
-      className={clsx(styles.suggestion, isHovered ? styles.cursor : "")}
+      className={clsx(styles.searchResult, isHovered ? styles.cursor : "")}
       onMouseEnter={() => setHovered(searchResult)}
       onMouseLeave={() => setHovered(undefined)}
       onClick={_onClick}
