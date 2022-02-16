@@ -3,6 +3,7 @@ declare let _paq: Array<[string, string, boolean, number]>;
 import React, { useEffect, useState, useRef, RefObject } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from "@docusaurus/useGlobalData";
+import Link from "@docusaurus/Link";
 
 import {
   ExternalSourceConfig,
@@ -100,11 +101,6 @@ const SearchModal: React.FC<SearchModalProps> = ({
   const [externalSearchResults, setExternalSearchResults] = useState<
     ExternalSearchResults[]
   >([]);
-
-  const allSearchResults: SearchResult[] = [
-    ...searchResults,
-    ...externalSearchResults.flatMap(({ results }) => results),
-  ];
 
   useEffect(() => {
     if (allSearchResults.length && downPress) {
@@ -238,6 +234,11 @@ const SearchModal: React.FC<SearchModalProps> = ({
     setExternalSearchResults(_externalSearchResults);
   }, [searchQuery, externalSearchSources]);
 
+  const allSearchResults: SearchResult[] = [
+    ...searchResults,
+    ...externalSearchResults.flatMap(({ results }) => results),
+  ];
+
   let cursorOffset = searchResults.length;
 
   return (
@@ -298,14 +299,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
               </div>
             )
           ) : (
-            ""
-          )}
-
-          {searchResults.length === 0 ? (
-            ""
-          ) : (
             <SearchResultsSection heading={title}>
-              {/* TODO: move empty search results message into here. */}
               <SearchResultList
                 results={searchResults}
                 currentSelection={selected}
@@ -317,7 +311,6 @@ const SearchModal: React.FC<SearchModalProps> = ({
             </SearchResultsSection>
           )}
 
-          {/* TODO: when rendering external results, we need to: 1. show that they are external somehow 2. Treat them as links and open new tabs */}
           {externalSearchResults.map((esr, idx) => {
             const t = (
               <SearchResultsSection key={idx} heading={esr.heading}>
@@ -338,8 +331,18 @@ const SearchModal: React.FC<SearchModalProps> = ({
 
             return t;
           })}
+
+          {/* TODO: add "see all {number} results" link to search page. */}
+          {allSearchResults.length === 0 ? (
+            ""
+          ) : (
+            <section className={styles.searchResultsContainerFooter}>
+              <Link to={`/search?q=${searchQuery}`} onClick={onClose}>
+                See All Results
+              </Link>
+            </section>
+          )}
         </div>
-        {/* TODO: add "see all {number} results" link to search page. */}
       </div>
     </div>
   );

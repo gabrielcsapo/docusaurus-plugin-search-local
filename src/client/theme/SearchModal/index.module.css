@@ -94,6 +94,20 @@
   border-radius: 20px;
 }
 
+.searchResultsContainerFooter {
+  color: var(--search-local-muted-color);
+  display: flex;
+  font-size: 0.85em;
+  justify-content: center;
+  margin-bottom: var(--search-local-spacing);
+  padding: var(--search-local-spacing);
+}
+
+.searchResultsContainerFooter a {
+  border-bottom: 1px solid;
+  color: inherit;
+}
+
 .loadingContainer {
   width: 100%;
   display: flex;
@@ -111,6 +125,10 @@
   overflow-y: scroll;
   max-height: 400px;
   color: var(--search-local-text-color);
+}
+
+.searchResultsSection:last-of-type {
+  margin-bottom: 24px;
 }
 
 .searchResultsSectionHeader {
