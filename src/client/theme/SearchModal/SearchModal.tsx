@@ -11,19 +11,13 @@ import {
 } from "docusaurus-plugin-search-local";
 import { fetchIndexes } from "../../utils/fetchIndexes";
 import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchResult } from "../../../types";
+import { SearchResult, SearchSourceFn } from "../../../types";
 import LoadingRing from "../LoadingRing/LoadingRing";
 import { IconSearch } from "./icons";
 import SearchResultList from "./SearchResultList";
 import SearchResultsSection from "./SearchResultsSection";
 
 import styles from "./index.module.css";
-
-// TODO: this needs to be defined in our types file since it should also be used by our search factory.
-type SearchSourceFn = (
-  input: string,
-  callback: (results: SearchResult[]) => void
-) => void;
 
 type ExternalSearchResults = ExternalSourceConfig & {
   results: SearchResult[];

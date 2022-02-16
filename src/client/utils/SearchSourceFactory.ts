@@ -6,6 +6,7 @@ import {
   SearchResult,
   SearchDocument,
   InitialSearchResult,
+  SearchSourceFn,
 } from "../../types";
 import { sortSearchResults } from "./sortSearchResults";
 import { processTreeStatusOfSearchResults } from "./processTreeStatusOfSearchResults";
@@ -19,7 +20,7 @@ export type SearchSourceFactoryProps = {
 
 export function SearchSourceFactory(
   props: SearchSourceFactoryProps
-): (input: string, callback: (results: SearchResult[]) => void) => void {
+): SearchSourceFn {
   const {
     wrappedIndexes,
     removeDefaultStopWordFilter,

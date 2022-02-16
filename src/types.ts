@@ -152,3 +152,8 @@ export interface PostBuildData {
   baseUrl: string;
   siteConfig: DocusaurusConfig;
 }
+
+export type SearchSourceFn = (
+  input: string,
+  callback: (results: SearchResult[]) => void
+) => void;

@@ -11,7 +11,7 @@ import { GlobalPluginData } from "docusaurus-plugin-search-local";
 import useSearchQuery from "../hooks/useSearchQuery";
 import { fetchIndexes } from "../../utils/fetchIndexes";
 import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchDocument, SearchResult } from "../../../types";
+import { SearchDocument, SearchResult, SearchSourceFn } from "../../../types";
 import { highlight } from "../../utils/highlight";
 import { highlightStemmed } from "../../utils/highlightStemmed";
 import { getStemmedPositions } from "../../utils/getStemmedPositions";
@@ -28,10 +28,7 @@ export default function SearchPage(): React.ReactElement {
     usePluginData<GlobalPluginData>("docusaurus-plugin-search-local");
   const { searchValue, updateSearchPath } = useSearchQuery();
   const [searchQuery, setSearchQuery] = useState(searchValue);
-  const [searchSource, setSearchSource] =
-    useState<
-      (input: string, callback: (results: SearchResult[]) => void) => void
-    >();
+  const [searchSource, setSearchSource] = useState<SearchSourceFn>();
   const [searchResults, setSearchResults] = useState<SearchResult[]>();
 
   const pageTitle = useMemo(
