@@ -307,7 +307,12 @@ const SearchModal: React.FC<SearchModalProps> = ({
 
           {externalSearchResults.map((esr, idx) => {
             const t = (
-              <SearchResultsSection key={idx} heading={esr.heading}>
+              <SearchResultsSection
+                key={idx}
+                heading={esr.heading}
+                headingLink={esr.uri}
+                sectionQuery={searchQuery}
+              >
                 <SearchResultList
                   results={esr.results}
                   currentSelection={selected}
@@ -326,10 +331,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
             return t;
           })}
 
-          {/* TODO: add "see all {number} results" link to search page. */}
-          {allSearchResults.length === 0 ? (
-            ""
-          ) : (
+          {allSearchResults.length > 0 && (
             <section className={styles.searchResultsContainerFooter}>
               <Link to={`/search?q=${searchQuery}`} onClick={onClose}>
                 See All Results

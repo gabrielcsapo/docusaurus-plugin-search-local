@@ -1,5 +1,4 @@
 import { sanitizeUrl } from "@braintree/sanitize-url";
-import type { SearchDocument } from "../../types";
 
 const END_SLASH_PATTERN = /\/$/;
 const START_SLASH_PATTERN = /^\//;
@@ -20,10 +19,10 @@ function stripDuplicateRouteParts(
   return routeParts;
 }
 
-export function getExternalURI(doc: SearchDocument, baseURI: string): string {
+export function getExternalURI(documentPath: string, baseURI: string): string {
   // Sanitize input
   const sanitizedBase = sanitizeUrl(baseURI);
-  const sanitizedRoute = sanitizeUrl(doc.u);
+  const sanitizedRoute = sanitizeUrl(documentPath);
 
   // Replace slashes where necessary
   const base = sanitizedBase.replace(END_SLASH_PATTERN, "");

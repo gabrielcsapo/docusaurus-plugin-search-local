@@ -10,6 +10,7 @@ import { SearchDocument, SearchResult as ISearchResult } from "../../../types";
 import { highlight } from "../../utils/highlight";
 import { highlightStemmed } from "../../utils/highlightStemmed";
 import { getStemmedPositions } from "../../utils/getStemmedPositions";
+import { getExternalURI } from "../../utils/getExternalURI";
 import {
   IconTitle,
   IconHeading,
@@ -20,7 +21,6 @@ import {
 } from "./icons";
 
 import styles from "./index.module.css";
-import { getExternalURI } from "../../utils/getExternalURI";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 
@@ -54,7 +54,10 @@ function handleExternalSearchClick(
   externalUriBase: string
 ) {
   const queryParams = buildDestinationQueryParams(tokens);
-  const externalURI = `${getExternalURI(doc, externalUriBase)}?${queryParams}`;
+  const externalURI = `${getExternalURI(
+    doc.u,
+    externalUriBase
+  )}?${queryParams}`;
   const uri = sanitizeUrl(externalURI);
 
   const tab = window.open(uri, "_blank");
