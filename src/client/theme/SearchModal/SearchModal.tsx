@@ -276,7 +276,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
           </div>
         )}
 
-        <div className={styles.suggestion}>
+        <div className={styles.searchResultsContainer}>
           {!searchQuery ? (
             <div className={styles.messageContainer}>
               <p>Please provide a search query to show results.</p>

@@ -72,14 +72,26 @@
   color: var(--search-local-text-color);
 }
 
-.suggestion {
-  margin: 12px;
-}
-
 .searchResultsContainer {
-  overflow-y: scroll;
+  overflow-y: overlay;
   max-height: 400px;
   color: var(--search-local-text-color);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.searchResultsContainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.searchResultsContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.searchResultsContainer::-webkit-scrollbar-thumb {
+  background-color: var(--search-local-muted-color);
+  border: 3px solid var(--search-local-modal-background);
+  border-radius: 20px;
 }
 
 .loadingContainer {
