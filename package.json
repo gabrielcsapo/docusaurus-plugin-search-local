@@ -14,8 +14,9 @@
     "prebuild": "rimraf dist",
     "build": "npm run build:client && npm run build:server",
     "build:client": "tsc --project tsconfig.client.json",
+    "build:css": "copyfiles -u 3 \"src/client/theme/**/*.css\" dist/client/theme",
     "build:server": "tsc --project tsconfig.server.json",
-    "postbuild": "copyfiles -u 3 \"src/client/theme/**/*.css\" dist/client/theme",
+    "postbuild": "npm run build:css",
     "prepare": "husky install"
   },
   "main": "dist/server/index.js",
