@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { sanitizeUrl } from "@braintree/sanitize-url";
 import { useHistory } from "@docusaurus/router";
 import { usePluginData } from "@docusaurus/useGlobalData";
+import IconExternalLink from "@theme-original/IconExternalLink";
 
 import { GlobalPluginData } from "docusaurus-plugin-search-local";
 import { SearchDocument, SearchResult as ISearchResult } from "../../../types";
@@ -175,9 +176,14 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
           />
         )}
       </span>
-      <span className={styles.hitAction}>
-        <IconAction />
-      </span>
+
+      {searchSource === "" ? (
+        <span className={styles.hitAction}>
+          <IconAction />
+        </span>
+      ) : (
+        <IconExternalLink height={15} width={15} />
+      )}
     </div>
   );
 };
