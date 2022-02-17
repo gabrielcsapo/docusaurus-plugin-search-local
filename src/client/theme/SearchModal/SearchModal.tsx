@@ -277,31 +277,21 @@ const SearchModal: React.FC<SearchModalProps> = ({
               <p>Please provide a search query to show results.</p>
             </div>
           ) : (
-            ""
-          )}
-          {searchResults.length === 0 ? (
-            process.env.NODE_ENV === "production" ? (
-              <div className={styles.messageContainer}>
-                <p>{translations.no_documents_were_found}</p>
-              </div>
-            ) : (
-              <div className={styles.messageContainer}>
-                <p>
-                  ⚠️ The search index is only available when you run docusaurus
-                  build!
-                </p>
-              </div>
-            )
-          ) : (
             <SearchResultsSection heading={title}>
-              <SearchResultList
-                results={searchResults}
-                currentSelection={selected}
-                cursor={cursor}
-                onSearchResultClick={onClose}
-                setHovered={setHovered}
-                setSelected={setSelected}
-              />
+              {searchResults.length === 0 ? (
+                <em className={styles.noDocsFoundMessage}>
+                  {translations.no_documents_were_found}
+                </em>
+              ) : (
+                <SearchResultList
+                  results={searchResults}
+                  currentSelection={selected}
+                  cursor={cursor}
+                  onSearchResultClick={onClose}
+                  setHovered={setHovered}
+                  setSelected={setSelected}
+                />
+              )}
             </SearchResultsSection>
           )}
 

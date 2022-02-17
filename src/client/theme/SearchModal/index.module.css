@@ -72,6 +72,13 @@
   color: var(--search-local-text-color);
 }
 
+.noDocsFoundMessage {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 300;
+  color: var(--search-local-text-color);
+}
+
 .searchResultsContainer {
   overflow-y: overlay;
   max-height: 400px;
