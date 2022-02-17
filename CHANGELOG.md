@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.0-beta.1...0.3.0) (2022-02-17)
+
+### Bug Fixes
+
+- Fixing no docs found text ([f2717dc](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/f2717dce845b4d8b63126af4da6b1fd572a787c5))
+- missing field in tests ([3383d5b](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/3383d5b0dcd8f9bbf88c19861d81a6747790ed41))
+- package-lock did not update for some reason ([a08e46d](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/a08e46d766c37e882c72007269ff955f2fb38316))
+- remove overflow-y from searchResultsSection ([612b36f](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/612b36f8605ede480b7138f105ce16d392f8efa6))
+
 # 0.2.1 (01/11/2022)
 
 - updates types in interfaces to include TranslationMap (@gabrielcsapo)
