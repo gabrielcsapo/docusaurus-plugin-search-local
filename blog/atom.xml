@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://gabrielcsapo.github.io/docusaurus-plugin-search-local/blog</id>
-    <title>docusaurus-plugin-search-local Blog</title>
+    <title>Docusaurus Plugin Search Local Blog</title>
     <updated>2021-08-26T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://gabrielcsapo.github.io/docusaurus-plugin-search-local/blog"/>
-    <subtitle>docusaurus-plugin-search-local Blog</subtitle>
+    <subtitle>Docusaurus Plugin Search Local Blog</subtitle>
     <icon>https://gabrielcsapo.github.io/docusaurus-plugin-search-local/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
