@@ -27,6 +27,7 @@ describe("processDocInfos", () => {
       docusaurusVersion: "",
       pluginVersions: {},
     },
+    ssrTemplate: "",
   };
   describe("trailingSlash defaults to undefined", () => {
     const routesPaths: string[] = [
