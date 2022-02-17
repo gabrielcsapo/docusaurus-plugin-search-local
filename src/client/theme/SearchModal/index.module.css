@@ -126,7 +126,6 @@
 
 /* SearchResultSection Component */
 .searchResultsSection {
-  overflow-y: scroll;
   max-height: 400px;
   color: var(--search-local-text-color);
 }
