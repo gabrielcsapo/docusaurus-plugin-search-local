@@ -2,19 +2,30 @@ declare let _paq: Array<[string, string, boolean, number]>;
 
 import React, { useEffect, useState, useRef, RefObject } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { usePluginData } from "@docusaurus/useGlobalData";
+import Link from "@docusaurus/Link";
 
-import { fetchIndexes } from "../SearchBar/fetchIndexes";
+import {
+  ExternalSourceConfig,
+  GlobalPluginData,
+} from "docusaurus-plugin-search-local";
+import { fetchIndexes } from "../../utils/fetchIndexes";
 import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchResult } from "../../../types";
+import { SearchResult, SearchSourceFn } from "../../../types";
 import LoadingRing from "../LoadingRing/LoadingRing";
 import { IconSearch } from "./icons";
-import { simpleTemplate } from "../../utils/simpleTemplate";
+import SearchResultList from "./SearchResultList";
+import SearchResultsSection from "./SearchResultsSection";
 
-import { searchResultLimits, translations } from "../../utils/proxiedGenerated";
+import styles from "./index.module.css";
 
-import SuggestionTemplate from "./SuggestionTemplate";
+type ExternalSearchResults = ExternalSourceConfig & {
+  results: SearchResult[];
+};
 
-import styles from "./SearchModal.module.css";
+type ExternalSearchSource = ExternalSourceConfig & {
+  search: SearchSourceFn;
+};
 
 interface SearchModalProps {
   onClose: () => void;
@@ -38,7 +49,7 @@ const useKeyPress = function (
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     ref.current?.addEventListener("keydown", downHandler);
     ref.current?.addEventListener("keyup", upHandler);
 
@@ -51,49 +62,63 @@ const useKeyPress = function (
   return keyPressed;
 };
 
-export default function SearchModal({
+const SearchModal: React.FC<SearchModalProps> = ({
   onClose,
-}: SearchModalProps): React.ReactElement {
+}: SearchModalProps) => {
   const {
-    siteConfig: { baseUrl },
+    siteConfig: { baseUrl, title },
   } = useDocusaurusContext();
+  const {
+    indexHash,
+    removeDefaultStopWordFilter,
+    searchResultLimits,
+    translations,
+    externalSearchSources: externalSourceConfigs,
+  } = usePluginData<GlobalPluginData>("docusaurus-plugin-search-local");
   const [searchQuery, setSearchQuery] = useState("");
   const searchModal = useRef(null);
   const searchInput = useRef(null);
-  const [searchSource, setSearchSource] =
-    useState<
-      (input: string, callback: (results: SearchResult[]) => void) => void
-    >();
-  const [searchResults, setSearchResults] = useState<SearchResult[]>();
-
-  const [selected, setSelected] =
-    useState<React.SetStateAction<SearchResult | undefined>>(undefined);
+  const [searchSource, setSearchSource] = useState<SearchSourceFn>();
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [selected, setSelected] = useState<SearchResult | undefined>(undefined);
   const downPress = useKeyPress("ArrowDown", searchInput);
   const upPress = useKeyPress("ArrowUp", searchInput);
   const enterPress = useKeyPress("Enter", searchInput);
   const [cursor, setCursor] = useState<number>(0);
   const [hovered, setHovered] = useState<SearchResult | undefined>(undefined);
 
+  // External Search Source Data
+  const [externalSearchSources, setExternalSearchSources] = useState<
+    ExternalSearchSource[]
+  >([]);
+
+  const [externalSearchResults, setExternalSearchResults] = useState<
+    ExternalSearchResults[]
+  >([]);
+
   useEffect(() => {
-    if (searchResults?.length && downPress) {
+    if (allSearchResults.length && downPress) {
       setCursor((prevState) =>
-        prevState < searchResults?.length - 1 ? prevState + 1 : prevState
+        prevState < allSearchResults.length - 1 ? prevState + 1 : prevState
       );
     }
   }, [downPress]);
+
   useEffect(() => {
-    if (searchResults?.length && upPress) {
+    if (allSearchResults.length && upPress) {
       setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
     }
   }, [upPress]);
+
   useEffect(() => {
-    if (searchResults?.length && enterPress && cursor >= 0) {
-      setSelected(searchResults[cursor]);
+    if (allSearchResults.length && enterPress && cursor >= 0) {
+      setSelected(allSearchResults[cursor]);
     }
   }, [cursor, enterPress]);
+
   useEffect(() => {
-    if (searchResults?.length && hovered) {
-      setCursor(searchResults.indexOf(hovered));
+    if (allSearchResults.length && hovered) {
+      setCursor(allSearchResults.indexOf(hovered));
     }
   }, [hovered]);
 
@@ -104,7 +129,7 @@ export default function SearchModal({
           setSearchResults(results);
         });
       } else {
-        setSearchResults(undefined);
+        setSearchResults([]);
       }
     }
 
@@ -114,13 +139,13 @@ export default function SearchModal({
 
   useEffect(() => {
     async function doFetchIndexes() {
-      const { wrappedIndexes, zhDictionary } = await fetchIndexes(baseUrl);
+      const { wrappedIndexes } = await fetchIndexes(baseUrl, indexHash);
       setSearchSource(() =>
-        SearchSourceFactory(
+        SearchSourceFactory({
           wrappedIndexes,
-          zhDictionary,
-          searchResultLimits,
-          (query, results) => {
+          removeDefaultStopWordFilter,
+          resultsLimit: searchResultLimits,
+          onResults: (query, results) => {
             // TODO: needs to be abstracted to be able to handle any site analytics
             if (typeof _paq !== "undefined" && _paq && _paq?.push) {
               _paq.push([
@@ -130,12 +155,85 @@ export default function SearchModal({
                 results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
               ]);
             }
-          }
-        )
+          },
+        })
       );
     }
     doFetchIndexes();
   }, [baseUrl]);
+
+  useEffect(() => {
+    async function fetchExternalSources() {
+      const _externalSearchSources: ExternalSearchSource[] = [];
+
+      externalSourceConfigs.forEach(async (externalSourceConfig) => {
+        try {
+          const { wrappedIndexes } = await fetchIndexes(
+            externalSourceConfig.uri
+          );
+
+          _externalSearchSources.push({
+            ...externalSourceConfig,
+            search: SearchSourceFactory({
+              wrappedIndexes,
+              removeDefaultStopWordFilter,
+              resultsLimit: searchResultLimits,
+              onResults: (query, results) => {
+                // TODO: needs to be abstracted to be able to handle any site analytics
+                if (typeof _paq !== "undefined" && _paq && _paq?.push) {
+                  _paq.push([
+                    "trackSiteSearch",
+                    query, // Search keyword searched for
+                    false, // Search category selected in your search engine. If you do not need this, set to false
+                    results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
+                  ]);
+                }
+              },
+            }),
+          });
+        } catch {
+          console.warn(
+            `Unable to fetch search index for ${externalSourceConfig.heading} from: ${externalSourceConfig.uri}`
+          );
+        }
+      });
+
+      setExternalSearchSources(_externalSearchSources);
+    }
+
+    fetchExternalSources();
+  }, [externalSourceConfigs, removeDefaultStopWordFilter, searchResultLimits]);
+
+  useEffect(() => {
+    if (searchQuery === "") {
+      setExternalSearchResults([]);
+      return;
+    }
+
+    const _externalSearchResults: ExternalSearchResults[] = [];
+
+    externalSearchSources.forEach((externalSearchSource) => {
+      externalSearchSource.search(searchQuery, (results) => {
+        // Only add external search results if we found a result in its index.
+        if (results.length > 0) {
+          _externalSearchResults.push({
+            results,
+            heading: externalSearchSource.heading,
+            uri: externalSearchSource.uri,
+          });
+        }
+      });
+    });
+
+    setExternalSearchResults(_externalSearchResults);
+  }, [searchQuery, externalSearchSources]);
+
+  const allSearchResults: SearchResult[] = [
+    ...searchResults,
+    ...externalSearchResults.flatMap(({ results }) => results),
+  ];
+
+  let cursorOffset = searchResults.length;
 
   return (
     <div
@@ -173,7 +271,7 @@ export default function SearchModal({
           </div>
         )}
 
-        <div className={styles.suggestion}>
+        <div className={styles.searchResultsContainer}>
           {!searchQuery ? (
             <div className={styles.messageContainer}>
               <p>Please provide a search query to show results.</p>
@@ -181,7 +279,7 @@ export default function SearchModal({
           ) : (
             ""
           )}
-          {searchResults && searchResults?.length === 0 ? (
+          {searchResults.length === 0 ? (
             process.env.NODE_ENV === "production" ? (
               <div className={styles.messageContainer}>
                 <p>{translations.no_documents_were_found}</p>
@@ -195,40 +293,55 @@ export default function SearchModal({
               </div>
             )
           ) : (
-            ""
+            <SearchResultsSection heading={title}>
+              <SearchResultList
+                results={searchResults}
+                currentSelection={selected}
+                cursor={cursor}
+                onSearchResultClick={onClose}
+                setHovered={setHovered}
+                setSelected={setSelected}
+              />
+            </SearchResultsSection>
           )}
 
-          <section className={styles.searchResultsContainer}>
-            {searchResults && searchResults?.length > 0 ? (
-              <>
-                <p>
-                  {simpleTemplate(
-                    searchResults?.length === 1
-                      ? translations.count_documents_found
-                      : translations.count_documents_found_plural,
-                    {
-                      count: searchResults?.length,
-                    }
-                  )}
-                </p>
-                {searchResults.map((item, i: number) => (
-                  <SuggestionTemplate
-                    key={item.document.i}
-                    searchResult={item}
-                    isSelected={selected === item}
-                    isHovered={cursor === i}
-                    setSelected={setSelected}
-                    setHovered={setHovered}
-                    onClick={onClose}
-                  />
-                ))}
-              </>
-            ) : (
-              ""
-            )}
-          </section>
+          {externalSearchResults.map((esr, idx) => {
+            const t = (
+              <SearchResultsSection
+                key={idx}
+                heading={esr.heading}
+                headingLink={esr.uri}
+                sectionQuery={searchQuery}
+              >
+                <SearchResultList
+                  results={esr.results}
+                  currentSelection={selected}
+                  cursor={cursor}
+                  cursorOffset={cursorOffset}
+                  searchSource={esr.uri}
+                  onSearchResultClick={onClose}
+                  setHovered={setHovered}
+                  setSelected={setSelected}
+                />
+              </SearchResultsSection>
+            );
+
+            cursorOffset += esr.results.length;
+
+            return t;
+          })}
+
+          {allSearchResults.length > 0 && (
+            <section className={styles.searchResultsContainerFooter}>
+              <Link to={`/search?q=${searchQuery}`} onClick={onClose}>
+                See All Results
+              </Link>
+            </section>
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default SearchModal;

@@ -1,5 +1,4 @@
-// https://zhuanlan.zhihu.com/p/33335629
-const singleMatchOfWord = /\w+|\p{Unified_Ideograph}/u;
+const singleMatchOfWord = /\w+/u;
 
 export function looseTokenize(content: string): string[] {
   const tokens: string[] = [];

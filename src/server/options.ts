@@ -1,23 +1,25 @@
-import type { PluginOptions } from "docusaurus-plugin-search-local";
+import type {
+  PluginOptions,
+  TranslationMap,
+} from "docusaurus-plugin-search-local";
 import { Joi } from "@docusaurus/utils-validation";
 import type {
   OptionValidationContext,
   ValidationResult,
 } from "@docusaurus/types";
 
-export const DEFAULT_OPTIONS: PluginOptions = {
+export const DEFAULT_OPTIONS: Omit<PluginOptions, "id"> = {
   indexDocs: true,
   indexBlog: true,
   indexPages: false,
   docsRouteBasePath: ["docs"],
   blogRouteBasePath: ["blog"],
-  language: ["en"],
   hashed: false,
   docsDir: ["docs"],
   blogDir: ["blog"],
   removeDefaultStopWordFilter: false,
   highlightSearchTermsOnTargetPage: false,
-  searchResultLimits: 8,
+  searchResultLimits: 5,
   searchResultContextMaxLength: 50,
   ignoreFiles: [],
   translations: {
@@ -44,7 +46,7 @@ const isArrayOfStringsOrRegExpsOrStringOrRegExp = Joi.alternatives().try(
   Joi.object().regex()
 );
 
-export const OptionsSchema = Joi.object({
+export const OptionsSchema = Joi.object<PluginOptions>({
   indexDocs: Joi.boolean().default(DEFAULT_OPTIONS.indexDocs),
   indexBlog: Joi.boolean().default(DEFAULT_OPTIONS.indexBlog),
   indexPages: Joi.boolean().default(DEFAULT_OPTIONS.indexPages),
@@ -54,7 +56,6 @@ export const OptionsSchema = Joi.object({
   blogRouteBasePath: isStringOrArrayOfStrings.default(
     DEFAULT_OPTIONS.blogRouteBasePath
   ),
-  language: isStringOrArrayOfStrings.default(DEFAULT_OPTIONS.language),
   hashed: Joi.boolean().default(DEFAULT_OPTIONS.hashed),
   docsDir: isStringOrArrayOfStrings.default(DEFAULT_OPTIONS.docsDir),
   blogDir: isStringOrArrayOfStrings.default(DEFAULT_OPTIONS.blogDir),
@@ -100,7 +101,12 @@ export const OptionsSchema = Joi.object({
     .default()
     .unknown(false),
   externalSearchSources: Joi.array()
-    .items(Joi.string())
+    .items(
+      Joi.object({
+        heading: Joi.string(),
+        uri: Joi.string(),
+      })
+    )
     .default(DEFAULT_OPTIONS.externalSearchSources),
 });
 

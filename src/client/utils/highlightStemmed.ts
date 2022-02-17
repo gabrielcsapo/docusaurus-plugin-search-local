@@ -2,13 +2,12 @@ import { HighlightChunk, MetadataPosition, ChunkIndexRef } from "../../types";
 import { escapeHtml } from "./escapeHtml";
 import { highlight } from "./highlight";
 import { looseTokenize } from "./looseTokenize";
-import { searchResultContextMaxLength } from "./proxiedGenerated";
 
 export function highlightStemmed(
   content: string,
   positions: MetadataPosition[],
   tokens: string[],
-  maxLength = searchResultContextMaxLength
+  maxLength = 50
 ): string {
   const chunkIndexRef: ChunkIndexRef = {
     chunkIndex: -1,

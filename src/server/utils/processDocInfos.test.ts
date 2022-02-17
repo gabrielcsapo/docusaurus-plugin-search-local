@@ -1,8 +1,33 @@
-import { DocusaurusConfig } from "@docusaurus/types";
-import { DocInfoWithFilePath, PostBuildData, PluginConfig } from "../../types";
+import { DocusaurusConfig, Props as PostBuildData } from "@docusaurus/types";
+import { DocInfoWithFilePath, PluginConfig } from "../../types";
 import { processDocInfos } from "./processDocInfos";
 
 describe("processDocInfos", () => {
+  const DEFAULT_POST_BUILD_DATA_FIELDS: PostBuildData = {
+    routesPaths: [],
+    outDir: "",
+    baseUrl: "",
+    siteConfig: {} as DocusaurusConfig,
+    codeTranslations: {},
+    generatedFilesDir: "",
+    headTags: "",
+    i18n: {
+      currentLocale: "",
+      defaultLocale: "",
+      localeConfigs: {},
+      locales: [""],
+    },
+    plugins: [],
+    postBodyTags: "",
+    preBodyTags: "",
+    routes: [],
+    siteConfigPath: "",
+    siteDir: "",
+    siteMetadata: {
+      docusaurusVersion: "",
+      pluginVersions: {},
+    },
+  };
   describe("trailingSlash defaults to undefined", () => {
     const routesPaths: string[] = [
       "/base/",
@@ -17,6 +42,7 @@ describe("processDocInfos", () => {
       "/base/file.md",
     ];
     const buildData: PostBuildData = {
+      ...DEFAULT_POST_BUILD_DATA_FIELDS,
       routesPaths,
       outDir: "/build",
       baseUrl: "/base/",
@@ -80,6 +106,7 @@ describe("processDocInfos", () => {
       "/base/file.md",
     ];
     const buildData: PostBuildData = {
+      ...DEFAULT_POST_BUILD_DATA_FIELDS,
       routesPaths,
       outDir: "/build",
       baseUrl: "/base/",
@@ -145,6 +172,7 @@ describe("processDocInfos", () => {
       "/base/file.md",
     ];
     const buildData: PostBuildData = {
+      ...DEFAULT_POST_BUILD_DATA_FIELDS,
       routesPaths,
       outDir: "/build",
       baseUrl: "/base/",
@@ -206,6 +234,7 @@ describe("processDocInfos", () => {
       "/base/page",
     ];
     const buildData: PostBuildData = {
+      ...DEFAULT_POST_BUILD_DATA_FIELDS,
       routesPaths,
       outDir: "/build",
       baseUrl: "/base/",
@@ -255,6 +284,7 @@ describe("processDocInfos", () => {
       "/base/page",
     ];
     const buildData: PostBuildData = {
+      ...DEFAULT_POST_BUILD_DATA_FIELDS,
       routesPaths,
       outDir: "/build",
       baseUrl: "/base/",

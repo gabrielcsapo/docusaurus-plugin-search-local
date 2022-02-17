@@ -1,13 +1,13 @@
 import path from "path";
+import { Props as PostBuildProps } from "@docusaurus/types";
 import {
   DocInfoWithFilePath,
   DocInfoWithRoute,
   PluginConfig,
-  PostBuildData,
 } from "../../types";
 
 export function processDocInfos(
-  { routesPaths, outDir, baseUrl, siteConfig }: PostBuildData,
+  { routesPaths, outDir, baseUrl, siteConfig }: PostBuildProps,
   {
     indexDocs,
     indexBlog,

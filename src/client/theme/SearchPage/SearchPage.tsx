@@ -2,19 +2,20 @@ declare let _paq: Array<[string, string, boolean, number]>;
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { usePluginData } from "@docusaurus/useGlobalData";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 
+import { GlobalPluginData } from "docusaurus-plugin-search-local";
 import useSearchQuery from "../hooks/useSearchQuery";
-import { fetchIndexes } from "../SearchBar/fetchIndexes";
+import { fetchIndexes } from "../../utils/fetchIndexes";
 import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchDocument, SearchResult } from "../../../types";
+import { SearchDocument, SearchResult, SearchSourceFn } from "../../../types";
 import { highlight } from "../../utils/highlight";
 import { highlightStemmed } from "../../utils/highlightStemmed";
 import { getStemmedPositions } from "../../utils/getStemmedPositions";
 import LoadingRing from "../LoadingRing/LoadingRing";
-import { translations } from "../../utils/proxiedGenerated";
 import { simpleTemplate } from "../../utils/simpleTemplate";
 
 import styles from "./SearchPage.module.css";
@@ -23,12 +24,11 @@ export default function SearchPage(): React.ReactElement {
   const {
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
+  const { indexHash, removeDefaultStopWordFilter, translations } =
+    usePluginData<GlobalPluginData>("docusaurus-plugin-search-local");
   const { searchValue, updateSearchPath } = useSearchQuery();
   const [searchQuery, setSearchQuery] = useState(searchValue);
-  const [searchSource, setSearchSource] =
-    useState<
-      (input: string, callback: (results: SearchResult[]) => void) => void
-    >();
+  const [searchSource, setSearchSource] = useState<SearchSourceFn>();
   const [searchResults, setSearchResults] = useState<SearchResult[]>();
 
   const pageTitle = useMemo(
@@ -70,13 +70,13 @@ export default function SearchPage(): React.ReactElement {
 
   useEffect(() => {
     async function doFetchIndexes() {
-      const { wrappedIndexes, zhDictionary } = await fetchIndexes(baseUrl);
+      const { wrappedIndexes } = await fetchIndexes(baseUrl, indexHash);
       setSearchSource(() =>
-        SearchSourceFactory(
+        SearchSourceFactory({
           wrappedIndexes,
-          zhDictionary,
-          100,
-          (query, results) => {
+          removeDefaultStopWordFilter,
+          resultsLimit: 100,
+          onResults: (query, results) => {
             // TODO: needs to be abstracted to be able to handle any site analytics
             if (typeof _paq !== "undefined" && _paq && _paq?.push) {
               _paq.push([
@@ -86,8 +86,8 @@ export default function SearchPage(): React.ReactElement {
                 results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
               ]);
             }
-          }
-        )
+          },
+        })
       );
     }
     doFetchIndexes();
@@ -97,7 +97,7 @@ export default function SearchPage(): React.ReactElement {
     <Layout title={pageTitle}>
       <Head>
         {/*
-         We should not index search pages
+          We should not index search pages
           See https://github.com/facebook/docusaurus/pull/3233
         */}
         <meta property="robots" content="noindex, follow" />

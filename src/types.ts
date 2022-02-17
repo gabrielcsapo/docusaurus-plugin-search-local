@@ -2,17 +2,6 @@ import type { PluginOptions } from "docusaurus-plugin-search-local";
 import { DocusaurusConfig } from "@docusaurus/types";
 import lunr from "lunr";
 
-export interface TranslationMap {
-  search_placeholder?: string;
-  see_all_results?: string;
-  no_results?: string;
-  search_results_for?: string;
-  search_the_documentation?: string;
-  count_documents_found?: string;
-  count_documents_found_plural?: string;
-  no_documents_were_found?: string;
-}
-
 export type SmartTerm = SmartTermItem[];
 
 export interface SmartTermItem {
@@ -144,7 +133,6 @@ export type DocInfoType = "docs" | "blog" | "page";
 
 export type PluginConfig = Omit<
   PluginOptions,
-  | "language"
   | "docsRouteBasePath"
   | "blogRouteBasePath"
   | "docsDir"
@@ -153,7 +141,6 @@ export type PluginConfig = Omit<
 > & {
   docsRouteBasePath: string[];
   blogRouteBasePath: string[];
-  language: string[];
   docsDir: string[];
   blogDir: string[];
   ignoreFiles: (string | RegExp)[];
@@ -165,3 +152,8 @@ export interface PostBuildData {
   baseUrl: string;
   siteConfig: DocusaurusConfig;
 }
+
+export type SearchSourceFn = (
+  input: string,
+  callback: (results: SearchResult[]) => void
+) => void;

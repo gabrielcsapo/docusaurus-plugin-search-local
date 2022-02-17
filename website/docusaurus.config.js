@@ -2,7 +2,7 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 module.exports = {
-  title: "docusaurus-plugin-search-local",
+  title: "Docusaurus Plugin Search Local",
   tagline: "Making local search easier and looking great!",
   url: "https://gabrielcsapo.github.io",
   baseUrl: "/docusaurus-plugin-search-local/",
@@ -33,9 +33,20 @@ module.exports = {
   plugins: [
     [
       require.resolve("docusaurus-plugin-search-local"),
-      {
+      /** @type {import('docusaurus-plugin-search-local').Options} */
+      ({
         highlightSearchTermsOnTargetPage: true,
-      },
+        externalSearchSources: [
+          {
+            heading: "Dummy External Source 1",
+            uri: "/docusaurus-plugin-search-local/fixtures/index-1/",
+          },
+          {
+            heading: "Dummy External Source 2",
+            uri: "/docusaurus-plugin-search-local/fixtures/index-2/",
+          },
+        ],
+      }),
     ],
   ],
   themeConfig: {

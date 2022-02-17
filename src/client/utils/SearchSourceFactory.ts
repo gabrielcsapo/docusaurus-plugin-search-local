@@ -6,29 +6,43 @@ import {
   SearchResult,
   SearchDocument,
   InitialSearchResult,
+  SearchSourceFn,
 } from "../../types";
 import { sortSearchResults } from "./sortSearchResults";
 import { processTreeStatusOfSearchResults } from "./processTreeStatusOfSearchResults";
-import { language } from "./proxiedGenerated";
+
+export type SearchSourceFactoryProps = {
+  wrappedIndexes: WrappedIndex[];
+  removeDefaultStopWordFilter: boolean;
+  resultsLimit: number;
+  onResults: (query: string, results: SearchResult[]) => void;
+};
 
 export function SearchSourceFactory(
-  wrappedIndexes: WrappedIndex[],
-  zhDictionary: string[],
-  resultsLimit: number,
-  onResults: (query: string, results: SearchResult[]) => void
-) {
+  props: SearchSourceFactoryProps
+): SearchSourceFn {
+  const {
+    wrappedIndexes,
+    removeDefaultStopWordFilter,
+    resultsLimit,
+    onResults,
+  } = props;
+
   return function searchSource(
     input: string,
     callback: (results: SearchResult[]) => void
   ): void {
-    const rawTokens = tokenize(input, language);
+    const rawTokens = tokenize(input);
     if (rawTokens.length === 0) {
       callback([]);
       onResults(input, []);
       return;
     }
 
-    const queries = smartQueries(rawTokens, zhDictionary);
+    const queries = smartQueries(rawTokens, {
+      removeDefaultStopWordFilter,
+    });
+
     const results: InitialSearchResult[] = [];
 
     search: for (const { term, tokens } of queries) {

@@ -1,8 +1,8 @@
+import crypto from "crypto";
 import fs from "fs";
 import path from "path";
-import crypto from "crypto";
 import klawSync from "klaw-sync";
-import { PluginConfig } from "../../types";
+import type { PluginConfig } from "../../types";
 import { debugInfo } from "./debug";
 
 export function getIndexHash(config: PluginConfig): string | null {
@@ -35,12 +35,14 @@ export function getIndexHash(config: PluginConfig): string | null {
     const md5sum = crypto.createHash("md5");
 
     // The version of this plugin should be counted in hash,
-    // since the index maybe changed between versions.
+    // since the index maybe changed between versions. Need to
+    // use require here since importing from `package.json` results
+    // in copying the package.json file into the `dist` folder.
 
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const pluginVersion = require(path.resolve(
       __dirname,
-      "../../../../package.json"
+      "../../../package.json"
     )).version;
     debugInfo("using docusaurus-plugin-search-local v%s", pluginVersion);
     md5sum.update(pluginVersion, "utf8");

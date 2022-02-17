@@ -1,12 +1,6 @@
 import lunr from "lunr";
-import nodejieba from "nodejieba";
 import { MatchMetadata } from "../../types";
 import { cutWordByUnderscore } from "./cutWordByUnderscore";
-
-// https://zhuanlan.zhihu.com/p/33335629
-const RegExpConsecutiveWord = /\w+|\p{Unified_Ideograph}+/u;
-
-nodejieba.load();
 
 export function tokenizer(
   input: string | string[] | null | undefined,
@@ -29,52 +23,39 @@ export function tokenizer(
   let start = 0;
   let text = content;
   while (text.length > 0) {
-    const match = text.match(RegExpConsecutiveWord);
+    const match = text.match(/\w+/u);
     if (!match) {
       break;
     }
     const word = match[0];
     start += match.index as number;
-    if (/\w/.test(word[0])) {
-      tokens.push(
-        new lunr.Token(word, {
-          ...(lunr.utils as any).clone(metadata),
-          position: [start, word.length],
-          index: tokens.length,
-        })
-      );
+    tokens.push(
+      new lunr.Token(word, {
+        ...(lunr.utils as any).clone(metadata),
+        position: [start, word.length],
+        index: tokens.length,
+      })
+    );
 
-      // Try to cut `api_gateway` to `api` and `gateway`.
-      const subWords = cutWordByUnderscore(word);
-      if (subWords.length > 1) {
-        let i = 0;
-        for (const subWord of subWords) {
-          if (subWord[0] !== "_") {
-            tokens.push(
-              new lunr.Token(subWord, {
-                ...(lunr.utils as any).clone(metadata),
-                position: [start + i, subWord.length],
-                index: tokens.length,
-              })
-            );
-          }
-          i += subWord.length;
+    // Try to cut `api_gateway` to `api` and `gateway`.
+    const subWords = cutWordByUnderscore(word);
+    if (subWords.length > 1) {
+      let i = 0;
+      for (const subWord of subWords) {
+        if (subWord[0] !== "_") {
+          tokens.push(
+            new lunr.Token(subWord, {
+              ...(lunr.utils as any).clone(metadata),
+              position: [start + i, subWord.length],
+              index: tokens.length,
+            })
+          );
         }
-      }
-
-      start += word.length;
-    } else {
-      for (const zhWord of nodejieba.cut(word)) {
-        tokens.push(
-          new lunr.Token(zhWord, {
-            ...(lunr.utils as any).clone(metadata),
-            position: [start, zhWord.length],
-            index: tokens.length,
-          })
-        );
-        start += zhWord.length;
+        i += subWord.length;
       }
     }
+
+    start += word.length;
     text = content.substring(start);
   }
   return tokens;

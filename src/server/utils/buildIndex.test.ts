@@ -1,5 +1,5 @@
-import { buildIndex as _buildIndex } from "./buildIndex";
-import { PluginConfig, SearchDocument } from "../../types";
+import { buildIndex } from "./buildIndex";
+import { SearchDocument } from "../../types";
 
 describe("buildIndex", () => {
   const allDocuments: Partial<SearchDocument>[][] = [
@@ -22,28 +22,14 @@ describe("buildIndex", () => {
       },
     ],
   ];
-  let buildIndex: typeof _buildIndex;
 
-  beforeEach(() => {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    buildIndex = require("./buildIndex").buildIndex;
-  });
+  test("it should build an index", () => {
+    const wrappedIndexes = buildIndex(allDocuments as SearchDocument[][]);
 
-  afterEach(() => {
-    jest.resetModules();
-  });
-
-  test('should work for ["en"]', () => {
-    const wrappedIndexes = buildIndex(
-      allDocuments as SearchDocument[][],
-      {
-        language: ["en"],
-        removeDefaultStopWordFilter: false,
-      } as PluginConfig
-    );
-
-    expect(wrappedIndexes[0].index.search("世界")).toEqual([]);
+    // lunr does not index common words
     expect(wrappedIndexes[0].index.search("if")).toEqual([]);
+
+    // lunr should index hello
     expect(wrappedIndexes[0].index.search("hello")).toEqual([
       expect.objectContaining({
         ref: "1",
@@ -56,98 +42,6 @@ describe("buildIndex", () => {
             },
           },
         },
-      }),
-    ]);
-  });
-
-  test('should work for ["zh"]', () => {
-    const wrappedIndexes = buildIndex(
-      allDocuments as SearchDocument[][],
-      {
-        language: ["zh"],
-        removeDefaultStopWordFilter: false,
-      } as PluginConfig
-    );
-
-    expect(wrappedIndexes[0].index.search("hello")).toEqual([]);
-    expect(wrappedIndexes[0].index.search("if")).toEqual([]);
-    expect(wrappedIndexes[0].index.search("世界")).toEqual([
-      expect.objectContaining({
-        ref: "2",
-      }),
-    ]);
-  });
-
-  test('should work for ["es"]', () => {
-    const wrappedIndexes = buildIndex(
-      allDocuments as SearchDocument[][],
-      {
-        language: ["es"],
-        removeDefaultStopWordFilter: false,
-      } as PluginConfig
-    );
-
-    expect(wrappedIndexes[0].index.search("世界")).toEqual([]);
-    expect(wrappedIndexes[0].index.search("hola")).toEqual([
-      expect.objectContaining({
-        ref: "3",
-      }),
-    ]);
-  });
-
-  test('should work for ["ja"]', () => {
-    const wrappedIndexes = buildIndex(
-      allDocuments as SearchDocument[][],
-      {
-        language: ["ja"],
-        removeDefaultStopWordFilter: false,
-      } as PluginConfig
-    );
-
-    expect(wrappedIndexes[0].index.search("hello")).toEqual([
-      expect.objectContaining({
-        ref: "1",
-      }),
-    ]);
-    expect(wrappedIndexes[0].index.search("世界")).toEqual([
-      expect.objectContaining({
-        ref: "2",
-      }),
-    ]);
-    expect(wrappedIndexes[0].index.search("hola")).toEqual([
-      expect.objectContaining({
-        ref: "3",
-      }),
-    ]);
-    expect(wrappedIndexes[0].index.search("好き")).toEqual([
-      expect.objectContaining({
-        ref: "4",
-      }),
-    ]);
-  });
-
-  test('should work for ["en", "zh]', () => {
-    const wrappedIndexes = buildIndex(
-      allDocuments as SearchDocument[][],
-      {
-        language: ["en", "zh"],
-        removeDefaultStopWordFilter: true,
-      } as PluginConfig
-    );
-
-    expect(wrappedIndexes[0].index.search("hello")).toEqual([
-      expect.objectContaining({
-        ref: "1",
-      }),
-    ]);
-    expect(wrappedIndexes[0].index.search("if")).toEqual([
-      expect.objectContaining({
-        ref: "1",
-      }),
-    ]);
-    expect(wrappedIndexes[0].index.search("世界")).toEqual([
-      expect.objectContaining({
-        ref: "2",
       }),
     ]);
   });

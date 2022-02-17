@@ -15,13 +15,14 @@ export function getPluginConfig(
     blogRouteBasePath,
     docsDir,
     docsRouteBasePath,
+    externalSearchSources,
     hashed,
     highlightSearchTermsOnTargetPage,
+    id,
     ignoreFiles,
     indexBlog,
     indexDocs,
     indexPages,
-    language,
     removeDefaultStopWordFilter,
     searchResultContextMaxLength,
     searchResultLimits,
@@ -29,11 +30,13 @@ export function getPluginConfig(
   } = options;
 
   const config: PluginConfig = {
+    externalSearchSources,
+    hashed,
+    highlightSearchTermsOnTargetPage,
+    id,
     indexBlog,
     indexDocs,
     indexPages,
-    hashed,
-    highlightSearchTermsOnTargetPage,
     removeDefaultStopWordFilter,
     searchResultContextMaxLength,
     searchResultLimits,
@@ -47,10 +50,7 @@ export function getPluginConfig(
       basePath.replace(/^\//, "")
     ),
 
-    language: getArrayOption(language),
-
     ignoreFiles: getArrayOption(ignoreFiles),
-    externalSearchSources: [], // TODO: this is likely going to fail tests.
   };
 
   return config;
