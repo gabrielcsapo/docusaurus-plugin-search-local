@@ -14,15 +14,11 @@
   width: 16px;
   height: 16px;
   margin: 2px;
-  border: 2px solid
-    var(--search-load-loading-icon-color, var(--ifm-navbar-search-input-color));
+  border: 2px solid var(--ifm-navbar-search-input-color);
   border-radius: 50%;
   animation: loading-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: var(
-      --search-load-loading-icon-color,
-      var(--ifm-navbar-search-input-color)
-    )
-    transparent transparent transparent;
+  border-color: var(--ifm-navbar-search-input-color) transparent transparent
+    transparent;
 }
 
 .loadingRing div:nth-child(1) {
