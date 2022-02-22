@@ -1,3 +1,13 @@
+/* Variables */
+:root {
+  --search-local-result-height: 56px;
+  --search-local-result-shadow: 0 1px 3px 0 rgb(212, 217, 225);
+}
+
+html[data-theme="dark"] {
+  --search-local-result-shadow: none;
+}
+
 /* SearchModal Component */
 .searchModal {
   position: fixed;
@@ -12,7 +22,7 @@
 .searchModalContainer {
   box-shadow: rgba(255, 255, 255, 0.5) 1px 1px 0px 0px inset,
     rgb(85, 90, 100) 0px 3px 8px 0px;
-  background: var(--search-local-modal-background);
+  background: var(--ifm-color-primary-contrast-background);
   position: relative;
 
   flex-direction: column;
@@ -21,7 +31,7 @@
   width: 50%;
   min-width: 400px;
   min-height: 200px;
-  border: 1px solid var(--search-local-container-border);
+  border: 1px solid var(--ifm-color-primary-contrast-background);
 }
 
 .searchInputContainer {
@@ -31,13 +41,12 @@
   align-items: center;
   box-shadow: var(--search-local-searchbox-shadow);
   border-radius: 4px;
-  background-color: var(--search-local-searchbox-focus-background);
+  background-color: var(--ifm-navbar-search-input-background-color);
 }
 
 .searchInputContainer label {
   margin-left: 10px;
   margin-right: 5px;
-  color: var(--search-local-text-color);
   display: flex;
 }
 
@@ -54,7 +63,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  color: var(--search-local-text-color);
+  color: var(--ifm-font-color-base);
   font-size: 1.2em;
   border: none;
   outline: none;
@@ -69,26 +78,29 @@
   justify-content: space-around;
   align-items: center;
   font-weight: 300;
-  color: var(--search-local-text-color);
 }
 
 .noDocsFoundMessage {
   display: flex;
   justify-content: space-around;
   font-weight: 300;
-  color: var(--search-local-text-color);
 }
 
 .searchResultsContainer {
-  overflow-y: overlay;
+  overflow-y: scroll;
   max-height: 400px;
-  color: var(--search-local-text-color);
   padding-left: 12px;
   padding-right: 12px;
 }
 
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  .searchResultsContainer {
+    overflow-y: overlay;
+  }
+}
+
 .searchResultsContainer::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
 }
 
 .searchResultsContainer::-webkit-scrollbar-track {
@@ -96,18 +108,16 @@
 }
 
 .searchResultsContainer::-webkit-scrollbar-thumb {
-  background-color: var(--search-local-muted-color);
-  border: 3px solid var(--search-local-modal-background);
+  background-color: var(--ifm-color-secondary-darkest);
   border-radius: 20px;
 }
 
 .searchResultsContainerFooter {
-  color: var(--search-local-muted-color);
+  color: var(--ifm-color-secondary-darkest);
   display: flex;
   font-size: 0.85em;
   justify-content: center;
-  margin-bottom: var(--search-local-spacing);
-  padding: var(--search-local-spacing);
+  padding: var(--ifm-global-spacing);
 }
 
 .searchResultsContainerFooter a {
@@ -134,7 +144,7 @@
 /* SearchResultSection Component */
 .searchResultsSection {
   max-height: 400px;
-  color: var(--search-local-text-color);
+  padding-bottom: 4px;
 }
 
 .searchResultsSection:last-of-type {
@@ -142,13 +152,12 @@
 }
 
 .searchResultsSectionHeader {
-  background: var(--search-local-modal-background);
-  color: var(--search-local-text-color);
+  background: var(--ifm-color-primary-contrast-background);
   font-size: 0.85em;
   font-weight: 600;
   line-height: 32px;
   margin: 0 -4px;
-  padding: 8px 4px 0;
+  padding: 4px 4px 0;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -158,34 +167,26 @@
 /* SearchResult Component */
 .searchResult {
   cursor: pointer;
-  background: var(--search-local-hit-background, #fff);
+  background: var(--ifm-background-surface-color);
   border-radius: 4px;
-  box-shadow: var(--search-local-hit-shadow, 0 1px 3px 0 #d4d9e1);
-  padding: 0 var(--search-local-spacing, 12px);
+  box-shadow: var(--search-local-result-shadow, 0 1px 3px 0 #d4d9e1);
+  margin-bottom: 4px;
+  padding: 0 var(--ifm-global-spacing);
   width: 100%;
-
   align-items: center;
-  color: var(--search-local-hit-color, #444950);
+  color: var(--ifm-font-color-base);
   display: flex;
   flex-direction: row;
-  height: var(--search-local-hit-height, 56px);
+  height: var(--search-local-result-height, 56px);
 }
 
 html[data-theme="dark"] .searchResult {
-  background: var(--search-local-hit-background, var(--ifm-color-emphasis-100));
-  box-shadow: var(--search-local-hit-shadow, none);
-  color: var(--search-local-hit-color, var(--ifm-font-color-base));
-}
-
-.searchResult:not(:last-child) {
-  margin-bottom: 4px;
+  box-shadow: var(--search-local-result-shadow, none);
+  color: var(--ifm-font-color-base);
 }
 
 .cursor {
-  background-color: var(
-    --search-local-highlight-color,
-    var(--ifm-color-primary)
-  ) !important;
+  background-color: var(--ifm-color-primary) !important;
 }
 
 .cursor > span {
@@ -200,13 +201,13 @@ html[data-theme="dark"] .searchResult {
 .hitTree,
 .hitIcon,
 .hitPath {
-  color: var(--search-local-muted-color, #969faf);
+  color: var(--ifm-color-secondary-darkest);
 }
 
 html[data-theme="dark"] .hitTree,
 html[data-theme="dark"] .hitIcon,
 html[data-theme="dark"] .hitPath {
-  color: var(--search-local-muted-color, var(--ifm-color-secondary-darkest));
+  color: var(--ifm-color-secondary-darkest);
 }
 
 .hitTree {
@@ -215,7 +216,7 @@ html[data-theme="dark"] .hitPath {
 }
 
 .hitTree > svg {
-  height: var(--search-local-hit-height, 56px);
+  height: var(--search-local-result-height, 56px);
   opacity: 0.5;
   stroke-width: var(--search-local-icon-stroke-width, 1.4);
   width: 24px;
@@ -241,7 +242,7 @@ html[data-theme="dark"] .hitPath {
 
 .hitWrapper mark {
   background: none;
-  color: var(--search-local-highlight-color, var(--ifm-color-primary));
+  color: var(--ifm-color-primary);
 }
 
 .hitTitle {
