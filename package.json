@@ -9,6 +9,7 @@
     "check:client": "tsc --noEmit --project ./tsconfig.client.json",
     "check:server": "tsc --noEmit --project ./tsconfig.server.json",
     "commit": "commit",
+    "lint": "eslint ./src --config .eslintrc",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "start": "nf start --procfile ./procfiles/start.procfile",

@@ -66,6 +66,8 @@ jobs:
           cache: "npm"
       - name: Install Dependencies
         run: npm install
+      - name: ESLint
+        run: npm run lint
       - name: Lint Commit Message(s)
         run: npx commitlint --from=HEAD~1 --verbose
 
