@@ -8,20 +8,44 @@ interface SerializedIndex {
   };
 }
 
+interface FetchIndexResponse {
+  wrappedIndexes: WrappedIndex[];
+}
+
+const EMPTY_RESPONSE: FetchIndexResponse = Object.freeze({
+  wrappedIndexes: [],
+});
+
 export async function fetchIndexes(
   baseUrl: string,
   indexHash: string | null = null
-): Promise<{
-  wrappedIndexes: WrappedIndex[];
-}> {
+): Promise<FetchIndexResponse> {
   const indexUrl = `${baseUrl}search-index.json`;
   const queryString = indexHash ? `?_=${indexHash}` : "";
 
-  const json = (await (
-    await fetch(`${indexUrl}${queryString}`)
-  ).json()) as SerializedIndex[];
+  let result;
 
-  const wrappedIndexes: WrappedIndex[] = json.map(
+  try {
+    result = await fetch(`${indexUrl}${queryString}`);
+  } catch {
+    console.warn(
+      `[docusaurus-plugin-search-local] Unable to fetch search index from ${baseUrl}`
+    );
+    return EMPTY_RESPONSE;
+  }
+
+  let searchIndexRaw: SerializedIndex[];
+
+  try {
+    searchIndexRaw = await result.json();
+  } catch {
+    console.warn(
+      `[docusaurus-plugin-search-local] Unable to parse search index from ${baseUrl}`
+    );
+    return EMPTY_RESPONSE;
+  }
+
+  const wrappedIndexes: WrappedIndex[] = searchIndexRaw.map(
     ({ documents, index }, type) => ({
       type: type as SearchDocumentType,
       documents,

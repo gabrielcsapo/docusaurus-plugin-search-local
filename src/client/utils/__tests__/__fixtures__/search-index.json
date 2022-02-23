@@ -1,0 +1,27 @@
+[
+  {
+    "documents": [
+      {
+        "i": 12,
+        "t": "Installation",
+        "u": "/docusaurus-plugin-search-local/docs/getting-started/",
+        "h": "#installation",
+        "p": 10
+      }
+    ],
+    "index": {
+      "version": "2.3.9",
+      "fields": ["t"],
+      "fieldVectors": [
+        ["t/12", [0, 0.981]],
+        ["t/14", [1, 0.981]],
+        ["t/16", [2, 0.981]]
+      ],
+      "invertedIndex": [
+        ["hello", { "_index": 1, "t": { "14": { "position": [[0, 13]] } } }],
+        ["world", { "_index": 0, "t": { "12": { "position": [[0, 12]] } } }]
+      ],
+      "pipeline": ["stemmer"]
+    }
+  }
+]
