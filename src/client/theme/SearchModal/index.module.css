@@ -22,7 +22,7 @@ html[data-theme="dark"] {
 .searchModalContainer {
   box-shadow: rgba(255, 255, 255, 0.5) 1px 1px 0px 0px inset,
     rgb(85, 90, 100) 0px 3px 8px 0px;
-  background: var(--ifm-color-primary-contrast-background);
+  background: var(--ifm-background-surface-color);
   position: relative;
 
   flex-direction: column;
@@ -152,7 +152,7 @@ html[data-theme="dark"] {
 }
 
 .searchResultsSectionHeader {
-  background: var(--ifm-color-primary-contrast-background);
+  background: var(--ifm-background-surface-color);
   font-size: 0.85em;
   font-weight: 600;
   line-height: 32px;
@@ -167,7 +167,7 @@ html[data-theme="dark"] {
 /* SearchResult Component */
 .searchResult {
   cursor: pointer;
-  background: var(--ifm-background-surface-color);
+  background: var(--ifm-color-primary-contrast-background);
   border-radius: 4px;
   box-shadow: var(--search-local-result-shadow, 0 1px 3px 0 #d4d9e1);
   margin-bottom: 4px;
