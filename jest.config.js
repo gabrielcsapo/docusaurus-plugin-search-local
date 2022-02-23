@@ -1,6 +1,4 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-  preset: "ts-jest",
   collectCoverage: false, // turned off to clean up test output when running locally, use `--coverage true` to get coverage output
   coverageDirectory: "<rootDir>/.coverage",
   collectCoverageFrom: ["src/**/*.{ts,tsx,js,jsx}"],
@@ -20,13 +18,8 @@ module.exports = {
         "<rootDir>/src/client/**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       transform: {
-        "^.+\\.[t|j]sx?$": "ts-jest",
-        "^.+\\.[t|j]s?$": "ts-jest",
-      },
-      globals: {
-        "ts-jest": {
-          tsconfig: "tsconfig.client.json",
-        },
+        "^.+\\.(t|j)sx?$": ["@swc/jest"],
+        "^.+\\.[t|j]s?$": ["@swc/jest"],
       },
     },
     {
@@ -39,13 +32,8 @@ module.exports = {
         "<rootDir>/src/server/**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       transform: {
-        "^.+\\.[t|j]sx?$": "ts-jest",
-        "^.+\\.[t|j]s?$": "ts-jest",
-      },
-      globals: {
-        "ts-jest": {
-          tsconfig: "tsconfig.server.json",
-        },
+        "^.+\\.(t|j)sx?$": ["@swc/jest"],
+        "^.+\\.[t|j]s?$": ["@swc/jest"],
       },
     },
   ],

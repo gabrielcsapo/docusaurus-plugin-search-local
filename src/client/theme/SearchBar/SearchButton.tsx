@@ -93,3 +93,5 @@ export const SearchButton = React.forwardRef<
     </button>
   );
 });
+
+SearchButton.displayName = "SearchButton";
