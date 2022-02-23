@@ -1,3 +1,9 @@
+### [0.3.2](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.1...0.3.2) (2022-02-23)
+
+### Bug Fixes
+
+- fixing color contrast in search modal ([9c638b3](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/9c638b3db5d95b5a94b50d4f7bcd93ed3299504e))
+
 ### [0.3.1](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.0...0.3.1) (2022-02-23)
 
 ### Bug Fixes
