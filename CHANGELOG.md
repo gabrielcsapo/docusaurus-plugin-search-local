@@ -1,3 +1,10 @@
+### [0.3.1](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.0...0.3.1) (2022-02-23)
+
+### Bug Fixes
+
+- handle errors when fetching search index ([d714954](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/d714954f84ace613a079db2a44836784bfffcfdd))
+- using infima colors instead of custom colors ([c49c2fc](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/c49c2fc5d184a8c3ed2344bcdb823a26c74b8af3))
+
 # [0.3.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.0-beta.1...0.3.0) (2022-02-17)
 
 ### Bug Fixes
