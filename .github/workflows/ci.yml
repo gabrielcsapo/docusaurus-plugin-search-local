@@ -43,8 +43,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: yarn --frozen-lockfile
-      - run: yarn run check
+      - run: npm i -g npm@7
+      - run: npm ci
+      - run: npm run check
 
   lint:
     runs-on: ubuntu-latest
