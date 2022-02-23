@@ -5,6 +5,9 @@
   "repository": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
   "homepage": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
   "scripts": {
+    "check": "npm run check:client && npm run check:server",
+    "check:client": "tsc --noEmit --project ./tsconfig.client.json",
+    "check:server": "tsc --noEmit --project ./tsconfig.server.json",
     "commit": "commit",
     "test": "jest",
     "test:watch": "jest --watchAll",
