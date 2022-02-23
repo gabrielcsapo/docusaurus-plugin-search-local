@@ -1,3 +1,9 @@
+### [0.3.3](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.2...0.3.3) (2022-02-23)
+
+### Bug Fixes
+
+- adding prepublishOnly script ([734b00b](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/734b00bfc4ac4497303234711d8489a155dcfb4c))
+
 ### [0.3.2](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.1...0.3.2) (2022-02-23)
 
 ### Bug Fixes
