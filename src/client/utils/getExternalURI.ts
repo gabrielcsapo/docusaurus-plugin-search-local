@@ -4,19 +4,11 @@ const END_SLASH_PATTERN = /\/$/;
 const START_SLASH_PATTERN = /^\//;
 const PROTOCOL_PATTERN = /^http[s]?:\/\//;
 
-function stripDuplicateRouteParts(
-  basePart: string,
-  routeParts: string[]
-): string[] {
-  if (routeParts.length === 0) {
-    return [];
-  }
+function isBaseOverlapping(baseParts: string[], routeParts: string[]): boolean {
+  const base = baseParts.join("");
+  const route = routeParts.join("");
 
-  if (basePart === routeParts[0]) {
-    return routeParts.slice(1);
-  }
-
-  return routeParts;
+  return route.startsWith(base);
 }
 
 export function getExternalURI(documentPath: string, baseURI: string): string {
@@ -29,11 +21,26 @@ export function getExternalURI(documentPath: string, baseURI: string): string {
   const route = sanitizedRoute.replace(START_SLASH_PATTERN, "");
 
   const baseParts = base.replace(PROTOCOL_PATTERN, "").split("/");
-  let routeParts = route.split("/");
+  const routeParts = route.split("/");
 
-  baseParts.reverse().forEach((basePart) => {
-    routeParts = stripDuplicateRouteParts(basePart, routeParts);
-  });
+  let externalBase = base;
 
-  return `${base}/${routeParts.join("/")}`;
+  for (
+    let baseIdx = 0;
+    baseIdx < baseParts.length && externalBase === base;
+    baseIdx++
+  ) {
+    const basePart = baseParts[baseIdx];
+
+    // If we find a potential overlapping part
+    if (basePart === routeParts[0]) {
+      // Check to see if the route starts with the rest of base URI.
+      if (isBaseOverlapping(baseParts.slice(baseIdx), routeParts)) {
+        // Set the external base to the start of the original base up until the first overlapping part.
+        externalBase = baseParts.slice(0, baseIdx).join("/");
+      }
+    }
+  }
+
+  return `${externalBase}/${routeParts.join("/")}`;
 }
