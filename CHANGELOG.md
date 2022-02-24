@@ -1,3 +1,9 @@
+### [0.3.4](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.3...0.3.4) (2022-02-24)
+
+### Bug Fixes
+
+- handle complex overlapping external routes ([89ed6fa](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/89ed6fa6aa4bfc54d4e09b7b1abf04fc72f84db5))
+
 ### [0.3.3](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.2...0.3.3) (2022-02-23)
 
 ### Bug Fixes
