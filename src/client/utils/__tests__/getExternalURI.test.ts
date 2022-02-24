@@ -73,4 +73,24 @@ describe("getExternalURI", () => {
       )
     ).toBe("www.example.com/docusaurus-plugin-search-local/blog/welcome");
   });
+
+  test("it should de-duplicate URIs with multiple overlapping route parts", () => {
+    expect(getExternalURI("/foo/bar/graphql", "www.example.com/foo/bar/")).toBe(
+      "www.example.com/foo/bar/graphql"
+    );
+  });
+
+  test("it should handle a url with same parts but not overlapping", () => {
+    expect(getExternalURI("/foo/bar/graphql", "www.example.com/foo/baz/")).toBe(
+      "www.example.com/foo/baz/foo/bar/graphql"
+    );
+
+    expect(
+      getExternalURI("/foo/bar/graphql", "www.example.com/foo/bar/foo/bar")
+    ).toBe("www.example.com/foo/bar/foo/bar/graphql");
+
+    expect(
+      getExternalURI("/foo/bar/graphql", "www.example.com/baz/foo/bar")
+    ).toBe("www.example.com/baz/foo/bar/graphql");
+  });
 });
