@@ -78,6 +78,13 @@ describe("getExternalURI", () => {
     expect(getExternalURI("/foo/bar/graphql", "www.example.com/foo/bar/")).toBe(
       "www.example.com/foo/bar/graphql"
     );
+
+    expect(
+      getExternalURI(
+        "/some-rando/location/foo",
+        "https://www.foo.bar.example.com/some-rando/location/"
+      )
+    ).toBe("https://www.foo.bar.example.com/some-rando/location/foo");
   });
 
   test("it should handle a url with same parts but not overlapping", () => {
