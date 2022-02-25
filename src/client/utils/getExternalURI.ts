@@ -2,7 +2,6 @@ import { sanitizeUrl } from "@braintree/sanitize-url";
 
 const END_SLASH_PATTERN = /\/$/;
 const START_SLASH_PATTERN = /^\//;
-const PROTOCOL_PATTERN = /^http[s]?:\/\//;
 
 function isBaseOverlapping(baseParts: string[], routeParts: string[]): boolean {
   const base = baseParts.join("");
@@ -20,7 +19,7 @@ export function getExternalURI(documentPath: string, baseURI: string): string {
   const base = sanitizedBase.replace(END_SLASH_PATTERN, "");
   const route = sanitizedRoute.replace(START_SLASH_PATTERN, "");
 
-  const baseParts = base.replace(PROTOCOL_PATTERN, "").split("/");
+  const baseParts = base.split("/");
   const routeParts = route.split("/");
 
   let externalBase = base;
