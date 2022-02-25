@@ -1,3 +1,9 @@
+### [0.3.5](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.4...0.3.5) (2022-02-25)
+
+### Bug Fixes
+
+- ensures urls with overlapping segments doesn't remove the protocol ([128c2f5](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/128c2f594ef5828adcee7a3d10524128396e3e9f))
+
 ### [0.3.4](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.3...0.3.4) (2022-02-24)
 
 ### Bug Fixes
