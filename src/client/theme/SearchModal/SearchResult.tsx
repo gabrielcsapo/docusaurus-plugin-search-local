@@ -89,9 +89,9 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
     isLastOfTree,
   } = searchResult;
 
-  const { searchResultContextMaxLength } = usePluginData<GlobalPluginData>(
+  const { searchResultContextMaxLength } = usePluginData(
     "docusaurus-plugin-search-local"
-  );
+  ) as GlobalPluginData;
   const history = useHistory();
   const isTitle = type === 0;
   const isHeading = type === 1;

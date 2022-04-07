@@ -25,7 +25,7 @@ export default function SearchPage(): React.ReactElement {
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
   const { indexHash, removeDefaultStopWordFilter, translations } =
-    usePluginData<GlobalPluginData>("docusaurus-plugin-search-local");
+    usePluginData("docusaurus-plugin-search-local") as GlobalPluginData;
   const { searchValue, updateSearchPath } = useSearchQuery();
   const [searchQuery, setSearchQuery] = useState(searchValue);
   const [searchSource, setSearchSource] = useState<SearchSourceFn>();
@@ -94,7 +94,7 @@ export default function SearchPage(): React.ReactElement {
   }, [baseUrl]);
 
   return (
-    <Layout title={pageTitle}>
+    <Layout>
       <Head>
         {/*
           We should not index search pages
