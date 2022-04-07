@@ -1,12 +1,10 @@
 import type {
+  Options,
   PluginOptions,
   TranslationMap,
 } from "docusaurus-plugin-search-local";
 import { Joi } from "@docusaurus/utils-validation";
-import type {
-  OptionValidationContext,
-  ValidationResult,
-} from "@docusaurus/types";
+import type { OptionValidationContext } from "@docusaurus/types";
 
 export const DEFAULT_OPTIONS: Omit<PluginOptions, "id"> = {
   indexDocs: true,
@@ -113,6 +111,6 @@ export const OptionsSchema = Joi.object<PluginOptions>({
 export function validateOptions({
   validate,
   options,
-}: OptionValidationContext<PluginOptions>): ValidationResult<PluginOptions> {
+}: OptionValidationContext<Options, PluginOptions>): PluginOptions {
   return validate(OptionsSchema, options);
 }

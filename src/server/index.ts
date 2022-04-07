@@ -42,7 +42,7 @@ export default function DocusaurusSearchLocalPlugin(
       });
 
       // Setting global data for use on client side.
-      setGlobalData<GlobalPluginData>(getGlobalPluginData(config));
+      setGlobalData(getGlobalPluginData(config));
     },
   };
 }

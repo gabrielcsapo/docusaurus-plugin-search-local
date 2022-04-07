@@ -74,7 +74,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
     searchResultLimits,
     translations,
     externalSearchSources: externalSourceConfigs,
-  } = usePluginData<GlobalPluginData>("docusaurus-plugin-search-local");
+  } = usePluginData("docusaurus-plugin-search-local") as GlobalPluginData;
   const [searchQuery, setSearchQuery] = useState("");
   const searchModal = useRef(null);
   const searchInput = useRef(null);
