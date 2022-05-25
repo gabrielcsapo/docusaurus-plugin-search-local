@@ -1,10 +1,7 @@
 import path from "path";
 import { normalizeUrl } from "@docusaurus/utils";
 import { LoadContext, Plugin } from "@docusaurus/types";
-import type {
-  GlobalPluginData,
-  PluginOptions,
-} from "docusaurus-plugin-search-local";
+import type { PluginOptions } from "docusaurus-plugin-search-local";
 
 import { getPluginConfig } from "./utils/getPluginConfig";
 import { getGlobalPluginData } from "./utils/getGlobalPluginData";

@@ -3,7 +3,6 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { useLocation } from "@docusaurus/router";
 
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import { SearchButton } from "./SearchButton";
 import SearchModal from "../SearchModal";
@@ -38,9 +37,6 @@ export default class SearchBarWrapper extends React.Component {
 export function SearchBar(): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const {
-    siteConfig: { baseUrl },
-  } = useDocusaurusContext();
 
   useEffect(() => {
     if (!Mark) {

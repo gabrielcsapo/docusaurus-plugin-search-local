@@ -96,13 +96,20 @@ const SearchModal: React.FC<SearchModalProps> = ({
     ExternalSearchResults[]
   >([]);
 
+  const allSearchResults: SearchResult[] = [
+    ...searchResults,
+    ...externalSearchResults.flatMap(({ results }) => results),
+  ];
+
+  let cursorOffset = searchResults.length;
+
   useEffect(() => {
     if (allSearchResults.length && downPress) {
       setCursor((prevState) =>
         prevState < allSearchResults.length - 1 ? prevState + 1 : prevState
       );
     }
-  }, [downPress]);
+  }, [allSearchResults.length, downPress]);
 
   useEffect(() => {
     if (allSearchResults.length && upPress) {
@@ -227,13 +234,6 @@ const SearchModal: React.FC<SearchModalProps> = ({
 
     setExternalSearchResults(_externalSearchResults);
   }, [searchQuery, externalSearchSources]);
-
-  const allSearchResults: SearchResult[] = [
-    ...searchResults,
-    ...externalSearchResults.flatMap(({ results }) => results),
-  ];
-
-  let cursorOffset = searchResults.length;
 
   return (
     <div
