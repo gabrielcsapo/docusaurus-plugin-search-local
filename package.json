@@ -29,7 +29,7 @@
   "main": "dist/server/index.js",
   "types": "src/docusaurus-plugin-search-local.d.ts",
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   },
   "license": "MIT",
   "workspaces": [
@@ -118,7 +118,7 @@
       "optimize": false,
       "outputFormat": "commonjs",
       "engines": {
-        "node": ">=14"
+        "node": ">=16"
       }
     }
   },
