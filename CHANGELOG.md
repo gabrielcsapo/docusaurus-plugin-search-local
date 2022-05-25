@@ -1,3 +1,5 @@
+## [0.6.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.5.0...0.6.0) (2022-05-25)
+
 ## [0.5.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.4.0...0.5.0) (2022-04-07)
 
 ## [0.4.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.3.5...0.4.0) (2022-03-01)
