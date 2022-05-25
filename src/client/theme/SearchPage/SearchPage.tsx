@@ -38,7 +38,11 @@ export default function SearchPage(): React.ReactElement {
             keyword: searchQuery,
           })
         : translations.search_the_documentation,
-    [searchQuery]
+    [
+      searchQuery,
+      translations.search_results_for,
+      translations.search_the_documentation,
+    ]
   );
 
   useEffect(() => {
@@ -56,7 +60,7 @@ export default function SearchPage(): React.ReactElement {
 
     // `updateSearchPath` should not be in the deps,
     // otherwise will cause call stack overflow.
-  }, [searchQuery, searchSource]);
+  }, [searchQuery, searchSource, updateSearchPath]);
 
   const handleSearchInputChange = useCallback((e) => {
     setSearchQuery(e.target.value);
@@ -66,7 +70,7 @@ export default function SearchPage(): React.ReactElement {
     if (searchValue && searchValue !== searchQuery) {
       setSearchQuery(searchValue);
     }
-  }, [searchValue]);
+  }, [searchQuery, searchValue]);
 
   useEffect(() => {
     async function doFetchIndexes() {
@@ -91,7 +95,7 @@ export default function SearchPage(): React.ReactElement {
       );
     }
     doFetchIndexes();
-  }, [baseUrl]);
+  }, [baseUrl, indexHash, removeDefaultStopWordFilter]);
 
   return (
     <Layout>
