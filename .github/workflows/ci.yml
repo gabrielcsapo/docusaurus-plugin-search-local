@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm i -g npm@7
+      - run: npm i -g npm@8
       - run: npm ci
       - run: npm run build
 
@@ -43,7 +43,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm i -g npm@7
+      - run: npm i -g npm@8
       - run: npm ci
       - run: npm run check
 
@@ -86,7 +86,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm i -g npm@7
+      - run: npm i -g npm@8
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
@@ -109,6 +109,7 @@ jobs:
         run: |
           git config --global user.email "gabecsapo@gmail.com"
           git config --global user.name "Gabriel J. Csapo"
+          npm i -g npm@8
           npm ci
           npm run build
           cd website
