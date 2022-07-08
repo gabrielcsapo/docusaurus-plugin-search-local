@@ -66,9 +66,9 @@ describe("SearchSourceFactory", () => {
     ],
     removeDefaultStopWordFilter: false,
     resultsLimit: 2,
-    onResults: jest.fn(),
+    onResults: vi.fn(),
   });
-  const callback = jest.fn();
+  const callback = vi.fn();
 
   test.each<[string, number[]]>([
     [",", []],

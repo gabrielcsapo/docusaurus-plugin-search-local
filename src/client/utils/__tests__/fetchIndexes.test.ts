@@ -1,19 +1,19 @@
 import { fetchIndexes } from "../fetchIndexes";
 import SEARCH_INDEX from "./__fixtures__/search-index.json";
 
-const mockFetch = (global.fetch = jest.fn());
+const mockFetch = (global.fetch = vi.fn());
 
 describe("fetchIndexes", () => {
   const baseUrl = "/";
   const originalWarn = console.warn;
 
   beforeEach(() => {
-    jest.resetModules(); // most important - it clears the cache
+    vi.resetModules(); // most important - it clears the cache
     mockFetch.mockReset();
   });
 
   afterAll(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
     console.warn = originalWarn;
   });
 
@@ -58,7 +58,7 @@ describe("fetchIndexes", () => {
     mockFetch.mockRejectedValue(new Error("unable to fetch"));
 
     // Mock out warn.
-    console.warn = jest.fn();
+    console.warn = vi.fn();
 
     const result = await fetchIndexes(baseUrl);
 
@@ -73,11 +73,11 @@ describe("fetchIndexes", () => {
 
   test("it should handle errors parsing the search index file", async () => {
     mockFetch.mockResolvedValueOnce({
-      json: jest.fn().mockRejectedValue(new Error("unable to parse")),
+      json: vi.fn().mockRejectedValue(new Error("unable to parse")),
     });
 
     // Mock out warn.
-    console.warn = jest.fn();
+    console.warn = vi.fn();
 
     const result = await fetchIndexes(baseUrl);
 

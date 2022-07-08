@@ -4,8 +4,8 @@ import { DocInfoWithFilePath } from "../../types";
 
 fs.readFile;
 
-jest.mock("./parse");
-jest.spyOn(fs, "readFile").mockImplementation(((
+vi.mock("./parse");
+vi.spyOn(fs, "readFile").mockImplementation(((
   filePath: string,
   options: null,
   callback: (err: NodeJS.ErrnoException | null, data: Buffer | string) => void
@@ -13,11 +13,9 @@ jest.spyOn(fs, "readFile").mockImplementation(((
   callback(null, filePath);
 }) as unknown as any);
 
-// Use `require` to avoid *import hoisting*.
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { scanDocuments } = require("./scanDocuments");
+import { scanDocuments } from "./scanDocuments";
 
-const mockParse = parse as jest.MockedFunction<typeof parse>;
+const mockParse = parse as vi.MockedFunction<typeof parse>;
 
 describe("scanDocuments", () => {
   test("should work", async () => {
@@ -67,25 +65,25 @@ describe("scanDocuments", () => {
     });
     const allDocuments = await scanDocuments(DocInfoWithFilePathList);
     expect(allDocuments).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          Object {
-            "b": Array [
+      [
+        [
+          {
+            "b": [
               "Docs",
             ],
             "i": 1,
             "t": "Hello First Docs",
             "u": "/1",
           },
-          Object {
-            "b": Array [],
+          {
+            "b": [],
             "i": 5,
             "t": "Hello First Page",
             "u": "/2",
           },
         ],
-        Array [
-          Object {
+        [
+          {
             "h": "#first-heading",
             "i": 3,
             "p": 1,
@@ -93,8 +91,8 @@ describe("scanDocuments", () => {
             "u": "/1",
           },
         ],
-        Array [
-          Object {
+        [
+          {
             "h": "",
             "i": 2,
             "p": 1,
@@ -102,7 +100,7 @@ describe("scanDocuments", () => {
             "t": "Leading content.",
             "u": "/1",
           },
-          Object {
+          {
             "h": "#first-heading",
             "i": 4,
             "p": 1,
