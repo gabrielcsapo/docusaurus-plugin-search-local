@@ -1,3 +1,9 @@
+## [0.7.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.5.0...0.7.0) (2022-07-08)
+
+### Features
+
+- updates @docusaurus/\* to 2.0.0-beta.22 ([0222094](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/0222094dd7e93e390a1878c02d86e30f58336037))
+
 ## [0.6.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.5.0...0.6.0) (2022-05-25)
 
 ## [0.5.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.4.0...0.5.0) (2022-04-07)
