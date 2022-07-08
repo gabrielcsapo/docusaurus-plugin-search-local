@@ -127,7 +127,7 @@
       "autoGenerate": true
     },
     "hooks": {
-      "after:bump": "npm run test -- -u"
+      "after:bump": "CI=true npm run test -- -u"
     },
     "plugins": {
       "@release-it/conventional-changelog": {
