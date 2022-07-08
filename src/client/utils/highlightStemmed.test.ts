@@ -1,9 +1,5 @@
-import {
-  MetadataPosition,
-  ChunkIndexRef,
-  HighlightChunk,
-} from "../../../types";
-import { highlightStemmed, splitIntoChunks } from "../highlightStemmed";
+import { MetadataPosition, ChunkIndexRef, HighlightChunk } from "../../types";
+import { highlightStemmed, splitIntoChunks } from "./highlightStemmed";
 
 describe("highlightStemmed", () => {
   test.each<[string, MetadataPosition[], string[], number | undefined, string]>(

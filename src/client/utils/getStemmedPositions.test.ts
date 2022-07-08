@@ -1,4 +1,4 @@
-import { getStemmedPositions } from "../getStemmedPositions";
+import { getStemmedPositions } from "./getStemmedPositions";
 
 describe("getStemmedPositions", () => {
   test("flatten and sort positions", () => {

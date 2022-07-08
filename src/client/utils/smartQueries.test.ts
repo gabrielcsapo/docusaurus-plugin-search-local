@@ -1,6 +1,6 @@
 import lunr from "lunr";
-import { smartQueries } from "../smartQueries";
-import { SmartQuery } from "../../../types";
+import { smartQueries } from "./smartQueries";
+import { SmartQuery } from "../../types";
 
 (lunr as any).fake = {};
 

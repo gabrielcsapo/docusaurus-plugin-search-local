@@ -1,6 +1,6 @@
 import lunr from "lunr";
-import { SearchDocument } from "../../../types";
-import { SearchSourceFactory } from "../SearchSourceFactory";
+import { SearchDocument } from "../../types";
+import { SearchSourceFactory } from "./SearchSourceFactory";
 
 describe("SearchSourceFactory", () => {
   const documentsOfTitles: SearchDocument[] = [

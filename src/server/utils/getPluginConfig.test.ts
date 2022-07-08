@@ -1,7 +1,7 @@
 import { normalizePluginOptions } from "@docusaurus/utils-validation";
 import { ExternalSourceConfig } from "docusaurus-plugin-search-local";
-import { getPluginConfig } from "../getPluginConfig";
-import { OptionsSchema } from "../../options";
+import { getPluginConfig } from "./getPluginConfig";
+import { OptionsSchema } from "../options";
 
 describe("getPluginConfig", () => {
   const siteDir = "/tmp";

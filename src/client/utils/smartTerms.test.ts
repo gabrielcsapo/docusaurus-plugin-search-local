@@ -1,4 +1,4 @@
-import { smartTerms } from "../smartTerms";
+import { smartTerms } from "./smartTerms";
 
 describe("smartTerms", () => {
   test("it should create smart terms from a set of tokens", () => {

@@ -1,0 +1,61 @@
+// Vitest Snapshot v1
+
+exports[`getGlobalPluginData > it should generate an index hash when enabled 1`] = `
+{
+  "externalSearchSources": [],
+  "indexHash": "f7edca6f",
+  "removeDefaultStopWordFilter": false,
+  "searchResultContextMaxLength": 50,
+  "searchResultLimits": 8,
+  "translations": {
+    "count_documents_found": "{{ count }} document found",
+    "count_documents_found_plural": "{{ count }} documents found",
+    "no_documents_were_found": "No documents were found",
+    "no_results": "No results.",
+    "search_placeholder": "Search",
+    "search_results_for": "Search results for \\"{{ keyword }}\\"",
+    "search_the_documentation": "Search the documentation",
+    "see_all_results": "See all results",
+  },
+}
+`;
+
+exports[`getGlobalPluginData > it should only index blog when enabled 1`] = `
+{
+  "externalSearchSources": [],
+  "indexHash": "3d5f19d9",
+  "removeDefaultStopWordFilter": false,
+  "searchResultContextMaxLength": 50,
+  "searchResultLimits": 8,
+  "translations": {
+    "count_documents_found": "{{ count }} document found",
+    "count_documents_found_plural": "{{ count }} documents found",
+    "no_documents_were_found": "No documents were found",
+    "no_results": "No results.",
+    "search_placeholder": "Search",
+    "search_results_for": "Search results for \\"{{ keyword }}\\"",
+    "search_the_documentation": "Search the documentation",
+    "see_all_results": "See all results",
+  },
+}
+`;
+
+exports[`getGlobalPluginData > it should only index docs when enabled 1`] = `
+{
+  "externalSearchSources": [],
+  "indexHash": "45b0605c",
+  "removeDefaultStopWordFilter": false,
+  "searchResultContextMaxLength": 50,
+  "searchResultLimits": 8,
+  "translations": {
+    "count_documents_found": "{{ count }} document found",
+    "count_documents_found_plural": "{{ count }} documents found",
+    "no_documents_were_found": "No documents were found",
+    "no_results": "No results.",
+    "search_placeholder": "Search",
+    "search_results_for": "Search results for \\"{{ keyword }}\\"",
+    "search_the_documentation": "Search the documentation",
+    "see_all_results": "See all results",
+  },
+}
+`;

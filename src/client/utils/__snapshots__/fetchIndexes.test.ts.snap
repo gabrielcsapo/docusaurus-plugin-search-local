@@ -1,0 +1,104 @@
+// Vitest Snapshot v1
+
+exports[`fetchIndexes > it should handle endpoint errors 1`] = `
+{
+  "wrappedIndexes": [],
+}
+`;
+
+exports[`fetchIndexes > it should handle errors parsing the search index file 1`] = `
+{
+  "wrappedIndexes": [],
+}
+`;
+
+exports[`fetchIndexes > production 1`] = `
+{
+  "wrappedIndexes": [
+    {
+      "documents": [
+        {
+          "h": "#installation",
+          "i": 12,
+          "p": 10,
+          "t": "Installation",
+          "u": "/docusaurus-plugin-search-local/docs/getting-started/",
+        },
+      ],
+      "index": {
+        "fieldVectors": [
+          [
+            "t/12",
+            [
+              0,
+              0.981,
+            ],
+          ],
+          [
+            "t/14",
+            [
+              1,
+              0.981,
+            ],
+          ],
+          [
+            "t/16",
+            [
+              2,
+              0.981,
+            ],
+          ],
+        ],
+        "fields": [
+          "t",
+        ],
+        "invertedIndex": [
+          [
+            "hello",
+            {
+              "_index": 1,
+              "t": {
+                "14": {
+                  "position": [
+                    [
+                      0,
+                      13,
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          [
+            "world",
+            {
+              "_index": 0,
+              "t": {
+                "12": {
+                  "position": [
+                    [
+                      0,
+                      12,
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+        ],
+        "pipeline": [
+          "stemmer",
+        ],
+        "version": "2.3.9",
+      },
+      "type": 0,
+    },
+  ],
+}
+`;
+
+exports[`fetchIndexes > production with empty index 1`] = `
+{
+  "wrappedIndexes": [],
+}
+`;

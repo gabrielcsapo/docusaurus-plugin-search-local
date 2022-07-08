@@ -1,4 +1,4 @@
-import { getExternalURI } from "../getExternalURI";
+import { getExternalURI } from "./getExternalURI";
 
 describe("getExternalURI", () => {
   const DEFAULT_DOC_PATH = "/";

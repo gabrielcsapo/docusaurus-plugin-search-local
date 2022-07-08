@@ -1,7 +1,7 @@
-import { InitialSearchResult } from "../../../types";
-import { processTreeStatusOfSearchResults } from "../processTreeStatusOfSearchResults";
+import { InitialSearchResult } from "../../types";
+import { sortSearchResults } from "./sortSearchResults";
 
-describe("processTreeStatusOfSearchResults", () => {
+describe("sortSearchResults", () => {
   test("should work", () => {
     const pageTitles = [
       {
@@ -37,19 +37,11 @@ describe("processTreeStatusOfSearchResults", () => {
       pageTitles[0],
       {
         document: {
-          i: 101,
-        },
-        type: 2,
-        page: pageTitles[0].document,
-      },
-      {
-        document: {
           i: 3,
         },
         type: 1,
         page: {},
       },
-      pageTitles[1],
       {
         document: {
           i: 201,
@@ -64,20 +56,18 @@ describe("processTreeStatusOfSearchResults", () => {
         type: 2,
         page: pageTitles[1].document,
       },
+      pageTitles[1],
+      {
+        document: {
+          i: 101,
+        },
+        type: 2,
+        page: pageTitles[0].document,
+      },
     ] as InitialSearchResult[];
-    processTreeStatusOfSearchResults(results);
-    const statuses: [boolean | undefined, boolean | undefined][] = [
-      [undefined, undefined],
-      [undefined, undefined],
-      [undefined, undefined],
-      [undefined, true],
-      [undefined, undefined],
-      [undefined, undefined],
-      [true, undefined],
-      [undefined, true],
-    ];
-    results.forEach((item, i) => {
-      expect([item.isInterOfTree, item.isLastOfTree]).toEqual(statuses[i]);
-    });
+    sortSearchResults(results);
+    expect(results.map((item) => item.document.i)).toEqual([
+      1, 2, 100, 101, 3, 200, 201, 202,
+    ]);
   });
 });

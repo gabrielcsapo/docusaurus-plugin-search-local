@@ -1,6 +1,6 @@
 import { ValidationResult, ValidationSchema } from "@docusaurus/types";
 import type { PluginOptions } from "docusaurus-plugin-search-local";
-import { validateOptions } from "../options";
+import { validateOptions } from "./options";
 
 describe("validateOptions", () => {
   const defaultTranslations = {

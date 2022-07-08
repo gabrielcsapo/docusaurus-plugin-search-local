@@ -1,8 +1,8 @@
 import fixturify from "fixturify";
 import tmp from "tmp";
 
-import type { PluginConfig } from "../../../types";
-import { getGlobalPluginData } from "../getGlobalPluginData";
+import type { PluginConfig } from "../../types";
+import { getGlobalPluginData } from "./getGlobalPluginData";
 
 describe("getGlobalPluginData", () => {
   const baselinePluginConfig: PluginConfig = {

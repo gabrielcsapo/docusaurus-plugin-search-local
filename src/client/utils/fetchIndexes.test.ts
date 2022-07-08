@@ -1,4 +1,4 @@
-import { fetchIndexes } from "../fetchIndexes";
+import { fetchIndexes } from "./fetchIndexes";
 import SEARCH_INDEX from "./__fixtures__/search-index.json";
 
 const mockFetch = (global.fetch = vi.fn());
