@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { sanitizeUrl } from "@braintree/sanitize-url";
 import { useHistory } from "@docusaurus/router";
 import { usePluginData } from "@docusaurus/useGlobalData";
-import IconExternalLink from "@theme-original/IconExternalLink";
+import IconExternalLink from "@theme-original/Icon/ExternalLink";
 
 import { GlobalPluginData } from "docusaurus-plugin-search-local";
 import { SearchDocument, SearchResult as ISearchResult } from "../../../types";

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "@docusaurus/Link";
-import IconExternalLink from "@theme-original/IconExternalLink";
+import IconExternalLink from "@theme-original/Icon/ExternalLink";
 
 import { getExternalURI } from "../../utils/getExternalURI";
 
