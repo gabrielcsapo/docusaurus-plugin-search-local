@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm i -g npm@8.13.2
-      - run: npm ci
+      - run: npm install
       - run: npm run build
 
   check:
@@ -44,7 +44,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm i -g npm@8.13.2
-      - run: npm ci
+      - run: npm install
       - run: npm run check
 
   lint:
@@ -87,7 +87,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm i -g npm@8.13.2
-      - run: npm ci
+      - run: npm install
       - run: npm run build --if-present
       - run: npm test
 
@@ -110,7 +110,9 @@ jobs:
           git config --global user.email "gabecsapo@gmail.com"
           git config --global user.name "Gabriel J. Csapo"
           npm i -g npm@8.13.2
-          npm ci
+          npm install
           npm run build
+          npm link
           cd website
+          npm link docusaurus-plugin-search-local
           npm run deploy
