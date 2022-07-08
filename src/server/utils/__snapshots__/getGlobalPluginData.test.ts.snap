@@ -3,7 +3,7 @@
 exports[`getGlobalPluginData > it should generate an index hash when enabled 1`] = `
 {
   "externalSearchSources": [],
-  "indexHash": "f7edca6f",
+  "indexHash": "911d3e1c",
   "removeDefaultStopWordFilter": false,
   "searchResultContextMaxLength": 50,
   "searchResultLimits": 8,
@@ -23,7 +23,7 @@ exports[`getGlobalPluginData > it should generate an index hash when enabled 1`]
 exports[`getGlobalPluginData > it should only index blog when enabled 1`] = `
 {
   "externalSearchSources": [],
-  "indexHash": "3d5f19d9",
+  "indexHash": "64fa02b7",
   "removeDefaultStopWordFilter": false,
   "searchResultContextMaxLength": 50,
   "searchResultLimits": 8,
@@ -43,7 +43,7 @@ exports[`getGlobalPluginData > it should only index blog when enabled 1`] = `
 exports[`getGlobalPluginData > it should only index docs when enabled 1`] = `
 {
   "externalSearchSources": [],
-  "indexHash": "45b0605c",
+  "indexHash": "a7bfe547",
   "removeDefaultStopWordFilter": false,
   "searchResultContextMaxLength": 50,
   "searchResultLimits": 8,
