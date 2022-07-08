@@ -70,17 +70,13 @@ describe("getIndexHash", () => {
   });
 
   test.each<[Partial<PluginConfig>, string | null, number]>([
-    [{ hashed: false }, null, 0],
-    [{ hashed: true, indexDocs: true, docsDir: ["/tmp/docs"] }, "c60ad25f", 0],
-    [{ hashed: true, indexBlog: true, blogDir: ["/tmp/blog"] }, null, 0],
-    [
-      { hashed: true, indexDocs: true, docsDir: ["/does-not-exist/docs"] },
-      null,
-      1,
-    ],
-    [{ hashed: true, indexDocs: true, docsDir: ["/tmp/index.js"] }, null, 1],
-  ])("getIndexHash(%j) should return '%s'", (config, hash, warnCount) => {
-    expect(getIndexHash(config as PluginConfig)).toBe(hash);
+    [{ hashed: false }, 0],
+    [{ hashed: true, indexDocs: true, docsDir: ["/tmp/docs"] }, 0],
+    [{ hashed: true, indexBlog: true, blogDir: ["/tmp/blog"] }, 0],
+    [{ hashed: true, indexDocs: true, docsDir: ["/does-not-exist/docs"] }, 1],
+    [{ hashed: true, indexDocs: true, docsDir: ["/tmp/index.js"] }, 1],
+  ])("getIndexHash(%j) should return '%s'", (config, warnCount) => {
+    expect(getIndexHash(config as PluginConfig)).toMatchSnapshot();
     expect(mockConsoleWarn).toBeCalledTimes(warnCount);
   });
 });
