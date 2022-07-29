@@ -164,7 +164,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
               ]);
             }
 
-            if (typeof gtag !== undefined) {
+            if (typeof gtag !== undefined && typeof gtag === "function") {
               gtag("event", "search", {
                 search_term: query,
               });
@@ -203,7 +203,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
                   ]);
                 }
 
-                if (typeof gtag !== undefined) {
+                if (typeof gtag !== undefined && typeof gtag === "function") {
                   gtag("event", "search", {
                     search_term: query,
                   });

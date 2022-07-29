@@ -92,7 +92,7 @@ export default function SearchPage(): React.ReactElement {
               ]);
             }
 
-            if (typeof gtag !== undefined) {
+            if (typeof gtag !== undefined && typeof gtag === "function") {
               gtag("event", "search", {
                 search_term: query,
               });
