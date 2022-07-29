@@ -1,7 +1,5 @@
 declare let _paq: Array<[string, string, boolean, number]>;
-declare let ga: {
-  event: any;
-};
+declare let gtag: any;
 
 import React, { useEffect, useState, useRef, RefObject } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -166,12 +164,9 @@ const SearchModal: React.FC<SearchModalProps> = ({
               ]);
             }
 
-            if (typeof ga !== undefined && ga && ga?.event) {
-              ga.event({
-                action: "search",
-                params: {
-                  search_term: query,
-                },
+            if (typeof gtag !== undefined) {
+              gtag("event", "search", {
+                search_term: query,
               });
             }
           },
@@ -208,12 +203,9 @@ const SearchModal: React.FC<SearchModalProps> = ({
                   ]);
                 }
 
-                if (typeof ga !== undefined && ga && ga?.event) {
-                  ga.event({
-                    action: "search",
-                    params: {
-                      search_term: query,
-                    },
+                if (typeof gtag !== undefined) {
+                  gtag("event", "search", {
+                    search_term: query,
                   });
                 }
               },

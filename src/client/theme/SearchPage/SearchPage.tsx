@@ -1,7 +1,5 @@
 declare let _paq: Array<[string, string, boolean, number]>;
-declare let ga: {
-  event: any;
-};
+declare let gtag: any;
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -94,12 +92,9 @@ export default function SearchPage(): React.ReactElement {
               ]);
             }
 
-            if (typeof ga !== undefined && ga && ga?.event) {
-              ga.event({
-                action: "search",
-                params: {
-                  search_term: query,
-                },
+            if (typeof gtag !== undefined) {
+              gtag("event", "search", {
+                search_term: query,
               });
             }
           },
