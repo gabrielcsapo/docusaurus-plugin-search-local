@@ -1,4 +1,7 @@
 declare let _paq: Array<[string, string, boolean, number]>;
+declare let ga: {
+  event: any;
+};
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -89,6 +92,15 @@ export default function SearchPage(): React.ReactElement {
                 false, // Search category selected in your search engine. If you do not need this, set to false
                 results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
               ]);
+            }
+
+            if (typeof ga !== undefined && ga && ga?.event) {
+              ga.event({
+                action: "search",
+                params: {
+                  search_term: query,
+                },
+              });
             }
           },
         })

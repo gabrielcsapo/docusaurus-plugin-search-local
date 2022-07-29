@@ -1,4 +1,7 @@
 declare let _paq: Array<[string, string, boolean, number]>;
+declare let ga: {
+  event: any;
+};
 
 import React, { useEffect, useState, useRef, RefObject } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -162,6 +165,15 @@ const SearchModal: React.FC<SearchModalProps> = ({
                 results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
               ]);
             }
+
+            if (typeof ga !== undefined && ga && ga?.event) {
+              ga.event({
+                action: "search",
+                params: {
+                  search_term: query,
+                },
+              });
+            }
           },
         })
       );
@@ -194,6 +206,15 @@ const SearchModal: React.FC<SearchModalProps> = ({
                     false, // Search category selected in your search engine. If you do not need this, set to false
                     results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
                   ]);
+                }
+
+                if (typeof ga !== undefined && ga && ga?.event) {
+                  ga.event({
+                    action: "search",
+                    params: {
+                      search_term: query,
+                    },
+                  });
                 }
               },
             }),
