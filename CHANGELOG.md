@@ -1,3 +1,9 @@
+## [0.8.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.7.0...0.8.0) (2022-07-29)
+
+### Features
+
+- adds google analytics site search compatibility ([87cdf65](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/87cdf65320f93751714afa0542faafae3edff798))
+
 ## [0.7.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.5.0...0.7.0) (2022-07-08)
 
 ### Features
