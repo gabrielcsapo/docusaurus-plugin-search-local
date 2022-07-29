@@ -6,6 +6,6 @@ exports[`getIndexHash > getIndexHash({"hashed":true,"indexBlog":true,"blogDir":[
 
 exports[`getIndexHash > getIndexHash({"hashed":true,"indexDocs":true,"docsDir":["/does-not-exist/docs"]}) should return '1' 1`] = `null`;
 
-exports[`getIndexHash > getIndexHash({"hashed":true,"indexDocs":true,"docsDir":["/tmp/docs"]}) should return '0' 1`] = `"8490a0be"`;
+exports[`getIndexHash > getIndexHash({"hashed":true,"indexDocs":true,"docsDir":["/tmp/docs"]}) should return '0' 1`] = `"2efc1863"`;
 
 exports[`getIndexHash > getIndexHash({"hashed":true,"indexDocs":true,"docsDir":["/tmp/index.js"]}) should return '1' 1`] = `null`;

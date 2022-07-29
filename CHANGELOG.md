@@ -1,3 +1,9 @@
+### [0.8.1](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.8.0...0.8.1) (2022-07-29)
+
+### Bug Fixes
+
+- fixes gtag implementation ([4de8b3e](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/4de8b3eaa2b0a1f35818d7393850b9bfcb758982))
+
 ## [0.8.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.7.0...0.8.0) (2022-07-29)
 
 ### Features
