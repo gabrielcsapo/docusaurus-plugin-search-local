@@ -1,3 +1,9 @@
+### [0.8.2](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.8.1...0.8.2) (2022-07-29)
+
+### Bug Fixes
+
+- bug gtag is not defined ([7f800fa](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/7f800fa2c6cb643c6e8e741a45c82742f61a10f0))
+
 ### [0.8.1](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.8.0...0.8.1) (2022-07-29)
 
 ### Bug Fixes
