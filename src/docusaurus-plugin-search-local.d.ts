@@ -20,6 +20,7 @@ declare module "docusaurus-plugin-search-local" {
     indexHash: string | null;
     removeDefaultStopWordFilter: boolean;
     searchResultContextMaxLength: number;
+    highlightSearchTermsOnTargetPage: boolean;
     searchResultLimits: number;
     translations: TranslationMap;
   };
