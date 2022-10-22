@@ -45,7 +45,6 @@ export function SearchSourceFactory(
       removeDefaultStopWordFilter,
     });
 
-    console.log(queries);
     const results: InitialSearchResult[] = [];
 
     search: for (const { term, tokens } of queries) {

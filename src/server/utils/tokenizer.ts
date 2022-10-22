@@ -23,7 +23,6 @@ export function tokenizer(
   let start = 0;
   let text = content;
   while (text.length > 0) {
-    console.log(text);
     const match = text.match(/\w+/u);
     if (!match) {
       break;
