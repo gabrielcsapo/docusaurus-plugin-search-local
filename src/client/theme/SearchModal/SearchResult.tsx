@@ -51,9 +51,12 @@ function buildDestinationQueryParams(tokens: string[]): string {
 function handleExternalSearchClick(
   doc: SearchDocument,
   tokens: string[],
-  externalUriBase: string
+  externalUriBase: string,
+  shouldHighlight: boolean
 ) {
-  const queryParams = buildDestinationQueryParams(tokens);
+  const queryParams = shouldHighlight
+    ? buildDestinationQueryParams(tokens)
+    : "";
   const externalURI = `${getExternalURI(
     doc.u,
     externalUriBase
@@ -89,9 +92,8 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
     isLastOfTree,
   } = searchResult;
 
-  const { searchResultContextMaxLength } = usePluginData(
-    "docusaurus-plugin-search-local"
-  ) as GlobalPluginData;
+  const { searchResultContextMaxLength, highlightSearchTermsOnTargetPage } =
+    usePluginData("docusaurus-plugin-search-local") as GlobalPluginData;
   const history = useHistory();
   const isTitle = type === 0;
   const isHeading = type === 1;
@@ -99,14 +101,19 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
   const _onClick = () => {
     // If there is a search source defined, open the link externally.
     if (searchSource.length) {
-      handleExternalSearchClick(document, tokens, searchSource);
+      handleExternalSearchClick(
+        document,
+        tokens,
+        searchSource,
+        highlightSearchTermsOnTargetPage
+      );
       return;
     }
 
     const { u, h } = document;
 
     let url = sanitizeUrl(u);
-    if (tokens.length > 0) {
+    if (tokens.length > 0 && highlightSearchTermsOnTargetPage) {
       url += `?${buildDestinationQueryParams(tokens)}`;
     }
     if (h) {

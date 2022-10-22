@@ -11,6 +11,7 @@ export function getGlobalPluginData(
     searchResultContextMaxLength,
     searchResultLimits,
     translations,
+    highlightSearchTermsOnTargetPage,
   } = pluginConfig;
 
   return {
@@ -19,6 +20,7 @@ export function getGlobalPluginData(
     searchResultContextMaxLength,
     searchResultLimits,
     translations,
+    highlightSearchTermsOnTargetPage,
     indexHash: getIndexHash(pluginConfig),
   };
 }

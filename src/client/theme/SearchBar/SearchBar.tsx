@@ -1,8 +1,10 @@
 import React, { ReactElement, useEffect, useState } from "react";
 
 import { useLocation } from "@docusaurus/router";
-
+import { usePluginData } from "@docusaurus/useGlobalData";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+
+import { GlobalPluginData } from "docusaurus-plugin-search-local";
 
 import { SearchButton } from "./SearchButton";
 import SearchModal from "../SearchModal";
@@ -35,27 +37,33 @@ export default class SearchBarWrapper extends React.Component {
 }
 
 export function SearchBar(): ReactElement {
+  const { highlightSearchTermsOnTargetPage } = usePluginData(
+    "docusaurus-plugin-search-local"
+  ) as GlobalPluginData;
+
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    if (!Mark) {
-      return;
+    if (highlightSearchTermsOnTargetPage) {
+      if (!Mark) {
+        return;
+      }
+      const keywords = ExecutionEnvironment.canUseDOM
+        ? new URLSearchParams(location.search).getAll(SEARCH_PARAM_HIGHLIGHT)
+        : [];
+      if (keywords.length === 0) {
+        return;
+      }
+      const root = document.querySelector("article");
+      if (!root) {
+        return;
+      }
+      const mark = new Mark(root);
+      mark.unmark();
+      mark.mark(keywords);
     }
-    const keywords = ExecutionEnvironment.canUseDOM
-      ? new URLSearchParams(location.search).getAll(SEARCH_PARAM_HIGHLIGHT)
-      : [];
-    if (keywords.length === 0) {
-      return;
-    }
-    const root = document.querySelector("article");
-    if (!root) {
-      return;
-    }
-    const mark = new Mark(root);
-    mark.unmark();
-    mark.mark(keywords);
-  }, [location.search]);
+  }, [highlightSearchTermsOnTargetPage, location.search]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
