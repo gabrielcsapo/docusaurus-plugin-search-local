@@ -76,6 +76,7 @@ describe("getGlobalPluginData", () => {
     expect(getGlobalPluginData(config)).toEqual({
       externalSearchSources: config.externalSearchSources,
       indexHash: null,
+      highlightSearchTermsOnTargetPage: config.highlightSearchTermsOnTargetPage,
       removeDefaultStopWordFilter: config.removeDefaultStopWordFilter,
       searchResultContextMaxLength: config.searchResultContextMaxLength,
       searchResultLimits: config.searchResultLimits,
