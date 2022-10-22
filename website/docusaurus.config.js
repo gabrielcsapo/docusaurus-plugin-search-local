@@ -32,7 +32,7 @@ module.exports = {
   ],
   plugins: [
     [
-      require.resolve("docusaurus-plugin-search-local"),
+      require.resolve("../"),
       /** @type {import('docusaurus-plugin-search-local').Options} */
       ({
         highlightSearchTermsOnTargetPage: true,
