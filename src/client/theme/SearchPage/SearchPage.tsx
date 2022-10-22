@@ -70,12 +70,6 @@ export default function SearchPage(): React.ReactElement {
   }, []);
 
   useEffect(() => {
-    if (searchValue && searchValue !== searchQuery) {
-      setSearchQuery(searchValue);
-    }
-  }, [searchQuery, searchValue]);
-
-  useEffect(() => {
     async function doFetchIndexes() {
       const { wrappedIndexes } = await fetchIndexes(baseUrl, indexHash);
       setSearchSource(() =>

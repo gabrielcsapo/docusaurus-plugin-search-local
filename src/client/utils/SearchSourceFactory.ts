@@ -32,7 +32,9 @@ export function SearchSourceFactory(
     input: string,
     callback: (results: SearchResult[]) => void
   ): void {
-    const rawTokens = tokenize(input);
+    // allow for the value to exist in a string
+    const rawTokens = tokenize(`*${input}`);
+
     if (rawTokens.length === 0) {
       callback([]);
       onResults(input, []);
