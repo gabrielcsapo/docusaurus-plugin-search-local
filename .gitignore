@@ -4,6 +4,7 @@ node_modules
 .vscode
 yarn-error.log
 /dist
+.yarn
 
 # TS Build Info
 /tsbuildinfo

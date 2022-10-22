@@ -18,6 +18,7 @@ import { highlightStemmed } from "../../utils/highlightStemmed";
 import { getStemmedPositions } from "../../utils/getStemmedPositions";
 import LoadingRing from "../LoadingRing/LoadingRing";
 import { simpleTemplate } from "../../utils/simpleTemplate";
+import ErrorBoundary from "../ErrorBoundary";
 
 import styles from "./SearchPage.module.css";
 
@@ -61,7 +62,8 @@ export default function SearchPage(): React.ReactElement {
 
     // `updateSearchPath` should not be in the deps,
     // otherwise will cause call stack overflow.
-  }, [searchQuery, searchSource, updateSearchPath]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery, searchSource]);
 
   const handleSearchInputChange = useCallback((e) => {
     setSearchQuery(e.target.value);
@@ -114,54 +116,56 @@ export default function SearchPage(): React.ReactElement {
         <meta property="robots" content="noindex, follow" />
       </Head>
 
-      <div className="container margin-vert--lg">
-        <h1>{pageTitle}</h1>
+      <ErrorBoundary>
+        <div className="container margin-vert--lg">
+          <h1>{pageTitle}</h1>
 
-        <input
-          type="search"
-          name="q"
-          className={styles.searchQueryInput}
-          aria-label="Search"
-          onChange={handleSearchInputChange}
-          value={searchQuery}
-          autoComplete="off"
-          autoFocus
-        />
+          <input
+            type="search"
+            name="q"
+            className={styles.searchQueryInput}
+            aria-label="Search"
+            onChange={handleSearchInputChange}
+            value={searchQuery}
+            autoComplete="off"
+            autoFocus
+          />
 
-        {!searchSource && searchQuery && (
-          <div>
-            <LoadingRing />
-          </div>
-        )}
+          {!searchSource && searchQuery && (
+            <div>
+              <LoadingRing />
+            </div>
+          )}
 
-        {searchResults &&
-          (searchResults.length > 0 ? (
-            <p>
-              {simpleTemplate(
-                searchResults.length === 1
-                  ? translations.count_documents_found
-                  : translations.count_documents_found_plural,
-                {
-                  count: searchResults.length,
-                }
-              )}
-            </p>
-          ) : process.env.NODE_ENV === "production" ? (
-            <p>{translations.no_documents_were_found}</p>
-          ) : (
-            <p>
-              ⚠️ The search index is only available when you run docusaurus
-              build!
-            </p>
-          ))}
-
-        <section>
           {searchResults &&
-            searchResults.map((item) => (
-              <SearchResultItem key={item.document.i} searchResult={item} />
+            (searchResults.length > 0 ? (
+              <p>
+                {simpleTemplate(
+                  searchResults.length === 1
+                    ? translations.count_documents_found
+                    : translations.count_documents_found_plural,
+                  {
+                    count: searchResults.length,
+                  }
+                )}
+              </p>
+            ) : process.env.NODE_ENV === "production" ? (
+              <p>{translations.no_documents_were_found}</p>
+            ) : (
+              <p>
+                ⚠️ The search index is only available when you run docusaurus
+                build!
+              </p>
             ))}
-        </section>
-      </div>
+
+          <section>
+            {searchResults &&
+              searchResults.map((item) => (
+                <SearchResultItem key={item.document.i} searchResult={item} />
+              ))}
+          </section>
+        </div>
+      </ErrorBoundary>
     </Layout>
   );
 }
