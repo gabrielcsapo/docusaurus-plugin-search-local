@@ -1,6 +1,6 @@
 /* Variables */
 :root {
-  --search-local-result-height: 56px;
+  --search-local-result-height: 65px;
   --search-local-result-shadow: 0 1px 3px 0 rgb(212, 217, 225);
 }
 
@@ -177,7 +177,7 @@ html[data-theme="dark"] {
   color: var(--ifm-font-color-base);
   display: flex;
   flex-direction: row;
-  height: var(--search-local-result-height, 56px);
+  height: var(--search-local-result-height, 65px);
 }
 
 html[data-theme="dark"] .searchResult {
@@ -246,7 +246,7 @@ html[data-theme="dark"] .hitPath {
 }
 
 .hitTitle {
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 .hitPath {
@@ -263,4 +263,8 @@ html[data-theme="dark"] .hitPath {
 .hitAction {
   height: 20px;
   width: 20px;
+}
+
+.urlPath {
+  font-size: 8px;
 }

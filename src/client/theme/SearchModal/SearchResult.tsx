@@ -131,6 +131,10 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
     _onClick();
   }
 
+  const { u } = document;
+
+  const url = sanitizeUrl(u);
+
   return (
     <div
       className={clsx(styles.searchResult, isHovered ? styles.cursor : "")}
@@ -170,20 +174,24 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
         {isTitle ? (
           <span className={styles.hitPath}>{document.u}</span>
         ) : (
-          <span
-            className={styles.hitPath}
-            dangerouslySetInnerHTML={{
-              __html: highlight(
-                (page as SearchDocument).t ||
-                  // Todo(weareoutman): This is for EasyOps only.
-                  // istanbul ignore next
-                  (document.u.startsWith("/docs/api-reference/")
-                    ? "API Reference"
-                    : ""),
-                tokens
-              ),
-            }}
-          />
+          <>
+            <span
+              className={styles.hitPath}
+              dangerouslySetInnerHTML={{
+                __html: highlight(
+                  (page as SearchDocument).t ||
+                    // Todo(weareoutman): This is for EasyOps only.
+                    // istanbul ignore next
+                    (document.u.startsWith("/docs/api-reference/")
+                      ? "API Reference"
+                      : ""),
+                  tokens
+                ),
+              }}
+            />
+
+            <small className={styles.urlPath}>{url}</small>
+          </>
         )}
       </span>
 
