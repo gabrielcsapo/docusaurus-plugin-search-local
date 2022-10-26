@@ -4,7 +4,7 @@ exports[`getGlobalPluginData > it should generate an index hash when enabled 1`]
 {
   "externalSearchSources": [],
   "highlightSearchTermsOnTargetPage": false,
-  "indexHash": "d44d5b03",
+  "indexHash": "85f0738c",
   "removeDefaultStopWordFilter": false,
   "searchResultContextMaxLength": 50,
   "searchResultLimits": 8,
@@ -25,7 +25,7 @@ exports[`getGlobalPluginData > it should only index blog when enabled 1`] = `
 {
   "externalSearchSources": [],
   "highlightSearchTermsOnTargetPage": false,
-  "indexHash": "b7a48170",
+  "indexHash": "9e574b4c",
   "removeDefaultStopWordFilter": false,
   "searchResultContextMaxLength": 50,
   "searchResultLimits": 8,
@@ -46,7 +46,7 @@ exports[`getGlobalPluginData > it should only index docs when enabled 1`] = `
 {
   "externalSearchSources": [],
   "highlightSearchTermsOnTargetPage": false,
-  "indexHash": "cea88d6e",
+  "indexHash": "ca49d433",
   "removeDefaultStopWordFilter": false,
   "searchResultContextMaxLength": 50,
   "searchResultLimits": 8,

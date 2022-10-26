@@ -1,3 +1,15 @@
+## [0.9.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.8.2...0.9.0) (2022-10-26)
+
+### Features
+
+- allow search terms to exist in middle of word ([#57](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/issues/57)) ([a1b5923](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/a1b5923cf68257f04f9519b9950688f254d8544a))
+- show results with additional context ([#58](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/issues/58)) ([f5e9ebb](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/f5e9ebbef7dff01cb71c3261b57fbf21956eb492))
+
+### Bug Fixes
+
+- highlight functionality is not guarded by option passed in ([#56](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/issues/56)) ([97db2f3](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/97db2f364aad6fac815af728d1e372da1b0b71ef))
+- issue with infinite loop on search page ([95cdb05](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/95cdb0589d672ce608bc21db0d325e097c67b4cf))
+
 ### [0.8.2](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.8.1...0.8.2) (2022-07-29)
 
 ### Bug Fixes
