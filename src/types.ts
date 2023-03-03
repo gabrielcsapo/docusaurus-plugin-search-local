@@ -1,6 +1,6 @@
-import type { PluginOptions } from "docusaurus-plugin-search-local";
-import { DocusaurusConfig } from "@docusaurus/types";
-import lunr from "lunr";
+import type { PluginOptions } from 'docusaurus-plugin-search-local';
+import { DocusaurusConfig } from '@docusaurus/types';
+import lunr from 'lunr';
 
 export type SmartTerm = SmartTermItem[];
 
@@ -129,15 +129,15 @@ export interface DocInfoWithFilePath {
   type: DocInfoType;
 }
 
-export type DocInfoType = "docs" | "blog" | "page";
+export type DocInfoType = 'docs' | 'blog' | 'page';
 
 export type PluginConfig = Omit<
   PluginOptions,
-  | "docsRouteBasePath"
-  | "blogRouteBasePath"
-  | "docsDir"
-  | "blogDir"
-  | "ignoreFiles"
+  | 'docsRouteBasePath'
+  | 'blogRouteBasePath'
+  | 'docsDir'
+  | 'blogDir'
+  | 'ignoreFiles'
 > & {
   docsRouteBasePath: string[];
   blogRouteBasePath: string[];
@@ -156,4 +156,9 @@ export interface PostBuildData {
 export type SearchSourceFn = (
   input: string,
   callback: (results: SearchResult[]) => void
+) => void;
+
+export type SearchAnalyticsFn = (
+  query: string,
+  results?: SearchResult[]
 ) => void;
