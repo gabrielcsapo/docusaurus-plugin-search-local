@@ -1,33 +1,31 @@
-declare let _paq: Array<[string, string, boolean, number]>;
-declare let gtag: any;
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
+import Link from '@docusaurus/Link';
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { usePluginData } from "@docusaurus/useGlobalData";
-import Layout from "@theme/Layout";
-import Head from "@docusaurus/Head";
-import Link from "@docusaurus/Link";
+import { GlobalPluginData } from 'docusaurus-plugin-search-local';
+import useSearchQuery from '../hooks/useSearchQuery';
+import { fetchIndexes } from '../../utils/fetchIndexes';
+import { SearchSourceFactory } from '../../utils/SearchSourceFactory';
+import { SearchAnalyticsFactory } from '../../utils/SearchAnalyticsFactory';
+import { SearchDocument, SearchResult, SearchSourceFn } from '../../../types';
+import { highlight } from '../../utils/highlight';
+import { highlightStemmed } from '../../utils/highlightStemmed';
+import { getStemmedPositions } from '../../utils/getStemmedPositions';
+import LoadingRing from '../LoadingRing/LoadingRing';
+import { simpleTemplate } from '../../utils/simpleTemplate';
+import ErrorBoundary from '../ErrorBoundary';
 
-import { GlobalPluginData } from "docusaurus-plugin-search-local";
-import useSearchQuery from "../hooks/useSearchQuery";
-import { fetchIndexes } from "../../utils/fetchIndexes";
-import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchDocument, SearchResult, SearchSourceFn } from "../../../types";
-import { highlight } from "../../utils/highlight";
-import { highlightStemmed } from "../../utils/highlightStemmed";
-import { getStemmedPositions } from "../../utils/getStemmedPositions";
-import LoadingRing from "../LoadingRing/LoadingRing";
-import { simpleTemplate } from "../../utils/simpleTemplate";
-import ErrorBoundary from "../ErrorBoundary";
-
-import styles from "./SearchPage.module.css";
+import styles from './SearchPage.module.css';
 
 export default function SearchPage(): React.ReactElement {
   const {
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
   const { indexHash, removeDefaultStopWordFilter, translations } =
-    usePluginData("docusaurus-plugin-search-local") as GlobalPluginData;
+    usePluginData('docusaurus-plugin-search-local') as GlobalPluginData;
   const { searchValue, updateSearchPath } = useSearchQuery();
   const [searchQuery, setSearchQuery] = useState(searchValue);
   const [searchSource, setSearchSource] = useState<SearchSourceFn>();
@@ -77,23 +75,7 @@ export default function SearchPage(): React.ReactElement {
           wrappedIndexes,
           removeDefaultStopWordFilter,
           resultsLimit: 100,
-          onResults: (query, results) => {
-            // TODO: needs to be abstracted to be able to handle any site analytics
-            if (typeof _paq !== "undefined" && _paq && _paq?.push) {
-              _paq.push([
-                "trackSiteSearch",
-                query, // Search keyword searched for
-                false, // Search category selected in your search engine. If you do not need this, set to false
-                results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
-              ]);
-            }
-
-            if (typeof gtag !== undefined && typeof gtag === "function") {
-              gtag("event", "search", {
-                search_term: query,
-              });
-            }
-          },
+          onResults: SearchAnalyticsFactory(),
         })
       );
     }
@@ -107,21 +89,21 @@ export default function SearchPage(): React.ReactElement {
           We should not index search pages
           See https://github.com/facebook/docusaurus/pull/3233
         */}
-        <meta property="robots" content="noindex, follow" />
+        <meta property='robots' content='noindex, follow' />
       </Head>
 
       <ErrorBoundary>
-        <div className="container margin-vert--lg">
+        <div className='container margin-vert--lg'>
           <h1>{pageTitle}</h1>
 
           <input
-            type="search"
-            name="q"
+            type='search'
+            name='q'
             className={styles.searchQueryInput}
-            aria-label="Search"
+            aria-label='Search'
             onChange={handleSearchInputChange}
             value={searchQuery}
-            autoComplete="off"
+            autoComplete='off'
             autoFocus
           />
 
@@ -143,7 +125,7 @@ export default function SearchPage(): React.ReactElement {
                   }
                 )}
               </p>
-            ) : process.env.NODE_ENV === "production" ? (
+            ) : process.env.NODE_ENV === 'production' ? (
               <p>{translations.no_documents_were_found}</p>
             ) : (
               <p>
@@ -182,13 +164,13 @@ function SearchResultItem({
     <article className={styles.searchResultItem}>
       <h2>
         <Link
-          to={document.u + (document.h || "")}
+          to={document.u + (document.h || '')}
           dangerouslySetInnerHTML={{
             __html: isContent
               ? highlight(articleTitle, tokens)
               : highlightStemmed(
                   articleTitle,
-                  getStemmedPositions(metadata, "t"),
+                  getStemmedPositions(metadata, 't'),
                   tokens,
                   100
                 ),
@@ -196,7 +178,7 @@ function SearchResultItem({
         ></Link>
       </h2>
       {pathItems.length > 0 && (
-        <p className={styles.searchResultItemPath}>{pathItems.join(" › ")}</p>
+        <p className={styles.searchResultItemPath}>{pathItems.join(' › ')}</p>
       )}
       {isContent && (
         <p
@@ -204,7 +186,7 @@ function SearchResultItem({
           dangerouslySetInnerHTML={{
             __html: highlightStemmed(
               document.t,
-              getStemmedPositions(metadata, "t"),
+              getStemmedPositions(metadata, 't'),
               tokens,
               100
             ),
