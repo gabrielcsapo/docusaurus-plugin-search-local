@@ -1,3 +1,13 @@
+## [0.10.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.9.0...0.10.0) (2023-03-06)
+
+### Features
+
+- adds support for Azure App Insights as an analytics source ([#64](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/issues/64)) ([beab47f](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/beab47fff92a00d9bec18fa099f9ee7a4a081a6b))
+
+### Bug Fixes
+
+- adds .yarnrc.yml to ensure local linkage (non pnp use) ([ff5d78c](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/commit/ff5d78cd706f97ff4633ef3eabcd4b99bb2848bd))
+
 ## [0.9.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.8.2...0.9.0) (2022-10-26)
 
 ### Features
