@@ -1,11 +1,10 @@
-name: Deploy docusaurus with GitHub Pages dependencies preinstalled
+name: Deploy to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ['main']
+    tags:
+      - "v*"
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -31,8 +30,6 @@ jobs:
       - uses: volta-cli/action@v1
       - run: yarn install
       - run: yarn build
-      - run: npm link
-      - run: cd website && npm link docusaurus-plugin-search-local && yarn build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
