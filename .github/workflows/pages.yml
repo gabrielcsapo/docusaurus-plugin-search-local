@@ -31,8 +31,8 @@ jobs:
       - uses: volta-cli/action@v1
       - run: yarn install
       - run: yarn build
-      - run: yarn link
-      - run: cd website && yarn link docusaurus-plugin-search-local && yarn build
+      - run: npm link
+      - run: cd website && npm link docusaurus-plugin-search-local && yarn build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
