@@ -1,3 +1,14 @@
+## v0.10.1 (2023-03-31)
+
+#### :house: Internal
+
+- [#66](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/66) Updates configuration to correctly exclude files from package contents ([@scalvert](https://github.com/scalvert))
+- [#65](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/65) deps: Moving deps to dev/peer deps to allow the host site to provide those versions ([@scalvert](https://github.com/scalvert))
+
+#### Committers: 1
+
+- Steve Calvert ([@scalvert](https://github.com/scalvert))
+
 ## [0.10.0](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/compare/0.9.0...0.10.0) (2023-03-06)
 
 ### Features
