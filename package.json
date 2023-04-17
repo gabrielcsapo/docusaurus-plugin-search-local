@@ -51,7 +51,8 @@
     "fs-extra": "^10.1.0",
     "klaw-sync": "^6.0.0",
     "lunr": "^2.3.9",
-    "mark.js": "^8.11.1"
+    "mark.js": "^8.11.1",
+    "validate-peer-dependencies": "^2.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",

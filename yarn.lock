@@ -8344,6 +8344,7 @@ __metadata:
     tmp: ^0.2.1
     tslib: ^2.4.0
     typescript: ^4.8.4
+    validate-peer-dependencies: ^2.2.0
     vitest: ^0.24.3
   peerDependencies:
     "@docusaurus/core": ">=2.1.0"
@@ -18669,7 +18670,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"validate-peer-dependencies@npm:^2.0.0":
+"validate-peer-dependencies@npm:^2.0.0, validate-peer-dependencies@npm:^2.2.0":
   version: 2.2.0
   resolution: "validate-peer-dependencies@npm:2.2.0"
   dependencies:
