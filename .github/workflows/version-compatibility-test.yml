@@ -14,4 +14,4 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Run version compatibility test
-        uses: scalvert/docusaurus-version-compatibility@master
+        uses: docusaurus-version-compatibility@master
