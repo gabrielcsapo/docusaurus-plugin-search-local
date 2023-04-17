@@ -1,6 +1,7 @@
 import path from "path";
 import { normalizeUrl } from "@docusaurus/utils";
 import { LoadContext, Plugin } from "@docusaurus/types";
+import validatePeerDependencies from "validate-peer-dependencies";
 import type { PluginOptions } from "docusaurus-plugin-search-local";
 
 import { getPluginConfig } from "./utils/getPluginConfig";
@@ -8,6 +9,8 @@ import { getGlobalPluginData } from "./utils/getGlobalPluginData";
 import { postBuildFactory } from "./utils/postBuildFactory";
 
 const PLUGIN_NAME = "docusaurus-plugin-search-local";
+
+validatePeerDependencies(__dirname);
 
 export default function DocusaurusSearchLocalPlugin(
   context: LoadContext,
