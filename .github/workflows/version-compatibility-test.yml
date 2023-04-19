@@ -1,6 +1,8 @@
 name: Docusarurus Version Compatibility Test
 
 on:
+  schedule:
+    - cron: '0 0 * * *'
   workflow_dispatch: {}
 
 jobs:
@@ -11,7 +13,7 @@ jobs:
     steps:
       - name: Version compatibility test setup
         id: set-matrix
-        uses: scalvert/docusaurus-version-compatibility@main
+        uses: scalvert/docusaurus-version-compatibility@v1
         with:
           setup-versions: true
 
@@ -28,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: volta-cli/action@v4
-      - uses: scalvert/docusaurus-version-compatibility@main
+      - uses: scalvert/docusaurus-version-compatibility@v1
         with:
           version: ${{ matrix.docusaurus-version }}
       - run: yarn --no-immutable
