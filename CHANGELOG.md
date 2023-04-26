@@ -1,3 +1,18 @@
+## v1.0.0 (2023-04-26)
+
+#### :rocket: Enhancement
+
+- [#69](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/69) Upgrades docusaurus to 2.4.0 ([@scalvert](https://github.com/scalvert))
+- [#67](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/67) Adding validate-peer-dependencies to ensure peerDeps ([@scalvert](https://github.com/scalvert))
+
+#### :house: Internal
+
+- [#68](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/68) Adding version tester action ([@scalvert](https://github.com/scalvert))
+
+#### Committers: 1
+
+- Steve Calvert ([@scalvert](https://github.com/scalvert))
+
 ## v0.10.1 (2023-03-31)
 
 #### :house: Internal
