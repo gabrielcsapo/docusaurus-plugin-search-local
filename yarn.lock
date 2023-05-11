@@ -8145,8 +8145,6 @@ __metadata:
     vitest: ^0.24.3
   peerDependencies:
     "@docusaurus/core": ">=2.1.0"
-    "@docusaurus/module-type-aliases": ">=2.1.0"
-    "@docusaurus/types": ">=2.1.0"
     "@docusaurus/utils": ">=2.1.0"
     "@docusaurus/utils-validation": ">=2.1.0"
     react: ">=17.0.2"
