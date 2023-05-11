@@ -1,3 +1,13 @@
+## v1.0.1 (2023-05-11)
+
+#### :bug: Bug Fix
+
+- [#70](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/70) Removing types-only packages from peerDependencies ([@scalvert](https://github.com/scalvert))
+
+#### Committers: 1
+
+- Steve Calvert ([@scalvert](https://github.com/scalvert))
+
 ## v1.0.0 (2023-04-26)
 
 #### :rocket: Enhancement
