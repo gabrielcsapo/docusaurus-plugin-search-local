@@ -7,6 +7,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:react/jsx-runtime",
     "prettier"
   ],
   "env": {
@@ -22,19 +23,8 @@
       "version": "detect"
     }
   },
-  "overrides": [
-    {
-      "files": ["scripts/**/*", "*.config.js", "__jest__/**/*.js"],
-      "env": {
-        "node": true,
-        "browser": false
-      },
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off"
-      }
-    }
-  ],
   "rules": {
+    "@typescript-eslint/no-var-requires": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off"

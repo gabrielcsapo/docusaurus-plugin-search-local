@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { Component, ReactElement, useEffect, useState } from "react";
 
 import { useLocation } from "@docusaurus/router";
 import { usePluginData } from "@docusaurus/useGlobalData";
@@ -26,7 +26,7 @@ function isEditingContent(event: KeyboardEvent): boolean {
   );
 }
 
-export default class SearchBarWrapper extends React.Component {
+export default class SearchBarWrapper extends Component {
   render() {
     return (
       <ErrorBoundary>

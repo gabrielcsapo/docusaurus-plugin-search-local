@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import * as React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import Layout from "@theme/Layout";
