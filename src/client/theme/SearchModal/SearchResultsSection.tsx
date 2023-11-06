@@ -18,7 +18,9 @@ function generateSectionLink(headingLink: string, query: string): string {
   return `${getExternalURI("/search", headingLink)}?${qParams.toString()}`;
 }
 
-const SearchResultsSection: React.FC<SearchResultsSectionProps> = (props) => {
+const SearchResultsSection: React.FC<
+  React.PropsWithChildren<SearchResultsSectionProps>
+> = (props) => {
   const { children, heading, headingLink, sectionQuery = "" } = props;
 
   return (

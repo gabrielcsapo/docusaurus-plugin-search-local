@@ -2,8 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "ESNext",
-    "target": "ESNext",
-    "types": ["cheerio", "@docusaurus/module-type-aliases"]
+    "target": "ESNext"
   },
   "include": ["src/client/", "src/*.ts"]
 }
