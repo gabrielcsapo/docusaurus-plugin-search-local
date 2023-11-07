@@ -1,8 +1,10 @@
 import fixturify from "fixturify";
 import tmp from "tmp";
+import { describe, test, expect, vi } from "vitest";
 
 import type { PluginConfig } from "../../types";
 import { getGlobalPluginData } from "./getGlobalPluginData";
+import * as indexHash from "./getIndexHash";
 
 describe("getGlobalPluginData", () => {
   const baselinePluginConfig: PluginConfig = {
@@ -44,7 +46,7 @@ describe("getGlobalPluginData", () => {
           ---
           sidebar_position: 1
           ---
-          
+
           # Hello Blog
 
           This is a dummy blog post.
@@ -55,7 +57,7 @@ describe("getGlobalPluginData", () => {
           ---
           sidebar_position: 1
           ---
-          
+
           # Hello World
 
           This is a dummy doc.
@@ -85,6 +87,8 @@ describe("getGlobalPluginData", () => {
   });
 
   test("it should generate an index hash when enabled", () => {
+    vi.spyOn(indexHash, "getIndexHash").mockReturnValue("CONSISTENT_HASH");
+
     const config: PluginConfig = {
       ...baselinePluginConfig,
       blogDir: [`${tmpLocation.name}/blog`],
@@ -98,6 +102,8 @@ describe("getGlobalPluginData", () => {
   });
 
   test("it should only index blog when enabled", () => {
+    vi.spyOn(indexHash, "getIndexHash").mockReturnValue("CONSISTENT_HASH");
+
     const config: PluginConfig = {
       ...baselinePluginConfig,
       blogDir: [`${tmpLocation.name}/blog`],
@@ -109,6 +115,8 @@ describe("getGlobalPluginData", () => {
   });
 
   test("it should only index docs when enabled", () => {
+    vi.spyOn(indexHash, "getIndexHash").mockReturnValue("CONSISTENT_HASH");
+
     const config: PluginConfig = {
       ...baselinePluginConfig,
       docsDir: [`${tmpLocation.name}/docs`],

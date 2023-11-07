@@ -104,7 +104,7 @@
     "tmp": "^0.2.1",
     "tslib": "^2.4.0",
     "typescript": "^5.2.2",
-    "vitest": "^0.24.3"
+    "vitest": "^0.34.6"
   },
   "peerDependencies": {
     "@docusaurus/core": ">=3.0.0",

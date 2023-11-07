@@ -50,6 +50,10 @@ export function getCondensedText(
       return element.map((item) => getText(item)).join("");
     }
 
+    if (element.type === "text") {
+      return element.data as string;
+    }
+
     if (element.type === "tag") {
       const content = getText($(element).contents().get());
       if (BLOCK_TAGS.has(element.name)) {
