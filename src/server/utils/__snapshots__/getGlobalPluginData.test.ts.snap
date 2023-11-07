@@ -1,10 +1,10 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`getGlobalPluginData > it should generate an index hash when enabled 1`] = `
 {
   "externalSearchSources": [],
   "highlightSearchTermsOnTargetPage": false,
-  "indexHash": "c0a58bc8",
+  "indexHash": "CONSISTENT_HASH",
   "removeDefaultStopWordFilter": false,
   "searchResultContextMaxLength": 50,
   "searchResultLimits": 8,
@@ -25,7 +25,7 @@ exports[`getGlobalPluginData > it should only index blog when enabled 1`] = `
 {
   "externalSearchSources": [],
   "highlightSearchTermsOnTargetPage": false,
-  "indexHash": "256e1fdf",
+  "indexHash": "CONSISTENT_HASH",
   "removeDefaultStopWordFilter": false,
   "searchResultContextMaxLength": 50,
   "searchResultLimits": 8,
@@ -46,7 +46,7 @@ exports[`getGlobalPluginData > it should only index docs when enabled 1`] = `
 {
   "externalSearchSources": [],
   "highlightSearchTermsOnTargetPage": false,
-  "indexHash": "cd483c4d",
+  "indexHash": "CONSISTENT_HASH",
   "removeDefaultStopWordFilter": false,
   "searchResultContextMaxLength": 50,
   "searchResultLimits": 8,

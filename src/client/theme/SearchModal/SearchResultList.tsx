@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { SearchResult as ISearchResult } from "../../../types";
 import SearchResult from "./SearchResult";

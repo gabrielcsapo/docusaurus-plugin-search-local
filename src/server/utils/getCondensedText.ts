@@ -1,3 +1,5 @@
+import * as cheerio from "cheerio";
+
 // We prepend and append whitespace for these tags.
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements
 const BLOCK_TAGS = new Set([
@@ -40,16 +42,18 @@ const BLOCK_TAGS = new Set([
 ]);
 
 export function getCondensedText(
-  element: cheerio.Element | cheerio.Element[],
-  $: cheerio.Root
+  element: cheerio.AnyNode | cheerio.AnyNode[],
+  $: cheerio.CheerioAPI
 ): string {
-  const getText = (element: cheerio.Element | cheerio.Element[]): string => {
+  const getText = (element: cheerio.AnyNode | cheerio.AnyNode[]): string => {
     if (Array.isArray(element)) {
       return element.map((item) => getText(item)).join("");
     }
+
     if (element.type === "text") {
       return element.data as string;
     }
+
     if (element.type === "tag") {
       const content = getText($(element).contents().get());
       if (BLOCK_TAGS.has(element.name)) {
@@ -59,5 +63,6 @@ export function getCondensedText(
     }
     return "";
   };
+
   return getText(element).trim().replace(/\s+/g, " ");
 }

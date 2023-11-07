@@ -1,7 +1,8 @@
 declare let _paq: Array<[string, string, boolean, number]>;
 declare let gtag: any;
 
-import React, { useEffect, useState, useRef, RefObject } from "react";
+import { useEffect, useState, useRef, RefObject } from "react";
+import * as React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import Link from "@docusaurus/Link";

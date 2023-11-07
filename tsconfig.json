@@ -1,22 +1,18 @@
 {
+  "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "declaration": true,
     "declarationMap": false,
     "esModuleInterop": true,
     "importHelpers": true,
-    "jsx": "react",
+    "noEmit": false,
+    "jsx": "preserve",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": false,
     "strict": true,
-    "typeRoots": ["node_modules/@types"],
-    "types": [
-      "node",
-      "cheerio",
-      "@docusaurus/module-type-aliases",
-      "vitest/globals"
-    ],
+    "rootDir": "src",
     "outDir": "./dist"
   },
   "exclude": [
