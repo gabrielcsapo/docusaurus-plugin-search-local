@@ -37,10 +37,6 @@
     "test": "vitest",
     "test:watch": "vitest --watch"
   },
-  "lint-staged": {
-    "**/*.{ts,js}?(x)": "eslint --fix",
-    "**/*.{ts,js,css,html,md,json}?(x)": "prettier --write"
-  },
   "dependencies": {
     "@braintree/sanitize-url": "^6.0.0",
     "cheerio": "^1.0.0-rc.11",
@@ -87,7 +83,6 @@
     "foreman": "^3.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^20.0.0",
-    "lint-staged": "^12.3.3",
     "msw": "^0.36.8",
     "parcel": "^2.3.1",
     "prettier": "^2.5.1",
