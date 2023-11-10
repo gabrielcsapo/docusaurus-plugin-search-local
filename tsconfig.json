@@ -13,10 +13,10 @@
     "sourceMap": false,
     "strict": true,
     "rootDir": "src",
-    "outDir": "./dist"
+    "outDir": "lib"
   },
   "exclude": [
-    "./dist",
+    "lib",
     "./scripts",
     "**/__fixtures__/**/*",
     "**/__mocks__/**/*",

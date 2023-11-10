@@ -5,13 +5,13 @@
   "homepage": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
   "repository": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
   "license": "MIT",
-  "main": "dist/server/index.js",
+  "main": "lib/server/index.js",
   "types": "src/docusaurus-plugin-search-local.d.ts",
   "workspaces": [
     "./website"
   ],
   "files": [
-    "dist",
+    "lib",
     "src",
     "README.md",
     "LICENSE",
@@ -31,7 +31,6 @@
     "parcel": "nf start --procfile ./procfiles/parcel.procfile",
     "prepare": "yarn build",
     "prepublishOnly": "npm run build",
-    "release": "release-it",
     "start": "nf start --procfile ./procfiles/start.procfile",
     "start:client": "tsc --watch --project tsconfig.client.json",
     "start:server": "tsc --watch --project tsconfig.server.json",
