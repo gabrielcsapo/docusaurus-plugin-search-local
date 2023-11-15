@@ -5,13 +5,13 @@
   "homepage": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
   "repository": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
   "license": "MIT",
-  "main": "dist/server/index.js",
+  "main": "lib/server/index.js",
   "types": "src/docusaurus-plugin-search-local.d.ts",
   "workspaces": [
     "./website"
   ],
   "files": [
-    "dist",
+    "lib",
     "src",
     "README.md",
     "LICENSE",
@@ -27,21 +27,15 @@
     "check": "npm run check:client && npm run check:server",
     "check:client": "tsc --noEmit --project ./tsconfig.client.json",
     "check:server": "tsc --noEmit --project ./tsconfig.server.json",
-    "commit": "commit",
     "lint": "eslint ./src --config .eslintrc",
     "parcel": "nf start --procfile ./procfiles/parcel.procfile",
-    "prepare": "husky install",
+    "prepare": "yarn build",
     "prepublishOnly": "npm run build",
-    "release": "release-it",
     "start": "nf start --procfile ./procfiles/start.procfile",
     "start:client": "tsc --watch --project tsconfig.client.json",
     "start:server": "tsc --watch --project tsconfig.server.json",
     "test": "vitest",
     "test:watch": "vitest --watch"
-  },
-  "lint-staged": {
-    "**/*.{ts,js}?(x)": "eslint --fix",
-    "**/*.{ts,js,css,html,md,json}?(x)": "prettier --write"
   },
   "dependencies": {
     "@braintree/sanitize-url": "^6.0.0",
@@ -55,9 +49,6 @@
     "validate-peer-dependencies": "^2.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.2.1",
-    "@commitlint/config-conventional": "^16.2.1",
-    "@commitlint/prompt-cli": "^16.2.1",
     "@docusaurus/core": "^3.0.0",
     "@docusaurus/module-type-aliases": "^3.0.0",
     "@docusaurus/tsconfig": "^3.0.0",
@@ -68,7 +59,6 @@
     "@parcel/css-cli": "^1.3.2",
     "@release-it-plugins/lerna-changelog": "^5.0.0",
     "@release-it-plugins/workspaces": "^3.2.0",
-    "@release-it/conventional-changelog": "^5.0.0",
     "@swc/core": "^1.2.194",
     "@testing-library/react": "^12.1.2",
     "@types/debug": "^4.1.5",
@@ -90,10 +80,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "fixturify": "^2.1.1",
     "foreman": "^3.0.1",
-    "husky": "^7.0.2",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^20.0.0",
-    "lint-staged": "^12.3.3",
     "msw": "^0.36.8",
     "parcel": "^2.3.1",
     "prettier": "^2.5.1",

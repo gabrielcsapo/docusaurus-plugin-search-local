@@ -3,7 +3,7 @@ node_modules
 .DS_Store
 .vscode
 yarn-error.log
-/dist
+/lib
 .yarn
 
 # TS Build Info
