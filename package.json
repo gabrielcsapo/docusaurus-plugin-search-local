@@ -1,6 +1,6 @@
 {
   "name": "docusaurus-plugin-search-local",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "An offline/local search plugin for Docusaurus v2.",
   "homepage": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",
   "repository": "https://github.com/gabrielcsapo/docusaurus-plugin-search-local",

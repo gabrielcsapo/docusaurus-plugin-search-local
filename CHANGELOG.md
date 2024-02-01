@@ -1,3 +1,16 @@
+
+## v2.0.0 (2024-02-01)
+
+#### :boom: Breaking Change
+* [#75](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/75) Docusaurus v3 ([@scalvert](https://github.com/scalvert))
+
+#### :house: Internal
+* [#76](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/76) Cleanup of internal tools ([@scalvert](https://github.com/scalvert))
+
+#### Committers: 1
+- Steve Calvert ([@scalvert](https://github.com/scalvert))
+
+
 ## v1.0.1 (2023-05-11)
 
 #### :bug: Bug Fix
