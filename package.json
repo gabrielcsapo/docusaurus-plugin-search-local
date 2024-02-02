@@ -12,7 +12,6 @@
   ],
   "files": [
     "lib",
-    "src",
     "README.md",
     "LICENSE",
     "CHANGELOG.md"
