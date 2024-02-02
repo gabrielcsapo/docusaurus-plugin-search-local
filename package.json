@@ -18,18 +18,18 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf lib",
     "build": "npm run build:client && npm run build:server",
     "postbuild": "npm run build:css",
     "build:client": "tsc --project tsconfig.client.json",
-    "build:css": "copyfiles -u 3 \"src/client/theme/**/*.css\" dist/client/theme",
+    "build:css": "copyfiles -u 3 \"src/client/theme/**/*.css\" lib/client/theme",
     "build:server": "tsc --project tsconfig.server.json",
     "check": "npm run check:client && npm run check:server",
     "check:client": "tsc --noEmit --project ./tsconfig.client.json",
     "check:server": "tsc --noEmit --project ./tsconfig.server.json",
     "lint": "eslint ./src --config .eslintrc",
     "parcel": "nf start --procfile ./procfiles/parcel.procfile",
-    "prepare": "yarn build",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build",
     "start": "nf start --procfile ./procfiles/start.procfile",
     "start:client": "tsc --watch --project tsconfig.client.json",
@@ -105,8 +105,7 @@
     "node": ">=18"
   },
   "volta": {
-    "node": "18.18.2",
-    "yarn": "3.2.4"
+    "node": "18.18.2"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -129,7 +128,7 @@
   "targets": {
     "server": {
       "context": "node",
-      "distDir": "dist/server",
+      "distDir": "lib/server",
       "isLibrary": true,
       "optimize": false,
       "outputFormat": "commonjs",

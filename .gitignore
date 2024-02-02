@@ -2,9 +2,7 @@ node_modules
 .coverage
 .DS_Store
 .vscode
-yarn-error.log
 /lib
-.yarn
 
 # TS Build Info
 /tsbuildinfo
