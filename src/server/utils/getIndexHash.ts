@@ -37,7 +37,7 @@ export function getIndexHash(config: PluginConfig): string | null {
     // The version of this plugin should be counted in hash,
     // since the index maybe changed between versions. Need to
     // use require here since importing from `package.json` results
-    // in copying the package.json file into the `dist` folder.
+    // in copying the package.json file into the `lib` folder.
 
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const pluginVersion = require(path.resolve(

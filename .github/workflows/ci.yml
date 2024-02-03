@@ -7,41 +7,19 @@ on:
     branches: [main]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: volta-cli/action@v1
-      - run: yarn install
-      - run: yarn build
-
-  check:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: volta-cli/action@v1
-      - run: yarn install
-      - run: yarn check
-
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: volta-cli/action@v1
-      - name: Install Dependencies
-        run: yarn install
-      - name: Lint
-        run: yarn lint
-
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: volta-cli/action@v1
-      - run: yarn install
-      - run: yarn build
-      - run: yarn test
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck
+        run: npm run check
+      - name: Test
+        run: npm run test
