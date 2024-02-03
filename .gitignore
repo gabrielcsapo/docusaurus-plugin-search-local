@@ -9,3 +9,5 @@ node_modules
 
 # Parcel
 .parcel-cache
+.yarn/cache
+.yarn/install-state.gz
