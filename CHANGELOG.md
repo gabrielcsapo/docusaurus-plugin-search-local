@@ -1,4 +1,14 @@
 
+
+## v2.0.1 (2024-02-03)
+
+#### :bug: Bug Fix
+* [#79](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/79) Fixes package content ([@scalvert](https://github.com/scalvert))
+
+#### Committers: 1
+- Steve Calvert ([@scalvert](https://github.com/scalvert))
+
+
 ## v2.0.0 (2024-02-01)
 
 #### :boom: Breaking Change
