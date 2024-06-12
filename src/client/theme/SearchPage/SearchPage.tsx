@@ -168,7 +168,7 @@ function SearchResultItem({
     <article className={styles.searchResultItem}>
       <h2>
         <Link
-          to={document.u + (document.h || "")}
+          to={document.h ? document.h : document.u}
           dangerouslySetInnerHTML={{
             __html: isContent
               ? highlight(articleTitle, tokens)
