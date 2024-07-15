@@ -12,6 +12,16 @@ const getNextDocId = () => {
   return (nextDocId += 1);
 };
 
+function getSlicedHash(hash: string, url: string) {
+  if (hash.includes("#") && !hash.startsWith("#")) {
+    if (hash.startsWith(url) && hash[url.length] === "#") {
+      return hash.slice(url.length);
+    }
+    return false;
+  }
+  return hash;
+}
+
 export async function scanDocuments(
   DocInfoWithFilePathList: DocInfoWithFilePath[]
 ): Promise<SearchDocument[][]> {
@@ -42,23 +52,35 @@ export async function scanDocuments(
       });
 
       for (const section of sections) {
+        const slicedHash = getSlicedHash(section.hash, url);
+
         if (section.title !== pageTitle) {
+
+          if (typeof slicedHash === 'boolean' && slicedHash === false) {
+            continue;
+          }
+
           headingDocuments.push({
             i: getNextDocId(),
             t: section.title,
             u: url,
-            h: section.hash,
+            h: slicedHash,
             p: titleId,
           });
         }
 
         if (section.content) {
+
+          if (typeof slicedHash === 'boolean' && slicedHash === false) {
+            continue;
+          }
+
           contentDocuments.push({
             i: getNextDocId(),
             t: section.content,
             s: section.title || pageTitle,
             u: url,
-            h: section.hash,
+            h: slicedHash,
             p: titleId,
           });
         }
