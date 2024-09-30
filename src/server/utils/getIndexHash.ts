@@ -1,9 +1,9 @@
-import crypto from "crypto";
-import fs from "fs";
-import path from "path";
-import klawSync from "klaw-sync";
-import type { PluginConfig } from "../../types";
-import { debugInfo } from "./debug";
+import crypto from 'crypto';
+import fs from 'fs';
+import path from 'path';
+import klawSync from 'klaw-sync';
+import type { PluginConfig } from '../../types';
+import { debugInfo } from './debug';
 
 export function getIndexHash(config: PluginConfig): string | null {
   if (!config.hashed) {
@@ -12,8 +12,8 @@ export function getIndexHash(config: PluginConfig): string | null {
   const files: klawSync.Item[] = [];
 
   const scanFiles = (
-    flagField: "indexDocs" | "indexBlog",
-    dirField: "docsDir" | "blogDir"
+    flagField: 'indexDocs' | 'indexBlog',
+    dirField: 'docsDir' | 'blogDir',
   ): void => {
     if (config[flagField]) {
       for (const dir of config[dirField]) {
@@ -28,11 +28,11 @@ export function getIndexHash(config: PluginConfig): string | null {
     }
   };
 
-  scanFiles("indexDocs", "docsDir");
-  scanFiles("indexBlog", "blogDir");
+  scanFiles('indexDocs', 'docsDir');
+  scanFiles('indexBlog', 'blogDir');
 
   if (files.length > 0) {
-    const md5sum = crypto.createHash("md5");
+    const md5sum = crypto.createHash('md5');
 
     // The version of this plugin should be counted in hash,
     // since the index maybe changed between versions. Need to
@@ -42,22 +42,22 @@ export function getIndexHash(config: PluginConfig): string | null {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const pluginVersion = require(path.resolve(
       __dirname,
-      "../../../package.json"
+      '../../../package.json',
     )).version;
-    debugInfo("using docusaurus-plugin-search-local v%s", pluginVersion);
-    md5sum.update(pluginVersion, "utf8");
+    debugInfo('using docusaurus-plugin-search-local v%s', pluginVersion);
+    md5sum.update(pluginVersion, 'utf8');
 
     for (const item of files) {
       md5sum.update(fs.readFileSync(item.path));
     }
 
-    const indexHash = md5sum.digest("hex").substring(0, 8);
-    debugInfo("the index hash is %j", indexHash);
+    const indexHash = md5sum.digest('hex').substring(0, 8);
+    debugInfo('the index hash is %j', indexHash);
     return indexHash;
   }
   return null;
 }
 
 function markdownFilter(item: klawSync.Item): boolean {
-  return item.path.endsWith(".md");
+  return item.path.endsWith('.md');
 }

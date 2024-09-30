@@ -1,3 +1,4 @@
+import { type AnyNode } from "domhandler";
 import * as cheerio from "cheerio";
 import { ParsedDocument } from "../../types";
 import { debugWarn } from "./debug";
@@ -29,7 +30,7 @@ export function parsePage($: cheerio.CheerioAPI, url: string): ParsedDocument {
         hash: "",
         content:
           $main.length > 0
-            ? getCondensedText($main.get(0) as cheerio.AnyNode, $).trim()
+            ? getCondensedText($main.get(0) as AnyNode, $).trim()
             : "",
       },
     ],
