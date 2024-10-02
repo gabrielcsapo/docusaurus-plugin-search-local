@@ -1,3 +1,4 @@
+import { type AnyNode } from "domhandler";
 import * as cheerio from "cheerio";
 
 // We prepend and append whitespace for these tags.
@@ -42,10 +43,10 @@ const BLOCK_TAGS = new Set([
 ]);
 
 export function getCondensedText(
-  element: cheerio.AnyNode | cheerio.AnyNode[],
+  element: AnyNode | AnyNode[],
   $: cheerio.CheerioAPI
 ): string {
-  const getText = (element: cheerio.AnyNode | cheerio.AnyNode[]): string => {
+  const getText = (element: AnyNode | AnyNode[]): string => {
     if (Array.isArray(element)) {
       return element.map((item) => getText(item)).join("");
     }
