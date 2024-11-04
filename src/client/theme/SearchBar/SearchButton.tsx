@@ -68,7 +68,7 @@ export const SearchButton = React.forwardRef<
     return null;
   }, []);
 
-  const {  actionKeyAltText, actionKeyChild } =
+  const { actionKeyAltText, actionKeyChild } =
       key === ACTION_KEY_DEFAULT
         ? ({ actionKeyAltText: 'Ctrl', actionKeyChild: <ControlKeyIcon /> } as const)
         : ({ actionKeyAltText: 'Command', actionKeyChild: key } as const);
