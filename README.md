@@ -4,7 +4,7 @@
 [![CI Status](https://github.com/easyops-cn/docusaurus-search-local/workflows/CI/badge.svg?event=push)](https://github.com/easyops-cn/docusaurus-search-local/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/easyops-cn/docusaurus-search-local/badge.svg?branch=master)](https://coveralls.io/github/easyops-cn/docusaurus-search-local?branch=master)
 
-An offline/local search plugin for [Docusaurus v2](https://v2.docusaurus.io/), which supports multiple languages, especially optimized for language of zh.
+An offline/local search plugin for [Docusaurus v2](https://v2.docusaurus.io/), which supports multiple languages.
 
 > Originally forked from [cmfcmf/docusaurus-search-local](https://github.com/cmfcmf/docusaurus-search-local).
 >
@@ -43,31 +43,19 @@ module.exports = {
   plugins: [
     // ... Your other plugins.
     [
-      require.resolve("docusaurus-plugin-search-local"),
+      require.resolve('docusaurus-plugin-search-local'),
       {
         // ... Your options.
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
-        // For Docs using Chinese, The `language` is recommended to set to:
         // ```
         // language: ["en", "zh"],
         // ```
-        // When applying `zh` in language, please install `nodejieba` in your project.
       },
     ],
   ],
 };
 ````
-
-> Notice!
->
-> When applying `"zh"` in language, please also install `nodejieba` in your project, it became a peer dependency since v0.7.0.
-
-```shell
-npm install nodejieba
-# or
-yarn add nodejieba
-```
 
 ## Plugin Options
 
@@ -136,7 +124,7 @@ E.g.:
   --search-local-highlight-color: #5468ff;
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --search-local-highlight-color: #d23669;
 }
 ```
@@ -156,9 +144,6 @@ In case some specific errors occurred:
   - Try using docusaurus-plugin-search-local >= v0.16.0 with Docusaurus >= v2.0.0-alpha.73
   - Try using docusaurus-plugin-search-local between v0.14.0 and v0.15.1 with Docusaurus between v2.0.0-alpha.68 and v2.0.0-alpha.72
   - Or try using docusaurus-plugin-search-local <= v0.13.1 with Docusaurus <= v2.0.0-alpha.66
-- `Error: Command failed with signal "SIGSEGV"`:
-  - This is probably caused by a [known issue](https://github.com/yanyiwu/nodejieba/issues/187) introduced by `nodejieba@2.5.2`, if you enabled language of zh.
-  - Try downgrading `nodejieba` to `2.4.2` and it will work again, see discussions in [#47](https://github.com/easyops-cn/docusaurus-search-local/issues/47).
 
 ## Further Reading
 
