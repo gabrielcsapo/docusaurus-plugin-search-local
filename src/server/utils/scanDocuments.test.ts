@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import path from 'path';
 import fixturify from 'fixturify';
 import tmp from 'tmp';

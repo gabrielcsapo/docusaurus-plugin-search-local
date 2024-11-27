@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { ParsedDocument } from '../../types';
 import { parse } from './parse';
 

@@ -1,3 +1,4 @@
+import { describe, beforeEach, vi, test, expect, MockedFunction } from 'vitest';
 import fs from 'fs';
 import klawSync from 'klaw-sync';
 import { PluginConfig } from '../../types';
@@ -14,17 +15,11 @@ describe('getIndexHash', () => {
       .spyOn(console, 'warn')
       .mockImplementation(() => void 0);
 
-    vi.mock(
-      '../../../../package.json',
-      () => ({
-        version: '0.0.0',
-      }),
-      {
-        virtual: true,
-      },
-    );
+    vi.mock('../../../../package.json', () => ({
+      version: '0.0.0',
+    }));
 
-    (klawSync as vi.MockedFunction<typeof klawSync>).mockImplementation(
+    (klawSync as MockedFunction<typeof klawSync>).mockImplementation(
       (root, options) => {
         let files: string[] = [];
         if (root === '/tmp/docs') {
@@ -38,7 +33,7 @@ describe('getIndexHash', () => {
     );
 
     (
-      fs.readFileSync as vi.MockedFunction<typeof fs.readFileSync>
+      fs.readFileSync as MockedFunction<typeof fs.readFileSync>
     ).mockImplementation((filePath: fs.PathOrFileDescriptor) => {
       if (typeof filePath === 'string' && filePath.endsWith('.md')) {
         return Buffer.from(filePath);
@@ -46,17 +41,17 @@ describe('getIndexHash', () => {
       throw new Error(`Unknown file: ${filePath}`);
     });
 
-    (
-      fs.existsSync as vi.MockedFunction<typeof fs.existsSync>
-    ).mockImplementation((filePath: fs.PathOrFileDescriptor) => {
-      if (typeof filePath === 'string') {
-        return filePath.startsWith('/tmp/');
-      }
+    (fs.existsSync as MockedFunction<typeof fs.existsSync>).mockImplementation(
+      (filePath: fs.PathOrFileDescriptor) => {
+        if (typeof filePath === 'string') {
+          return filePath.startsWith('/tmp/');
+        }
 
-      return false;
-    });
+        return false;
+      },
+    );
 
-    (fs.lstatSync as vi.MockedFunction<typeof fs.lstatSync>).mockImplementation(
+    (fs.lstatSync as MockedFunction<typeof fs.lstatSync>).mockImplementation(
       (filePath: fs.PathOrFileDescriptor) => {
         return {
           isDirectory: () => {
@@ -69,14 +64,14 @@ describe('getIndexHash', () => {
     );
   });
 
-  test.each<[Partial<PluginConfig>, string | null, number]>([
+  test.each([
     [{ hashed: false }, 0],
     [{ hashed: true, indexDocs: true, docsDir: ['/tmp/docs'] }, 0],
     [{ hashed: true, indexBlog: true, blogDir: ['/tmp/blog'] }, 0],
     [{ hashed: true, indexDocs: true, docsDir: ['/does-not-exist/docs'] }, 1],
     [{ hashed: true, indexDocs: true, docsDir: ['/tmp/index.js'] }, 1],
   ])("getIndexHash(%j) should return '%s'", (config, warnCount) => {
-    getIndexHash(config as PluginConfig);
+    getIndexHash(config as unknown as PluginConfig);
 
     expect(mockConsoleWarn).toBeCalledTimes(warnCount);
   });

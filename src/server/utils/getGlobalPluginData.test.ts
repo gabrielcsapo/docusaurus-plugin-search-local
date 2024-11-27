@@ -1,7 +1,7 @@
+import { describe, test, expect, vi, afterEach, beforeEach } from 'vitest';
+
 import fixturify from 'fixturify';
 import tmp from 'tmp';
-import { describe, test, expect, vi } from 'vitest';
-
 import type { PluginConfig } from '../../types';
 import { getGlobalPluginData } from './getGlobalPluginData';
 import * as indexHash from './getIndexHash';
