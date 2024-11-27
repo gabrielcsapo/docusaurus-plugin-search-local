@@ -68,11 +68,20 @@ export const SearchButton = React.forwardRef<
     return null;
   }, []);
 
+  const [actionKeyAltText, actionKeyChild] =
+    key === ACTION_KEY_DEFAULT
+      ? // eslint-disable-next-line react/jsx-key -- false flag
+        (['Control', <ControlKeyIcon />] as const)
+      : (['Meta', key] as const);
+
+  const shortcut = `${actionKeyAltText}+k`
+
   return (
     <button
       type="button"
       className="DocSearch DocSearch-Button"
-      aria-label={buttonAriaLabel}
+      aria-label={`${buttonAriaLabel} (${shortcut})`}
+      aria-keyshortcuts={shortcut}
       {...props}
       ref={ref}
     >
@@ -84,9 +93,7 @@ export const SearchButton = React.forwardRef<
       <span className="DocSearch-Button-Keys">
         {key !== null && (
           <>
-            <span className="DocSearch-Button-Key">
-              {key === ACTION_KEY_DEFAULT ? <ControlKeyIcon /> : key}
-            </span>
+            <span className="DocSearch-Button-Key">{actionKeyChild}</span>
             <span className="DocSearch-Button-Key">K</span>
           </>
         )}
