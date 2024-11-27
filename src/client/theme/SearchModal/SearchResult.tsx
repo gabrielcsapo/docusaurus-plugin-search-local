@@ -1,16 +1,16 @@
-import * as React from "react";
-import clsx from "clsx";
-import { sanitizeUrl } from "@braintree/sanitize-url";
-import { useHistory } from "@docusaurus/router";
-import { usePluginData } from "@docusaurus/useGlobalData";
-import IconExternalLink from "@theme-original/Icon/ExternalLink";
+import * as React from 'react';
+import clsx from 'clsx';
+import { sanitizeUrl } from '@braintree/sanitize-url';
+import { useHistory } from '@docusaurus/router';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import IconExternalLink from '@theme-original/Icon/ExternalLink';
 
-import { GlobalPluginData } from "docusaurus-plugin-search-local";
-import { SearchDocument, SearchResult as ISearchResult } from "../../../types";
-import { highlight } from "../../utils/highlight";
-import { highlightStemmed } from "../../utils/highlightStemmed";
-import { getStemmedPositions } from "../../utils/getStemmedPositions";
-import { getExternalURI } from "../../utils/getExternalURI";
+import { GlobalPluginData } from 'docusaurus-plugin-search-local';
+import { SearchDocument, SearchResult as ISearchResult } from '../../../types';
+import { highlight } from '../../utils/highlight';
+import { highlightStemmed } from '../../utils/highlightStemmed';
+import { getStemmedPositions } from '../../utils/getStemmedPositions';
+import { getExternalURI } from '../../utils/getExternalURI';
 import {
   IconTitle,
   IconHeading,
@@ -18,11 +18,11 @@ import {
   IconAction,
   IconTreeInter,
   IconTreeLast,
-} from "./icons";
+} from './icons';
 
-import styles from "./index.module.css";
+import styles from './index.module.css';
 
-const SEARCH_PARAM_HIGHLIGHT = "_highlight";
+const SEARCH_PARAM_HIGHLIGHT = '_highlight';
 
 interface SuggestionTemplateProps {
   isSelected: boolean;
@@ -36,7 +36,7 @@ interface SuggestionTemplateProps {
 
 function buildDestinationQueryParams(tokens: string[]): string {
   if (tokens.length === 0) {
-    return "";
+    return '';
   }
 
   const params = new URLSearchParams();
@@ -52,18 +52,18 @@ function handleExternalSearchClick(
   doc: SearchDocument,
   tokens: string[],
   externalUriBase: string,
-  shouldHighlight: boolean
+  shouldHighlight: boolean,
 ) {
   const queryParams = shouldHighlight
     ? buildDestinationQueryParams(tokens)
-    : "";
+    : '';
   const externalURI = `${getExternalURI(
     doc.u,
-    externalUriBase
+    externalUriBase,
   )}?${queryParams}`;
   const uri = sanitizeUrl(externalURI);
 
-  const tab = window.open(uri, "_blank");
+  const tab = window.open(uri, '_blank');
 
   if (tab) {
     // Set opener window to null to prevent tabnabbing
@@ -93,7 +93,7 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
   } = searchResult;
 
   const { searchResultContextMaxLength, highlightSearchTermsOnTargetPage } =
-    usePluginData("docusaurus-plugin-search-local") as GlobalPluginData;
+    usePluginData('docusaurus-plugin-search-local') as GlobalPluginData;
   const history = useHistory();
   const isTitle = type === 0;
   const isHeading = type === 1;
@@ -105,7 +105,7 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
         document,
         tokens,
         searchSource,
-        highlightSearchTermsOnTargetPage
+        highlightSearchTermsOnTargetPage,
       );
       return;
     }
@@ -116,8 +116,13 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
     if (tokens.length > 0 && highlightSearchTermsOnTargetPage) {
       url += `?${buildDestinationQueryParams(tokens)}`;
     }
+
     if (h) {
-      url = h;
+      if (h[0] === '#') {
+        url += h;
+      } else {
+        url = h;
+      }
     }
 
     history.push(url);
@@ -137,7 +142,7 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
 
   return (
     <div
-      className={clsx(styles.searchResult, isHovered ? styles.cursor : "")}
+      className={clsx(styles.searchResult, isHovered ? styles.cursor : '')}
       onMouseEnter={() => setHovered(searchResult)}
       onMouseLeave={() => setHovered(undefined)}
       onClick={_onClick}
@@ -147,7 +152,7 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
           {isInterOfTree ? <IconTreeInter /> : <IconTreeLast />}
         </span>
       ) : (
-        ""
+        ''
       )}
       <span className={styles.hitIcon}>
         {isTitle ? (
@@ -164,9 +169,9 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
           dangerouslySetInnerHTML={{
             __html: highlightStemmed(
               document.t,
-              getStemmedPositions(metadata, "t"),
+              getStemmedPositions(metadata, 't'),
               tokens,
-              searchResultContextMaxLength
+              searchResultContextMaxLength,
             ),
           }}
         />
@@ -182,10 +187,10 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
                   (page as SearchDocument).t ||
                     // Todo(weareoutman): This is for EasyOps only.
                     // istanbul ignore next
-                    (document.u.startsWith("/docs/api-reference/")
-                      ? "API Reference"
-                      : ""),
-                  tokens
+                    (document.u.startsWith('/docs/api-reference/')
+                      ? 'API Reference'
+                      : ''),
+                  tokens,
                 ),
               }}
             />
@@ -195,7 +200,7 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
         )}
       </span>
 
-      {searchSource === "" ? (
+      {searchSource === '' ? (
         <span className={styles.hitAction}>
           <IconAction />
         </span>
