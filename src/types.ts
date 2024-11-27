@@ -155,10 +155,10 @@ export interface PostBuildData {
 
 export type SearchSourceFn = (
   input: string,
-  callback: (results: SearchResult[]) => void
+  callback: (results: SearchResult[]) => void,
 ) => void;
 
 export type SearchAnalyticsFn = (
   query: string,
-  results?: SearchResult[]
+  results?: SearchResult[],
 ) => void;
