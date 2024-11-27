@@ -8,7 +8,7 @@ An offline/local search plugin for [Docusaurus v2](https://v2.docusaurus.io/), w
 
 > Originally forked from [cmfcmf/docusaurus-search-local](https://github.com/cmfcmf/docusaurus-search-local).
 >
-> Then later fully rewritten with TypeScript 💪, styles polished 💅, language of Chinese supported 🇨🇳, and tests covered ✅.
+> Then later fully rewritten with TypeScript 💪, styles polished 💅, and tests covered ✅.
 
 - [Live Demo](#live-demo)
 - [Screen Shots](#screen-shots)
@@ -49,7 +49,7 @@ module.exports = {
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
         // ```
-        // language: ["en", "zh"],
+        // language: ["en", "de"],
         // ```
       },
     ],
@@ -66,7 +66,7 @@ module.exports = {
 | indexPages                       | boolean                                  | `false`      | Whether to index pages.                                                                                                                      |
 | docsRouteBasePath                | string \| string[]                       | `"/docs"`    | Base route path(s) of docs. Slash at beginning is not required.                                                                              |
 | blogRouteBasePath                | string \| string[]                       | `"/blog"`    | Base route path(s) of blog. Slash at beginning is not required.                                                                              |
-| language                         | string \| string[]                       | `"en"`       | All [lunr-languages](https://github.com/MihaiValentin/lunr-languages) supported languages, + `zh` 🔥.                                        |
+| language                         | string \| string[]                       | `"en"`       | All [lunr-languages](https://github.com/MihaiValentin/lunr-languages) supported languages.                                                   |
 | hashed                           | boolean                                  | `false`      | Whether to add a hashed query when fetching index (based on the content hash of all indexed `*.md` in `docsDir` and `blogDir` if applicable) |
 | docsDir                          | string \| string[]                       | `"docs"`     | The dir(s) of docs to get the content hash, it's relative to the dir of your project.                                                        |
 | blogDir                          | string \| string[]                       | `"blog"`     | Just like the `docsDir` but applied to blog.                                                                                                 |
@@ -137,17 +137,6 @@ When building your docs project, Set the env `DEBUG=docusaurus-plugin-search-loc
 # In your docs project:
 DEBUG=docusaurus-plugin-search-local:* yarn build
 ```
-
-In case some specific errors occurred:
-
-- `Error: Cannot mix different versions of joi schemas`:
-  - Try using docusaurus-plugin-search-local >= v0.16.0 with Docusaurus >= v2.0.0-alpha.73
-  - Try using docusaurus-plugin-search-local between v0.14.0 and v0.15.1 with Docusaurus between v2.0.0-alpha.68 and v2.0.0-alpha.72
-  - Or try using docusaurus-plugin-search-local <= v0.13.1 with Docusaurus <= v2.0.0-alpha.66
-
-## Further Reading
-
-- [多语言全文搜索](https://wangshenwei.com/multilingual-full-text-search/)
 
 ## Contributing
 
