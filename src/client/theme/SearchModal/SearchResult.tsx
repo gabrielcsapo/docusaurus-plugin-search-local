@@ -117,7 +117,7 @@ const SearchResult: React.FC<SuggestionTemplateProps> = (props) => {
       url += `?${buildDestinationQueryParams(tokens)}`;
     }
     if (h) {
-      url += h;
+      url = h;
     }
 
     history.push(url);
