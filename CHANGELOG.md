@@ -1,19 +1,11 @@
 ## v2.1.2 (2024-11-27)
 
-#### :rocket: Enhancement
-
-- [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
-
 #### :bug: Bug Fix
 
 - [#89](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/89) bug: fixes linking search results for sub links, fixes type checking in CI ([@gabrielcsapo](https://github.com/gabrielcsapo))
-- [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
-- [#81](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/81) Fixing links to search results if hash is present ([@dima](https://github.com/dima))
 
-#### Committers: 3
+#### Committers: 1
 
-- Blake V. ([@bvandercar-vt](https://github.com/bvandercar-vt))
-- Dima Berastau ([@dima](https://github.com/dima))
 - Gabriel Csapo ([@gabrielcsapo](https://github.com/gabrielcsapo))
 
 ## v2.1.1 (2024-11-27)
