@@ -1,7 +1,7 @@
-import { useMemo } from "react";
-import * as React from "react";
+import { useMemo } from 'react';
+import * as React from 'react';
 
-import "./SearchButton.css";
+import './SearchButton.css';
 
 function ControlKeyIcon() {
   return (
@@ -42,12 +42,12 @@ type Translations = Partial<{
   buttonAriaLabel: string;
 }>;
 
-export type DocSearchButtonProps = React.ComponentProps<"button"> & {
+export type DocSearchButtonProps = React.ComponentProps<'button'> & {
   translations?: Translations;
 };
 
-const ACTION_KEY_DEFAULT = "Ctrl" as const;
-const ACTION_KEY_APPLE = "⌘" as const;
+const ACTION_KEY_DEFAULT = 'Ctrl' as const;
+const ACTION_KEY_APPLE = '⌘' as const;
 
 function isAppleDevice() {
   return /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
@@ -57,12 +57,12 @@ export const SearchButton = React.forwardRef<
   HTMLButtonElement,
   DocSearchButtonProps
 >(({ translations = {}, ...props }, ref) => {
-  const { buttonText = "Search", buttonAriaLabel = "Search" } = translations;
+  const { buttonText = 'Search', buttonAriaLabel = 'Search' } = translations;
 
   const key = useMemo<
     typeof ACTION_KEY_APPLE | typeof ACTION_KEY_DEFAULT | null
   >(() => {
-    if (typeof navigator !== "undefined") {
+    if (typeof navigator !== 'undefined') {
       return isAppleDevice() ? ACTION_KEY_APPLE : ACTION_KEY_DEFAULT;
     }
     return null;
@@ -74,7 +74,7 @@ export const SearchButton = React.forwardRef<
         (['Control', <ControlKeyIcon />] as const)
       : (['Meta', key] as const);
 
-  const shortcut = `${actionKeyAltText}+k`
+  const shortcut = `${actionKeyAltText}+k`;
 
   return (
     <button
@@ -102,4 +102,4 @@ export const SearchButton = React.forwardRef<
   );
 });
 
-SearchButton.displayName = "SearchButton";
+SearchButton.displayName = 'SearchButton';

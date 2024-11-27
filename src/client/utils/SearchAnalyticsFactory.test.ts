@@ -66,6 +66,6 @@ describe('SearchAnalyticsFactory', () => {
       searchAnalytics(query, results);
 
       expect(trackFn).toBeCalledWith(...expected);
-    }
+    },
   );
 });

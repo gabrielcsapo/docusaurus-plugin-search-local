@@ -1,9 +1,9 @@
-import type { GlobalPluginData } from "docusaurus-plugin-search-local";
-import type { PluginConfig } from "../../types";
-import { getIndexHash } from "./getIndexHash";
+import type { GlobalPluginData } from 'docusaurus-plugin-search-local';
+import type { PluginConfig } from '../../types';
+import { getIndexHash } from './getIndexHash';
 
 export function getGlobalPluginData(
-  pluginConfig: PluginConfig
+  pluginConfig: PluginConfig,
 ): GlobalPluginData {
   const {
     externalSearchSources,

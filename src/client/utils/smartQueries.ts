@@ -1,6 +1,6 @@
-import lunr from "lunr";
-import { SmartQuery, SmartTerm } from "../../types";
-import { smartTerms } from "./smartTerms";
+import lunr from 'lunr';
+import { SmartQuery, SmartTerm } from '../../types';
+import { smartTerms } from './smartTerms';
 
 export type SmartQueryOptions = {
   removeDefaultStopWordFilter: boolean;
@@ -14,7 +14,7 @@ export type SmartQueryOptions = {
  */
 export function smartQueries(
   tokens: string[],
-  queryOptions: SmartQueryOptions = { removeDefaultStopWordFilter: false }
+  queryOptions: SmartQueryOptions = { removeDefaultStopWordFilter: false },
 ): SmartQuery[] {
   const { removeDefaultStopWordFilter } = queryOptions;
 
@@ -55,9 +55,9 @@ export function smartQueries(
       stopWordPipelines.reduce(
         (term, p) =>
           term.filter((item) =>
-            (p as unknown as (str: string) => string | undefined)(item.value)
+            (p as unknown as (str: string) => string | undefined)(item.value),
           ),
-        term
+        term,
       );
     refinedTerms = [];
     const newTerms: SmartTerm[] = [];
@@ -99,14 +99,14 @@ function getQueriesMaybeTyping(terms: SmartTerm[]): SmartQuery[] {
         const token = term[term.length - 1];
         return !token.trailing && token.maybeTyping;
       }),
-      true
-    )
+      true,
+    ),
   );
 }
 
 function termsToQueries(
   terms: SmartTerm[],
-  maybeTyping?: boolean
+  maybeTyping?: boolean,
 ): SmartQuery[] {
   return terms.map((term) => ({
     tokens: term.map((item) => item.value),

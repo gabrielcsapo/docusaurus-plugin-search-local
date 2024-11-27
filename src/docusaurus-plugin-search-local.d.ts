@@ -1,4 +1,4 @@
-declare module "docusaurus-plugin-search-local" {
+declare module 'docusaurus-plugin-search-local' {
   export type ExternalSourceConfig = {
     heading: string;
     uri: string;

@@ -1,5 +1,5 @@
-import lunr from "lunr";
-import { SearchDocument, SearchDocumentType, WrappedIndex } from "../../types";
+import lunr from 'lunr';
+import { SearchDocument, SearchDocumentType, WrappedIndex } from '../../types';
 
 interface SerializedIndex {
   documents: SearchDocument[];
@@ -18,10 +18,10 @@ const EMPTY_RESPONSE: FetchIndexResponse = Object.freeze({
 
 export async function fetchIndexes(
   baseUrl: string,
-  indexHash: string | null = null
+  indexHash: string | null = null,
 ): Promise<FetchIndexResponse> {
   const indexUrl = `${baseUrl}search-index.json`;
-  const queryString = indexHash ? `?_=${indexHash}` : "";
+  const queryString = indexHash ? `?_=${indexHash}` : '';
 
   let result;
 
@@ -29,7 +29,7 @@ export async function fetchIndexes(
     result = await fetch(`${indexUrl}${queryString}`);
   } catch {
     console.warn(
-      `[docusaurus-plugin-search-local] Unable to fetch search index from ${baseUrl}`
+      `[docusaurus-plugin-search-local] Unable to fetch search index from ${baseUrl}`,
     );
     return EMPTY_RESPONSE;
   }
@@ -40,7 +40,7 @@ export async function fetchIndexes(
     searchIndexRaw = await result.json();
   } catch {
     console.warn(
-      `[docusaurus-plugin-search-local] Unable to parse search index from ${baseUrl}`
+      `[docusaurus-plugin-search-local] Unable to parse search index from ${baseUrl}`,
     );
     return EMPTY_RESPONSE;
   }
@@ -50,7 +50,7 @@ export async function fetchIndexes(
       type: type as SearchDocumentType,
       documents,
       index: lunr.Index.load(index),
-    })
+    }),
   );
 
   return {

@@ -1,32 +1,32 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import * as React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { usePluginData } from "@docusaurus/useGlobalData";
-import Layout from "@theme/Layout";
-import Head from "@docusaurus/Head";
-import Link from "@docusaurus/Link";
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import * as React from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
+import Link from '@docusaurus/Link';
 
-import { GlobalPluginData } from "docusaurus-plugin-search-local";
-import useSearchQuery from "../hooks/useSearchQuery";
-import { fetchIndexes } from "../../utils/fetchIndexes";
-import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchAnalyticsFactory } from "../../utils/SearchAnalyticsFactory";
-import { SearchDocument, SearchResult, SearchSourceFn } from "../../../types";
-import { highlight } from "../../utils/highlight";
-import { highlightStemmed } from "../../utils/highlightStemmed";
-import { getStemmedPositions } from "../../utils/getStemmedPositions";
-import LoadingRing from "../LoadingRing/LoadingRing";
-import { simpleTemplate } from "../../utils/simpleTemplate";
-import ErrorBoundary from "../ErrorBoundary";
+import { GlobalPluginData } from 'docusaurus-plugin-search-local';
+import useSearchQuery from '../hooks/useSearchQuery';
+import { fetchIndexes } from '../../utils/fetchIndexes';
+import { SearchSourceFactory } from '../../utils/SearchSourceFactory';
+import { SearchAnalyticsFactory } from '../../utils/SearchAnalyticsFactory';
+import { SearchDocument, SearchResult, SearchSourceFn } from '../../../types';
+import { highlight } from '../../utils/highlight';
+import { highlightStemmed } from '../../utils/highlightStemmed';
+import { getStemmedPositions } from '../../utils/getStemmedPositions';
+import LoadingRing from '../LoadingRing/LoadingRing';
+import { simpleTemplate } from '../../utils/simpleTemplate';
+import ErrorBoundary from '../ErrorBoundary';
 
-import styles from "./SearchPage.module.css";
+import styles from './SearchPage.module.css';
 
 export default function SearchPage(): React.ReactElement {
   const {
     siteConfig: { baseUrl },
   } = useDocusaurusContext();
   const { indexHash, removeDefaultStopWordFilter, translations } =
-    usePluginData("docusaurus-plugin-search-local") as GlobalPluginData;
+    usePluginData('docusaurus-plugin-search-local') as GlobalPluginData;
   const { searchValue, updateSearchPath } = useSearchQuery();
   const [searchQuery, setSearchQuery] = useState(searchValue);
   const [searchSource, setSearchSource] = useState<SearchSourceFn>();
@@ -43,7 +43,7 @@ export default function SearchPage(): React.ReactElement {
       searchQuery,
       translations.search_results_for,
       translations.search_the_documentation,
-    ]
+    ],
   );
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function SearchPage(): React.ReactElement {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setSearchQuery(e.target.value);
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export default function SearchPage(): React.ReactElement {
           removeDefaultStopWordFilter,
           resultsLimit: 100,
           onResults: SearchAnalyticsFactory(),
-        })
+        }),
       );
     }
     doFetchIndexes();
@@ -126,10 +126,10 @@ export default function SearchPage(): React.ReactElement {
                     : translations.count_documents_found_plural,
                   {
                     count: searchResults.length,
-                  }
+                  },
                 )}
               </p>
-            ) : process.env.NODE_ENV === "production" ? (
+            ) : process.env.NODE_ENV === 'production' ? (
               <p>{translations.no_documents_were_found}</p>
             ) : (
               <p>
@@ -174,15 +174,15 @@ function SearchResultItem({
               ? highlight(articleTitle, tokens)
               : highlightStemmed(
                   articleTitle,
-                  getStemmedPositions(metadata, "t"),
+                  getStemmedPositions(metadata, 't'),
                   tokens,
-                  100
+                  100,
                 ),
           }}
         ></Link>
       </h2>
       {pathItems.length > 0 && (
-        <p className={styles.searchResultItemPath}>{pathItems.join(" › ")}</p>
+        <p className={styles.searchResultItemPath}>{pathItems.join(' › ')}</p>
       )}
       {isContent && (
         <p
@@ -190,9 +190,9 @@ function SearchResultItem({
           dangerouslySetInnerHTML={{
             __html: highlightStemmed(
               document.t,
-              getStemmedPositions(metadata, "t"),
+              getStemmedPositions(metadata, 't'),
               tokens,
-              100
+              100,
             ),
           }}
         />

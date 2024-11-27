@@ -16,7 +16,7 @@
 
 /* Darkmode */
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --search-local-key-gradient: linear-gradient(
     -26.5deg,
     rgb(86, 88, 114) 0%,

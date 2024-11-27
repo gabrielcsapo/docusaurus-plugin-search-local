@@ -1,13 +1,13 @@
-import { HighlightChunk, MetadataPosition, ChunkIndexRef } from "../../types";
-import { escapeHtml } from "./escapeHtml";
-import { highlight } from "./highlight";
-import { looseTokenize } from "./looseTokenize";
+import { HighlightChunk, MetadataPosition, ChunkIndexRef } from '../../types';
+import { escapeHtml } from './escapeHtml';
+import { highlight } from './highlight';
+import { looseTokenize } from './looseTokenize';
 
 export function highlightStemmed(
   content: string,
   positions: MetadataPosition[],
   tokens: string[],
-  maxLength = 50
+  maxLength = 50,
 ): string {
   const chunkIndexRef: ChunkIndexRef = {
     chunkIndex: -1,
@@ -18,7 +18,7 @@ export function highlightStemmed(
     tokens,
     0,
     0,
-    chunkIndexRef
+    chunkIndexRef,
   );
 
   const leadingChunks = chunks.slice(0, chunkIndexRef.chunkIndex);
@@ -62,14 +62,14 @@ export function highlightStemmed(
   }
 
   if (leftOverflowed || leadingChunks.length > 0) {
-    html.unshift("…");
+    html.unshift('…');
   }
 
   if (rightOverflowed || trailingChunks.length > 0) {
-    html.push("…");
+    html.push('…');
   }
 
-  return html.join("");
+  return html.join('');
 }
 
 export function splitIntoChunks(
@@ -78,7 +78,7 @@ export function splitIntoChunks(
   tokens: string[],
   positionIndex: number,
   cursor: number,
-  chunkIndexRef?: ChunkIndexRef
+  chunkIndexRef?: ChunkIndexRef,
 ): HighlightChunk[] {
   const chunks: HighlightChunk[] = [];
   const [start, length] = positions[positionIndex];
@@ -86,7 +86,7 @@ export function splitIntoChunks(
     positionIndex += 1;
     if (positionIndex < positions.length) {
       chunks.push(
-        ...splitIntoChunks(content, positions, tokens, positionIndex, cursor)
+        ...splitIntoChunks(content, positions, tokens, positionIndex, cursor),
       );
     }
   } else {
@@ -95,7 +95,7 @@ export function splitIntoChunks(
         ...looseTokenize(content.substring(cursor, start)).map((token) => ({
           html: escapeHtml(token),
           textLength: token.length,
-        }))
+        })),
       );
     }
     if (chunkIndexRef) {
@@ -114,8 +114,8 @@ export function splitIntoChunks(
           positions,
           tokens,
           positionIndex,
-          nextCursor
-        )
+          nextCursor,
+        ),
       );
     } else {
       if (nextCursor < content.length) {
@@ -123,7 +123,7 @@ export function splitIntoChunks(
           ...looseTokenize(content.substr(nextCursor)).map((token) => ({
             html: escapeHtml(token),
             textLength: token.length,
-          }))
+          })),
         );
       }
     }

@@ -1,8 +1,8 @@
-import { MatchMetadata, MetadataPosition } from "../../types";
+import { MatchMetadata, MetadataPosition } from '../../types';
 
 export function getStemmedPositions(
   metadata: MatchMetadata,
-  field: string
+  field: string,
 ): MetadataPosition[] {
   const positions: MetadataPosition[] = [];
   for (const match of Object.values(metadata)) {

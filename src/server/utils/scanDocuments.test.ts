@@ -1,18 +1,18 @@
-import path from "path";
-import fixturify from "fixturify";
-import tmp from "tmp";
-import { DocInfoWithFilePath } from "../../types";
-import { scanDocuments } from "./scanDocuments";
-import { afterEach } from "vitest";
+import path from 'path';
+import fixturify from 'fixturify';
+import tmp from 'tmp';
+import { DocInfoWithFilePath } from '../../types';
+import { scanDocuments } from './scanDocuments';
+import { afterEach } from 'vitest';
 
-describe("scanDocuments", () => {
+describe('scanDocuments', () => {
   let tmpLocation: tmp.DirResult;
   let projectFixture;
 
   beforeEach(() => {
     tmpLocation = tmp.dirSync({ unsafeCleanup: true });
     projectFixture = {
-      "first.html": `<body>
+      'first.html': `<body>
         <nav>
           <a class="navbar__link navbar__link--active">
             Docs
@@ -49,7 +49,7 @@ describe("scanDocuments", () => {
           </div>
         </article>
       </body>`,
-      "second.html": `<body>
+      'second.html': `<body>
         <nav>
           <a class="navbar__link navbar__link--active">
             Docs
@@ -101,17 +101,17 @@ describe("scanDocuments", () => {
     tmpLocation.removeCallback();
   });
 
-  test("should work", async () => {
+  test('should work', async () => {
     const DocInfoWithFilePathList: DocInfoWithFilePath[] = [
       {
-        filePath: path.join(tmpLocation.name, "first.html"),
-        url: "/1",
-        type: "docs",
+        filePath: path.join(tmpLocation.name, 'first.html'),
+        url: '/1',
+        type: 'docs',
       },
       {
-        filePath: path.join(tmpLocation.name, "second.html"),
-        url: "/2",
-        type: "page",
+        filePath: path.join(tmpLocation.name, 'second.html'),
+        url: '/2',
+        type: 'page',
       },
     ];
 

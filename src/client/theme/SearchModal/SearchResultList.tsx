@@ -1,7 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { SearchResult as ISearchResult } from "../../../types";
-import SearchResult from "./SearchResult";
+import { SearchResult as ISearchResult } from '../../../types';
+import SearchResult from './SearchResult';
 
 export interface SearchResultListProps {
   currentSelection?: ISearchResult;
@@ -20,7 +20,7 @@ const SearchResultList: React.FC<SearchResultListProps> = (props) => {
     cursor,
     cursorOffset = 0,
     results,
-    searchSource = "",
+    searchSource = '',
     onSearchResultClick,
     setHovered,
     setSelected,

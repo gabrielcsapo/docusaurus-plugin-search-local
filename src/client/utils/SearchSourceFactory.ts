@@ -1,5 +1,5 @@
-import { tokenize } from "./tokenize";
-import { smartQueries } from "./smartQueries";
+import { tokenize } from './tokenize';
+import { smartQueries } from './smartQueries';
 import {
   MatchMetadata,
   WrappedIndex,
@@ -7,9 +7,9 @@ import {
   SearchDocument,
   InitialSearchResult,
   SearchSourceFn,
-} from "../../types";
-import { sortSearchResults } from "./sortSearchResults";
-import { processTreeStatusOfSearchResults } from "./processTreeStatusOfSearchResults";
+} from '../../types';
+import { sortSearchResults } from './sortSearchResults';
+import { processTreeStatusOfSearchResults } from './processTreeStatusOfSearchResults';
 
 export type SearchSourceFactoryProps = {
   wrappedIndexes: WrappedIndex[];
@@ -19,7 +19,7 @@ export type SearchSourceFactoryProps = {
 };
 
 export function SearchSourceFactory(
-  props: SearchSourceFactoryProps
+  props: SearchSourceFactoryProps,
 ): SearchSourceFn {
   const {
     wrappedIndexes,
@@ -30,7 +30,7 @@ export function SearchSourceFactory(
 
   return function searchSource(
     input: string,
-    callback: (results: SearchResult[]) => void
+    callback: (results: SearchResult[]) => void,
   ): void {
     // allow for the value to exist in a string
     const rawTokens = tokenize(`*${input}`);
@@ -64,13 +64,13 @@ export function SearchSourceFactory(
             .filter(
               (result) =>
                 !results.some(
-                  (item) => item.document.i.toString() === result.ref
-                )
+                  (item) => item.document.i.toString() === result.ref,
+                ),
             )
             .slice(0, resultsLimit - results.length)
             .map((result) => {
               const document = documents.find(
-                (doc) => doc.i.toString() === result.ref
+                (doc) => doc.i.toString() === result.ref,
               ) as SearchDocument;
               return {
                 document,
@@ -78,13 +78,13 @@ export function SearchSourceFactory(
                 page:
                   type !== 0 &&
                   wrappedIndexes[0].documents.find(
-                    (doc) => doc.i === document.p
+                    (doc) => doc.i === document.p,
                   ),
                 metadata: result.matchData.metadata as MatchMetadata,
                 tokens,
                 score: result.score,
               };
-            })
+            }),
         );
         if (results.length >= resultsLimit) {
           break search;

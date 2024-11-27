@@ -1,59 +1,62 @@
-
-
-
 ## v2.1.2 (2024-11-27)
 
 #### :rocket: Enhancement
-* [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
+
+- [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
 
 #### :bug: Bug Fix
-* [#89](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/89) bug: fixes linking search results for sub links, fixes type checking in CI ([@gabrielcsapo](https://github.com/gabrielcsapo))
-* [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
-* [#81](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/81) Fixing links to search results if hash is present ([@dima](https://github.com/dima))
+
+- [#89](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/89) bug: fixes linking search results for sub links, fixes type checking in CI ([@gabrielcsapo](https://github.com/gabrielcsapo))
+- [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
+- [#81](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/81) Fixing links to search results if hash is present ([@dima](https://github.com/dima))
 
 #### Committers: 3
+
 - Blake V. ([@bvandercar-vt](https://github.com/bvandercar-vt))
 - Dima Berastau ([@dima](https://github.com/dima))
 - Gabriel Csapo ([@gabrielcsapo](https://github.com/gabrielcsapo))
 
-
 ## v2.1.1 (2024-11-27)
 
 #### :rocket: Enhancement
-* [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
+
+- [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
 
 #### :bug: Bug Fix
-* [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
-* [#81](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/81) Fixing links to search results if hash is present ([@dima](https://github.com/dima))
+
+- [#87](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/87) feat(a11y): add hotkeys to search input aria props ([@bvandercar-vt](https://github.com/bvandercar-vt))
+- [#81](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/81) Fixing links to search results if hash is present ([@dima](https://github.com/dima))
 
 #### Committers: 2
+
 - Blake V. ([@bvandercar-vt](https://github.com/bvandercar-vt))
 - Dima Berastau ([@dima](https://github.com/dima))
 
-
 ## v2.1.0 (2024-10-11)
-
 
 ## v2.0.1 (2024-02-03)
 
 #### :bug: Bug Fix
-* [#79](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/79) Fixes package content ([@scalvert](https://github.com/scalvert))
+
+- [#79](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/79) Fixes package content ([@scalvert](https://github.com/scalvert))
 
 #### Committers: 1
-- Steve Calvert ([@scalvert](https://github.com/scalvert))
 
+- Steve Calvert ([@scalvert](https://github.com/scalvert))
 
 ## v2.0.0 (2024-02-01)
 
 #### :boom: Breaking Change
-* [#75](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/75) Docusaurus v3 ([@scalvert](https://github.com/scalvert))
+
+- [#75](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/75) Docusaurus v3 ([@scalvert](https://github.com/scalvert))
 
 #### :house: Internal
-* [#76](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/76) Cleanup of internal tools ([@scalvert](https://github.com/scalvert))
+
+- [#76](https://github.com/gabrielcsapo/docusaurus-plugin-search-local/pull/76) Cleanup of internal tools ([@scalvert](https://github.com/scalvert))
 
 #### Committers: 1
-- Steve Calvert ([@scalvert](https://github.com/scalvert))
 
+- Steve Calvert ([@scalvert](https://github.com/scalvert))
 
 ## v1.0.1 (2023-05-11)
 

@@ -1,18 +1,18 @@
-import { Component, ReactElement, useEffect, useState } from "react";
+import { Component, ReactElement, useEffect, useState } from 'react';
 
-import { useLocation } from "@docusaurus/router";
-import { usePluginData } from "@docusaurus/useGlobalData";
-import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+import { useLocation } from '@docusaurus/router';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
-import { GlobalPluginData } from "docusaurus-plugin-search-local";
+import { GlobalPluginData } from 'docusaurus-plugin-search-local';
 
-import { SearchButton } from "./SearchButton";
-import SearchModal from "../SearchModal";
-import ErrorBoundary from "../ErrorBoundary";
+import { SearchButton } from './SearchButton';
+import SearchModal from '../SearchModal';
+import ErrorBoundary from '../ErrorBoundary';
 
-import Mark from "mark.js";
+import Mark from 'mark.js';
 
-const SEARCH_PARAM_HIGHLIGHT = "_highlight";
+const SEARCH_PARAM_HIGHLIGHT = '_highlight';
 
 function isEditingContent(event: KeyboardEvent): boolean {
   const element = event.target as HTMLElement;
@@ -20,9 +20,9 @@ function isEditingContent(event: KeyboardEvent): boolean {
 
   return (
     element.isContentEditable ||
-    tagName === "INPUT" ||
-    tagName === "SELECT" ||
-    tagName === "TEXTAREA"
+    tagName === 'INPUT' ||
+    tagName === 'SELECT' ||
+    tagName === 'TEXTAREA'
   );
 }
 
@@ -38,7 +38,7 @@ export default class SearchBarWrapper extends Component {
 
 export function SearchBar(): ReactElement {
   const { highlightSearchTermsOnTargetPage } = usePluginData(
-    "docusaurus-plugin-search-local"
+    'docusaurus-plugin-search-local',
   ) as GlobalPluginData;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +55,7 @@ export function SearchBar(): ReactElement {
       if (keywords.length === 0) {
         return;
       }
-      const root = document.querySelector("article");
+      const root = document.querySelector('article');
       if (!root) {
         return;
       }
@@ -70,10 +70,10 @@ export function SearchBar(): ReactElement {
       if (
         (event.keyCode === 27 && isOpen) ||
         // The `Cmd+K` shortcut both opens and closes the modal.
-        (event.key === "k" && (event.metaKey || event.ctrlKey)) ||
+        (event.key === 'k' && (event.metaKey || event.ctrlKey)) ||
         // The `/` shortcut opens but doesn't close the modal because it's
         // a character.
-        (!isEditingContent(event) && event.key === "/" && !isOpen)
+        (!isEditingContent(event) && event.key === '/' && !isOpen)
       ) {
         event.preventDefault();
 
@@ -85,10 +85,10 @@ export function SearchBar(): ReactElement {
       }
     }
 
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen]);
 
@@ -100,7 +100,7 @@ export function SearchBar(): ReactElement {
         }}
       />
 
-      {isOpen ? <SearchModal onClose={() => setIsOpen(false)} /> : ""}
+      {isOpen ? <SearchModal onClose={() => setIsOpen(false)} /> : ''}
     </>
   );
 }

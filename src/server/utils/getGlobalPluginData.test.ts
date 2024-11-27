@@ -1,36 +1,36 @@
-import fixturify from "fixturify";
-import tmp from "tmp";
-import { describe, test, expect, vi } from "vitest";
+import fixturify from 'fixturify';
+import tmp from 'tmp';
+import { describe, test, expect, vi } from 'vitest';
 
-import type { PluginConfig } from "../../types";
-import { getGlobalPluginData } from "./getGlobalPluginData";
-import * as indexHash from "./getIndexHash";
+import type { PluginConfig } from '../../types';
+import { getGlobalPluginData } from './getGlobalPluginData';
+import * as indexHash from './getIndexHash';
 
-describe("getGlobalPluginData", () => {
+describe('getGlobalPluginData', () => {
   const baselinePluginConfig: PluginConfig = {
-    id: "foo",
+    id: 'foo',
     indexDocs: false,
     indexBlog: false,
     indexPages: false,
-    docsRouteBasePath: ["docs"],
-    blogRouteBasePath: ["blog"],
+    docsRouteBasePath: ['docs'],
+    blogRouteBasePath: ['blog'],
     hashed: false,
-    docsDir: ["docs"],
-    blogDir: ["blog"],
+    docsDir: ['docs'],
+    blogDir: ['blog'],
     removeDefaultStopWordFilter: false,
     highlightSearchTermsOnTargetPage: false,
     searchResultLimits: 8,
     searchResultContextMaxLength: 50,
     ignoreFiles: [],
     translations: {
-      search_placeholder: "Search",
-      see_all_results: "See all results",
-      no_results: "No results.",
+      search_placeholder: 'Search',
+      see_all_results: 'See all results',
+      no_results: 'No results.',
       search_results_for: 'Search results for "{{ keyword }}"',
-      search_the_documentation: "Search the documentation",
-      count_documents_found_plural: "{{ count }} documents found",
-      count_documents_found: "{{ count }} document found",
-      no_documents_were_found: "No documents were found",
+      search_the_documentation: 'Search the documentation',
+      count_documents_found_plural: '{{ count }} documents found',
+      count_documents_found: '{{ count }} document found',
+      no_documents_were_found: 'No documents were found',
     },
     externalSearchSources: [],
   };
@@ -42,7 +42,7 @@ describe("getGlobalPluginData", () => {
     tmpLocation = tmp.dirSync({ unsafeCleanup: true });
     projectFixture = {
       blog: {
-        "hello-blog.md": `
+        'hello-blog.md': `
           ---
           sidebar_position: 1
           ---
@@ -53,7 +53,7 @@ describe("getGlobalPluginData", () => {
         `,
       },
       docs: {
-        "hello-world.md": `
+        'hello-world.md': `
           ---
           sidebar_position: 1
           ---
@@ -72,7 +72,7 @@ describe("getGlobalPluginData", () => {
     tmpLocation.removeCallback();
   });
 
-  test("it should generate global plugin data", () => {
+  test('it should generate global plugin data', () => {
     const config: PluginConfig = { ...baselinePluginConfig };
 
     expect(getGlobalPluginData(config)).toEqual({
@@ -86,8 +86,8 @@ describe("getGlobalPluginData", () => {
     });
   });
 
-  test("it should generate an index hash when enabled", () => {
-    vi.spyOn(indexHash, "getIndexHash").mockReturnValue("CONSISTENT_HASH");
+  test('it should generate an index hash when enabled', () => {
+    vi.spyOn(indexHash, 'getIndexHash').mockReturnValue('CONSISTENT_HASH');
 
     const config: PluginConfig = {
       ...baselinePluginConfig,
@@ -101,8 +101,8 @@ describe("getGlobalPluginData", () => {
     expect(getGlobalPluginData(config)).toMatchSnapshot();
   });
 
-  test("it should only index blog when enabled", () => {
-    vi.spyOn(indexHash, "getIndexHash").mockReturnValue("CONSISTENT_HASH");
+  test('it should only index blog when enabled', () => {
+    vi.spyOn(indexHash, 'getIndexHash').mockReturnValue('CONSISTENT_HASH');
 
     const config: PluginConfig = {
       ...baselinePluginConfig,
@@ -114,8 +114,8 @@ describe("getGlobalPluginData", () => {
     expect(getGlobalPluginData(config)).toMatchSnapshot();
   });
 
-  test("it should only index docs when enabled", () => {
-    vi.spyOn(indexHash, "getIndexHash").mockReturnValue("CONSISTENT_HASH");
+  test('it should only index docs when enabled', () => {
+    vi.spyOn(indexHash, 'getIndexHash').mockReturnValue('CONSISTENT_HASH');
 
     const config: PluginConfig = {
       ...baselinePluginConfig,

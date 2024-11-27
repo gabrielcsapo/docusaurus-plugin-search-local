@@ -1,25 +1,25 @@
-import path from "path";
-import { normalizeUrl } from "@docusaurus/utils";
-import { LoadContext, Plugin } from "@docusaurus/types";
-import validatePeerDependencies from "validate-peer-dependencies";
-import type { PluginOptions } from "docusaurus-plugin-search-local";
+import path from 'path';
+import { normalizeUrl } from '@docusaurus/utils';
+import { LoadContext, Plugin } from '@docusaurus/types';
+import validatePeerDependencies from 'validate-peer-dependencies';
+import type { PluginOptions } from 'docusaurus-plugin-search-local';
 
-import { getPluginConfig } from "./utils/getPluginConfig";
-import { getGlobalPluginData } from "./utils/getGlobalPluginData";
-import { postBuildFactory } from "./utils/postBuildFactory";
+import { getPluginConfig } from './utils/getPluginConfig';
+import { getGlobalPluginData } from './utils/getGlobalPluginData';
+import { postBuildFactory } from './utils/postBuildFactory';
 
-const PLUGIN_NAME = "docusaurus-plugin-search-local";
+const PLUGIN_NAME = 'docusaurus-plugin-search-local';
 
 validatePeerDependencies(__dirname);
 
 export default function DocusaurusSearchLocalPlugin(
   context: LoadContext,
-  options: PluginOptions
+  options: PluginOptions,
 ): Plugin {
   const config = getPluginConfig(options, context.siteDir);
 
-  const themePath = path.resolve(__dirname, "../client/theme");
-  const pagePath = path.join(themePath, "SearchPage/index.js");
+  const themePath = path.resolve(__dirname, '../client/theme');
+  const pagePath = path.join(themePath, 'SearchPage/index.js');
 
   return {
     name: PLUGIN_NAME,
@@ -36,8 +36,8 @@ export default function DocusaurusSearchLocalPlugin(
 
     async contentLoaded({ actions: { addRoute, setGlobalData } }) {
       addRoute({
-        path: normalizeUrl([context.baseUrl, "search"]),
-        component: "@theme/SearchPage",
+        path: normalizeUrl([context.baseUrl, 'search']),
+        component: '@theme/SearchPage',
         exact: true,
       });
 
@@ -47,4 +47,4 @@ export default function DocusaurusSearchLocalPlugin(
   };
 }
 
-export { validateOptions } from "./options";
+export { validateOptions } from './options';

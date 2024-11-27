@@ -1,4 +1,4 @@
-import { SmartTerm } from "../../types";
+import { SmartTerm } from '../../types';
 
 /**
  * Convert a list of tokens into smart terms.

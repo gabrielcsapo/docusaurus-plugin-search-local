@@ -11,7 +11,7 @@ type GTag = (
     groups?: string | string[];
     send_to?: string | string[];
     event_callback?: () => void;
-  }
+  },
 ) => void;
 
 import { SearchAnalyticsFn } from '../../types';

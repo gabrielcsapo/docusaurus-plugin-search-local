@@ -1,8 +1,8 @@
-import { InitialSearchResult } from "../../types";
-import { sortSearchResults } from "./sortSearchResults";
+import { InitialSearchResult } from '../../types';
+import { sortSearchResults } from './sortSearchResults';
 
-describe("sortSearchResults", () => {
-  test("should work", () => {
+describe('sortSearchResults', () => {
+  test('should work', () => {
     const pageTitles = [
       {
         document: {

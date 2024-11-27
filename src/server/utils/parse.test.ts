@@ -1,9 +1,9 @@
-import { ParsedDocument } from "../../types";
-import { parse } from "./parse";
+import { ParsedDocument } from '../../types';
+import { parse } from './parse';
 
-type TestCaseData = [string, "docs" | "blog" | "page", ParsedDocument];
+type TestCaseData = [string, 'docs' | 'blog' | 'page', ParsedDocument];
 
-describe("parse", () => {
+describe('parse', () => {
   const testCase1: TestCaseData = [
     `<body>
       <article>
@@ -19,14 +19,14 @@ describe("parse", () => {
         </main>
       </article>
     </body>`,
-    "page",
+    'page',
     {
-      pageTitle: "Hello World",
+      pageTitle: 'Hello World',
       sections: [
         {
-          title: "Hello World",
-          hash: "",
-          content: "Peace. Code.",
+          title: 'Hello World',
+          hash: '',
+          content: 'Peace. Code.',
         },
       ],
       breadcrumb: [],
@@ -45,27 +45,27 @@ describe("parse", () => {
         </main>
       </article>
     </body>`,
-    "docs",
+    'docs',
     {
-      pageTitle: "Hello World",
+      pageTitle: 'Hello World',
       sections: [
         {
-          title: "Hello World",
-          hash: "",
-          content: "Peace.",
+          title: 'Hello World',
+          hash: '',
+          content: 'Peace.',
         },
       ],
       breadcrumb: [],
     },
   ];
 
-  test("parse(testCase1) should work", () => {
+  test('parse(testCase1) should work', () => {
     const [html, type, doc] = testCase1;
-    expect(parse(html, type, "")).toEqual(doc);
+    expect(parse(html, type, '')).toEqual(doc);
   });
 
-  test.skip("parse(testCase2) should work", () => {
+  test.skip('parse(testCase2) should work', () => {
     const [html, type, doc] = testCase2;
-    expect(parse(html, type, "")).toEqual(doc);
+    expect(parse(html, type, '')).toEqual(doc);
   });
 });

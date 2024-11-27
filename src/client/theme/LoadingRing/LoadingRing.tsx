@@ -1,8 +1,8 @@
 // istanbul ignore file
-import * as React from "react";
-import clsx from "clsx";
+import * as React from 'react';
+import clsx from 'clsx';
 
-import styles from "./LoadingRing.module.css";
+import styles from './LoadingRing.module.css';
 
 export default function LoadingRing({
   className,

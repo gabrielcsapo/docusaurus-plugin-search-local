@@ -1,4 +1,4 @@
-import { escapeHtml } from "./escapeHtml";
+import { escapeHtml } from './escapeHtml';
 
 /**
  * Highlight specified tokens in text content.
@@ -12,7 +12,7 @@ import { escapeHtml } from "./escapeHtml";
 export function highlight(
   content: string,
   tokens: string[],
-  forceMatched?: boolean
+  forceMatched?: boolean,
 ): string {
   const html: string[] = [];
 
@@ -23,7 +23,7 @@ export function highlight(
         html.push(highlight(content.substr(0, index), tokens));
       }
       html.push(
-        `<mark>${escapeHtml(content.substr(index, token.length))}</mark>`
+        `<mark>${escapeHtml(content.substr(index, token.length))}</mark>`,
       );
       const end = index + token.length;
       if (end < content.length) {
@@ -39,5 +39,5 @@ export function highlight(
       : escapeHtml(content);
   }
 
-  return html.join("");
+  return html.join('');
 }

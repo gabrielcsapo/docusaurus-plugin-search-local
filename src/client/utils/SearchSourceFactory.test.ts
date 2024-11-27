@@ -1,42 +1,42 @@
-import lunr from "lunr";
-import { SearchDocument } from "../../types";
-import { SearchSourceFactory } from "./SearchSourceFactory";
+import lunr from 'lunr';
+import { SearchDocument } from '../../types';
+import { SearchSourceFactory } from './SearchSourceFactory';
 
-describe("SearchSourceFactory", () => {
+describe('SearchSourceFactory', () => {
   const documentsOfTitles: SearchDocument[] = [
     {
       i: 1,
-      t: "First Page Title",
-      u: "/1",
+      t: 'First Page Title',
+      u: '/1',
     },
     {
       i: 4,
-      t: "Second Page Title > peace",
-      u: "/2",
+      t: 'Second Page Title > peace',
+      u: '/2',
     },
   ];
   const documentsOfHeadings: SearchDocument[] = [
     {
       i: 2,
-      t: "First heading > peace",
-      u: "/1#2",
+      t: 'First heading > peace',
+      u: '/1#2',
       p: 1,
     },
   ];
   const documentsOfContents: SearchDocument[] = [
     {
       i: 3,
-      t: "First content. > peace",
-      u: "/1#2",
+      t: 'First content. > peace',
+      u: '/1#2',
       p: 1,
     },
   ];
 
   const getIndex = (documents: SearchDocument[]) =>
     lunr(function () {
-      this.ref("i");
-      this.field("t");
-      this.metadataWhitelist = ["position"];
+      this.ref('i');
+      this.field('t');
+      this.metadataWhitelist = ['position'];
       documents.forEach((doc) => {
         this.add({
           ...doc,
@@ -71,9 +71,9 @@ describe("SearchSourceFactory", () => {
   const callback = vi.fn();
 
   test.each<[string, number[]]>([
-    [",", []],
-    ["nothing", []],
-    ["peace", [4, 2]],
+    [',', []],
+    ['nothing', []],
+    ['peace', [4, 2]],
   ])("SearchSourceFactory('%s') should return %j", (input, results) => {
     searchSource(input, callback);
     expect(callback).toBeCalledWith(
@@ -82,8 +82,8 @@ describe("SearchSourceFactory", () => {
           document: expect.objectContaining({
             i,
           }),
-        })
-      )
+        }),
+      ),
     );
   });
 });

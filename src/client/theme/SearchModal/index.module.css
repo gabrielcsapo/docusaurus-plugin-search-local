@@ -4,7 +4,7 @@
   --search-local-result-shadow: 0 1px 3px 0 rgb(212, 217, 225);
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --search-local-result-shadow: none;
 }
 
@@ -180,7 +180,7 @@ html[data-theme="dark"] {
   height: var(--search-local-result-height, 65px);
 }
 
-html[data-theme="dark"] .searchResult {
+html[data-theme='dark'] .searchResult {
   box-shadow: var(--search-local-result-shadow, none);
   color: var(--ifm-font-color-base);
 }
@@ -204,9 +204,9 @@ html[data-theme="dark"] .searchResult {
   color: var(--ifm-color-secondary-darkest);
 }
 
-html[data-theme="dark"] .hitTree,
-html[data-theme="dark"] .hitIcon,
-html[data-theme="dark"] .hitPath {
+html[data-theme='dark'] .hitTree,
+html[data-theme='dark'] .hitIcon,
+html[data-theme='dark'] .hitPath {
   color: var(--ifm-color-secondary-darkest);
 }
 

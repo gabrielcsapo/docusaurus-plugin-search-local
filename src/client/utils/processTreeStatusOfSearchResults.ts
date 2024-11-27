@@ -1,7 +1,7 @@
-import { InitialSearchResult } from "../../types";
+import { InitialSearchResult } from '../../types';
 
 export function processTreeStatusOfSearchResults(
-  results: InitialSearchResult[]
+  results: InitialSearchResult[],
 ): void {
   results.forEach((item, i) => {
     if (

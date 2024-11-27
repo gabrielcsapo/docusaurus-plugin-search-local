@@ -1,25 +1,25 @@
 declare let _paq: Array<[string, string, boolean, number]>;
 declare let gtag: any;
 
-import { useEffect, useState, useRef, RefObject } from "react";
-import * as React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { usePluginData } from "@docusaurus/useGlobalData";
-import Link from "@docusaurus/Link";
+import { useEffect, useState, useRef, RefObject } from 'react';
+import * as React from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import Link from '@docusaurus/Link';
 
 import {
   ExternalSourceConfig,
   GlobalPluginData,
-} from "docusaurus-plugin-search-local";
-import { fetchIndexes } from "../../utils/fetchIndexes";
-import { SearchSourceFactory } from "../../utils/SearchSourceFactory";
-import { SearchResult, SearchSourceFn } from "../../../types";
-import LoadingRing from "../LoadingRing/LoadingRing";
-import { IconSearch } from "./icons";
-import SearchResultList from "./SearchResultList";
-import SearchResultsSection from "./SearchResultsSection";
+} from 'docusaurus-plugin-search-local';
+import { fetchIndexes } from '../../utils/fetchIndexes';
+import { SearchSourceFactory } from '../../utils/SearchSourceFactory';
+import { SearchResult, SearchSourceFn } from '../../../types';
+import LoadingRing from '../LoadingRing/LoadingRing';
+import { IconSearch } from './icons';
+import SearchResultList from './SearchResultList';
+import SearchResultsSection from './SearchResultsSection';
 
-import styles from "./index.module.css";
+import styles from './index.module.css';
 
 type ExternalSearchResults = ExternalSourceConfig & {
   results: SearchResult[];
@@ -35,7 +35,7 @@ interface SearchModalProps {
 
 const useKeyPress = function (
   targetKey: string,
-  ref: RefObject<HTMLInputElement>
+  ref: RefObject<HTMLInputElement>,
 ) {
   const [keyPressed, setKeyPressed] = useState(false);
 
@@ -52,12 +52,12 @@ const useKeyPress = function (
   };
 
   useEffect(() => {
-    ref.current?.addEventListener("keydown", downHandler);
-    ref.current?.addEventListener("keyup", upHandler);
+    ref.current?.addEventListener('keydown', downHandler);
+    ref.current?.addEventListener('keyup', upHandler);
 
     return () => {
-      ref.current?.removeEventListener("keydown", downHandler);
-      ref.current?.removeEventListener("keyup", upHandler);
+      ref.current?.removeEventListener('keydown', downHandler);
+      ref.current?.removeEventListener('keyup', upHandler);
     };
   });
 
@@ -76,16 +76,16 @@ const SearchModal: React.FC<SearchModalProps> = ({
     searchResultLimits,
     translations,
     externalSearchSources: externalSourceConfigs,
-  } = usePluginData("docusaurus-plugin-search-local") as GlobalPluginData;
-  const [searchQuery, setSearchQuery] = useState("");
+  } = usePluginData('docusaurus-plugin-search-local') as GlobalPluginData;
+  const [searchQuery, setSearchQuery] = useState('');
   const searchModal = useRef(null);
   const searchInput = useRef(null);
   const [searchSource, setSearchSource] = useState<SearchSourceFn>();
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [selected, setSelected] = useState<SearchResult | undefined>(undefined);
-  const downPress = useKeyPress("ArrowDown", searchInput);
-  const upPress = useKeyPress("ArrowUp", searchInput);
-  const enterPress = useKeyPress("Enter", searchInput);
+  const downPress = useKeyPress('ArrowDown', searchInput);
+  const upPress = useKeyPress('ArrowUp', searchInput);
+  const enterPress = useKeyPress('Enter', searchInput);
   const [cursor, setCursor] = useState<number>(0);
   const [hovered, setHovered] = useState<SearchResult | undefined>(undefined);
 
@@ -108,7 +108,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
   useEffect(() => {
     if (allSearchResults.length && downPress) {
       setCursor((prevState) =>
-        prevState < allSearchResults.length - 1 ? prevState + 1 : prevState
+        prevState < allSearchResults.length - 1 ? prevState + 1 : prevState,
       );
     }
   }, [allSearchResults.length, downPress]);
@@ -156,22 +156,22 @@ const SearchModal: React.FC<SearchModalProps> = ({
           resultsLimit: searchResultLimits,
           onResults: (query, results) => {
             // TODO: needs to be abstracted to be able to handle any site analytics
-            if (typeof _paq !== "undefined" && _paq && _paq?.push) {
+            if (typeof _paq !== 'undefined' && _paq && _paq?.push) {
               _paq.push([
-                "trackSiteSearch",
+                'trackSiteSearch',
                 query, // Search keyword searched for
                 false, // Search category selected in your search engine. If you do not need this, set to false
                 results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
               ]);
             }
 
-            if (typeof gtag !== undefined && typeof gtag === "function") {
-              gtag("event", "search", {
+            if (typeof gtag !== undefined && typeof gtag === 'function') {
+              gtag('event', 'search', {
                 search_term: query,
               });
             }
           },
-        })
+        }),
       );
     }
     doFetchIndexes();
@@ -184,7 +184,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
       externalSourceConfigs.forEach(async (externalSourceConfig) => {
         try {
           const { wrappedIndexes } = await fetchIndexes(
-            externalSourceConfig.uri
+            externalSourceConfig.uri,
           );
 
           _externalSearchSources.push({
@@ -195,17 +195,17 @@ const SearchModal: React.FC<SearchModalProps> = ({
               resultsLimit: searchResultLimits,
               onResults: (query, results) => {
                 // TODO: needs to be abstracted to be able to handle any site analytics
-                if (typeof _paq !== "undefined" && _paq && _paq?.push) {
+                if (typeof _paq !== 'undefined' && _paq && _paq?.push) {
                   _paq.push([
-                    "trackSiteSearch",
+                    'trackSiteSearch',
                     query, // Search keyword searched for
                     false, // Search category selected in your search engine. If you do not need this, set to false
                     results.length, // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
                   ]);
                 }
 
-                if (typeof gtag !== undefined && typeof gtag === "function") {
-                  gtag("event", "search", {
+                if (typeof gtag !== undefined && typeof gtag === 'function') {
+                  gtag('event', 'search', {
                     search_term: query,
                   });
                 }
@@ -214,7 +214,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
           });
         } catch {
           console.warn(
-            `Unable to fetch search index for ${externalSourceConfig.heading} from: ${externalSourceConfig.uri}`
+            `Unable to fetch search index for ${externalSourceConfig.heading} from: ${externalSourceConfig.uri}`,
           );
         }
       });
@@ -226,7 +226,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
   }, [externalSourceConfigs, removeDefaultStopWordFilter, searchResultLimits]);
 
   useEffect(() => {
-    if (searchQuery === "") {
+    if (searchQuery === '') {
       setExternalSearchResults([]);
       return;
     }

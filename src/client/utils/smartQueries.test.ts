@@ -1,6 +1,6 @@
-import lunr from "lunr";
-import { smartQueries } from "./smartQueries";
-import { SmartQuery } from "../../types";
+import lunr from 'lunr';
+import { smartQueries } from './smartQueries';
+import { SmartQuery } from '../../types';
 
 (lunr as any).fake = {};
 
@@ -9,86 +9,86 @@ interface TestQuery {
   keyword: string;
 }
 
-describe("smartQueries", () => {
+describe('smartQueries', () => {
   test.each<[string[], TestQuery[]]>([
     [
-      ["hello"],
+      ['hello'],
       [
         {
-          tokens: ["hello"],
-          keyword: "+hello",
+          tokens: ['hello'],
+          keyword: '+hello',
         },
         {
-          tokens: ["hello"],
-          keyword: "+hello*",
+          tokens: ['hello'],
+          keyword: '+hello*',
         },
       ],
     ],
     [
-      ["hello", "world"],
+      ['hello', 'world'],
       [
         {
-          tokens: ["hello", "world"],
-          keyword: "+hello +world",
+          tokens: ['hello', 'world'],
+          keyword: '+hello +world',
         },
         {
-          tokens: ["hello", "world"],
-          keyword: "+hello +world*",
+          tokens: ['hello', 'world'],
+          keyword: '+hello +world*',
         },
       ],
     ],
     [
-      ["a", "hello", "world"],
+      ['a', 'hello', 'world'],
       [
         {
-          tokens: ["a", "hello", "world"],
-          keyword: "+a +hello +world",
+          tokens: ['a', 'hello', 'world'],
+          keyword: '+a +hello +world',
         },
         {
-          tokens: ["hello", "world"],
-          keyword: "+hello +world",
+          tokens: ['hello', 'world'],
+          keyword: '+hello +world',
         },
         {
-          tokens: ["a", "hello", "world"],
-          keyword: "+a +hello +world*",
+          tokens: ['a', 'hello', 'world'],
+          keyword: '+a +hello +world*',
         },
         {
-          tokens: ["hello", "world"],
-          keyword: "+hello +world*",
+          tokens: ['hello', 'world'],
+          keyword: '+hello +world*',
         },
       ],
     ],
     [
-      ["hello", "a"],
+      ['hello', 'a'],
       [
         {
-          tokens: ["hello", "a"],
-          keyword: "+hello +a",
+          tokens: ['hello', 'a'],
+          keyword: '+hello +a',
         },
         {
-          tokens: ["hello"],
-          keyword: "+hello",
+          tokens: ['hello'],
+          keyword: '+hello',
         },
         {
-          tokens: ["hello", "a"],
-          keyword: "+hello +a*",
+          tokens: ['hello', 'a'],
+          keyword: '+hello +a*',
         },
       ],
     ],
     [
-      ["a"],
+      ['a'],
       [
         {
-          tokens: ["a"],
-          keyword: "+a",
+          tokens: ['a'],
+          keyword: '+a',
         },
         {
-          tokens: ["a"],
-          keyword: "+a*",
+          tokens: ['a'],
+          keyword: '+a*',
         },
       ],
     ],
-  ])("smartQueries(%j) should work", (tokens, queries) => {
+  ])('smartQueries(%j) should work', (tokens, queries) => {
     const sQueries = smartQueries(tokens, {
       removeDefaultStopWordFilter: false,
     });
@@ -97,22 +97,22 @@ describe("smartQueries", () => {
   });
 });
 
-describe("smartQueries with no stop words filter", () => {
+describe('smartQueries with no stop words filter', () => {
   test.each<[string[], TestQuery[]]>([
     [
-      ["a", "hello"],
+      ['a', 'hello'],
       [
         {
-          tokens: ["a", "hello"],
-          keyword: "+a +hello",
+          tokens: ['a', 'hello'],
+          keyword: '+a +hello',
         },
         {
-          tokens: ["a", "hello"],
-          keyword: "+a +hello*",
+          tokens: ['a', 'hello'],
+          keyword: '+a +hello*',
         },
       ],
     ],
-  ])("smartQueries(%j) should work", (tokens, queries) => {
+  ])('smartQueries(%j) should work', (tokens, queries) => {
     const sQueries = smartQueries(tokens, {
       removeDefaultStopWordFilter: true,
     });
@@ -127,18 +127,18 @@ function transformQuery(query: SmartQuery): TestQuery {
     keyword: query.term
       .map(
         (item) =>
-          `${item.presence === lunr.Query.presence.REQUIRED ? "+" : ""}${
+          `${item.presence === lunr.Query.presence.REQUIRED ? '+' : ''}${
             (item.wildcard & lunr.Query.wildcard.LEADING) ===
             lunr.Query.wildcard.LEADING
-              ? "*"
-              : ""
+              ? '*'
+              : ''
           }${item.value}${
             (item.wildcard & lunr.Query.wildcard.TRAILING) ===
             lunr.Query.wildcard.TRAILING
-              ? "*"
-              : ""
-          }`
+              ? '*'
+              : ''
+          }`,
       )
-      .join(" "),
+      .join(' '),
   };
 }

@@ -1,25 +1,25 @@
-import { MatchMetadata } from "../../types";
-import { tokenizer } from "./tokenizer";
+import { MatchMetadata } from '../../types';
+import { tokenizer } from './tokenizer';
 
-describe("tokenizer", () => {
+describe('tokenizer', () => {
   test.each<[string | string[] | null | undefined, MatchMetadata, any[]]>([
     [null, {}, []],
     [
-      ["already", "tokenized"],
+      ['already', 'tokenized'],
       {},
       [
         {
-          str: "already",
+          str: 'already',
           metadata: {},
         },
         {
-          str: "tokenized",
+          str: 'tokenized',
           metadata: {},
         },
       ],
     ],
     [
-      "api_gateway: Good.",
+      'api_gateway: Good.',
       {},
       [
         {
@@ -27,28 +27,28 @@ describe("tokenizer", () => {
             index: 0,
             position: [0, 11],
           },
-          str: "api_gateway",
+          str: 'api_gateway',
         },
         {
           metadata: {
             index: 1,
             position: [0, 3],
           },
-          str: "api",
+          str: 'api',
         },
         {
           metadata: {
             index: 2,
             position: [4, 7],
           },
-          str: "gateway",
+          str: 'gateway',
         },
         {
           metadata: {
             index: 3,
             position: [13, 4],
           },
-          str: "good",
+          str: 'good',
         },
       ],
     ],

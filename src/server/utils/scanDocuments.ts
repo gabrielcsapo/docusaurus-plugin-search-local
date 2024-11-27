@@ -1,9 +1,9 @@
-import fs from "fs";
-import path from "path";
-import util from "util";
-import { DocInfoWithFilePath, SearchDocument } from "../../types";
-import { parse } from "./parse";
-import { debugVerbose } from "./debug";
+import fs from 'fs';
+import path from 'path';
+import util from 'util';
+import { DocInfoWithFilePath, SearchDocument } from '../../types';
+import { parse } from './parse';
+import { debugVerbose } from './debug';
 
 const readFileAsync = util.promisify(fs.readFile);
 
@@ -13,7 +13,7 @@ const getNextDocId = () => {
 };
 
 export async function scanDocuments(
-  DocInfoWithFilePathList: DocInfoWithFilePath[]
+  DocInfoWithFilePathList: DocInfoWithFilePath[],
 ): Promise<SearchDocument[][]> {
   const titleDocuments: SearchDocument[] = [];
   const headingDocuments: SearchDocument[] = [];
@@ -26,10 +26,10 @@ export async function scanDocuments(
         `parsing %s file %o of %o`,
         type,
         path.relative(process.cwd(), filePath),
-        url
+        url,
       );
 
-      const html = await readFileAsync(filePath, { encoding: "utf8" });
+      const html = await readFileAsync(filePath, { encoding: 'utf8' });
       const { pageTitle, sections, breadcrumb } = parse(html, type, url);
 
       const titleId = getNextDocId();
@@ -63,7 +63,7 @@ export async function scanDocuments(
           });
         }
       }
-    })
+    }),
   );
   return allDocuments;
 }

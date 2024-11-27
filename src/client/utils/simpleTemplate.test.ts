@@ -1,22 +1,22 @@
-import { simpleTemplate } from "./simpleTemplate";
+import { simpleTemplate } from './simpleTemplate';
 
-describe("simpleTemplate", () => {
+describe('simpleTemplate', () => {
   test.each<[string, Record<string, unknown>, string]>([
     [
       "search for '{{ keyword }}'",
       {
-        keyword: "any",
+        keyword: 'any',
       },
       "search for 'any'",
     ],
     [
-      "{{ count }} documents found",
+      '{{ count }} documents found',
       {
         count: 2,
       },
-      "2 documents found",
+      '2 documents found',
     ],
-  ])("simpleTemplate(%j, $j) should return %j", (template, params, result) => {
+  ])('simpleTemplate(%j, $j) should return %j', (template, params, result) => {
     expect(simpleTemplate(template, params)).toBe(result);
   });
 });

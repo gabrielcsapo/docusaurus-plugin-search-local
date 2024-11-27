@@ -1,10 +1,10 @@
-import path from "path";
-import { Props as PostBuildProps } from "@docusaurus/types";
+import path from 'path';
+import { Props as PostBuildProps } from '@docusaurus/types';
 import {
   DocInfoWithFilePath,
   DocInfoWithRoute,
   PluginConfig,
-} from "../../types";
+} from '../../types';
 
 export function processDocInfos(
   { routesPaths, outDir, baseUrl, siteConfig }: PostBuildProps,
@@ -15,27 +15,27 @@ export function processDocInfos(
     docsRouteBasePath,
     blogRouteBasePath,
     ignoreFiles,
-  }: PluginConfig
+  }: PluginConfig,
 ): DocInfoWithFilePath[] {
   return routesPaths
     .map<DocInfoWithRoute | undefined>((url: string) => {
       // istanbul ignore next
       if (!url.startsWith(baseUrl)) {
         throw new Error(
-          `The route must start with the baseUrl "${baseUrl}", but was "${url}". This is a bug, please report it.`
+          `The route must start with the baseUrl "${baseUrl}", but was "${url}". This is a bug, please report it.`,
         );
       }
-      const route = url.substr(baseUrl.length).replace(/\/$/, "");
+      const route = url.substr(baseUrl.length).replace(/\/$/, '');
 
       // Do not index homepage, error page and search page.
-      if (route === "" || route === "404.html" || route === "search") {
+      if (route === '' || route === '404.html' || route === 'search') {
         return;
       }
 
       // ignore files
       if (
         ignoreFiles?.some((reg: RegExp | string) => {
-          if (typeof reg === "string") {
+          if (typeof reg === 'string') {
             return route === reg;
           }
           return route.match(reg);
@@ -52,22 +52,22 @@ export function processDocInfos(
           blogRouteBasePath.some(
             (basePath) =>
               isSameRoute(route, basePath) ||
-              isSameOrSubRoute(route, path.posix.join(basePath, "tags"))
+              isSameOrSubRoute(route, path.posix.join(basePath, 'tags')),
           )
         ) {
           // Do not index list of blog posts and tags filter pages
           return;
         }
-        return { route, url, type: "blog" };
+        return { route, url, type: 'blog' };
       }
       if (
         indexDocs &&
         docsRouteBasePath.some((basePath) => isSameOrSubRoute(route, basePath))
       ) {
-        return { route, url, type: "docs" };
+        return { route, url, type: 'docs' };
       }
       if (indexPages) {
-        return { route, url, type: "page" };
+        return { route, url, type: 'page' };
       }
       return;
     })
@@ -77,7 +77,7 @@ export function processDocInfos(
         outDir,
         siteConfig.trailingSlash === false
           ? `${route}.html`
-          : `${route}/index.html`
+          : `${route}/index.html`,
       ),
       url,
       type,
@@ -90,7 +90,7 @@ function isSameRoute(routeA: string, routeB: string): boolean {
 
 function isSameOrSubRoute(childRoute: string, parentRoute: string): boolean {
   return (
-    parentRoute === "" ||
+    parentRoute === '' ||
     addTrailingSlash(childRoute).startsWith(addTrailingSlash(parentRoute))
   );
 }

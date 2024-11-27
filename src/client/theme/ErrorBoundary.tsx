@@ -1,4 +1,4 @@
-import { Component, ErrorInfo } from "react";
+import { Component, ErrorInfo } from 'react';
 
 type ErrorBoundaryProps = {
   children?: JSX.Element | JSX.Element[];

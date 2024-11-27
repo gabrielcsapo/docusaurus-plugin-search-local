@@ -1,10 +1,10 @@
-import lunr from "lunr";
-import { MatchMetadata } from "../../types";
-import { cutWordByUnderscore } from "./cutWordByUnderscore";
+import lunr from 'lunr';
+import { MatchMetadata } from '../../types';
+import { cutWordByUnderscore } from './cutWordByUnderscore';
 
 export function tokenizer(
   input: string | string[] | null | undefined,
-  metadata: MatchMetadata
+  metadata: MatchMetadata,
 ): lunr.Token[] {
   if (input == null) {
     return [];
@@ -13,7 +13,7 @@ export function tokenizer(
     return input.map(function (t) {
       return new lunr.Token(
         lunr.utils.asString(t).toLowerCase(),
-        (lunr.utils as any).clone(metadata)
+        (lunr.utils as any).clone(metadata),
       );
     });
   }
@@ -34,7 +34,7 @@ export function tokenizer(
         ...(lunr.utils as any).clone(metadata),
         position: [start, word.length],
         index: tokens.length,
-      })
+      }),
     );
 
     // Try to cut `api_gateway` to `api` and `gateway`.
@@ -42,13 +42,13 @@ export function tokenizer(
     if (subWords.length > 1) {
       let i = 0;
       for (const subWord of subWords) {
-        if (subWord[0] !== "_") {
+        if (subWord[0] !== '_') {
           tokens.push(
             new lunr.Token(subWord, {
               ...(lunr.utils as any).clone(metadata),
               position: [start + i, subWord.length],
               index: tokens.length,
-            })
+            }),
           );
         }
         i += subWord.length;

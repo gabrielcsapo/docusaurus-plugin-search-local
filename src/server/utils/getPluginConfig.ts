@@ -1,6 +1,6 @@
-import path from "path";
-import type { PluginOptions } from "docusaurus-plugin-search-local";
-import { PluginConfig } from "../../types";
+import path from 'path';
+import type { PluginOptions } from 'docusaurus-plugin-search-local';
+import { PluginConfig } from '../../types';
 
 function getArrayOption<T>(value: T | T[]): T[] {
   return Array.isArray(value) ? value : [value];
@@ -8,7 +8,7 @@ function getArrayOption<T>(value: T | T[]): T[] {
 
 export function getPluginConfig(
   options: PluginOptions,
-  siteDir: string
+  siteDir: string,
 ): PluginConfig {
   const {
     blogDir,
@@ -44,10 +44,10 @@ export function getPluginConfig(
     blogDir: getArrayOption(blogDir).map((dir) => path.resolve(siteDir, dir)),
     docsDir: getArrayOption(docsDir).map((dir) => path.resolve(siteDir, dir)),
     blogRouteBasePath: getArrayOption(blogRouteBasePath).map((basePath) =>
-      basePath.replace(/^\//, "")
+      basePath.replace(/^\//, ''),
     ),
     docsRouteBasePath: getArrayOption(docsRouteBasePath).map((basePath) =>
-      basePath.replace(/^\//, "")
+      basePath.replace(/^\//, ''),
     ),
 
     ignoreFiles: getArrayOption(ignoreFiles),

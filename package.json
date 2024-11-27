@@ -26,7 +26,7 @@
     "check": "npm run check:client && npm run check:server",
     "check:client": "tsc --noEmit --project ./tsconfig.client.json",
     "check:server": "tsc --noEmit --project ./tsconfig.server.json",
-    "lint": "eslint ./src --config .eslintrc",
+    "lint": "eslint ./src --config .eslintrc && prettier --check .",
     "parcel": "nf start --procfile ./procfiles/parcel.procfile",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build",

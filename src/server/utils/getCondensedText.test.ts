@@ -1,7 +1,7 @@
-import * as cheerio from "cheerio";
-import { getCondensedText } from "./getCondensedText";
+import * as cheerio from 'cheerio';
+import { getCondensedText } from './getCondensedText';
 
-describe("getCondensedText", () => {
+describe('getCondensedText', () => {
   const html = `
     <div id="root">
       <!-- comments should be ignored. -->
@@ -17,8 +17,8 @@ describe("getCondensedText", () => {
   const $ = cheerio.load(html);
 
   test.each<[string, string]>([
-    ["#fruits", "Apple Orange Pear"],
-    ["#root", "Hello fruits. Apple Orange Pear Goodbye fruits."],
+    ['#fruits', 'Apple Orange Pear'],
+    ['#root', 'Hello fruits. Apple Orange Pear Goodbye fruits.'],
   ])("getCondensedText($('%s'), $) should return '%s'", (selector, text) => {
     expect(getCondensedText($(selector).get(), $)).toBe(text);
   });

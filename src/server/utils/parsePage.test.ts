@@ -1,8 +1,8 @@
-import * as cheerio from "cheerio";
-import { ParsedDocument } from "../../types";
-import { parsePage } from "./parsePage";
+import * as cheerio from 'cheerio';
+import { ParsedDocument } from '../../types';
+import { parsePage } from './parsePage';
 
-describe("parsePage", () => {
+describe('parsePage', () => {
   test.each<[string, string, ParsedDocument]>([
     [
       `<body>
@@ -15,14 +15,14 @@ describe("parsePage", () => {
           </main>
         </article>
       </body>`,
-      "/pages/a",
+      '/pages/a',
       {
-        pageTitle: "Hello World",
+        pageTitle: 'Hello World',
         sections: [
           {
-            title: "Hello World",
-            hash: "",
-            content: "Peace.",
+            title: 'Hello World',
+            hash: '',
+            content: 'Peace.',
           },
         ],
         breadcrumb: [],
@@ -37,14 +37,14 @@ describe("parsePage", () => {
           </main>
         </article>
       </body>`,
-      "/pages/a",
+      '/pages/a',
       {
-        pageTitle: "Hello World",
+        pageTitle: 'Hello World',
         sections: [
           {
-            title: "Hello World",
-            hash: "",
-            content: "Peace.",
+            title: 'Hello World',
+            hash: '',
+            content: 'Peace.',
           },
         ],
         breadcrumb: [],
@@ -61,20 +61,20 @@ describe("parsePage", () => {
           </div>
         </article>
       </body>`,
-      "/pages/a",
+      '/pages/a',
       {
-        pageTitle: "Hello World",
+        pageTitle: 'Hello World',
         sections: [
           {
-            title: "Hello World",
-            hash: "",
-            content: "",
+            title: 'Hello World',
+            hash: '',
+            content: '',
           },
         ],
         breadcrumb: [],
       },
     ],
-  ])("parsePage(...) should work", (html, url, doc) => {
+  ])('parsePage(...) should work', (html, url, doc) => {
     expect(parsePage(cheerio.load(html), url)).toEqual(doc);
   });
 });
