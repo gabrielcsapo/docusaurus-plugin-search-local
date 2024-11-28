@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { ValidationResult, ValidationSchema } from '@docusaurus/types';
 import type { PluginOptions } from 'docusaurus-plugin-search-local';
 import { validateOptions } from './options';

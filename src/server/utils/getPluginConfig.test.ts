@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { normalizePluginOptions } from '@docusaurus/utils-validation';
 import { ExternalSourceConfig } from 'docusaurus-plugin-search-local';
 import { getPluginConfig } from './getPluginConfig';

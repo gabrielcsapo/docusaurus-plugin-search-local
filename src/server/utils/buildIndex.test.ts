@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { buildIndex } from './buildIndex';
 import { SearchDocument } from '../../types';
 

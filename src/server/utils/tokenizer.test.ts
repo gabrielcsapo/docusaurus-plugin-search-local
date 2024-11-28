@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { MatchMetadata } from '../../types';
 import { tokenizer } from './tokenizer';
 

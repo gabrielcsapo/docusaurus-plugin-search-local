@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import * as cheerio from 'cheerio';
 import { getCondensedText } from './getCondensedText';
 

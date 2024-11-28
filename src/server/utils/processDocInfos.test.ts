@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { DocusaurusConfig, Props as PostBuildData } from '@docusaurus/types';
 import { DocInfoWithFilePath, PluginConfig } from '../../types';
 import { processDocInfos } from './processDocInfos';
